@@ -51,6 +51,15 @@ namespace Grade_Manager_DB_Controller
             return !(a == b);
         }
 
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         /// <summary>
         /// Assign values from SqlCeDataReader directly to properties of ProfileData
         /// Please Note that the SqlCeDataReader.Read() method must be called externally
@@ -134,7 +143,7 @@ namespace Grade_Manager_DB_Controller
                         result = true;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 
             }

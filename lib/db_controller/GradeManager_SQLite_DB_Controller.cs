@@ -108,7 +108,7 @@ CREATE UNIQUE INDEX [Subjects_UQ__Subjects__4081766108EA5793]            ON [Sub
 
                     pass = (tables.Count == 0);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
 
                 }

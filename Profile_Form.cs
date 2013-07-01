@@ -54,22 +54,23 @@ namespace Grade_Manager
         private TreeNode GenerateTree(IDataReader reader)
         {
             TreeNode parent = new TreeNode("Select A Profile");
+            TreeNode buffer;
+            TreeNode yearNode;
 
             while (reader.Read())
             {
                 string class_name = (string)reader["class_name"];
                 string year = (Convert.ToString(reader["starting_school_year"])) + " - " + (Convert.ToString(reader["ending_school_year"]));
                 string term = String.Format("Term #{0}", Convert.ToString(reader["current_term"]));
+                string id = reader["profile_id"].ToString();
 
-                TreeNode buffer;
+                
 
                 if (!parent.Nodes.ContainsKey(class_name))
                     buffer = parent.Nodes[parent.Nodes.Add(new TreeNode(class_name))];
                 else
                     buffer = parent.Nodes[parent.Nodes.IndexOfKey(class_name)];
                 
-
-                TreeNode yearNode;
 
                 if (!buffer.Nodes.ContainsKey(year))
                     yearNode = buffer.Nodes[buffer.Nodes.Add(new TreeNode(year))];
@@ -79,8 +80,8 @@ namespace Grade_Manager
 
                 if (!yearNode.Nodes.ContainsKey(term))
                 {
-                    yearNode.Nodes.Add(new TreeNode(term));
-                    yearNode.Name = Convert.ToInt32((reader["profile_id"])).ToString();
+                    TreeNode termNode = yearNode.Nodes[yearNode.Nodes.Add(new TreeNode(term))];
+                    termNode.Name = id;//Convert.ToInt32((reader["profile_id"])).ToString();                    
                 }
                 
 
