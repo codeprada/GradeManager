@@ -22,15 +22,5 @@ namespace Grade_Manager_DB_Controller.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=|DataDirectory|\\grade_manager.sdf")]
-        public string grade_managerConnectionString {
-            get {
-                return ((string)(this["grade_managerConnectionString"]));
-            }
-        }
     }
 }

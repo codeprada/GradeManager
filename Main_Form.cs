@@ -85,7 +85,14 @@ namespace Grade_Manager
             Profile_Form profile_fm = new Profile_Form();
             profile_fm.StartPosition = FormStartPosition.CenterParent;
 
+            //Verify if the user selected a profile
             profile_fm.ShowDialog();
+
+            //the user selected a profile
+            if (ProfileManager.CurrentProfile != null)
+            {
+
+            }
         }
 
         private void classManagementBtn_Click(object sender, EventArgs e)

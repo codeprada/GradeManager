@@ -183,7 +183,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 80);
+            this.label2.Location = new System.Drawing.Point(12, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(117, 13);
             this.label2.TabIndex = 2;
@@ -207,7 +207,7 @@
             this.startingSchoolYearNumeric.Size = new System.Drawing.Size(52, 20);
             this.startingSchoolYearNumeric.TabIndex = 1;
             this.startingSchoolYearNumeric.Value = new decimal(new int[] {
-            2013,
+            2012,
             0,
             0,
             0});
@@ -215,7 +215,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 50);
+            this.label1.Location = new System.Drawing.Point(12, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;

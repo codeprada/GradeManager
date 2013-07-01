@@ -23,7 +23,23 @@ namespace Grade_Manager
 
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((string)treeView1.SelectedNode.Name);
+            if (treeView1.SelectedNode != null)
+            {
+                int id;
+                if (Int32.TryParse(treeView1.SelectedNode.Name, out id))
+                {
+                    ProfileManager profile_manager = new ProfileManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+
+                    //MessageBox.Show((string)treeView1.SelectedNode.Name);
+                    ProfileManager.CurrentProfile = profile_manager.GetProfile(id);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Expand each section and select a term before attempting to load a profile", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
         }
 
         private void LoadList()

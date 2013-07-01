@@ -69,13 +69,13 @@ namespace Grade_Manager_DB_Controller
         public static implicit operator ProfileData(SQLiteDataReader reader)
         {
             ProfileData pd = new ProfileData();
-            pd.Id = (int)reader["profile_id"];
-            pd.StartingSchoolYear = (int)reader["starting_school_year"];
-            pd.EndingSchoolYear = (int)reader["ending_school_year"];
-            pd.OwnerId = (int)reader["account_id"];
-            pd.Term = (int)reader["current_term"];
+            pd.Id = Convert.ToInt32(reader["profile_id"]);
+            pd.StartingSchoolYear = Convert.ToInt32(reader["starting_school_year"]);
+            pd.EndingSchoolYear = Convert.ToInt32(reader["ending_school_year"]);
+            pd.OwnerId = Convert.ToInt32(reader["account_id"]);
+            pd.Term = Convert.ToInt32(reader["current_term"]);
             pd.Description = (string)reader["profile_description"];
-            pd.Class = (int)reader["class_id"];
+            pd.Class = Convert.ToInt32(reader["class_id"]);
 
             return pd;
         }
@@ -88,21 +88,28 @@ namespace Grade_Manager_DB_Controller
     /// </summary>
     public class ProfileManager : BaseManager
     {
+
         public ProfileManager(string connection_string)
             : base(connection_string)
         {
 
         }
 
-        public ProfileData GetProfile(string name)
+        public static ProfileData CurrentProfile
+        {
+            get;
+            set;
+        }
+
+        public ProfileData GetProfile(int id)
         {
             ProfileData db_profile = new ProfileData();
 
             //fetch profile according to profile_name
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
-            using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_PROFILE_NAME, connection))
+            using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_PROFILE, connection))
             {
-                command.Parameters.AddWithValue("@name", name);
+                command.Parameters.AddWithValue("@id", id);
 
                 connection.Open();
                 //execute query
