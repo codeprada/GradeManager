@@ -165,6 +165,7 @@
             this.subjectManagementBtn.Text = "Manage Subjects";
             this.subjectManagementBtn.UseVisualStyleBackColor = true;
             this.subjectManagementBtn.Visible = false;
+            this.subjectManagementBtn.Click += new System.EventHandler(this.subjectManagementBtn_Click);
             // 
             // gradeManagementBtn
             // 

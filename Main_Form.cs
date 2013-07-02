@@ -33,14 +33,11 @@ namespace Grade_Manager
         {
             LogIn login_form = new LogIn();
             login_form.ShowDialog(this);
-            if (UserManager.CurrentUser != null && UserManager.CurrentUser.Password.Length > 0)
+            if (UserManager.CurrentUser != null && UserManager.CurrentUser.Name.Length > 0)
             {
-                /*selectProfileToolStripMenuItem.Visible = true;
-                createProfileToolStripMenuItem.Visible = true;
+                //User has been logged in
 
-                Profile_Form profile_form = new Profile_Form();
-                profile_form.ShowDialog();*/
-
+                this.Text += " - User: " + UserManager.CurrentUser.Name;
                 ShowControls(true);
             }
         }
@@ -77,6 +74,8 @@ namespace Grade_Manager
         {
             UserManager.CurrentUser = null;
 
+            this.Text = "Grade Manager";
+
             ShowControls(false);
         }
 
@@ -91,6 +90,11 @@ namespace Grade_Manager
             //the user selected a profile
             if (ProfileManager.CurrentProfile != null)
             {
+                this.Text += String.Format(" - Profile Year: {0}/{1}",
+                    ProfileManager.CurrentProfile.StartingSchoolYear,
+                    ProfileManager.CurrentProfile.EndingSchoolYear
+                );
+
 
             }
         }
@@ -101,6 +105,11 @@ namespace Grade_Manager
             c_form.StartPosition = FormStartPosition.CenterParent;
 
             c_form.ShowDialog();
+        }
+
+        private void subjectManagementBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

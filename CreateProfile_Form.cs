@@ -31,7 +31,7 @@ namespace Grade_Manager
         private void createBtn_Click(object sender, EventArgs e)
         {
 
-            ProfileData profile = new ProfileData()
+            Profile profile = new Profile()
             {
                 Description = profileDescriptionTxt.Text,
                 OwnerId = UserManager.CurrentUser.Id,
@@ -75,7 +75,7 @@ namespace Grade_Manager
             }
         }
 
-        private void CreateProfile_UD(ProfileData pd)
+        private void CreateProfile_UD(Profile pd)
         {
 
         }

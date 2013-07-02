@@ -47,7 +47,8 @@ namespace Grade_Manager
             {
                 User usr = new User();
                 usr.Id = id;
-                usr.Password = passwordTxtBox.Text;
+                //should be hashed
+                //usr.Password = passwordTxtBox.Text; //shouldn't have stored the password here
                 usr.Name = usernameTxtBox.Text;
 
                 passwordTxtBox.Clear();

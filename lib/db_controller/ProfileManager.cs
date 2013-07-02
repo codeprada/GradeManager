@@ -12,21 +12,13 @@ using System.Data.SQLite;
 
 namespace Grade_Manager_DB_Controller
 {
-    public class Profile
-    {
-        public Profile()
-        {
-
-        }
-    }
-
 
     /// <summary>
     /// Represents a Profile
     /// </summary>
-    public class ProfileData
+    public class Profile
     {
-        public ProfileData() { }
+        public Profile() { }
 
         public int Id { get; set; }
         public int Class { get; set; }
@@ -36,17 +28,24 @@ namespace Grade_Manager_DB_Controller
         public int Term { get; set; }
         public string Description { get; set; }
 
-        public static bool operator ==(ProfileData a, ProfileData b)
+        public static bool operator ==(Profile a, Profile b)
         {
-            return (a.OwnerId == b.OwnerId &&
-                a.Class == b.Class &&
-                a.StartingSchoolYear == b.StartingSchoolYear &&
-                a.EndingSchoolYear == b.EndingSchoolYear &&
-                a.Term == b.Term &&
-                a.Description == b.Description);
+            try
+            {
+                return (a.OwnerId == b.OwnerId &&
+                    a.Class == b.Class &&
+                    a.StartingSchoolYear == b.StartingSchoolYear &&
+                    a.EndingSchoolYear == b.EndingSchoolYear &&
+                    a.Term == b.Term &&
+                    a.Description == b.Description);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
-        public static bool operator !=(ProfileData a, ProfileData b)
+        public static bool operator !=(Profile a, Profile b)
         {
             return !(a == b);
         }
@@ -61,14 +60,14 @@ namespace Grade_Manager_DB_Controller
             return base.GetHashCode();
         }
         /// <summary>
-        /// Assign values from SqlCeDataReader directly to properties of ProfileData
+        /// Assign values from SqlCeDataReader directly to properties of Profile
         /// Please Note that the SqlCeDataReader.Read() method must be called externally
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        public static implicit operator ProfileData(SQLiteDataReader reader)
+        public static implicit operator Profile(SQLiteDataReader reader)
         {
-            ProfileData pd = new ProfileData();
+            Profile pd = new Profile();
             pd.Id = Convert.ToInt32(reader["profile_id"]);
             pd.StartingSchoolYear = Convert.ToInt32(reader["starting_school_year"]);
             pd.EndingSchoolYear = Convert.ToInt32(reader["ending_school_year"]);
@@ -95,15 +94,15 @@ namespace Grade_Manager_DB_Controller
 
         }
 
-        public static ProfileData CurrentProfile
+        public static Profile CurrentProfile
         {
             get;
             set;
         }
 
-        public ProfileData GetProfile(int id)
+        public Profile GetProfile(int id)
         {
-            ProfileData db_profile = new ProfileData();
+            Profile db_profile = new Profile();
 
             //fetch profile according to profile_name
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -125,7 +124,7 @@ namespace Grade_Manager_DB_Controller
             return db_profile;
         }
 
-        public bool CreateProfile(ProfileData profile)
+        public bool CreateProfile(Profile profile)
         {
             //value of ID not being passed
             bool result = false;
