@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.doneBtn = new System.Windows.Forms.Button();
+            this.saveBtn = new System.Windows.Forms.Button();
             this.subjectCheckListBox = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.doneBtn);
+            this.groupBox1.Controls.Add(this.saveBtn);
             this.groupBox1.Controls.Add(this.subjectCheckListBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -47,36 +47,42 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Subject List";
             // 
+            // doneBtn
+            // 
+            this.doneBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.doneBtn.Location = new System.Drawing.Point(230, 332);
+            this.doneBtn.Name = "doneBtn";
+            this.doneBtn.Size = new System.Drawing.Size(75, 23);
+            this.doneBtn.TabIndex = 2;
+            this.doneBtn.Text = "Done";
+            this.doneBtn.UseVisualStyleBackColor = true;
+            this.doneBtn.Click += new System.EventHandler(this.doneBtn_Click);
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(6, 332);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 1;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
             // subjectCheckListBox
             // 
+            this.subjectCheckListBox.CheckOnClick = true;
             this.subjectCheckListBox.FormattingEnabled = true;
             this.subjectCheckListBox.Location = new System.Drawing.Point(6, 19);
             this.subjectCheckListBox.Name = "subjectCheckListBox";
             this.subjectCheckListBox.Size = new System.Drawing.Size(299, 274);
             this.subjectCheckListBox.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(6, 332);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(230, 332);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // Subjects_Form
             // 
+            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.doneBtn;
             this.ClientSize = new System.Drawing.Size(335, 379);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
@@ -95,7 +101,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckedListBox subjectCheckListBox;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button doneBtn;
+        private System.Windows.Forms.Button saveBtn;
     }
 }

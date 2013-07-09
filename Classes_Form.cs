@@ -17,8 +17,6 @@ namespace Grade_Manager_DB_Controller
         {
             InitializeComponent();
 
-            classesComboBox.DisplayMember = "Text";
-            classesComboBox.ValueMember = "Id";
 
             //LoadClasses();
 
@@ -43,11 +41,7 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
-        private void loadBtn_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show((string)((ComboItem)classesComboBox.SelectedItem).Text);
-        }
-
+        
         private void LoadClasses()
         {
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
@@ -65,7 +59,7 @@ namespace Grade_Manager_DB_Controller
                         while (reader.Read())
                         {
 
-                            classesComboBox.Items.Add(new ComboItem() { Text = reader["class_name"], Id = reader["class_id"] });
+                            //classesComboBox.Items.Add(new ComboItem() { Text = reader["class_name"], Id = reader["class_id"] });
                         }
                     }
                 }

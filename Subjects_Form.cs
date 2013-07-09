@@ -32,10 +32,29 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadList()
         {
-            foreach (Subject subject in subject_manager.GetAllSubjects())
+            //Fast way to load a checklist
+            //To String method in Subject object will be used as the checkboxitem's text
+            subjectCheckListBox.Items.AddRange(subject_manager.GetAllSubjects().ToArray());
+            
+        }
+
+        private void doneBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            //Clear all subjects associated with Profile in order to update new list
+            subject_manager.ClearProfileSubjects();
+            int count = 0;
+            foreach (Subject subject in subjectCheckListBox.CheckedItems)
             {
-                subjectCheckListBox.Items.Add(subject);
+                if (subject_manager.SaveSubjectToProfile(subject))
+                    count++;
             }
+
+            MessageBox.Show(String.Format("Selected {0} subjects for your profile", count), "Subject Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -63,6 +63,60 @@ namespace Grade_Manager_DB_Controller
 
             return subjects;
         }
+
+        public void ClearProfileSubjects()
+        {
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_CLEAR_SUBJECTS_ON_PROFILE, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        //DELETE FROM [SubjectProfile] WHERE [profile_id] = @profile_id
+                        command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        public bool SaveSubjectToProfile(Subject subject)
+        {
+            bool eval = false;
+
+            try
+            {
+                using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT_ON_PROFILE, connection))
+                    {
+                        command.CommandType = CommandType.Text;
+                        //INSERT INTO [SubjectProfile] ([subject_id], [profile_id]) VALUES (@subject_id, @profile_id)
+                        command.Parameters.AddWithValue("@subject_id", subject.Id);
+                        command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+
+                        connection.Open();
+
+                        if (command.ExecuteNonQuery() > 0)
+                            eval = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            return eval;
+
+        }
         
     }
 }

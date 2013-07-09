@@ -30,19 +30,21 @@ namespace Grade_Manager_DB_Controller
 
         public static bool operator ==(Profile a, Profile b)
         {
-            try
-            {
-                return (a.OwnerId == b.OwnerId &&
-                    a.Class == b.Class &&
-                    a.StartingSchoolYear == b.StartingSchoolYear &&
-                    a.EndingSchoolYear == b.EndingSchoolYear &&
-                    a.Term == b.Term &&
-                    a.Description == b.Description);
-            }
-            catch (Exception)
-            {
+            //Checking for NULL types here
+            if (object.ReferenceEquals(null, a) && object.ReferenceEquals(null, b))
+                return true;
+            if ((object.ReferenceEquals(null, a) && !object.ReferenceEquals(null, b)) ||
+                (object.ReferenceEquals(null, b) && !object.ReferenceEquals(null, a)))
                 return false;
-            }
+
+            
+            return (a.OwnerId == b.OwnerId &&
+                a.Class == b.Class &&
+                a.StartingSchoolYear == b.StartingSchoolYear &&
+                a.EndingSchoolYear == b.EndingSchoolYear &&
+                a.Term == b.Term &&
+                a.Description == b.Description);
+            
         }
 
         public static bool operator !=(Profile a, Profile b)
