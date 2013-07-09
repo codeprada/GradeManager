@@ -34,9 +34,9 @@ CREATE UNIQUE INDEX [Subjects_UQ__Subjects__4081766108EA5793]            ON [Sub
         #endregion
 
         public const string DBQ_LOG_IN = "SELECT [account_id] FROM [Accounts] WHERE [account_name] = @name AND [account_password] = @password",
-                            DBQ_GET_PROFILE = "SELECT * FROM [Profiles] WHERE [profile_id] = @id",
+                            DBQ_GET_PROFILE = "SELECT * FROM [Profiles] WHERE [profile_id] = @id", 
                             DBQ_GET_ALL_PROFILES = "SELECT [profile_id], ('Term:' || [current_term] || ', ' || [starting_school_year] || '-' || [ending_school_year] || ', ' || [Classes].[class_name]) AS [name] FROM [Profiles] INNER JOIN [Classes] ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = @account_id ORDER BY [starting_school_year], [ending_school_year] ASC",
-                            DBQ_GET_ALL_PROFILES_TREE = "SELECT [profile_id], [Classes].[class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = @account_id",
+                            DBQ_GET_ALL_PROFILES_TREE = "SELECT [profile_id], [Classes].[class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = @account_id ORDER BY [Classes].[class_id] ASC",
                             DBQ_GET_PROFILE_ID = "SELECT * FROM [Profiles] WHERE [profile_id] = @id",
                             DBQ_INSERT_PROFILE = "INSERT INTO [Profiles] (ending_school_year, starting_school_year, account_id, current_term, profile_description, class_id) VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @class)",
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",

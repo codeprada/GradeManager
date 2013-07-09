@@ -109,7 +109,10 @@ namespace Grade_Manager
 
         private void subjectManagementBtn_Click(object sender, EventArgs e)
         {
+            Subjects_Form s_form = new Subjects_Form();
+            s_form.StartPosition = FormStartPosition.CenterParent;
 
+            s_form.ShowDialog();
         }
     }
 }
