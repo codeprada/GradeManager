@@ -8,6 +8,22 @@ using System.Data.SQLite;
 
 namespace Grade_Manager_DB_Controller
 {
+
+    public class User : Database_Object
+    {
+        public User() : base() { }
+
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public int Profile { get; set; }
+
+        public static implicit operator int(User usr)
+        {
+            return usr.Id;
+        }
+    }
+
     public class UserManager : BaseManager
     {
         public UserManager(string connection_string) : base(connection_string)

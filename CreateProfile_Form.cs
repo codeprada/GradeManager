@@ -20,10 +20,7 @@ namespace Grade_Manager
         {
             InitializeComponent();
             //Set UP CLASSES!!!
-            profile_manager = new ProfileManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-
-            classesComboBox.DisplayMember = "Text";
-            classesComboBox.ValueMember = "Id";
+            profile_manager = new ProfileManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING); 
 
             LoadClasses();
         }
@@ -53,26 +50,8 @@ namespace Grade_Manager
 
         private void LoadClasses()
         {
-            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
-            {
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_CLASSES;
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
-
-                    connection.Open();
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-
-                            classesComboBox.Items.Add(new ComboItem() { Text = reader["class_name"], Id = reader["class_id"] });
-                        }
-                    }
-                }
-            }
+            ClassManager class_manager = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            class_manager.LoadToComboBox(classesComboBox);
         }
 
         private void CreateProfile_UD(Profile pd)

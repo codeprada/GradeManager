@@ -10,7 +10,7 @@ using System.Data.SQLite;
 
 namespace Grade_Manager_DB_Controller
 {
-    public class Subject
+    public class Subject : Database_Object
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -87,7 +87,7 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
-        public bool SaveSubjectToProfile(Subject subject)
+        public bool SaveSubjectToClass(Subject subject, int class_id)
         {
             bool eval = false;
 
@@ -98,9 +98,10 @@ namespace Grade_Manager_DB_Controller
                     using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT_ON_PROFILE, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        //INSERT INTO [SubjectProfile] ([subject_id], [profile_id]) VALUES (@subject_id, @profile_id)
+                        //INSERT INTO [SubjectProfile] ([subject_id], [class_id]) VALUES (@subject_id, @class_id)
                         command.Parameters.AddWithValue("@subject_id", subject.Id);
                         command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+                        command.Parameters.AddWithValue("@class_id", class_id);
 
                         connection.Open();
 

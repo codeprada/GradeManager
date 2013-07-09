@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.Data.SQLite;
 
 namespace Grade_Manager_DB_Controller
 {

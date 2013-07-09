@@ -22,7 +22,7 @@ CREATE TABLE [Grades] ([grade_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[st
 CREATE TABLE Profiles (class_id integer, ending_school_year integer, starting_school_year integer, profile_id integer PRIMARY KEY, account_id integer, current_term integer, profile_description char(255));
 CREATE TABLE [StudentClass] ([stu_cla_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[student_id]	integer NOT NULL,[class_id]	integer NOT NULL            ,                FOREIGN KEY ([class_id])                    REFERENCES [Classes]([class_id]),                FOREIGN KEY ([student_id])                    REFERENCES [Students]([student_id])            );
 CREATE TABLE Students (account_id integer, student_id integer PRIMARY KEY, student_first_name char(20), student_last_name char(20), student_dob datetime, stu_cla_id integer);
-CREATE TABLE SubjectProfile (sub_pro_id INTEGER PRIMARY KEY, subject_id integer, profile_id integer);
+CREATE TABLE SubjectClass (sub_pro_id INTEGER PRIMARY KEY, subject_id integer, class_id integer);
 CREATE TABLE [Subjects] ([subject_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[subject_name]	char(50) COLLATE NOCASE            );
 INSERT INTO Subjects VALUES(1,'Science');
 INSERT INTO Subjects VALUES(2,'Mathematics');
@@ -46,8 +46,8 @@ INSERT INTO sqlite_sequence VALUES('Subjects',7);
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",
                             DBQ_INSERT_CLASS = "INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
                             DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
-                            DBQ_CLEAR_SUBJECTS_ON_PROFILE = "DELETE FROM [SubjectProfile] WHERE [profile_id] = @profile_id",
-                            DBQ_INSERT_SUBJECT_ON_PROFILE = "INSERT INTO [SubjectProfile] ([subject_id], [profile_id]) VALUES (@subject_id, @profile_id)";
+                            DBQ_CLEAR_SUBJECTS_ON_PROFILE = "DELETE FROM [SubjectClass] WHERE [profile_id] = @profile_id ",
+                            DBQ_INSERT_SUBJECT_ON_PROFILE = "INSERT INTO [SubjectClass] ([subject_id], [class_id]) VALUES (@subject_id, @class_id)";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";

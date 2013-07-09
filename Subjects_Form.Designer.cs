@@ -32,11 +32,15 @@
             this.doneBtn = new System.Windows.Forms.Button();
             this.saveBtn = new System.Windows.Forms.Button();
             this.subjectCheckListBox = new System.Windows.Forms.CheckedListBox();
+            this.classComboBox = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.classComboBox);
             this.groupBox1.Controls.Add(this.doneBtn);
             this.groupBox1.Controls.Add(this.saveBtn);
             this.groupBox1.Controls.Add(this.subjectCheckListBox);
@@ -72,10 +76,29 @@
             // 
             this.subjectCheckListBox.CheckOnClick = true;
             this.subjectCheckListBox.FormattingEnabled = true;
-            this.subjectCheckListBox.Location = new System.Drawing.Point(6, 19);
+            this.subjectCheckListBox.Location = new System.Drawing.Point(6, 52);
             this.subjectCheckListBox.Name = "subjectCheckListBox";
             this.subjectCheckListBox.Size = new System.Drawing.Size(299, 274);
             this.subjectCheckListBox.TabIndex = 0;
+            // 
+            // classComboBox
+            // 
+            this.classComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.classComboBox.FormattingEnabled = true;
+            this.classComboBox.Location = new System.Drawing.Point(98, 25);
+            this.classComboBox.Name = "classComboBox";
+            this.classComboBox.Size = new System.Drawing.Size(207, 21);
+            this.classComboBox.TabIndex = 3;
+            this.classComboBox.SelectedIndexChanged += new System.EventHandler(this.classComboBox_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Select A Class";
             // 
             // Subjects_Form
             // 
@@ -93,6 +116,7 @@
             this.Text = "Subjects";
             this.Load += new System.EventHandler(this.Subjects_Form_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -103,5 +127,7 @@
         private System.Windows.Forms.CheckedListBox subjectCheckListBox;
         private System.Windows.Forms.Button doneBtn;
         private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox classComboBox;
     }
 }
