@@ -34,7 +34,7 @@ namespace Grade_Manager_DB_Controller
         {
             //Fast way to load a checklist
             //To String method in Subject object will be used as the checkboxitem's text
-            subjectCheckListBox.Items.AddRange(subject_manager.GetAllSubjects().ToArray());
+            subjectCheckListBox.Items.AddRange(subject_manager.GetSubjects().ToArray());
 
             ClassManager class_manager = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             class_manager.LoadToComboBox(classComboBox);
@@ -48,8 +48,8 @@ namespace Grade_Manager_DB_Controller
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            //Clear all subjects associated with Profile in order to update new list
-            subject_manager.ClearProfileSubjects();
+            //Clear all subjects associated with Profile and Class in order to update new list
+            subject_manager.ClearClassSubjects(Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id));
             int count = 0;
             foreach (Subject subject in subjectCheckListBox.CheckedItems)
             {
@@ -62,7 +62,12 @@ namespace Grade_Manager_DB_Controller
 
         private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(((ComboItem)classComboBox.SelectedItem).Text.ToString());
+            //MessageBox.Show(((ComboItem)classComboBox.SelectedItem).Text.ToString());
+            int class_id = Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id);
+            foreach (Subject subject in subject_manager.GetSubjects(class_id))
+            {
+
+            }
         }
     }
 }

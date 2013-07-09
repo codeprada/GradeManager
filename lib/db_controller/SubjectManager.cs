@@ -39,7 +39,7 @@ namespace Grade_Manager_DB_Controller
 
         }
 
-        public List<Subject> GetAllSubjects()
+        public List<Subject> GetSubjects()
         {
             List<Subject> subjects = new List<Subject>();
 
@@ -64,17 +64,45 @@ namespace Grade_Manager_DB_Controller
             return subjects;
         }
 
-        public void ClearProfileSubjects()
+        public List<Subject> GetSubjects(int class_id)
+        {
+            List<Subject> subjects = new List<Subject>();
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_SUBJECT_WHERE, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@class_id", class_id);
+                    command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+
+                    connection.Open();
+
+                    SQLiteDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        //implicit operator does the conversion
+                        subjects.Add(reader);
+                    }
+                }
+            }
+
+            return subjects;
+        }
+
+        public void ClearClassSubjects(int class_id)
         {
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
                 {
-                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_CLEAR_SUBJECTS_ON_PROFILE, connection))
+                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_CLEAR_SUBJECTS_ON_CLASS, connection))
                     {
                         command.CommandType = CommandType.Text;
                         //DELETE FROM [SubjectProfile] WHERE [profile_id] = @profile_id
                         command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+                        command.Parameters.AddWithValue("@class_id", class_id);
 
                         connection.Open();
                         command.ExecuteNonQuery();
@@ -95,7 +123,7 @@ namespace Grade_Manager_DB_Controller
             {
                 using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
                 {
-                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT_ON_PROFILE, connection))
+                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT_ON_CLASS, connection))
                     {
                         command.CommandType = CommandType.Text;
                         //INSERT INTO [SubjectProfile] ([subject_id], [class_id]) VALUES (@subject_id, @class_id)
