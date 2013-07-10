@@ -57,16 +57,25 @@ namespace Grade_Manager_DB_Controller
                     count++;
             }
 
-            MessageBox.Show(String.Format("Selected {0} subjects for your profile", count), "Subject Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(String.Format("Selected {0} subjects for your class", count), "Subject Selection", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(((ComboItem)classComboBox.SelectedItem).Text.ToString());
             int class_id = Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id);
-            foreach (Subject subject in subject_manager.GetSubjects(class_id))
-            {
+            List<Subject> subject_list = subject_manager.GetSubjects(class_id);
 
+            for (int i = 0; i < subjectCheckListBox.Items.Count; i++)
+            {
+                if ((subject_list.Count(x => x.Id == ((Subject)subjectCheckListBox.Items[i]).Id)) > 0)
+                {
+                    subjectCheckListBox.SetItemChecked(i, true);
+                }
+                else
+                {
+                    subjectCheckListBox.SetItemChecked(i, false);
+                }
             }
         }
     }
