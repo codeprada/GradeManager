@@ -63,18 +63,25 @@ namespace Grade_Manager_DB_Controller
         private void classComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             //MessageBox.Show(((ComboItem)classComboBox.SelectedItem).Text.ToString());
-            int class_id = Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id);
-            List<Subject> subject_list = subject_manager.GetSubjects(class_id);
-
-            for (int i = 0; i < subjectCheckListBox.Items.Count; i++)
+            if (ProfileManager.CurrentProfile == null)
             {
-                if ((subject_list.Count(x => x.Id == ((Subject)subjectCheckListBox.Items[i]).Id)) > 0)
+                MessageBox.Show("Please select a profile before attempting this action.");
+            }
+            else
+            {
+                int class_id = Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id);
+                List<Subject> subject_list = subject_manager.GetSubjects(class_id);
+
+                for (int i = 0; i < subjectCheckListBox.Items.Count; i++)
                 {
-                    subjectCheckListBox.SetItemChecked(i, true);
-                }
-                else
-                {
-                    subjectCheckListBox.SetItemChecked(i, false);
+                    if ((subject_list.Count(x => x.Id == ((Subject)subjectCheckListBox.Items[i]).Id)) > 0)
+                    {
+                        subjectCheckListBox.SetItemChecked(i, true);
+                    }
+                    else
+                    {
+                        subjectCheckListBox.SetItemChecked(i, false);
+                    }
                 }
             }
         }

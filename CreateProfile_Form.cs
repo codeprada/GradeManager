@@ -58,5 +58,10 @@ namespace Grade_Manager
         {
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

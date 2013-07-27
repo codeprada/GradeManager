@@ -43,6 +43,7 @@
             this.reportBtn = new System.Windows.Forms.Button();
             this.profileMangementBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
+            this.studentManagementBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -120,6 +121,7 @@
             this.tableLayoutPanel1.Controls.Add(this.reportBtn, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.profileMangementBtn, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.logoutBtn, 2, 4);
+            this.tableLayoutPanel1.Controls.Add(this.studentManagementBtn, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -158,6 +160,7 @@
             // subjectManagementBtn
             // 
             this.subjectManagementBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subjectManagementBtn.Enabled = false;
             this.subjectManagementBtn.Location = new System.Drawing.Point(549, 95);
             this.subjectManagementBtn.Name = "subjectManagementBtn";
             this.subjectManagementBtn.Size = new System.Drawing.Size(176, 86);
@@ -170,6 +173,7 @@
             // gradeManagementBtn
             // 
             this.gradeManagementBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gradeManagementBtn.Enabled = false;
             this.gradeManagementBtn.Location = new System.Drawing.Point(185, 279);
             this.gradeManagementBtn.Name = "gradeManagementBtn";
             this.gradeManagementBtn.Size = new System.Drawing.Size(176, 86);
@@ -181,6 +185,7 @@
             // reportBtn
             // 
             this.reportBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportBtn.Enabled = false;
             this.reportBtn.Location = new System.Drawing.Point(549, 279);
             this.reportBtn.Name = "reportBtn";
             this.reportBtn.Size = new System.Drawing.Size(176, 86);
@@ -212,6 +217,17 @@
             this.logoutBtn.UseVisualStyleBackColor = true;
             this.logoutBtn.Visible = false;
             this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
+            // 
+            // studentManagementBtn
+            // 
+            this.studentManagementBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentManagementBtn.Location = new System.Drawing.Point(3, 95);
+            this.studentManagementBtn.Name = "studentManagementBtn";
+            this.studentManagementBtn.Size = new System.Drawing.Size(176, 86);
+            this.studentManagementBtn.TabIndex = 8;
+            this.studentManagementBtn.Text = "Students";
+            this.studentManagementBtn.UseVisualStyleBackColor = true;
+            this.studentManagementBtn.Click += new System.EventHandler(this.studentManagementBtn_Click);
             // 
             // MainForm
             // 
@@ -254,6 +270,7 @@
         private System.Windows.Forms.Button reportBtn;
         private System.Windows.Forms.Button profileMangementBtn;
         private System.Windows.Forms.Button logoutBtn;
+        private System.Windows.Forms.Button studentManagementBtn;
 
     }
 }

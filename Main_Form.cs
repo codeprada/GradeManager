@@ -96,6 +96,12 @@ namespace Grade_Manager
                     ProfileManager.CurrentProfile.EndingSchoolYear
                 );
 
+                gradeManagementBtn.Enabled =
+                    gradeManagementBtn.Enabled =
+                    reportBtn.Enabled = 
+                    subjectManagementBtn.Enabled = true;
+                
+
 
             }
         }
@@ -114,6 +120,12 @@ namespace Grade_Manager
             s_form.StartPosition = FormStartPosition.CenterParent;
 
             s_form.ShowDialog();
+        }
+
+        private void studentManagementBtn_Click(object sender, EventArgs e)
+        {
+            Student_Management student_management_form = new Student_Management();
+            student_management_form.ShowDialog();
         }
     }
 }
