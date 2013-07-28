@@ -38,10 +38,11 @@
             // 
             // loadBtn
             // 
+            this.loadBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.loadBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.loadBtn.Location = new System.Drawing.Point(3, 262);
+            this.loadBtn.Location = new System.Drawing.Point(3, 258);
             this.loadBtn.Name = "loadBtn";
-            this.loadBtn.Size = new System.Drawing.Size(90, 23);
+            this.loadBtn.Size = new System.Drawing.Size(88, 23);
             this.loadBtn.TabIndex = 2;
             this.loadBtn.Text = "Load";
             this.loadBtn.UseVisualStyleBackColor = true;
@@ -50,9 +51,9 @@
             // createNewBtn
             // 
             this.createNewBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.createNewBtn.Location = new System.Drawing.Point(99, 262);
+            this.createNewBtn.Location = new System.Drawing.Point(97, 258);
             this.createNewBtn.Name = "createNewBtn";
-            this.createNewBtn.Size = new System.Drawing.Size(90, 23);
+            this.createNewBtn.Size = new System.Drawing.Size(88, 23);
             this.createNewBtn.TabIndex = 3;
             this.createNewBtn.Text = "Create New";
             this.createNewBtn.UseVisualStyleBackColor = true;
@@ -75,14 +76,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.58334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.41667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(288, 288);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 284);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // cancelBtn
             // 
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cancelBtn.Location = new System.Drawing.Point(195, 262);
+            this.cancelBtn.Location = new System.Drawing.Point(191, 258);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(90, 23);
             this.cancelBtn.TabIndex = 4;
@@ -96,7 +97,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(282, 252);
+            this.treeView1.Size = new System.Drawing.Size(278, 248);
             this.treeView1.TabIndex = 5;
             // 
             // Profile_Form
@@ -105,7 +106,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(288, 288);
+            this.ClientSize = new System.Drawing.Size(284, 284);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

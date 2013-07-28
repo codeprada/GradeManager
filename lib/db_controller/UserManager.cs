@@ -26,9 +26,10 @@ namespace Grade_Manager_DB_Controller
 
     public class UserManager : BaseManager
     {
-        public UserManager(string connection_string) : base(connection_string)
+        public UserManager(string connection_string)
+            : base(connection_string)
         {
-            
+
         }
 
         public static User CurrentUser
@@ -40,7 +41,7 @@ namespace Grade_Manager_DB_Controller
         public int IsValidUserCredentials(string username, string password)
         {
 
-            
+
             int id = -1;
             //create our login query here
             //parameters are used to prevent SQL injections
@@ -95,6 +96,6 @@ namespace Grade_Manager_DB_Controller
             return rows;
         }
 
-        
+
     }
 }

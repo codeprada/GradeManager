@@ -47,7 +47,19 @@ INSERT INTO Subjects VALUES (7, 'Social Studies');
                             DBQ_INSERT_CLASS = "INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
                             DBQ_INSERT_SUBJECT = "INSERT INTO Subjects ([subject_name]) VALUES (@subject_name)",
                             DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
+
+                            /* General Purpose */
+                            DBQ_GET_LAST_ROW_INSERTED = "SELECT last_insert_rowid() [last]",
+
+                            /* Students */
+                      
+                            //@account_id - Account ID
                             DBQ_GET_ALL_STUDENTS = "SELECT [Students].[student_id] [Student ID], [student_first_name] [First Name], [student_last_name] [Last Name], (strftime('%Y', 'now') - strftime('%Y', [student_dob]) || ' years') [Age], [class_name] [Class] FROM [Students] INNER JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] INNER JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
+                            //@first_name @last_name @dob @account_id
+                            DBQ_INSERT_STUDENT = "INSERT INTO [Students] ([student_first_name], [student_last_name], [student_dob], [account_id]) VALUES (@first_name, @last_name, @dob, @account_id)",
+                            DBQ_STUDENT_EXIST = "SELECT COUNT([student_id]) [count] FROM [Students] WHERE [account_id] = @account_id",
+                            DBQ_STUDENT_ASSIGN_GRADE = "INSERT INTO [StudentClass] ([class_id], [student_id]) VALUES (@class_id, @student_id)",
+                            
                             DBQ_GET_SUBJECT_WHERE = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [profile_id] = @profile_id AND [class_id] = @class_id ORDER BY [subject_name] ASC",
                             DBQ_CLEAR_SUBJECTS_ON_CLASS = "DELETE FROM [SubjectClass] WHERE [profile_id] = @profile_id AND [class_id] = @class_id",
                             DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [profile_id]) VALUES (@subject_id, @class_id, @profile_id)";
@@ -82,6 +94,30 @@ INSERT INTO Subjects VALUES (7, 'Social Studies');
             }
         }
 
+        /// <summary>
+        /// Return the last row ID inserted with this connection
+        /// </summary>
+        /// <param name="connection">SQLiteConnection (should be opened)</param>
+        /// <returns></returns>
+        public static object GetLastRowInserted(SQLiteConnection connection)
+        {
+            object row_id = null;
+
+            using (var command = new SQLiteCommand(DBQ_GET_LAST_ROW_INSERTED, connection))
+            {
+                command.CommandType = CommandType.Text;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                        row_id = reader["last"];
+                }
+
+            }
+
+            return row_id;
+        }
+
         public bool IntegrityTest()
         {
             bool pass = false;
@@ -94,8 +130,6 @@ INSERT INTO Subjects VALUES (7, 'Social Studies');
                 
                 foreach (Match m in matches)
                     tables.Add(m.Groups[2].Value);
-                
-
 
                 try
                 {

@@ -16,11 +16,13 @@ namespace Grade_Manager_DB_Controller
     {
         private SQLiteDataAdapter grid_adapter;
         private DataTable grid_table;
+        private StudentManager student_manager;
 
         public Student_Management()
         {
             InitializeComponent();
 
+            student_manager = new StudentManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             
             LoadClasses();
             LoadStudentList();
@@ -28,6 +30,8 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadStudentList()
         {
+            //studentGridView.Rows.Clear();
+
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
                 using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_STUDENTS, connection))
@@ -39,7 +43,7 @@ namespace Grade_Manager_DB_Controller
 
                     using (grid_table = new DataTable())
                     {
-
+                        
                         grid_adapter.Fill(grid_table);
                         studentGridView.DataSource = grid_table;
                         studentGridView.Columns[0].Visible = false;
@@ -52,7 +56,38 @@ namespace Grade_Manager_DB_Controller
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            
+            Student student = new Student()
+            {
+                FirstName = firstNameTxt.Text,
+                LastName = lastNameTxt.Text,
+                DateOfBirth = dobDatePicker.Value
+            };
+
+            int student_id;
+
+            if ((student_id = student_manager.Save(student)) > -1)
+            {
+
+                if (!student_manager.AssignToClass(Convert.ToInt32(((ComboItem)classesComboBox.SelectedItem).Id), student_id))
+                {
+                    MessageBox.Show("Student wasn't assigned to a class");
+                }
+
+
+                firstNameTxt.Clear();
+                lastNameTxt.Clear();
+
+                LoadStudentList();
+            }
+            else
+            {
+                MessageBox.Show("There was an error while saving Student.", "Error Saving", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool CreateOrSaveStudentDetails()
+        {
+            return false;
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

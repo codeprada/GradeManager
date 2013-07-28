@@ -52,7 +52,8 @@ namespace Grade_Manager
                 subjectManagementBtn.Visible =
                 profileMangementBtn.Visible =
                 logoutBtn.Visible =
-                reportBtn.Visible = state;
+                reportBtn.Visible =
+                studentManagementBtn.Visible = state;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -85,11 +86,8 @@ namespace Grade_Manager
             Profile_Form profile_fm = new Profile_Form();
             profile_fm.StartPosition = FormStartPosition.CenterParent;
 
-            //Verify if the user selected a profile
-            profile_fm.ShowDialog();
-
-            //the user selected a profile
-            if (ProfileManager.CurrentProfile != null)
+            ////Verify if the user selected a profile
+            if (profile_fm.ShowDialog() == System.Windows.Forms.DialogResult.OK && ProfileManager.CurrentProfile != null)
             {
                 this.Text += String.Format(" - Profile Year: {0}/{1}",
                     ProfileManager.CurrentProfile.StartingSchoolYear,

@@ -55,6 +55,7 @@
     <Compile Include="GradeManager_SQLite_DB_Controller.cs" />
     <Compile Include="ProfileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentManager.cs" />
     <Compile Include="SubjectManager.cs" />
     <Compile Include="UserManager.cs" />
   </ItemGroup>

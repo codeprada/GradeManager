@@ -227,6 +227,7 @@
             this.studentManagementBtn.TabIndex = 8;
             this.studentManagementBtn.Text = "Students";
             this.studentManagementBtn.UseVisualStyleBackColor = true;
+            this.studentManagementBtn.Visible = false;
             this.studentManagementBtn.Click += new System.EventHandler(this.studentManagementBtn_Click);
             // 
             // MainForm
