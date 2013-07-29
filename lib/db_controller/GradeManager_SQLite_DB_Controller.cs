@@ -14,26 +14,102 @@ namespace Grade_Manager_DB_Controller
     {
         #region Initialization Code
         private const string DATABASE_CREATION_SQL = @"
-CREATE TABLE [Accounts] ([account_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[account_name]	char(30) NOT NULL COLLATE NOCASE,[account_password]	char(128) NOT NULL COLLATE NOCASE            );
-CREATE TABLE [Assessment_Weight] ([assessw_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[assessw_type]	char(12) COLLATE NOCASE,[assessw_weight] float NOT NULL);
-CREATE TABLE Assessments (assess_id integer PRIMARY KEY, assess_name char(30), assessw_id integer, assess_date datetime, subject_id integer, profile_id integer);
-CREATE TABLE Classes (account_id integer, class_id integer PRIMARY KEY, class_name char(30));
-CREATE TABLE [Grades] ([grade_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[student_id]	integer NOT NULL,[assess_id]	integer NOT NULL,[grade_mark]	float NOT NULL            ,                FOREIGN KEY ([assess_id])                    REFERENCES [Assessments]([assess_id]),                FOREIGN KEY ([student_id])                    REFERENCES [Students]([student_id])            );
-CREATE TABLE Profiles (class_id integer, ending_school_year integer, starting_school_year integer, profile_id integer PRIMARY KEY, account_id integer, current_term integer, profile_description char(255));
-CREATE TABLE [StudentClass] ([stu_cla_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[student_id]	integer NOT NULL,[class_id]	integer NOT NULL            ,                FOREIGN KEY ([class_id])                    REFERENCES [Classes]([class_id]),                FOREIGN KEY ([student_id])                    REFERENCES [Students]([student_id])            );
-CREATE TABLE [Subjects] ([subject_id]	integer PRIMARY KEY AUTOINCREMENT NOT NULL,[subject_name]	char(50) COLLATE NOCASE            );
-CREATE TABLE [SubjectClass](     [sub_pro_id] INTEGER PRIMARY KEY  NOT NULL  ,      [subject_id] integer  NOT NULL  ,      [class_id] integer  NOT NULL  ,      [profile_id] Integer  NOT NULL  );
-CREATE TABLE [Students](     [account_id] integer  NOT NULL  ,      [student_id] integer PRIMARY KEY  NOT NULL  ,      [student_first_name] char(20)  NOT NULL  ,      [student_last_name] char(20)  NOT NULL  ,      [student_dob] datetime  NOT NULL);
-CREATE TABLE sqlite_sequence(name,seq);
-INSERT INTO sqlite_sequence VALUES ('Subjects', '7');
-INSERT INTO sqlite_sequence VALUES ('Accounts', '1');
-INSERT INTO Subjects VALUES (1, 'Science');
-INSERT INTO Subjects VALUES (2, 'Mathematics');
-INSERT INTO Subjects VALUES (3, 'Bible');
-INSERT INTO Subjects VALUES (4, 'Language');
-INSERT INTO Subjects VALUES (5, 'Art');
-INSERT INTO Subjects VALUES (6, 'Penmanship');
-INSERT INTO Subjects VALUES (7, 'Social Studies');
+CREATE TABLE [Accounts] (
+	[account_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[account_name] CHAR(30) NOT NULL COLLATE NOCASE,
+	[account_password] CHAR(128) NOT NULL COLLATE NOCASE
+	);
+
+CREATE TABLE [Students] (
+	[student_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[student_first_name] CHAR(20) NOT NULL,
+	[student_last_name] CHAR(20) NOT NULL,
+	[student_middle_name] CHAR(20),
+	[student_dob] DATETIME NOT NULL,
+	[account_id] INTEGER NOT NULL,
+	FOREIGN KEY ([account_id]) REFERENCES [Accounts](account_id),
+	UNIQUE (student_first_name, student_last_name, student_middle_name, student_dob, account_id)
+	);
+	
+CREATE TABLE Classes (
+	class_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	class_name CHAR(30) NOT NULL,
+	account_id INTEGER NOT NULL,
+	FOREIGN KEY ([account_id]) REFERENCES [Accounts](account_id),
+	UNIQUE (class_name, account_id)
+	);
+	
+CREATE TABLE Profiles (
+	profile_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	account_id INTEGER NOT NULL,
+	current_term INTEGER NOT NULL,
+	class_id INTEGER NOT NULL,
+	ending_school_year INTEGER NOT NULL,
+	starting_school_year INTEGER NOT NULL,
+	profile_description CHAR(255),
+	UNIQUE (account_id, current_term, class_id, starting_school_year),
+	FOREIGN KEY ([account_id]) REFERENCES [Accounts](account_id),
+	FOREIGN KEY ([class_id]) REFERENCES [Classes](class_id)
+	);
+
+CREATE TABLE [Subjects] (
+	[subject_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[subject_name] CHAR(50) UNIQUE COLLATE NOCASE,
+	UNIQUE (subject_name)
+	);
+	
+CREATE TABLE Assessments (
+	assess_id INTEGER PRIMARY KEY,
+	assess_name CHAR(30) NOT NULL,
+	assess_date DATETIME NOT NULL,
+	subject_id INTEGER NOT NULL,
+	profile_id INTEGER NOT NULL,
+	FOREIGN KEY ([profile_id]) REFERENCES [Profiles](profile_id),
+	FOREIGN KEY ([subject_id]) REFERENCES [Subjects](subject_id),
+	);
+
+
+
+CREATE TABLE [Grades] (
+	[grade_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[student_id] INTEGER NOT NULL,
+	[assess_id] INTEGER NOT NULL,
+	[grade_mark] FLOAT NOT NULL,
+	FOREIGN KEY ([assess_id]) REFERENCES [Assessments]([assess_id]),
+	FOREIGN KEY ([student_id]) REFERENCES [Students]([student_id]),
+	UNIQUE (student_id, assess_id)
+	);
+
+
+
+	
+CREATE TABLE [StudentClass] (
+	[stu_cla_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[student_id] INTEGER NOT NULL,
+	[class_id] INTEGER NOT NULL,
+	FOREIGN KEY ([class_id]) REFERENCES [Classes]([class_id]),
+	FOREIGN KEY ([student_id]) REFERENCES [Students]([student_id]),
+	UNIQUE (student_id, class_id)
+	);
+
+
+
+CREATE TABLE [SubjectClass] (
+	[sub_pro_id] INTEGER PRIMARY KEY NOT NULL,
+	[subject_id] INTEGER NOT NULL,
+	[class_id] INTEGER NOT NULL,
+	[profile_id] INTEGER NOT NULL,
+	FOREIGN KEY ([class_id]) REFERENCES [Classes]([class_id]),
+	FOREIGN KEY ([subject_id]) REFERENCES [Subjects]([subject_id]),
+	FOREIGN KEY ([profile_id]) REFERENCES [Profiles]([profile_id]),
+	UNIQUE (subject_id, class_id, profile_id)
+	);
+
+
+CREATE TABLE sqlite_sequence (
+	NAME,
+	seq
+	);
             ";
         #endregion
 
