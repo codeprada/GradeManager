@@ -89,7 +89,7 @@ namespace Grade_Manager_DB_Controller
                 {
                     command.CommandType = CommandType.Text;
                     command.Parameters.AddWithValue("@class_id", class_id);
-                    command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+                    command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
 
                     connection.Open();
 
@@ -115,8 +115,8 @@ namespace Grade_Manager_DB_Controller
                     using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_CLEAR_SUBJECTS_ON_CLASS, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        //DELETE FROM [SubjectProfile] WHERE [profile_id] = @profile_id
-                        command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+                        //DELETE FROM [SubjectProfile] WHERE [semester_id] = @semester_id
+                        command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
                         command.Parameters.AddWithValue("@class_id", class_id);
 
                         connection.Open();
@@ -143,7 +143,7 @@ namespace Grade_Manager_DB_Controller
                         command.CommandType = CommandType.Text;
                         //INSERT INTO [SubjectProfile] ([subject_id], [class_id]) VALUES (@subject_id, @class_id)
                         command.Parameters.AddWithValue("@subject_id", subject.Id);
-                        command.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+                        command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
                         command.Parameters.AddWithValue("@class_id", class_id);
 
                         connection.Open();

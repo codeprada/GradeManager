@@ -12,11 +12,11 @@ using System.Data.SQLite;
 
 namespace Grade_Manager
 {
-    public partial class CreateProfile : Form
+    public partial class CreateSemester : Form
     {
         private ProfileManager profile_manager;
 
-        public CreateProfile()
+        public CreateSemester()
         {
             InitializeComponent();
             //Set UP CLASSES!!!
@@ -28,7 +28,7 @@ namespace Grade_Manager
         private void createBtn_Click(object sender, EventArgs e)
         {
 
-            Profile profile = new Profile()
+            Semester profile = new Semester()
             {
                 Description = profileDescriptionTxt.Text,
                 OwnerId = UserManager.CurrentUser.Id,
@@ -41,7 +41,7 @@ namespace Grade_Manager
             //verify that this is complete
 
             if (profile_manager.CreateProfile(profile))
-                statusLabel.Text = "Profile successfully created.";
+                statusLabel.Text = "Semester successfully created.";
             else
                 statusLabel.Text = "There was an error creating profile.";
             
@@ -52,11 +52,6 @@ namespace Grade_Manager
         {
             ClassManager class_manager = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             class_manager.LoadToComboBox(classesComboBox);
-        }
-
-        private void CreateProfile_UD(Profile pd)
-        {
-
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

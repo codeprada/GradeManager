@@ -40,14 +40,14 @@ CREATE TABLE Classes (
 	UNIQUE (class_name, account_id)
 	);
 	
-CREATE TABLE Profiles (
-	profile_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+CREATE TABLE Semester (
+	semester_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	account_id INTEGER NOT NULL,
 	current_term INTEGER NOT NULL,
 	class_id INTEGER NOT NULL,
 	ending_school_year INTEGER NOT NULL,
 	starting_school_year INTEGER NOT NULL,
-	profile_description CHAR(255),
+	semester_description CHAR(255),
 	UNIQUE (account_id, current_term, class_id, starting_school_year),
 	FOREIGN KEY ([account_id]) REFERENCES [Accounts](account_id),
 	FOREIGN KEY ([class_id]) REFERENCES [Classes](class_id)
@@ -71,8 +71,8 @@ CREATE TABLE [Assessments] (
 	assess_date DATETIME NOT NULL,
     assess_type_id INTEGER NOT NULL,
 	subject_id INTEGER NOT NULL,
-	profile_id INTEGER NOT NULL,
-	FOREIGN KEY ([profile_id]) REFERENCES [Profiles](profile_id),
+	semester_id INTEGER NOT NULL,
+	FOREIGN KEY ([semester_id]) REFERENCES [Semester](semester_id),
 	FOREIGN KEY ([subject_id]) REFERENCES [Subjects](subject_id),
     FOREIGN KEY ([assess_type_id]) REFERENCES [Assessment_Type](assess_type_id)
 	);
@@ -107,21 +107,21 @@ CREATE TABLE [SubjectClass] (
 	[sub_pro_id] INTEGER PRIMARY KEY NOT NULL,
 	[subject_id] INTEGER NOT NULL,
 	[class_id] INTEGER NOT NULL,
-	[profile_id] INTEGER NOT NULL,
+	[semester_id] INTEGER NOT NULL,
 	FOREIGN KEY ([class_id]) REFERENCES [Classes]([class_id]),
 	FOREIGN KEY ([subject_id]) REFERENCES [Subjects]([subject_id]),
-	FOREIGN KEY ([profile_id]) REFERENCES [Profiles]([profile_id]),
-	UNIQUE (subject_id, class_id, profile_id)
+	FOREIGN KEY ([semester_id]) REFERENCES [Semester]([semester_id]),
+	UNIQUE (subject_id, class_id, semester_id)
 	);
             ";
         #endregion
 
         public const string DBQ_LOG_IN = "SELECT [account_id] FROM [Accounts] WHERE [account_name] = @name AND [account_password] = @password",
-                            DBQ_GET_PROFILE = "SELECT * FROM [Profiles] WHERE [profile_id] = @id", 
-                            DBQ_GET_ALL_PROFILES = "SELECT [profile_id], ('Term:' || [current_term] || ', ' || [starting_school_year] || '-' || [ending_school_year] || ', ' || [Classes].[class_name]) AS [name] FROM [Profiles] INNER JOIN [Classes] ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = @account_id ORDER BY [starting_school_year], [ending_school_year] ASC",
-                            DBQ_GET_ALL_PROFILES_TREE = "SELECT [profile_id], [Classes].[class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = @account_id ORDER BY [Classes].[class_id] ASC",
-                            DBQ_GET_PROFILE_ID = "SELECT * FROM [Profiles] WHERE [profile_id] = @id",
-                            DBQ_INSERT_PROFILE = "INSERT INTO [Profiles] (ending_school_year, starting_school_year, account_id, current_term, profile_description, class_id) VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @class)",
+                            DBQ_GET_SEMESTER = "SELECT * FROM [Semester] WHERE [semester_id] = @id",
+                            DBQ_GET_ALL_SEMESTERS = "SELECT [semester_id], ('Term:' || [current_term] || ', ' || [starting_school_year] || '-' || [ending_school_year] || ', ' || [Classes].[class_name]) AS [name] FROM [Semester] INNER JOIN [Classes] ON [Semester].[class_id] = [Classes].[class_id] WHERE [Semester].[account_id] = @account_id ORDER BY [starting_school_year], [ending_school_year] ASC",
+                            DBQ_GET_ALL_SEMESTERS_TREE = "SELECT [semester_id], [Classes].[class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Semester] INNER JOIN [Classes] ON [Semester].[class_id] = [Classes].[class_id] WHERE [Semester].[account_id] = @account_id ORDER BY [Classes].[class_id] ASC",
+                            DBQ_GET_SEMESTER_ID = "SELECT * FROM [Semester] WHERE [semester_id] = @id",
+                            DBQ_INSERT_SEMESTER = "INSERT INTO [Semester] (ending_school_year, starting_school_year, account_id, current_term, semester_description, class_id) VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @class)",
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",
                             DBQ_INSERT_CLASS = "INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
                             DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
@@ -130,29 +130,29 @@ CREATE TABLE [SubjectClass] (
                             DBQ_GET_LAST_ROW_INSERTED = "SELECT last_insert_rowid() [last]",
 
                             /* Students */
-                      
+
                             //@account_id - Account ID
                             DBQ_GET_ALL_STUDENTS = "SELECT [Students].[student_id] [Student ID], [student_first_name] [First Name], [student_middle_name] [Middle Name], [student_last_name] [Last Name], (strftime('%Y', 'now') - strftime('%Y', [student_dob]) || ' years') [Age], [class_name] [Class] FROM [Students] LEFT JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] LEFT JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
-                            //@first_name @last_name @dob @account_id
+            //@first_name @last_name @dob @account_id
                             DBQ_INSERT_STUDENT = "INSERT INTO [Students] ([student_first_name], [student_last_name], [student_middle_name], [student_dob], [account_id]) VALUES (@first_name, @last_name, @middle_name, @dob, @account_id)",
                             DBQ_STUDENT_EXIST = "SELECT COUNT([student_id]) [count] FROM [Students] WHERE [account_id] = @account_id",
                             DBQ_STUDENT_ASSIGN_GRADE = "INSERT INTO [StudentClass] ([class_id], [student_id]) VALUES (@class_id, @student_id)",
-                            
+
                             DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name]) VALUES (@subject_name)",
-                            DBQ_GET_SUBJECT_WHERE = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [profile_id] = @profile_id AND [class_id] = @class_id ORDER BY [subject_name] ASC",
-                            DBQ_CLEAR_SUBJECTS_ON_CLASS = "DELETE FROM [SubjectClass] WHERE [profile_id] = @profile_id AND [class_id] = @class_id",
-                            DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [profile_id]) VALUES (@subject_id, @class_id, @profile_id)",
-                            
-                            
-                            DBQ_SELECT_ASSESSSMENTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester], (starting_school_year || '/' || ending_school_year) [Year]  FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Profiles] P ON p.profile_id = A.profile_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.profile_id = @profile_id ORDER BY starting_school_year, Semester, Date",
-                            DBQ_INSERT_ASSESSMENT = @"INSERT INTO [Assessments] ([assess_name], [assess_date], [assess_type_id], [subject_id], [profile_id])
+                            DBQ_GET_SUBJECT_WHERE = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id AND [class_id] = @class_id ORDER BY [subject_name] ASC",
+                            DBQ_CLEAR_SUBJECTS_ON_CLASS = "DELETE FROM [SubjectClass] WHERE [semester_id] = @semester_id AND [class_id] = @class_id",
+                            DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
+
+
+                            DBQ_SELECT_ASSESSSMENTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester], (starting_school_year || '/' || ending_school_year) [Year]  FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id ORDER BY starting_school_year, Semester, Date",
+                            DBQ_INSERT_ASSESSMENT = @"INSERT INTO [Assessments] ([assess_name], [assess_date], [assess_type_id], [subject_id], [semester_id])
 VALUES
 (
-	(SELECT assess_type || ' #' FROM [Assessment_Type] WHERE assess_type_id = @assess_type_id) || (SELECT COUNT(assess_id) + 1 FROM [Assessments] WHERE [subject_id] = @subject_id AND [profile_id] = @profile_id AND [assess_type_id] = @assess_type_id),
+	(SELECT assess_type || ' #' FROM [Assessment_Type] WHERE assess_type_id = @assess_type_id) || (SELECT COUNT(assess_id) + 1 FROM [Assessments] WHERE [subject_id] = @subject_id AND [semester_id] = @semester_id AND [assess_type_id] = @assess_type_id),
 	@date,
 	@assess_type_id,
 	@subject_id,
-	@profile_id
+	@semester_id
 )",
                             DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] ORDER BY assess_type ASC";
 

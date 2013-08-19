@@ -35,7 +35,7 @@ namespace Grade_Manager_DB_Controller
                 using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSSMENTS, connection))
                 {
 
-                    grid_adapter.SelectCommand.Parameters.AddWithValue("@profile_id", ProfileManager.CurrentProfile.Id);
+                    grid_adapter.SelectCommand.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
 
                     connection.Open();
 

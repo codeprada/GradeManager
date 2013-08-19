@@ -1,6 +1,6 @@
 ﻿namespace Grade_Manager
 {
-    partial class CreateProfile
+    partial class CreateSemester
     {
         /// <summary>
         /// Required designer variable.
@@ -241,7 +241,7 @@
             this.newClassLinkLabel.Text = "New Class";
             this.newClassLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newClassLinkLabel_LinkClicked);
             // 
-            // CreateProfile
+            // CreateSemester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -249,11 +249,11 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "CreateProfile";
+            this.Name = "CreateSemester";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Create New Profile";
+            this.Text = "Create New Semester";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endingSchoolYearNumeric)).EndInit();

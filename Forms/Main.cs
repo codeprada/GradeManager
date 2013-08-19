@@ -63,7 +63,7 @@ namespace Grade_Manager
             logoutRibbonBtn.Enabled =
                 assignmentManagementRibbonBtn.Enabled =
                 subjectsManagementRibbonBtn.Enabled =
-                profilesManagementRibbonBtn.Enabled =
+                semesterManagementRibbonBtn.Enabled =
                 //reportsManagementRibbonBtn.Enabled =
                 studentManagementRibbonBtn.Enabled = state;
 
@@ -102,13 +102,13 @@ namespace Grade_Manager
 
         private void ShowProfileForm()
         {
-            Profile_Form profile_fm = new Profile_Form();
+            Semester_Form profile_fm = new Semester_Form();
             profile_fm.StartPosition = FormStartPosition.CenterParent;
 
             ////Verify if the user selected a profile
             if (profile_fm.ShowDialog() == System.Windows.Forms.DialogResult.OK && ProfileManager.CurrentProfile != null)
             {
-                this.Text += String.Format(" - Profile Year: {0}/{1}",
+                this.Text += String.Format(" - Semester Year: {0}/{1}",
                     ProfileManager.CurrentProfile.StartingSchoolYear,
                     ProfileManager.CurrentProfile.EndingSchoolYear
                 );

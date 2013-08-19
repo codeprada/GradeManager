@@ -80,7 +80,7 @@ namespace Grade_Manager_DB_Controller
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            //Clear all subjects associated with Profile and Class in order to update new list
+            //Clear all subjects associated with Semester and Class in order to update new list
             subject_manager.ClearClassSubjects(Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id));
             int count = 0;
             foreach (Subject subject in subjectCheckListBox.CheckedItems)

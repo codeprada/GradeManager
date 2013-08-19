@@ -14,11 +14,11 @@ namespace Grade_Manager_DB_Controller
 {
 
     /// <summary>
-    /// Represents a Profile
+    /// Represents a Semester
     /// </summary>
-    public class Profile
+    public class Semester
     {
-        public Profile() { }
+        public Semester() { }
 
         public int Id { get; set; }
         public int Class { get; set; }
@@ -28,7 +28,7 @@ namespace Grade_Manager_DB_Controller
         public int Term { get; set; }
         public string Description { get; set; }
 
-        public static bool operator ==(Profile a, Profile b)
+        public static bool operator ==(Semester a, Semester b)
         {
             //Checking for NULL types here
             if (object.ReferenceEquals(null, a) && object.ReferenceEquals(null, b))
@@ -47,7 +47,7 @@ namespace Grade_Manager_DB_Controller
             
         }
 
-        public static bool operator !=(Profile a, Profile b)
+        public static bool operator !=(Semester a, Semester b)
         {
             return !(a == b);
         }
@@ -62,20 +62,20 @@ namespace Grade_Manager_DB_Controller
             return base.GetHashCode();
         }
         /// <summary>
-        /// Assign values from SqlCeDataReader directly to properties of Profile
+        /// Assign values from SqlCeDataReader directly to properties of Semester
         /// Please Note that the SqlCeDataReader.Read() method must be called externally
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        public static implicit operator Profile(SQLiteDataReader reader)
+        public static implicit operator Semester(SQLiteDataReader reader)
         {
-            Profile pd = new Profile();
-            pd.Id = Convert.ToInt32(reader["profile_id"]);
+            Semester pd = new Semester();
+            pd.Id = Convert.ToInt32(reader["semester_id"]);
             pd.StartingSchoolYear = Convert.ToInt32(reader["starting_school_year"]);
             pd.EndingSchoolYear = Convert.ToInt32(reader["ending_school_year"]);
             pd.OwnerId = Convert.ToInt32(reader["account_id"]);
             pd.Term = Convert.ToInt32(reader["current_term"]);
-            pd.Description = (string)reader["profile_description"];
+            pd.Description = (string)reader["semester_description"];
             pd.Class = Convert.ToInt32(reader["class_id"]);
 
             return pd;
@@ -96,19 +96,19 @@ namespace Grade_Manager_DB_Controller
 
         }
 
-        public static Profile CurrentProfile
+        public static Semester CurrentProfile
         {
             get;
             set;
         }
 
-        public Profile GetProfile(int id)
+        public Semester GetProfile(int id)
         {
-            Profile db_profile = new Profile();
+            Semester db_profile = new Semester();
 
             //fetch profile according to profile_name
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
-            using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_PROFILE, connection))
+            using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_SEMESTER, connection))
             {
                 command.Parameters.AddWithValue("@id", id);
 
@@ -126,7 +126,7 @@ namespace Grade_Manager_DB_Controller
             return db_profile;
         }
 
-        public bool CreateProfile(Profile profile)
+        public bool CreateProfile(Semester profile)
         {
             //value of ID not being passed
             bool result = false;
@@ -135,7 +135,7 @@ namespace Grade_Manager_DB_Controller
             {
 
                 using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
-                using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_PROFILE, connection))
+                using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SEMESTER, connection))
                 {
                     ///INSERT INTO [Profiles] VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @name)
                     command.Parameters.AddWithValue("@startingschoolyear", profile.StartingSchoolYear);

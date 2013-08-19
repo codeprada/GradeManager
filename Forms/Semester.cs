@@ -12,9 +12,9 @@ using System.Data.SQLite;
 
 namespace Grade_Manager
 {
-    public partial class Profile_Form : Form
+    public partial class Semester_Form : Form
     {
-        public Profile_Form()
+        public Semester_Form()
         {
             InitializeComponent();
 
@@ -52,7 +52,7 @@ namespace Grade_Manager
             //treeView1.Nodes.Clear();
             listView1.Items.Clear();
 
-            //SELECT [profile_id], [Classes].[class_name], [starting_school_year], 
+            //SELECT [semester_id], [Classes].[class_name], [starting_school_year], 
             //[ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] 
             //ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = 
             //@account_id ORDER BY [Classes].[class_id] ASC
@@ -61,7 +61,7 @@ namespace Grade_Manager
             {
                 using (var command = new SQLiteCommand(connection))
                 {
-                    command.CommandText = GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_PROFILES_TREE;
+                    command.CommandText = GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_SEMESTERS_TREE;
                     command.CommandType = CommandType.Text;
                     command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
 
@@ -86,7 +86,7 @@ namespace Grade_Manager
 
         private TreeNode GenerateTree(IDataReader reader)
         {
-            TreeNode parent = new TreeNode("Select A Profile");
+            TreeNode parent = new TreeNode("Select A Semester");
             TreeNode buffer;
             TreeNode yearNode;
 
@@ -95,7 +95,7 @@ namespace Grade_Manager
                 string class_name = (string)reader["class_name"];
                 string year = (Convert.ToString(reader["starting_school_year"])) + " - " + (Convert.ToString(reader["ending_school_year"]));
                 string term = String.Format("Term #{0}", Convert.ToString(reader["current_term"]));
-                string id = reader["profile_id"].ToString();
+                string id = reader["semester_id"].ToString();
 
                 
 
@@ -114,7 +114,7 @@ namespace Grade_Manager
                 if (!yearNode.Nodes.ContainsKey(term))
                 {
                     TreeNode termNode = yearNode.Nodes[yearNode.Nodes.Add(new TreeNode(term))];
-                    termNode.Name = id;//Convert.ToInt32((reader["profile_id"])).ToString();                    
+                    termNode.Name = id;//Convert.ToInt32((reader["semester_id"])).ToString();                    
                 }
                 
 
@@ -132,7 +132,7 @@ namespace Grade_Manager
             string start_year = (Convert.ToString(reader["starting_school_year"]));
             string end_year = (Convert.ToString(reader["ending_school_year"]));
             string term = Convert.ToString(reader["current_term"]);
-            string id = Convert.ToString(reader["profile_id"]);
+            string id = Convert.ToString(reader["semester_id"]);
 
             item = new ListViewItem(id);
             item.SubItems.Add(class_name);
@@ -147,7 +147,7 @@ namespace Grade_Manager
 
         private void createNewBtn_Click(object sender, EventArgs e)
         {
-            CreateProfile c_form = new CreateProfile();
+            CreateSemester c_form = new CreateSemester();
             c_form.StartPosition = FormStartPosition.CenterParent;
             //this.Close();
             c_form.ShowDialog();
@@ -159,9 +159,5 @@ namespace Grade_Manager
             this.Close();
         }
 
-        private void Profile_Form_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
