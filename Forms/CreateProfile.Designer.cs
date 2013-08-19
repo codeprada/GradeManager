@@ -33,7 +33,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.endingSchoolYearNumeric = new System.Windows.Forms.NumericUpDown();
-            this.clearBtn = new System.Windows.Forms.Button();
             this.createBtn = new System.Windows.Forms.Button();
             this.profileDescriptionTxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.newClassLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endingSchoolYearNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentTermNumeric)).BeginInit();
@@ -52,11 +52,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.newClassLinkLabel);
             this.groupBox1.Controls.Add(this.classesComboBox);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.endingSchoolYearNumeric);
-            this.groupBox1.Controls.Add(this.clearBtn);
             this.groupBox1.Controls.Add(this.createBtn);
             this.groupBox1.Controls.Add(this.profileDescriptionTxt);
             this.groupBox1.Controls.Add(this.label4);
@@ -64,9 +64,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.startingSchoolYearNumeric);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(282, 278);
+            this.groupBox1.Size = new System.Drawing.Size(210, 235);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
@@ -76,15 +77,15 @@
             // 
             this.classesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.classesComboBox.FormattingEnabled = true;
-            this.classesComboBox.Location = new System.Drawing.Point(133, 105);
+            this.classesComboBox.Location = new System.Drawing.Point(77, 74);
             this.classesComboBox.Name = "classesComboBox";
-            this.classesComboBox.Size = new System.Drawing.Size(121, 21);
+            this.classesComboBox.Size = new System.Drawing.Size(65, 21);
             this.classesComboBox.TabIndex = 13;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 105);
+            this.label6.Location = new System.Drawing.Point(6, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 12;
@@ -93,7 +94,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(196, 47);
+            this.label5.Location = new System.Drawing.Point(130, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(12, 13);
             this.label5.TabIndex = 11;
@@ -101,7 +102,7 @@
             // 
             // endingSchoolYearNumeric
             // 
-            this.endingSchoolYearNumeric.Location = new System.Drawing.Point(217, 43);
+            this.endingSchoolYearNumeric.Location = new System.Drawing.Point(148, 22);
             this.endingSchoolYearNumeric.Maximum = new decimal(new int[] {
             2100,
             0,
@@ -122,18 +123,9 @@
             0,
             0});
             // 
-            // clearBtn
-            // 
-            this.clearBtn.Location = new System.Drawing.Point(194, 249);
-            this.clearBtn.Name = "clearBtn";
-            this.clearBtn.Size = new System.Drawing.Size(75, 23);
-            this.clearBtn.TabIndex = 9;
-            this.clearBtn.Text = "Clear";
-            this.clearBtn.UseVisualStyleBackColor = true;
-            // 
             // createBtn
             // 
-            this.createBtn.Location = new System.Drawing.Point(15, 249);
+            this.createBtn.Location = new System.Drawing.Point(125, 186);
             this.createBtn.Name = "createBtn";
             this.createBtn.Size = new System.Drawing.Size(75, 23);
             this.createBtn.TabIndex = 8;
@@ -143,16 +135,16 @@
             // 
             // profileDescriptionTxt
             // 
-            this.profileDescriptionTxt.Location = new System.Drawing.Point(15, 143);
+            this.profileDescriptionTxt.Location = new System.Drawing.Point(6, 123);
             this.profileDescriptionTxt.Multiline = true;
             this.profileDescriptionTxt.Name = "profileDescriptionTxt";
-            this.profileDescriptionTxt.Size = new System.Drawing.Size(254, 100);
+            this.profileDescriptionTxt.Size = new System.Drawing.Size(196, 57);
             this.profileDescriptionTxt.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 127);
+            this.label4.Location = new System.Drawing.Point(6, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 5;
@@ -160,7 +152,7 @@
             // 
             // currentTermNumeric
             // 
-            this.currentTermNumeric.Location = new System.Drawing.Point(133, 73);
+            this.currentTermNumeric.Location = new System.Drawing.Point(77, 48);
             this.currentTermNumeric.Maximum = new decimal(new int[] {
             3,
             0,
@@ -173,7 +165,7 @@
             0});
             this.currentTermNumeric.Name = "currentTermNumeric";
             this.currentTermNumeric.ReadOnly = true;
-            this.currentTermNumeric.Size = new System.Drawing.Size(136, 20);
+            this.currentTermNumeric.Size = new System.Drawing.Size(52, 20);
             this.currentTermNumeric.TabIndex = 3;
             this.currentTermNumeric.Value = new decimal(new int[] {
             1,
@@ -184,15 +176,15 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 75);
+            this.label2.Location = new System.Drawing.Point(6, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 13);
+            this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Current Term/Semester";
+            this.label2.Text = "Semester";
             // 
             // startingSchoolYearNumeric
             // 
-            this.startingSchoolYearNumeric.Location = new System.Drawing.Point(133, 43);
+            this.startingSchoolYearNumeric.Location = new System.Drawing.Point(77, 22);
             this.startingSchoolYearNumeric.Maximum = new decimal(new int[] {
             2100,
             0,
@@ -216,7 +208,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 45);
+            this.label1.Location = new System.Drawing.Point(6, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
@@ -226,9 +218,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 295);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 213);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(298, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(210, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
@@ -238,14 +230,25 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // newClassLinkLabel
+            // 
+            this.newClassLinkLabel.AutoSize = true;
+            this.newClassLinkLabel.Location = new System.Drawing.Point(145, 82);
+            this.newClassLinkLabel.Name = "newClassLinkLabel";
+            this.newClassLinkLabel.Size = new System.Drawing.Size(57, 13);
+            this.newClassLinkLabel.TabIndex = 14;
+            this.newClassLinkLabel.TabStop = true;
+            this.newClassLinkLabel.Text = "New Class";
+            this.newClassLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newClassLinkLabel_LinkClicked);
+            // 
             // CreateProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 317);
+            this.ClientSize = new System.Drawing.Size(210, 235);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateProfile";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -266,7 +269,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button clearBtn;
         private System.Windows.Forms.Button createBtn;
         private System.Windows.Forms.TextBox profileDescriptionTxt;
         private System.Windows.Forms.Label label4;
@@ -280,5 +282,6 @@
         private System.Windows.Forms.NumericUpDown endingSchoolYearNumeric;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox classesComboBox;
+        private System.Windows.Forms.LinkLabel newClassLinkLabel;
     }
 }

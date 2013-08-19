@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters;
 using System.Data;
 using System.Data.SQLite;
+using System.Windows.Forms;
 
 namespace Grade_Manager_DB_Controller
 {
@@ -62,6 +63,20 @@ namespace Grade_Manager_DB_Controller
             }
 
             return subjects;
+        }
+
+        public void LoadToComboBox(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+
+            comboBox.DisplayMember = "Text";
+            comboBox.ValueMember = "Id";
+
+            foreach (Subject s in GetSubjects())
+            {
+                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
+            }
+
         }
 
         public List<Subject> GetSubjects(int class_id)

@@ -64,10 +64,10 @@ namespace Grade_Manager_DB_Controller
 
         public void LoadToComboBox(ComboBox comboBox)
         {
+            comboBox.Items.Clear();
+
             comboBox.DisplayMember = "Text";
             comboBox.ValueMember = "Id";
-
-            
 
             foreach (Class c in GetAllClasses())
                 comboBox.Items.Add(new ComboItem() { Text = c.Name, Id = c.Id });

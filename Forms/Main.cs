@@ -33,19 +33,24 @@ namespace Grade_Manager
         private void Login()
         {
             LogIn login_form = new LogIn();
-            login_form.ShowDialog(this);
+            //login_form.MdiParent = this;
+            login_form.StartPosition = FormStartPosition.CenterParent;
+            login_form.ShowDialog();
+            
             if (UserManager.CurrentUser != null && UserManager.CurrentUser.Name.Length > 0)
             {
                 //User has been logged in
-
+                
                 this.Text += " - User: " + UserManager.CurrentUser.Name;
                 ShowControls(true);
+                //ShowProfileForm();
+                
             }
         }
 
         private void ShowControls(bool state)
         {
-            loginBtn.Visible = !state;
+            /*loginBtn.Visible = !state;
 
             gradeManagementBtn.Visible =
                 classManagementBtn.Visible =
@@ -53,7 +58,16 @@ namespace Grade_Manager
                 profileMangementBtn.Visible =
                 logoutBtn.Visible =
                 reportBtn.Visible =
-                studentManagementBtn.Visible = state;
+                studentManagementBtn.Visible = state; */
+
+            logoutRibbonBtn.Enabled =
+                assignmentManagementRibbonBtn.Enabled =
+                subjectsManagementRibbonBtn.Enabled =
+                profilesManagementRibbonBtn.Enabled =
+                //reportsManagementRibbonBtn.Enabled =
+                studentManagementRibbonBtn.Enabled = state;
+
+            logInRibBtn.Enabled = !state;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -83,6 +97,11 @@ namespace Grade_Manager
 
         private void profileMangementBtn_Click(object sender, EventArgs e)
         {
+            ShowProfileForm();
+        }
+
+        private void ShowProfileForm()
+        {
             Profile_Form profile_fm = new Profile_Form();
             profile_fm.StartPosition = FormStartPosition.CenterParent;
 
@@ -94,36 +113,40 @@ namespace Grade_Manager
                     ProfileManager.CurrentProfile.EndingSchoolYear
                 );
 
-                gradeManagementBtn.Enabled =
-                    gradeManagementBtn.Enabled =
-                    reportBtn.Enabled = 
-                    subjectManagementBtn.Enabled = true;
-                
-
+                //enable the other controls now that the user has selected a profile
+                gradesManagementRibbonBtn.Enabled =
+                    reportsManagementRibbonBtn.Enabled = true;
 
             }
-        }
-
-        private void classManagementBtn_Click(object sender, EventArgs e)
-        {
-            Classes_Form c_form = new Classes_Form();
-            c_form.StartPosition = FormStartPosition.CenterParent;
-
-            c_form.ShowDialog();
         }
 
         private void subjectManagementBtn_Click(object sender, EventArgs e)
         {
             Subjects_Form s_form = new Subjects_Form();
             s_form.StartPosition = FormStartPosition.CenterParent;
-
-            s_form.ShowDialog();
+            //s_form.MdiParent = this;
+            s_form.TopLevel = false;
+            panel1.Controls.Add(s_form);
+            s_form.Show();
         }
 
         private void studentManagementBtn_Click(object sender, EventArgs e)
         {
             Student_Management student_management_form = new Student_Management();
-            student_management_form.ShowDialog();
+            student_management_form.StartPosition = FormStartPosition.CenterScreen;
+            //student_management_form.MdiParent = this;
+            student_management_form.TopLevel = false;
+            panel1.Controls.Add(student_management_form);
+            student_management_form.Show();
+        }
+
+        private void assignmentManagementRibbonBtn_Click(object sender, EventArgs e)
+        {
+            Assessments assess_form = new Assessments();
+            assess_form.StartPosition = FormStartPosition.CenterParent;
+            assess_form.TopLevel = false;
+            panel1.Controls.Add(assess_form);
+            assess_form.Show();
         }
     }
 }

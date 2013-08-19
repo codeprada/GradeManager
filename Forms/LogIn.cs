@@ -55,17 +55,14 @@ namespace Grade_Manager
 
                 //Store the current user within this static variable
                 UserManager.CurrentUser = usr;
-
+                
                 //Profile_Form p_form = new Profile_Form();
 
                 
 
                 //p_form.ShowDialog();
 
-                /*Profile profile_form = new Profile();
-                
-                profile_form.MdiParent = this.Owner;
-                profile_form.Show();*/
+               
 
                 this.Close();
                 

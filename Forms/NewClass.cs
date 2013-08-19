@@ -11,9 +11,9 @@ using System.Data.SQLite;
 
 namespace Grade_Manager_DB_Controller
 {
-    public partial class Classes_Form : Form
+    public partial class NewClass : Form
     {
-        public Classes_Form()
+        public NewClass()
         {
             InitializeComponent();
 
@@ -36,9 +36,11 @@ namespace Grade_Manager_DB_Controller
 
                     MessageBox.Show("Class Creation: " + ((command.ExecuteNonQuery() > 0) ? "Successful" : "Unsuccessful"));
 
-
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 }
             }
+
+            classTxt.Clear();
         }
 
         
@@ -64,6 +66,11 @@ namespace Grade_Manager_DB_Controller
                     }
                 }
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

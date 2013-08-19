@@ -63,5 +63,13 @@ namespace Grade_Manager
         {
 
         }
+
+        private void newClassLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            NewClass class_form = new NewClass();
+            class_form.StartPosition = FormStartPosition.CenterParent;
+            class_form.ShowDialog();
+            LoadClasses();
+        }
     }
 }

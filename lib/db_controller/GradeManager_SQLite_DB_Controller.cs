@@ -16,8 +16,9 @@ namespace Grade_Manager_DB_Controller
         private const string DATABASE_CREATION_SQL = @"
 CREATE TABLE [Accounts] (
 	[account_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-	[account_name] CHAR(30) NOT NULL COLLATE NOCASE,
-	[account_password] CHAR(128) NOT NULL COLLATE NOCASE
+	[account_name] CHAR(30) NOT NULL,
+	[account_password] CHAR(128) NOT NULL,
+    UNIQUE (account_name)
 	);
 
 CREATE TABLE [Students] (
@@ -57,15 +58,23 @@ CREATE TABLE [Subjects] (
 	[subject_name] CHAR(50) UNIQUE COLLATE NOCASE,
 	UNIQUE (subject_name)
 	);
+
+CREATE TABLE [Assessment_Type] (
+    [assess_type_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    [assess_type] CHAR(12) NOT NULL,
+    UNIQUE (assess_type)
+);
 	
-CREATE TABLE Assessments (
-	assess_id INTEGER PRIMARY KEY,
+CREATE TABLE [Assessments] (
+	assess_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	assess_name CHAR(30) NOT NULL,
 	assess_date DATETIME NOT NULL,
+    assess_type_id INTEGER NOT NULL,
 	subject_id INTEGER NOT NULL,
 	profile_id INTEGER NOT NULL,
 	FOREIGN KEY ([profile_id]) REFERENCES [Profiles](profile_id),
 	FOREIGN KEY ([subject_id]) REFERENCES [Subjects](subject_id),
+    FOREIGN KEY ([assess_type_id]) REFERENCES [Assessment_Type](assess_type_id)
 	);
 
 
@@ -104,12 +113,6 @@ CREATE TABLE [SubjectClass] (
 	FOREIGN KEY ([profile_id]) REFERENCES [Profiles]([profile_id]),
 	UNIQUE (subject_id, class_id, profile_id)
 	);
-
-
-CREATE TABLE sqlite_sequence (
-	NAME,
-	seq
-	);
             ";
         #endregion
 
@@ -121,7 +124,6 @@ CREATE TABLE sqlite_sequence (
                             DBQ_INSERT_PROFILE = "INSERT INTO [Profiles] (ending_school_year, starting_school_year, account_id, current_term, profile_description, class_id) VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @class)",
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",
                             DBQ_INSERT_CLASS = "INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
-                            DBQ_INSERT_SUBJECT = "INSERT INTO Subjects ([subject_name]) VALUES (@subject_name)",
                             DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
 
                             /* General Purpose */
@@ -130,15 +132,29 @@ CREATE TABLE sqlite_sequence (
                             /* Students */
                       
                             //@account_id - Account ID
-                            DBQ_GET_ALL_STUDENTS = "SELECT [Students].[student_id] [Student ID], [student_first_name] [First Name], [student_last_name] [Last Name], (strftime('%Y', 'now') - strftime('%Y', [student_dob]) || ' years') [Age], [class_name] [Class] FROM [Students] INNER JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] INNER JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
+                            DBQ_GET_ALL_STUDENTS = "SELECT [Students].[student_id] [Student ID], [student_first_name] [First Name], [student_middle_name] [Middle Name], [student_last_name] [Last Name], (strftime('%Y', 'now') - strftime('%Y', [student_dob]) || ' years') [Age], [class_name] [Class] FROM [Students] LEFT JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] LEFT JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
                             //@first_name @last_name @dob @account_id
-                            DBQ_INSERT_STUDENT = "INSERT INTO [Students] ([student_first_name], [student_last_name], [student_dob], [account_id]) VALUES (@first_name, @last_name, @dob, @account_id)",
+                            DBQ_INSERT_STUDENT = "INSERT INTO [Students] ([student_first_name], [student_last_name], [student_middle_name], [student_dob], [account_id]) VALUES (@first_name, @last_name, @middle_name, @dob, @account_id)",
                             DBQ_STUDENT_EXIST = "SELECT COUNT([student_id]) [count] FROM [Students] WHERE [account_id] = @account_id",
                             DBQ_STUDENT_ASSIGN_GRADE = "INSERT INTO [StudentClass] ([class_id], [student_id]) VALUES (@class_id, @student_id)",
                             
+                            DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name]) VALUES (@subject_name)",
                             DBQ_GET_SUBJECT_WHERE = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [profile_id] = @profile_id AND [class_id] = @class_id ORDER BY [subject_name] ASC",
                             DBQ_CLEAR_SUBJECTS_ON_CLASS = "DELETE FROM [SubjectClass] WHERE [profile_id] = @profile_id AND [class_id] = @class_id",
-                            DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [profile_id]) VALUES (@subject_id, @class_id, @profile_id)";
+                            DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [profile_id]) VALUES (@subject_id, @class_id, @profile_id)",
+                            
+                            
+                            DBQ_SELECT_ASSESSSMENTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester], (starting_school_year || '/' || ending_school_year) [Year]  FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Profiles] P ON p.profile_id = A.profile_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.profile_id = @profile_id ORDER BY starting_school_year, Semester, Date",
+                            DBQ_INSERT_ASSESSMENT = @"INSERT INTO [Assessments] ([assess_name], [assess_date], [assess_type_id], [subject_id], [profile_id])
+VALUES
+(
+	(SELECT assess_type || ' #' FROM [Assessment_Type] WHERE assess_type_id = @assess_type_id) || (SELECT COUNT(assess_id) + 1 FROM [Assessments] WHERE [subject_id] = @subject_id AND [profile_id] = @profile_id AND [assess_type_id] = @assess_type_id),
+	@date,
+	@assess_type_id,
+	@subject_id,
+	@profile_id
+)",
+                            DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] ORDER BY assess_type ASC";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
@@ -203,7 +219,7 @@ CREATE TABLE sqlite_sequence (
                 List<string> tables = new List<string>();
 
                 MatchCollection matches = Regex.Matches(DATABASE_CREATION_SQL, @"create table (if not exists)? \[([^\]].+?)\]", RegexOptions.IgnoreCase | RegexOptions.Multiline);
-                
+
                 foreach (Match m in matches)
                     tables.Add(m.Groups[2].Value);
 

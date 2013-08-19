@@ -14,6 +14,7 @@ namespace Grade_Manager_DB_Controller
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string MiddleName { get; set; }
         public DateTime DateOfBirth { get; set; }
     }
 
@@ -42,6 +43,7 @@ namespace Grade_Manager_DB_Controller
                         command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
                         command.Parameters.AddWithValue("@first_name", student.FirstName);
                         command.Parameters.AddWithValue("@last_name", student.LastName);
+                        command.Parameters.AddWithValue("@middle_name", student.MiddleName);
                         command.Parameters.AddWithValue("@dob", student.DateOfBirth.ToString("yyyy-MM-dd"));
 
 

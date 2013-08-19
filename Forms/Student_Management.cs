@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-using System.Data;
 
 namespace Grade_Manager_DB_Controller
 {
@@ -30,8 +29,6 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadStudentList()
         {
-            //studentGridView.Rows.Clear();
-
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
                 using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_STUDENTS, connection))
@@ -60,6 +57,7 @@ namespace Grade_Manager_DB_Controller
             {
                 FirstName = firstNameTxt.Text,
                 LastName = lastNameTxt.Text,
+                MiddleName = midNameTxt.Text,
                 DateOfBirth = dobDatePicker.Value
             };
 

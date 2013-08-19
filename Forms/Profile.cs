@@ -23,29 +23,39 @@ namespace Grade_Manager
 
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            if (treeView1.SelectedNode != null)
+            if (listView1.SelectedItems.Count > 0)
             {
                 int id;
-                if (Int32.TryParse(treeView1.SelectedNode.Name, out id))
+                if (Int32.TryParse(listView1.SelectedItems[0].Text, out id))
                 {
                     ProfileManager profile_manager = new ProfileManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
                     //MessageBox.Show((string)treeView1.SelectedNode.Name);
                     ProfileManager.CurrentProfile = profile_manager.GetProfile(id);
                     this.Close();
+
+                    
                 }
                 else
                 {
-                    MessageBox.Show("Expand each section and select a term before attempting to load a profile", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Select a profile from the list before trying to load.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+
+            
 
         }
 
         private void LoadList()
         {
             //profileComboList.Items.Clear();
-            treeView1.Nodes.Clear();
+            //treeView1.Nodes.Clear();
+            listView1.Items.Clear();
+
+            //SELECT [profile_id], [Classes].[class_name], [starting_school_year], 
+            //[ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] 
+            //ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = 
+            //@account_id ORDER BY [Classes].[class_id] ASC
 
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
@@ -59,7 +69,14 @@ namespace Grade_Manager
 
                     using (var reader = command.ExecuteReader())
                     {
-                        treeView1.Nodes.Add(GenerateTree(reader));
+                        //treeView1.Nodes.Add(GenerateTree(reader));
+                        ListViewItem item;
+                        while (reader.Read())
+                        {
+                            item = GenerateItem(reader);
+                            if (item != null)
+                                listView1.Items.Add(item);
+                        }
                     }
                         
 
@@ -107,6 +124,27 @@ namespace Grade_Manager
             return parent;
         }
 
+        private ListViewItem GenerateItem(IDataReader reader)
+        {
+            ListViewItem item = null;
+            
+            string class_name = (string)reader["class_name"];
+            string start_year = (Convert.ToString(reader["starting_school_year"]));
+            string end_year = (Convert.ToString(reader["ending_school_year"]));
+            string term = Convert.ToString(reader["current_term"]);
+            string id = Convert.ToString(reader["profile_id"]);
+
+            item = new ListViewItem(id);
+            item.SubItems.Add(class_name);
+            item.SubItems.Add(term);
+            item.SubItems.Add(start_year);
+            item.SubItems.Add(end_year);
+            
+
+            return item;
+        }
+
+
         private void createNewBtn_Click(object sender, EventArgs e)
         {
             CreateProfile c_form = new CreateProfile();
@@ -119,6 +157,11 @@ namespace Grade_Manager
         private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Profile_Form_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
