@@ -28,17 +28,17 @@ namespace Grade_Manager
                 int id;
                 if (Int32.TryParse(listView1.SelectedItems[0].Text, out id))
                 {
-                    ProfileManager profile_manager = new ProfileManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+                    SemesterManager profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
                     //MessageBox.Show((string)treeView1.SelectedNode.Name);
-                    ProfileManager.CurrentProfile = profile_manager.GetProfile(id);
+                    SemesterManager.CurrentSemester = profile_manager.GetSemester(id);
                     this.Close();
 
                     
                 }
                 else
                 {
-                    MessageBox.Show("Select a profile from the list before trying to load.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Select a semester from the list before trying to load.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 

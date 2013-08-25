@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Globalization;
 
 namespace Grade_Manager_DB_Controller
 {
@@ -20,24 +21,47 @@ namespace Grade_Manager_DB_Controller
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            CreateSubject(subjectTxt.Text);
+            subjectStatusLabel.Text = String.Empty;
+            subjectStatusLabel.Text = CreateSubject(subjectTxt.Text);
             subjectTxt.Clear();
-            MessageBox.Show("Subject Added");
         }
 
-        private void CreateSubject(string subject)
+        private string CreateSubject(string subject)
         {
-            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            string status = String.Empty;
+
+            if (subject != String.Empty)
             {
-                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT, connection))
+                subject = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(subject.ToLower());
+
+                using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
                 {
-                    command.Parameters.AddWithValue("@subject_name", subject);
+                    using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT, connection))
+                    {
+                        command.Parameters.AddWithValue("@subject_name", subject);
 
-                    connection.Open();
-
-                    command.ExecuteNonQuery();
+                        connection.Open();
+                        try
+                        {
+                            if (command.ExecuteNonQuery() > 0)
+                                status = subject + " added.";
+                        }
+                        catch (Exception e)
+                        {
+                            if (e.Message.Contains("unique"))
+                                status = subject + " exists already.";
+                            else
+                                status = "Error adding " + subject;
+                        }
+                    }
                 }
             }
+            else
+            {
+                status = "No subject";
+            }
+
+            return status;
 
         }
     }

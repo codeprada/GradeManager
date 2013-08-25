@@ -125,7 +125,7 @@
             this.semesterManagementRibbonBtn.MinimumSize = new System.Drawing.Size(70, 50);
             this.semesterManagementRibbonBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("semesterManagementRibbonBtn.SmallImage")));
             this.semesterManagementRibbonBtn.Text = "Semester";
-            this.semesterManagementRibbonBtn.Click += new System.EventHandler(this.profileMangementBtn_Click);
+            this.semesterManagementRibbonBtn.Click += new System.EventHandler(this.semesterMangementBtn_Click);
             // 
             // ribbonPanel1
             // 
@@ -170,6 +170,7 @@
             this.gradesManagementRibbonBtn.MinimumSize = new System.Drawing.Size(70, 50);
             this.gradesManagementRibbonBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("gradesManagementRibbonBtn.SmallImage")));
             this.gradesManagementRibbonBtn.Text = "Grades";
+            this.gradesManagementRibbonBtn.Click += new System.EventHandler(this.gradesManagementRibbonBtn_Click);
             // 
             // reportsManagementRibbonBtn
             // 

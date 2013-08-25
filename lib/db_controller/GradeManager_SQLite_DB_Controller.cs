@@ -139,7 +139,7 @@ CREATE TABLE [SubjectClass] (
                             DBQ_STUDENT_ASSIGN_GRADE = "INSERT INTO [StudentClass] ([class_id], [student_id]) VALUES (@class_id, @student_id)",
 
                             DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name]) VALUES (@subject_name)",
-                            DBQ_GET_SUBJECT_WHERE = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id AND [class_id] = @class_id ORDER BY [subject_name] ASC",
+                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id ORDER BY [subject_name] ASC",
                             DBQ_CLEAR_SUBJECTS_ON_CLASS = "DELETE FROM [SubjectClass] WHERE [semester_id] = @semester_id AND [class_id] = @class_id",
                             DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
 
@@ -154,7 +154,13 @@ VALUES
 	@subject_id,
 	@semester_id
 )",
-                            DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] ORDER BY assess_type ASC";
+                            DBQ_SELECT_ASSESSMENT_FROM_SUBJECT = "SELECT assess_id, assess_name FROM [Assessments] A WHERE [semester_id] = @semester_id AND [subject_id] = @subject_id ORDER BY assess_name ASC",
+                            DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] ORDER BY assess_type ASC",
+                            DBQ_INSERT_ASSESSMENT_TYPE = "INSERT INTO [Assessment_Type] (assess_type) VALUES (@assess_type)",
+
+                            DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
+                            DBQ_SELECT_SUBJECT_GRADES = "SELECT DISTINCT S.subject_id, S.subject_name FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id WHERE semester_id = @semester_id",
+                            DBQ_SELECT_ASSESSMENT_STUDENT = "SELECT S.[student_id] ID, [student_last_name] [Last Name], [student_first_name] [First Name], [student_middle_name] [Middle Name(s)], [grade_mark] [Grade] FROM [Students] S LEFT JOIN [Grades] G ON S.[student_id] = G.[student_id] WHERE [assess_id] = @assess_id ORDER BY [student_last_name], [student_first_name] ASC";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
@@ -162,6 +168,9 @@ VALUES
 
         public GradeManager_SQLite_DB_Controller() { }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void CreateDatabase()
         {
             if (!Directory.Exists(Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager"))
@@ -184,6 +193,8 @@ VALUES
                     }
                 }
             }
+
+            InsertDefaultValues();
         }
 
         /// <summary>
@@ -208,6 +219,33 @@ VALUES
             }
 
             return row_id;
+        }
+
+        public void InsertDefaultValues()
+        {
+            #region Default Values
+            string[] assessment_types = { "Exam", "Quiz", "Test" };
+            #endregion
+
+            using (var connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(DBQ_INSERT_ASSESSMENT_TYPE, connection))
+                {
+                    connection.Open();
+
+                    foreach (string a_type in assessment_types)
+                    {
+                        command.Parameters.AddWithValue("@assess_type", a_type);
+
+                        try
+                        {
+                            command.ExecuteNonQuery();
+                        }
+                        catch(Exception) {}
+
+                    }
+                }
+            }
         }
 
         public bool IntegrityTest()

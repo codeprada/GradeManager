@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Grade.cs" />
     <Compile Include="Managers\Assessment.cs" />
     <Compile Include="Managers\Base.cs" />
     <Compile Include="Managers\Class.cs" />

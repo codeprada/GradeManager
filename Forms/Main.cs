@@ -50,22 +50,13 @@ namespace Grade_Manager
 
         private void ShowControls(bool state)
         {
-            /*loginBtn.Visible = !state;
-
-            gradeManagementBtn.Visible =
-                classManagementBtn.Visible =
-                subjectManagementBtn.Visible =
-                profileMangementBtn.Visible =
-                logoutBtn.Visible =
-                reportBtn.Visible =
-                studentManagementBtn.Visible = state; */
 
             logoutRibbonBtn.Enabled =
-                assignmentManagementRibbonBtn.Enabled =
-                subjectsManagementRibbonBtn.Enabled =
-                semesterManagementRibbonBtn.Enabled =
+                //assignmentManagementRibbonBtn.Enabled =
+                //subjectsManagementRibbonBtn.Enabled =
+                semesterManagementRibbonBtn.Enabled = state;
                 //reportsManagementRibbonBtn.Enabled =
-                studentManagementRibbonBtn.Enabled = state;
+                //studentManagementRibbonBtn.Enabled = state;
 
             logInRibBtn.Enabled = !state;
         }
@@ -95,27 +86,31 @@ namespace Grade_Manager
             ShowControls(false);
         }
 
-        private void profileMangementBtn_Click(object sender, EventArgs e)
+        private void semesterMangementBtn_Click(object sender, EventArgs e)
         {
             ShowProfileForm();
         }
 
         private void ShowProfileForm()
         {
-            Semester_Form profile_fm = new Semester_Form();
-            profile_fm.StartPosition = FormStartPosition.CenterParent;
+            Semester_Form semester_fm = new Semester_Form();
+            semester_fm.StartPosition = FormStartPosition.CenterParent;
 
-            ////Verify if the user selected a profile
-            if (profile_fm.ShowDialog() == System.Windows.Forms.DialogResult.OK && ProfileManager.CurrentProfile != null)
+            ////Verify if the user selected a semester
+            if (semester_fm.ShowDialog() == System.Windows.Forms.DialogResult.OK && SemesterManager.CurrentSemester != null)
             {
                 this.Text += String.Format(" - Semester Year: {0}/{1}",
-                    ProfileManager.CurrentProfile.StartingSchoolYear,
-                    ProfileManager.CurrentProfile.EndingSchoolYear
+                    SemesterManager.CurrentSemester.StartingSchoolYear,
+                    SemesterManager.CurrentSemester.EndingSchoolYear
                 );
 
-                //enable the other controls now that the user has selected a profile
+                //enable the other controls now that the user has selected a semester
+                assignmentManagementRibbonBtn.Enabled =
+                subjectsManagementRibbonBtn.Enabled =
+                reportsManagementRibbonBtn.Enabled =
+                studentManagementRibbonBtn.Enabled = 
                 gradesManagementRibbonBtn.Enabled =
-                    reportsManagementRibbonBtn.Enabled = true;
+                reportsManagementRibbonBtn.Enabled = true;
 
             }
         }
@@ -147,6 +142,16 @@ namespace Grade_Manager
             assess_form.TopLevel = false;
             panel1.Controls.Add(assess_form);
             assess_form.Show();
+        }
+
+        private void gradesManagementRibbonBtn_Click(object sender, EventArgs e)
+        {
+            Grade_Main_Form grade_form = new Grade_Main_Form();
+            grade_form.StartPosition = FormStartPosition.CenterParent;
+            grade_form.TopLevel = false;
+            panel1.Controls.Add(grade_form);
+            grade_form.Show();
+
         }
     }
 }

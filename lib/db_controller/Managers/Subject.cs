@@ -79,17 +79,30 @@ namespace Grade_Manager_DB_Controller
 
         }
 
-        public List<Subject> GetSubjects(int class_id)
+        public void LoadToComboBox(ComboBox comboBox, int id)
+        {
+            comboBox.Items.Clear();
+
+            comboBox.DisplayMember = "Text";
+            comboBox.ValueMember = "Id";
+
+            foreach (Subject s in GetSubjects(id))
+            {
+                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
+            }
+        }
+
+        public List<Subject> GetSubjects(int semester_id)
         {
             List<Subject> subjects = new List<Subject>();
 
             using (var connection = new SQLiteConnection(ConnectionString))
             {
-                using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_SUBJECT_WHERE, connection))
+                using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_SUBJECT_CURRENT_SEMESTER, connection))
                 {
                     command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@class_id", class_id);
-                    command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
+                    //command.Parameters.AddWithValue("@class_id", class_id);
+                    command.Parameters.AddWithValue("@semester_id", semester_id);
 
                     connection.Open();
 
@@ -116,7 +129,7 @@ namespace Grade_Manager_DB_Controller
                     {
                         command.CommandType = CommandType.Text;
                         //DELETE FROM [SubjectProfile] WHERE [semester_id] = @semester_id
-                        command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
+                        command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
                         command.Parameters.AddWithValue("@class_id", class_id);
 
                         connection.Open();
@@ -143,7 +156,7 @@ namespace Grade_Manager_DB_Controller
                         command.CommandType = CommandType.Text;
                         //INSERT INTO [SubjectProfile] ([subject_id], [class_id]) VALUES (@subject_id, @class_id)
                         command.Parameters.AddWithValue("@subject_id", subject.Id);
-                        command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
+                        command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
                         command.Parameters.AddWithValue("@class_id", class_id);
 
                         connection.Open();

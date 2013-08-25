@@ -16,7 +16,7 @@ namespace Grade_Manager_DB_Controller
     /// <summary>
     /// Represents a Semester
     /// </summary>
-    public class Semester
+    public class Semester : Database_Object
     {
         public Semester() { }
 
@@ -69,44 +69,44 @@ namespace Grade_Manager_DB_Controller
         /// <returns></returns>
         public static implicit operator Semester(SQLiteDataReader reader)
         {
-            Semester pd = new Semester();
-            pd.Id = Convert.ToInt32(reader["semester_id"]);
-            pd.StartingSchoolYear = Convert.ToInt32(reader["starting_school_year"]);
-            pd.EndingSchoolYear = Convert.ToInt32(reader["ending_school_year"]);
-            pd.OwnerId = Convert.ToInt32(reader["account_id"]);
-            pd.Term = Convert.ToInt32(reader["current_term"]);
-            pd.Description = (string)reader["semester_description"];
-            pd.Class = Convert.ToInt32(reader["class_id"]);
+            Semester sm = new Semester();
+            sm.Id = Convert.ToInt32(reader["semester_id"]);
+            sm.StartingSchoolYear = Convert.ToInt32(reader["starting_school_year"]);
+            sm.EndingSchoolYear = Convert.ToInt32(reader["ending_school_year"]);
+            sm.OwnerId = Convert.ToInt32(reader["account_id"]);
+            sm.Term = Convert.ToInt32(reader["current_term"]);
+            sm.Description = (string)reader["semester_description"];
+            sm.Class = Convert.ToInt32(reader["class_id"]);
 
-            return pd;
+            return sm;
         }
     }
 
     
     /// <summary>
-    /// Manages Profiles
+    /// Manages Semesters
     /// Does communication with the database
     /// </summary>
-    public class ProfileManager : BaseManager
+    public class SemesterManager : BaseManager
     {
 
-        public ProfileManager(string connection_string)
+        public SemesterManager(string connection_string)
             : base(connection_string)
         {
 
         }
 
-        public static Semester CurrentProfile
+        public static Semester CurrentSemester
         {
             get;
             set;
         }
 
-        public Semester GetProfile(int id)
+        public Semester GetSemester(int id)
         {
             Semester db_profile = new Semester();
 
-            //fetch profile according to profile_name
+            //fetch semester according to profile_name
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_SEMESTER, connection))
             {
@@ -126,7 +126,7 @@ namespace Grade_Manager_DB_Controller
             return db_profile;
         }
 
-        public bool CreateProfile(Semester profile)
+        public bool CreateSemester(Semester semester)
         {
             //value of ID not being passed
             bool result = false;
@@ -138,12 +138,12 @@ namespace Grade_Manager_DB_Controller
                 using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SEMESTER, connection))
                 {
                     ///INSERT INTO [Profiles] VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @name)
-                    command.Parameters.AddWithValue("@startingschoolyear", profile.StartingSchoolYear);
-                    command.Parameters.AddWithValue("@endingschoolyear", profile.EndingSchoolYear);
-                    command.Parameters.AddWithValue("@account_id", profile.OwnerId);
-                    command.Parameters.AddWithValue("@term", profile.Term);
-                    command.Parameters.AddWithValue("@descrip", profile.Description);
-                    command.Parameters.AddWithValue("@class", profile.Class);
+                    command.Parameters.AddWithValue("@startingschoolyear", semester.StartingSchoolYear);
+                    command.Parameters.AddWithValue("@endingschoolyear", semester.EndingSchoolYear);
+                    command.Parameters.AddWithValue("@account_id", semester.OwnerId);
+                    command.Parameters.AddWithValue("@term", semester.Term);
+                    command.Parameters.AddWithValue("@descrip", semester.Description);
+                    command.Parameters.AddWithValue("@class", semester.Class);
 
                     connection.Open();
 

@@ -14,13 +14,13 @@ namespace Grade_Manager
 {
     public partial class CreateSemester : Form
     {
-        private ProfileManager profile_manager;
+        private SemesterManager profile_manager;
 
         public CreateSemester()
         {
             InitializeComponent();
             //Set UP CLASSES!!!
-            profile_manager = new ProfileManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING); 
+            profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING); 
 
             LoadClasses();
         }
@@ -40,10 +40,10 @@ namespace Grade_Manager
             
             //verify that this is complete
 
-            if (profile_manager.CreateProfile(profile))
+            if (profile_manager.CreateSemester(profile))
                 statusLabel.Text = "Semester successfully created.";
             else
-                statusLabel.Text = "There was an error creating profile.";
+                statusLabel.Text = "There was an error creating semester.";
             
             
         }

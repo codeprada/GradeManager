@@ -76,7 +76,7 @@ namespace Grade_Manager_DB_Controller
                 {
                     command.Parameters.AddWithValue("@assess_type_id", a.Type);
                     command.Parameters.AddWithValue("@subject_id", a.Subject);
-                    command.Parameters.AddWithValue("@semester_id", ProfileManager.CurrentProfile.Id);
+                    command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
                     command.Parameters.AddWithValue("@date", a.Date);
                     connection.Open();
 

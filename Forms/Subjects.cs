@@ -47,16 +47,16 @@ namespace Grade_Manager_DB_Controller
         private void LoadSubjectsToList()
         {
             //MessageBox.Show(((ComboItem)classComboBox.SelectedItem).Text.ToString());
-            if (ProfileManager.CurrentProfile == null)
+            if (SemesterManager.CurrentSemester == null)
             {
-                MessageBox.Show("Please select a profile before attempting this action.");
+                MessageBox.Show("Please select a semester before attempting this action.");
             }
             else
             {
                 if (classComboBox.SelectedItem != null)
                 {
                     int class_id = Convert.ToInt32(((ComboItem)classComboBox.SelectedItem).Id);
-                    List<Subject> subject_list = subject_manager.GetSubjects(class_id);
+                    List<Subject> subject_list = subject_manager.GetSubjects(SemesterManager.CurrentSemester.Id);
 
                     for (int i = 0; i < subjectCheckListBox.Items.Count; i++)
                     {

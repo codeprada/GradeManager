@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.subjectTxt = new System.Windows.Forms.TextBox();
             this.createBtn = new System.Windows.Forms.Button();
+            this.subjectStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,6 +45,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.subjectTxt, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.createBtn, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.subjectStatusLabel, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -87,6 +89,18 @@
             this.createBtn.UseVisualStyleBackColor = true;
             this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
             // 
+            // subjectStatusLabel
+            // 
+            this.subjectStatusLabel.AutoSize = true;
+            this.subjectStatusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.subjectStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subjectStatusLabel.ForeColor = System.Drawing.Color.Red;
+            this.subjectStatusLabel.Location = new System.Drawing.Point(3, 24);
+            this.subjectStatusLabel.Name = "subjectStatusLabel";
+            this.subjectStatusLabel.Size = new System.Drawing.Size(67, 25);
+            this.subjectStatusLabel.TabIndex = 6;
+            this.subjectStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // NewSubject
             // 
             this.AcceptButton = this.createBtn;
@@ -111,6 +125,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox subjectTxt;
         private System.Windows.Forms.Button createBtn;
+        private System.Windows.Forms.Label subjectStatusLabel;
 
     }
 }
