@@ -67,7 +67,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(483, 165);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // subjectComboBox
             // 
@@ -96,6 +95,7 @@
             this.saveBtn.TabIndex = 9;
             this.saveBtn.Text = "Save Grades";
             this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
             // 
             // assessmentComboBox
             // 

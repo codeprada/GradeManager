@@ -79,6 +79,7 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
         private void subjectComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadAssessments((int)((ComboItem)subjectComboBox.SelectedItem).Id);
+            studentGradeDataViewGrid.DataSource = null; //clear the students and their grades
         }
 
         public void LoadAssessments(int subject_id)
@@ -123,15 +124,38 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
                     {
                         adapter.Fill(grid_table);
                         studentGradeDataViewGrid.DataSource = grid_table;
-                        studentGradeDataViewGrid.Columns[0].Visible = false;
+                        studentGradeDataViewGrid.Columns["ID"].Visible = false;
+                        studentGradeDataViewGrid.Columns["A_ID"].Visible = false;
+
+                        foreach (DataGridViewColumn column in studentGradeDataViewGrid.Columns)
+                        {
+                            column.ReadOnly = true;
+                        }
+                        studentGradeDataViewGrid.Columns["Grade"].ReadOnly = false;
                     }
                 }
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void saveBtn_Click(object sender, EventArgs e)
         {
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_GRADE, connection))
+                {
+                    connection.Open();
 
+
+                    foreach (DataGridViewRow row in studentGradeDataViewGrid.Rows)
+                    {
+                        command.Parameters.AddWithValue("@student_id", Convert.ToInt32(row.Cells["ID"].Value));
+                        command.Parameters.AddWithValue("@assess_id", (int)(((ComboItem)assessmentComboBox.SelectedItem).Id));
+                        command.Parameters.AddWithValue("@grade", (row.Cells["Grade"].Value.Equals(null) ? 0.0 : row.Cells["Grade"].Value));
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
         }
     }
 }

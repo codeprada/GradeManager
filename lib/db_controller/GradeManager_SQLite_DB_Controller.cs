@@ -160,7 +160,8 @@ VALUES
 
                             DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
                             DBQ_SELECT_SUBJECT_GRADES = "SELECT DISTINCT S.subject_id, S.subject_name FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id WHERE semester_id = @semester_id",
-                            DBQ_SELECT_ASSESSMENT_STUDENT = "SELECT S.[student_id] ID, [student_last_name] [Last Name], [student_first_name] [First Name], [student_middle_name] [Middle Name(s)], [grade_mark] [Grade] FROM [Students] S LEFT JOIN [Grades] G ON S.[student_id] = G.[student_id] WHERE [assess_id] = @assess_id ORDER BY [student_last_name], [student_first_name] ASC";
+                            DBQ_SELECT_ASSESSMENT_STUDENT = "SELECT DISTINCT S.[student_id] ID, [student_last_name] [Last Name], [student_first_name] [First Name], [student_middle_name] [Middle Name(s)], (SELECT [grade_mark] FROM [Grades] WHERE [assess_id] = @assess_id AND S.[student_id] = [Grades].[student_id]) [Grade] FROM [Students] S ORDER BY [student_last_name], [student_first_name] ASC",
+                            DBQ_INSERT_GRADE = "INSERT OR REPLACE INTO [Grades] ([student_id], [assess_id], [grade_mark]) VALUES (@student_id, @assess_id, @grade);";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
