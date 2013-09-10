@@ -9,6 +9,6 @@ namespace Grade_Manager_DB_Controller
 {
     class Grade : Database_Object
     {
-
+        
     }
 }

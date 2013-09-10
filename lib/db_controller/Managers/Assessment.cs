@@ -85,6 +85,50 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
+        public List<Assessment> GetAssessments()
+        {
+            List<Assessment> assessments = new List<Assessment>();
+
+            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSMENTS, connection))
+                {
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while(reader.Read())
+                            assessments.Add(reader);
+                    }
+                }
+            }
+
+            return assessments;
+        }
+
+        public Assessment GetAssessments(int id)
+        {
+            Assessment assessment = null;
+
+            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSMENTS_WHERE, connection))
+                {
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("@assess_id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            assessment = reader;
+                    }
+                }
+            }
+
+            return assessment;
+        }
+
         public List<Assessment_Type> GetTypes()
         {
             List<Assessment_Type> types = new List<Assessment_Type>();

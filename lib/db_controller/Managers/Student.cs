@@ -10,12 +10,32 @@ namespace Grade_Manager_DB_Controller
     public class Student : Database_Object
     {
         public Student()
-            : base() { }
+            : base() 
+        {
+            ID = -1;
+        }
 
+        public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
         public DateTime DateOfBirth { get; set; }
+
+        public static implicit operator Student(SQLiteDataReader reader)
+        {
+            //string[] dob = Convert.ToString(reader["student_dob"]).Split(new char[] { '-' });
+
+            Student student = new Student()
+            {
+                FirstName = Convert.ToString(reader["student_first_name"]),
+                LastName = Convert.ToString(reader["student_last_name"]),
+                ID = Convert.ToInt32(reader["student_id"]),
+                MiddleName = Convert.ToString(reader["student_middle_name"]),
+                DateOfBirth = Convert.ToDateTime(reader["student_dob"])
+            };
+
+            return student;
+        }
     }
 
     public class StudentManager : BaseManager

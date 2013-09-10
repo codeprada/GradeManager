@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocX">
+      <HintPath>..\..\..\..\..\Downloads\DocX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
@@ -49,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Grade.cs" />
+    <Compile Include="Managers\Grade.cs" />
     <Compile Include="Managers\Assessment.cs" />
     <Compile Include="Managers\Base.cs" />
     <Compile Include="Managers\Class.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Managers\Student.cs" />
     <Compile Include="Managers\Subject.cs" />
     <Compile Include="Managers\User.cs" />
+    <Compile Include="Managers\Reports.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

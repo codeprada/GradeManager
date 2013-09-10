@@ -153,5 +153,14 @@ namespace Grade_Manager
             grade_form.Show();
 
         }
+
+        private void reportsManagementRibbonBtn_Click(object sender, EventArgs e)
+        {
+            Report report_form = new Report();
+            report_form.StartPosition = FormStartPosition.CenterParent;
+            report_form.TopLevel = false;
+            panel1.Controls.Add(report_form);
+            report_form.Show();
+        }
     }
 }

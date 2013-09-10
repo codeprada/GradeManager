@@ -179,6 +179,7 @@
             this.reportsManagementRibbonBtn.MinimumSize = new System.Drawing.Size(70, 50);
             this.reportsManagementRibbonBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("reportsManagementRibbonBtn.SmallImage")));
             this.reportsManagementRibbonBtn.Text = "Reports";
+            this.reportsManagementRibbonBtn.Click += new System.EventHandler(this.reportsManagementRibbonBtn_Click);
             // 
             // ribbonPanel2
             // 

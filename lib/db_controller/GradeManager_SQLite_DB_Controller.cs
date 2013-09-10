@@ -144,7 +144,9 @@ CREATE TABLE [SubjectClass] (
                             DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
 
 
-                            DBQ_SELECT_ASSESSSMENTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester], (starting_school_year || '/' || ending_school_year) [Year]  FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id ORDER BY starting_school_year, Semester, Date",
+                            DBQ_SELECT_ASSESSMENTS_SUBJECTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester], (starting_school_year || '/' || ending_school_year) [Year]  FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id ORDER BY starting_school_year, Semester, Date",
+                            DBQ_SELECT_ASSESSMENTS = "SELECT * FROM [Assessments];",
+                            DBQ_SELECT_ASSESSMENTS_WHERE = "SELECT * FROM [Assessments] WHERE [assess_id] = @assess_id",
                             DBQ_INSERT_ASSESSMENT = @"INSERT INTO [Assessments] ([assess_name], [assess_date], [assess_type_id], [subject_id], [semester_id])
 VALUES
 (
@@ -161,7 +163,24 @@ VALUES
                             DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
                             DBQ_SELECT_SUBJECT_GRADES = "SELECT DISTINCT S.subject_id, S.subject_name FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id WHERE semester_id = @semester_id",
                             DBQ_SELECT_ASSESSMENT_STUDENT = "SELECT DISTINCT S.[student_id] ID, [student_last_name] [Last Name], [student_first_name] [First Name], [student_middle_name] [Middle Name(s)], (SELECT [grade_mark] FROM [Grades] WHERE [assess_id] = @assess_id AND S.[student_id] = [Grades].[student_id]) [Grade] FROM [Students] S ORDER BY [student_last_name], [student_first_name] ASC",
-                            DBQ_INSERT_GRADE = "INSERT OR REPLACE INTO [Grades] ([student_id], [assess_id], [grade_mark]) VALUES (@student_id, @assess_id, @grade);";
+                            DBQ_INSERT_GRADE = "INSERT OR REPLACE INTO [Grades] ([student_id], [assess_id], [grade_mark]) VALUES (@student_id, @assess_id, @grade);",
+                            
+                            DBQ_GENERATE_REPORT = @"
+SELECT DISTINCT
+*,
+(SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id WHERE G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND A2.assess_type_id = AT.assess_type_id  GROUP BY A2.subject_id, A2.semester_id, A2.assess_type_id, G2.student_id) [average]
+FROM [Students] S 
+INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
+INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
+INNER JOIN [Classes] C ON C.[class_id] = SM.[class_id] 
+INNER JOIN [Assessments] A ON A.[semester_id] = SM.[semester_id]
+INNER JOIN [Assessment_Type] AT ON AT.assess_type_id = A.assess_type_id  
+INNER JOIN [Grades] G ON G.[assess_id] = A.[assess_id]
+INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
+WHERE SM.[semester_id] = @semester_id
+GROUP BY S.[student_id], AT.[assess_type_id], SJ.[subject_id], SM.[semester_id]
+ORDER BY A.assess_id ASC
+";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
@@ -196,6 +215,11 @@ VALUES
             }
 
             InsertDefaultValues();
+        }
+
+        public static SQLiteConnection GetConnection()
+        {
+            return new SQLiteConnection(CONNECTION_STRING);
         }
 
         /// <summary>
