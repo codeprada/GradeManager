@@ -168,7 +168,7 @@ VALUES
                             DBQ_GENERATE_REPORT = @"
 SELECT DISTINCT
 *,
-(SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id WHERE G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND A2.assess_type_id = AT.assess_type_id  GROUP BY A2.subject_id, A2.semester_id, A2.assess_type_id, G2.student_id) [average]
+AVG((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id WHERE G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND A2.assess_type_id = AT.assess_type_id  GROUP BY A2.subject_id, A2.semester_id, A2.assess_type_id, G2.student_id)) [average]
 FROM [Students] S 
 INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
 INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
@@ -178,8 +178,8 @@ INNER JOIN [Assessment_Type] AT ON AT.assess_type_id = A.assess_type_id
 INNER JOIN [Grades] G ON G.[assess_id] = A.[assess_id]
 INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
 WHERE SM.[semester_id] = @semester_id
-GROUP BY S.[student_id], AT.[assess_type_id], SJ.[subject_id], SM.[semester_id]
-ORDER BY A.assess_id ASC
+GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]
+ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
 ";
 
 

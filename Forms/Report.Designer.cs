@@ -39,32 +39,32 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tabBetweenNUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.generateBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.browseTemplateBtn = new System.Windows.Forms.Button();
-            this.templateFileTxtBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.browseSaveBtn = new System.Windows.Forms.Button();
             this.saveFileTxtBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.browseTemplateBtn = new System.Windows.Forms.Button();
+            this.templateFileTxtBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tabBetweenNUpDown = new System.Windows.Forms.NumericUpDown();
             this.generateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.generateBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabBetweenNUpDown)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabBetweenNUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -181,6 +181,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Grades";
             // 
+            // tabBetweenNUpDown
+            // 
+            this.tabBetweenNUpDown.Location = new System.Drawing.Point(222, 29);
+            this.tabBetweenNUpDown.Name = "tabBetweenNUpDown";
+            this.tabBetweenNUpDown.Size = new System.Drawing.Size(50, 20);
+            this.tabBetweenNUpDown.TabIndex = 1;
+            this.tabBetweenNUpDown.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 31);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(187, 13);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Tabs Between Subject Name && Grade";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(446, 415);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Calculation";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.generateBtn);
@@ -192,6 +223,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Generation";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // generateBtn
+            // 
+            this.generateBtn.Location = new System.Drawing.Point(165, 323);
+            this.generateBtn.Name = "generateBtn";
+            this.generateBtn.Size = new System.Drawing.Size(125, 84);
+            this.generateBtn.TabIndex = 2;
+            this.generateBtn.Text = "Generate";
+            this.generateBtn.UseVisualStyleBackColor = true;
+            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
             // 
             // groupBox1
             // 
@@ -209,31 +250,23 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // browseTemplateBtn
+            // label5
             // 
-            this.browseTemplateBtn.Location = new System.Drawing.Point(344, 248);
-            this.browseTemplateBtn.Name = "browseTemplateBtn";
-            this.browseTemplateBtn.Size = new System.Drawing.Size(60, 23);
-            this.browseTemplateBtn.TabIndex = 2;
-            this.browseTemplateBtn.Text = "Browse";
-            this.browseTemplateBtn.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(103, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Exclude from Report";
             // 
-            // templateFileTxtBox
+            // checkedListBox3
             // 
-            this.templateFileTxtBox.Location = new System.Drawing.Point(99, 251);
-            this.templateFileTxtBox.Name = "templateFileTxtBox";
-            this.templateFileTxtBox.ReadOnly = true;
-            this.templateFileTxtBox.Size = new System.Drawing.Size(239, 20);
-            this.templateFileTxtBox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 254);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Template File";
+            this.checkedListBox3.FormattingEnabled = true;
+            this.checkedListBox3.Location = new System.Drawing.Point(9, 31);
+            this.checkedListBox3.Name = "checkedListBox3";
+            this.checkedListBox3.Size = new System.Drawing.Size(395, 139);
+            this.checkedListBox3.Sorted = true;
+            this.checkedListBox3.TabIndex = 6;
             // 
             // browseSaveBtn
             // 
@@ -243,6 +276,7 @@
             this.browseSaveBtn.TabIndex = 5;
             this.browseSaveBtn.Text = "Browse";
             this.browseSaveBtn.UseVisualStyleBackColor = true;
+            this.browseSaveBtn.Click += new System.EventHandler(this.browseSaveBtn_Click);
             // 
             // saveFileTxtBox
             // 
@@ -261,23 +295,32 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Save File";
             // 
-            // checkedListBox3
+            // browseTemplateBtn
             // 
-            this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Location = new System.Drawing.Point(9, 31);
-            this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(395, 139);
-            this.checkedListBox3.Sorted = true;
-            this.checkedListBox3.TabIndex = 6;
+            this.browseTemplateBtn.Location = new System.Drawing.Point(344, 248);
+            this.browseTemplateBtn.Name = "browseTemplateBtn";
+            this.browseTemplateBtn.Size = new System.Drawing.Size(60, 23);
+            this.browseTemplateBtn.TabIndex = 2;
+            this.browseTemplateBtn.Text = "Browse";
+            this.browseTemplateBtn.UseVisualStyleBackColor = true;
+            this.browseTemplateBtn.Click += new System.EventHandler(this.browseTemplateBtn_Click);
             // 
-            // label5
+            // templateFileTxtBox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Exclude from Report";
+            this.templateFileTxtBox.Location = new System.Drawing.Point(99, 251);
+            this.templateFileTxtBox.Name = "templateFileTxtBox";
+            this.templateFileTxtBox.ReadOnly = true;
+            this.templateFileTxtBox.Size = new System.Drawing.Size(239, 20);
+            this.templateFileTxtBox.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 254);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Template File";
             // 
             // menuStrip1
             // 
@@ -297,52 +340,11 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 31);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(187, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Tabs Between Subject Name && Grade";
-            // 
-            // tabBetweenNUpDown
-            // 
-            this.tabBetweenNUpDown.Location = new System.Drawing.Point(222, 29);
-            this.tabBetweenNUpDown.Name = "tabBetweenNUpDown";
-            this.tabBetweenNUpDown.Size = new System.Drawing.Size(50, 20);
-            this.tabBetweenNUpDown.TabIndex = 1;
-            this.tabBetweenNUpDown.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
             // generateToolStripMenuItem
             // 
             this.generateToolStripMenuItem.Name = "generateToolStripMenuItem";
-            this.generateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.generateToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.generateToolStripMenuItem.Text = "Generate";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(446, 415);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Calculation";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // generateBtn
-            // 
-            this.generateBtn.Location = new System.Drawing.Point(165, 323);
-            this.generateBtn.Name = "generateBtn";
-            this.generateBtn.Size = new System.Drawing.Size(125, 84);
-            this.generateBtn.TabIndex = 2;
-            this.generateBtn.Text = "Generate";
-            this.generateBtn.UseVisualStyleBackColor = true;
-            this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
             // 
             // Report
             // 
@@ -363,12 +365,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tabBetweenNUpDown)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabBetweenNUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
