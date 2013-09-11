@@ -16,10 +16,7 @@ namespace Grade_Manager_DB_Controller
         public Assessment _Assessment { get; set; }
         public Semester _Semester { get; set; }
         public Subject _Subject { get; set; }
-<<<<<<< HEAD
         public Class _Class { get; set; }
-=======
->>>>>>> d0ea236c947331fe931edd675f27d3938fba41f9
         public double Average { get; set; }
 
         public static implicit operator Reports(SQLiteDataReader reader)
@@ -30,10 +27,7 @@ namespace Grade_Manager_DB_Controller
                 _Semester = reader,
                 _Student = reader,
                 _Subject = reader,
-<<<<<<< HEAD
                 _Class = reader,
-=======
->>>>>>> d0ea236c947331fe931edd675f27d3938fba41f9
                 Average = Convert.ToDouble(reader["average"])
             };
 
@@ -54,7 +48,6 @@ namespace Grade_Manager_DB_Controller
 
         public void GenerateReport(string template, int semester_id, string saveas)
         {
-<<<<<<< HEAD
             //Dictionary<string, char> grades = new Dictionary<string, char>();
 
             List<Reports> reports = FetchData(semester_id);   
@@ -124,58 +117,6 @@ namespace Grade_Manager_DB_Controller
                 }
                 document_report.Save();
             }
-=======
-            Dictionary<string, char> dict = new Dictionary<string, char>();
-
-            List<Reports> report = FetchData(semester_id);
-
-            
-
-            foreach (int student in report.Select(x => x._Student.ID).Distinct())
-            {
-                var data = report
-                    .Where(x => x._Student.ID == student)
-                    .GroupBy(
-                    x => x._Subject,
-                    x => x._Student,
-                    (Subject, Student) =>
-                        new
-                        {
-                            FirstName = Student.Select(x => x.FirstName),
-                            LastName = Student.Select(x => x.LastName),
-                            MiddleName = Student.Select(x => x.MiddleName),
-                            DOB = Student.Select(x => x.DateOfBirth.ToString("dd MMM., yyyy"))
-                        }
-                );
-                    
-            }
-
-            string buffer, grade_text = String.Empty;
-            int count = 1, space_length;
-
-            using (var doc = DocX.Load(template))
-            {
-                //Indent: 4 spaces
-                //Tab: 14 spaces
-                //Tabs From Start: 10
-                string results = doc.FindUniqueByPattern(@"\[SUBJECT\].+\[GRADE\]", System.Text.RegularExpressions.RegexOptions.Multiline)[0];
-                int length = results.Replace("[GRADE]", String.Empty).Length;
-
-                foreach (KeyValuePair<string, char> kv in dict)
-                {
-                    buffer = String.Format("      {0}. {1}", count++, kv.Key);
-                    space_length = (length - buffer.Length);
-                    buffer += String.Format("{0}{1}", new String(' ', space_length), kv.Value);
-
-                    grade_text += buffer + Environment.NewLine + new String('_', 93) + Environment.NewLine;
-                }
-
-                doc.ReplaceText("[GRADE]", String.Empty);
-                doc.ReplaceText("[SUBJECT]", grade_text);
-
-                doc.SaveAs(saveas);
-            }
->>>>>>> d0ea236c947331fe931edd675f27d3938fba41f9
             
         }
 
