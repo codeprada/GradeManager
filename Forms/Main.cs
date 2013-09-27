@@ -110,7 +110,8 @@ namespace Grade_Manager
                 reportsManagementRibbonBtn.Enabled =
                 studentManagementRibbonBtn.Enabled = 
                 gradesManagementRibbonBtn.Enabled =
-                reportsManagementRibbonBtn.Enabled = true;
+                reportsManagementRibbonBtn.Enabled = 
+                statisticsRibbonButton.Enabled = true;
 
             }
         }
@@ -161,6 +162,15 @@ namespace Grade_Manager
             report_form.TopLevel = false;
             panel1.Controls.Add(report_form);
             report_form.Show();
+        }
+
+        private void statisticsRibbonButton_Click(object sender, EventArgs e)
+        {
+            Statistics stats_form = new Statistics();
+            stats_form.StartPosition = FormStartPosition.CenterParent;
+            stats_form.TopLevel = false;
+            panel1.Controls.Add(stats_form);
+            stats_form.Show();
         }
     }
 }

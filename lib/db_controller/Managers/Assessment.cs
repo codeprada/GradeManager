@@ -93,6 +93,7 @@ namespace Grade_Manager_DB_Controller
             {
                 using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSMENTS, connection))
                 {
+                    command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
@@ -104,6 +105,85 @@ namespace Grade_Manager_DB_Controller
             }
 
             return assessments;
+        }
+
+        public List<object> GetAssessments(int subject_id, int assess_type, string from, string to)
+        {
+            bool subject = (subject_id > -1),
+                assess = (assess_type > -1),
+                date = (from != null && to != null && from != String.Empty && to != String.Empty);
+
+            string query = GetAssessmentQuery(
+                subject,
+                assess,
+                date
+            );
+
+            List<object> results = new List<object>();
+
+            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
+            {
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
+
+                    if (subject)
+                        command.Parameters.AddWithValue("@subject_id", subject_id);
+                    if (assess)
+                        command.Parameters.AddWithValue("@assess_type", assess_type);
+                    if (date)
+                    {
+                        command.Parameters.AddWithValue("@from", from);
+                        command.Parameters.AddWithValue("@to", to);
+                    }
+
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                            results.Add( //"ID", "Date", "Name", "Subject", "Class", "Semester"
+                                new
+                                {
+                                    ID = reader["ID"],
+                                    Date = reader["Date"],
+                                    Name = reader["Name"],
+                                    Subject = reader["Subject"],
+                                    Class = reader["Class"],
+                                    Semester = reader["Semester"]
+                                }
+                            );
+                    }
+                }
+            }
+
+            return results;
+        }
+
+        
+
+        private string GetAssessmentQuery(bool subject_id, bool assess_type, bool date)
+        {
+
+            string subject_query = " AND [A].subject_id = @subject_id ",
+                   assess_type_query = " AND [A].assess_type_id = @assess_type ",
+                   date_range = " AND [A].assess_date BETWEEN @from AND @to ",
+                   query = String.Empty;
+
+            if (subject_id)
+                query += subject_query;
+
+            if (assess_type)
+                query += assess_type_query;
+
+            //if(from != null && to != null && from != String.Empty && to != String.Empty)
+            if (date)
+                query += date_range;
+
+
+            return String.Format("SELECT *, assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester] FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id {0} ORDER BY starting_school_year, Semester, Date", query);
         }
 
         public Assessment GetAssessments(int id)

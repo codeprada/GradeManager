@@ -83,16 +83,9 @@ namespace Grade_Manager
 
         private void createUsrBtn_Click(object sender, EventArgs e)
         {
-            UserManager usr_man = new UserManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-
-            if(usr_man.CreateUser(new User()
-            {
-                Name = usernameTxtBox.Text,
-                Password = passwordTxtBox.Text
-            }) == 1)
-                MessageBox.Show("Account " + usernameTxtBox.Text + " was successfully created");
-            else
-                MessageBox.Show("Account " + usernameTxtBox.Text + " could not be created");
+            NewUser nu = new NewUser();
+            nu.StartPosition = FormStartPosition.CenterParent;
+            nu.ShowDialog();
           
         }
     }

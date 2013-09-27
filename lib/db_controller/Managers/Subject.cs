@@ -48,6 +48,7 @@ namespace Grade_Manager_DB_Controller
             {
                 using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_SUBJECTS, connection))
                 {
+                    //command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
                     command.CommandType = CommandType.Text;
 
                     connection.Open();
@@ -63,33 +64,6 @@ namespace Grade_Manager_DB_Controller
             }
 
             return subjects;
-        }
-
-        public void LoadToComboBox(ComboBox comboBox)
-        {
-            comboBox.Items.Clear();
-
-            comboBox.DisplayMember = "Text";
-            comboBox.ValueMember = "Id";
-
-            foreach (Subject s in GetSubjects())
-            {
-                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
-            }
-
-        }
-
-        public void LoadToComboBox(ComboBox comboBox, int id)
-        {
-            comboBox.Items.Clear();
-
-            comboBox.DisplayMember = "Text";
-            comboBox.ValueMember = "Id";
-
-            foreach (Subject s in GetSubjects(id))
-            {
-                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
-            }
         }
 
         public List<Subject> GetSubjects(int semester_id)
@@ -118,6 +92,36 @@ namespace Grade_Manager_DB_Controller
 
             return subjects;
         }
+
+
+        public void LoadToComboBox(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+
+            comboBox.DisplayMember = "Text";
+            comboBox.ValueMember = "Id";
+
+            foreach (Subject s in GetSubjects())
+            {
+                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
+            }
+
+        }
+
+        public void LoadToComboBox(ComboBox comboBox, int id)
+        {
+            comboBox.Items.Clear();
+
+            comboBox.DisplayMember = "Text";
+            comboBox.ValueMember = "Id";
+
+            foreach (Subject s in GetSubjects(id))
+            {
+                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
+            }
+        }
+
+        
 
         public void ClearClassSubjects(int class_id)
         {

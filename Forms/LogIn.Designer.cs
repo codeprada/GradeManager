@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.createUsrBtn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -37,12 +36,13 @@
             this.passwordTxtBox = new System.Windows.Forms.TextBox();
             this.usernameTxtBox = new System.Windows.Forms.TextBox();
             this.loginStatusLabel = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.createUsrBtn);
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -55,16 +55,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details Here";
-            // 
-            // createUsrBtn
-            // 
-            this.createUsrBtn.Location = new System.Drawing.Point(128, 75);
-            this.createUsrBtn.Name = "createUsrBtn";
-            this.createUsrBtn.Size = new System.Drawing.Size(75, 23);
-            this.createUsrBtn.TabIndex = 6;
-            this.createUsrBtn.Text = "Create User";
-            this.createUsrBtn.UseVisualStyleBackColor = true;
-            this.createUsrBtn.Click += new System.EventHandler(this.createUsrBtn_Click);
             // 
             // button1
             // 
@@ -97,7 +87,7 @@
             // 
             // logInBtn
             // 
-            this.logInBtn.Location = new System.Drawing.Point(6, 76);
+            this.logInBtn.Location = new System.Drawing.Point(154, 76);
             this.logInBtn.Name = "logInBtn";
             this.logInBtn.Size = new System.Drawing.Size(80, 22);
             this.logInBtn.TabIndex = 2;
@@ -132,6 +122,17 @@
             this.loginStatusLabel.TabIndex = 1;
             this.loginStatusLabel.Text = "Invalid Login: Verify that your username and password is correct.";
             this.loginStatusLabel.Visible = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(7, 85);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(54, 13);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "New User";
+            this.linkLabel1.Click += new System.EventHandler(this.createUsrBtn_Click);
             // 
             // LogIn
             // 
@@ -170,6 +171,6 @@
         private System.Windows.Forms.TextBox usernameTxtBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label loginStatusLabel;
-        private System.Windows.Forms.Button createUsrBtn;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

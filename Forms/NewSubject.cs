@@ -58,7 +58,7 @@ namespace Grade_Manager_DB_Controller
             }
             else
             {
-                status = "No subject";
+                status = "No subject_id";
             }
 
             return status;

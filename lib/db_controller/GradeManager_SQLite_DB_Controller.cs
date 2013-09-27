@@ -18,6 +18,8 @@ CREATE TABLE [Accounts] (
 	[account_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	[account_name] CHAR(30) NOT NULL,
 	[account_password] CHAR(128) NOT NULL,
+    [account_first_name] CHAR(30) NOT NULL,
+    [account_last_name] CHAR(30) NOT NULL,
     UNIQUE (account_name)
 	);
 
@@ -26,6 +28,7 @@ CREATE TABLE [Students] (
 	[student_first_name] CHAR(20) NOT NULL,
 	[student_last_name] CHAR(20) NOT NULL,
 	[student_middle_name] CHAR(20),
+    [student_gender] CHAR(1) NOT NULL,
 	[student_dob] DATETIME NOT NULL,
 	[account_id] INTEGER NOT NULL,
 	FOREIGN KEY ([account_id]) REFERENCES [Accounts](account_id),
@@ -83,7 +86,7 @@ CREATE TABLE [Grades] (
 	[grade_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	[student_id] INTEGER NOT NULL,
 	[assess_id] INTEGER NOT NULL,
-	[grade_mark] FLOAT NOT NULL,
+	[grade_mark] FLOAT NOT NULL DEFAULT 0.0,
 	FOREIGN KEY ([assess_id]) REFERENCES [Assessments]([assess_id]),
 	FOREIGN KEY ([student_id]) REFERENCES [Students]([student_id]),
 	UNIQUE (student_id, assess_id)
@@ -125,6 +128,7 @@ CREATE TABLE [SubjectClass] (
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",
                             DBQ_INSERT_CLASS = "INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
                             DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
+                            DBQ_GET_ALL_SUBJECTS_FOR_SEMESTER = "SELECT * FROM [Subjects] S INNER JOIN [SubjectClass] SC ON S.subject_id = SC.subject_id WHERE semester_id = @semester_id ORDER BY [subject_name] ASC",
 
                             /* General Purpose */
                             DBQ_GET_LAST_ROW_INSERTED = "SELECT last_insert_rowid() [last]",
@@ -132,9 +136,10 @@ CREATE TABLE [SubjectClass] (
                             /* Students */
 
                             //@account_id - Account ID
-                            DBQ_GET_ALL_STUDENTS = "SELECT [Students].[student_id] [Student ID], [student_first_name] [First Name], [student_middle_name] [Middle Name], [student_last_name] [Last Name], (strftime('%Y', 'now') - strftime('%Y', [student_dob]) || ' years') [Age], [class_name] [Class] FROM [Students] LEFT JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] LEFT JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
-            //@first_name @last_name @dob @account_id
-                            DBQ_INSERT_STUDENT = "INSERT INTO [Students] ([student_first_name], [student_last_name], [student_middle_name], [student_dob], [account_id]) VALUES (@first_name, @last_name, @middle_name, @dob, @account_id)",
+                            DBQ_GET_ALL_STUDENTS_TIDY = "SELECT [Students].[student_id] [Student ID], [student_first_name] [First Name], [student_middle_name] [Middle Name], [student_last_name] [Last Name], (strftime('%Y', 'now') - strftime('%Y', [student_dob]) || ' years') [Age], [student_gender] [Gender], [class_name] [Class] FROM [Students] LEFT JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] LEFT JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
+                            DBQ_GET_ALL_STUDENTS_RAW = "SELECT * FROM [Students] LEFT JOIN [StudentClass] ON [Students].[student_id] = [StudentClass].[student_id] LEFT JOIN [Classes] ON [StudentClass].[class_id] = [Classes].[class_id] WHERE [Students].[account_id] = @account_id ORDER BY [class_name], [student_first_name], [student_last_name] ASC",
+                            DBQ_GET_STUDENT = "SELECT * FROM [Students] WHERE [student_id] = @student_id",
+                            DBQ_INSERT_STUDENT = "INSERT INTO [Students] ([student_first_name], [student_last_name], [student_middle_name], [student_gender], [student_dob], [account_id]) VALUES (@first_name, @last_name, @middle_name, @gender, @dob, @account_id)",
                             DBQ_STUDENT_EXIST = "SELECT COUNT([student_id]) [count] FROM [Students] WHERE [account_id] = @account_id",
                             DBQ_STUDENT_ASSIGN_GRADE = "INSERT INTO [StudentClass] ([class_id], [student_id]) VALUES (@class_id, @student_id)",
 
@@ -144,8 +149,8 @@ CREATE TABLE [SubjectClass] (
                             DBQ_INSERT_SUBJECT_ON_CLASS = "INSERT INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
 
 
-                            DBQ_SELECT_ASSESSMENTS_SUBJECTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester], (starting_school_year || '/' || ending_school_year) [Year]  FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id ORDER BY starting_school_year, Semester, Date",
-                            DBQ_SELECT_ASSESSMENTS = "SELECT * FROM [Assessments];",
+                            DBQ_SELECT_ASSESSMENTS_SUBJECTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester] FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id ORDER BY starting_school_year, Semester, Date",
+                            DBQ_SELECT_ASSESSMENTS = "SELECT * FROM [Assessments] WHERE semester_id = @semester_id",
                             DBQ_SELECT_ASSESSMENTS_WHERE = "SELECT * FROM [Assessments] WHERE [assess_id] = @assess_id",
                             DBQ_INSERT_ASSESSMENT = @"INSERT INTO [Assessments] ([assess_name], [assess_date], [assess_type_id], [subject_id], [semester_id])
 VALUES
@@ -180,7 +185,8 @@ INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
 WHERE SM.[semester_id] = @semester_id
 GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]
 ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
-";
+",
+                            DBQ_GET_STATS = "SELECT [assess_name] [Name], [grade_mark] [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Students].student_id = @student_id ORDER BY [Assessments].[assess_id] ASC";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
@@ -293,8 +299,8 @@ ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
                         using (var command = new SQLiteCommand(connection))
                         {
                             command.CommandType = CommandType.Text;
-                            command.CommandText = @"SELECT name FROM sqlite_master WHERE type = @type";
-                            command.Parameters.AddWithValue("type", "table");
+                            command.CommandText = @"SELECT name FROM sqlite_master WHERE assess_type = @assess_type";
+                            command.Parameters.AddWithValue("assess_type", "table");
 
                             connection.Open();
                             using (var reader = command.ExecuteReader())

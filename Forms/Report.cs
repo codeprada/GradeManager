@@ -21,15 +21,7 @@ namespace Grade_Manager_DB_Controller
         {
             ReportsManager report_manager = new ReportsManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
-            report_manager.GenerateReport(templateFileTxtBox.Text, SemesterManager.CurrentSemester.Id, saveFileTxtBox.Text);
-        }
-
-        private void browseTemplateBtn_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                templateFileTxtBox.Text = openFileDialog1.FileName;
-            }
+            report_manager.GenerateReport(SemesterManager.CurrentSemester.Id, saveFileTxtBox.Text);
         }
 
         private void browseSaveBtn_Click(object sender, EventArgs e)

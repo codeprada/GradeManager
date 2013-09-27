@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.newClassLinkLabel = new System.Windows.Forms.LinkLabel();
             this.classesComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.newClassLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endingSchoolYearNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentTermNumeric)).BeginInit();
@@ -64,14 +64,24 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.startingSchoolYearNumeric);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(12, 11);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(210, 235);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // newClassLinkLabel
+            // 
+            this.newClassLinkLabel.AutoSize = true;
+            this.newClassLinkLabel.Location = new System.Drawing.Point(145, 82);
+            this.newClassLinkLabel.Name = "newClassLinkLabel";
+            this.newClassLinkLabel.Size = new System.Drawing.Size(57, 13);
+            this.newClassLinkLabel.TabIndex = 14;
+            this.newClassLinkLabel.TabStop = true;
+            this.newClassLinkLabel.Text = "New Class";
+            this.newClassLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newClassLinkLabel_LinkClicked);
             // 
             // classesComboBox
             // 
@@ -218,9 +228,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 213);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 261);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(210, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(235, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
@@ -230,25 +240,14 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
-            // newClassLinkLabel
-            // 
-            this.newClassLinkLabel.AutoSize = true;
-            this.newClassLinkLabel.Location = new System.Drawing.Point(145, 82);
-            this.newClassLinkLabel.Name = "newClassLinkLabel";
-            this.newClassLinkLabel.Size = new System.Drawing.Size(57, 13);
-            this.newClassLinkLabel.TabIndex = 14;
-            this.newClassLinkLabel.TabStop = true;
-            this.newClassLinkLabel.Text = "New Class";
-            this.newClassLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.newClassLinkLabel_LinkClicked);
-            // 
             // CreateSemester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(210, 235);
+            this.ClientSize = new System.Drawing.Size(235, 283);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "CreateSemester";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

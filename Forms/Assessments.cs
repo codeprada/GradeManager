@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using FastMember;
 
 namespace Grade_Manager_DB_Controller
 {
@@ -30,6 +31,8 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadAssessments()
         {
+            assessmentDataGridView.DataSource = null;
+
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
                 using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSMENTS_SUBJECTS, connection))
@@ -52,15 +55,35 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
+        private void LoadAssessmentsWithFilter()
+        {
+            List<object> list = assessment_manager.GetAssessments(
+                (filterSubject.Checked ? (int)((ComboItem)filterSubjectCombo.SelectedItem).Id : -1),
+                (filterTypeCheckbox.Checked ? (int)((ComboItem)filterTypeCombo.SelectedItem).Id : -1),
+                (filterTimePeriod.Checked ? filterDateFrom.Value.ToString("yyyy-MM-dd") : null),
+                (filterTimePeriod.Checked ? filterDateTo.Value.ToString("yyyy-MM-dd") : null)
+            );
+
+            
+            assessmentDataGridView.DataSource = list;
+            //making sure we have data in our list
+            if(assessmentDataGridView.Columns.Count > 0)
+                assessmentDataGridView.Columns[0].Visible = false;
+                
+            
+        }
+
         private void LoadAssessment_Types()
         {
             assessment_manager.LoadToComboBox(assessTypeComboBox, DB_Object.TYPE);
+            assessment_manager.LoadToComboBox(filterTypeCombo, DB_Object.TYPE);
         }
 
         private void LoadSubjects()
         {
             SubjectManager subject_manager = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-            subject_manager.LoadToComboBox(subjectComboBox);
+            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester.Id);
+            subject_manager.LoadToComboBox(filterSubjectCombo, SemesterManager.CurrentSemester.Id);
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -79,6 +102,33 @@ namespace Grade_Manager_DB_Controller
             };
 
             assessment_manager.Save(a);
+        }
+
+        private void filterBtn_Click(object sender, EventArgs e)
+        {
+            LoadAssessmentsWithFilter();
+        }
+
+        private void clearFilterBtn_Click(object sender, EventArgs e)
+        {
+            LoadAssessments();
+        }
+
+        private void filterTypeCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterTypeCombo.Enabled = filterTypeCheckbox.Checked;
+        }
+
+        private void filterTimePeriod_CheckedChanged(object sender, EventArgs e)
+        {
+            filterDateFrom.Enabled =
+                filterDateTo.Enabled =
+                filterTimePeriod.Checked;
+        }
+
+        private void filterSubject_CheckedChanged(object sender, EventArgs e)
+        {
+            filterSubjectCombo.Enabled = filterSubject.Checked;
         }
     }
 }

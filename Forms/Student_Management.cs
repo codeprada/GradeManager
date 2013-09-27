@@ -31,7 +31,7 @@ namespace Grade_Manager_DB_Controller
         {
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
-                using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_STUDENTS, connection))
+                using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_STUDENTS_TIDY, connection))
                 {
 
                     grid_adapter.SelectCommand.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
@@ -58,7 +58,8 @@ namespace Grade_Manager_DB_Controller
                 FirstName = firstNameTxt.Text,
                 LastName = lastNameTxt.Text,
                 MiddleName = midNameTxt.Text,
-                DateOfBirth = dobDatePicker.Value
+                DateOfBirth = dobDatePicker.Value,
+                Gender = (maleRadioButton.Checked ? "M" : "F")
             };
 
             int student_id;

@@ -59,6 +59,9 @@
     <Reference Include="DocX">
       <HintPath>..\..\..\Downloads\DocX.dll</HintPath>
     </Reference>
+    <Reference Include="FastMember">
+      <HintPath>packages\FastMember.1.0.0.11\lib\net40\FastMember.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -69,6 +72,7 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Windows.Forms.Ribbon35">
       <HintPath>.\System.Windows.Forms.Ribbon35.dll</HintPath>
     </Reference>
@@ -130,6 +134,18 @@
     <Compile Include="Forms\Semester.Designer.cs">
       <DependentUpon>Semester.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\NewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewUser.Designer.cs">
+      <DependentUpon>NewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LineGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LineGraph.Designer.cs">
+      <DependentUpon>LineGraph.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Forms\Student_Management.cs">
@@ -149,6 +165,12 @@
     </Compile>
     <Compile Include="Forms\Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Statistics.Designer.cs">
+      <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Forms\Assessments.resx">
       <DependentUpon>Assessments.cs</DependentUpon>
@@ -173,6 +195,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Semester.resx">
       <DependentUpon>Semester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewUser.resx">
+      <DependentUpon>NewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Statistics.resx">
+      <DependentUpon>Statistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LineGraph.resx">
+      <DependentUpon>LineGraph.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -265,6 +296,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="baptistacademylogo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\chart_line1.png" />
+    <None Include="Resources\chart_line.png" />
+    <None Include="Resources\statistics.png" />
+    <None Include="Resources\stats.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
