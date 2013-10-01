@@ -71,7 +71,7 @@ namespace Grade_Manager_DB_Controller
                         command.Parameters.AddWithValue("@first_name", student.FirstName);
                         command.Parameters.AddWithValue("@last_name", student.LastName);
                         command.Parameters.AddWithValue("@middle_name", student.MiddleName);
-                        command.Parameters.AddWithValue("@gender", (char)student.Gender.ToUpper()[0]);
+                        command.Parameters.AddWithValue("@gender", student.Gender.ToUpper().Substring(0, 1));
                         command.Parameters.AddWithValue("@dob", student.DateOfBirth.ToString("yyyy-MM-dd"));
 
 

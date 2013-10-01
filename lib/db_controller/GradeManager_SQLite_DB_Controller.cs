@@ -186,7 +186,8 @@ WHERE SM.[semester_id] = @semester_id
 GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]
 ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
 ",
-                            DBQ_GET_STATS = "SELECT [assess_name] [Name], [grade_mark] [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Students].student_id = @student_id ORDER BY [Assessments].[assess_id] ASC";
+                            DBQ_GET_STATS = "SELECT [assess_name] [Name], [grade_mark] [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Students].student_id = @student_id AND [Assessments].[semester_id] = @semester_id ORDER BY [Assessments].[assess_id] ASC",
+                            DBQ_GET_STATS_AVG = "SELECT [Assessments].[assess_name] [Name], AVG([grade_mark]) [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Assessments].semester_id = @semester_id GROUP BY [Assessments].assess_id ORDER BY [Assessments].[assess_id] ASC";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";

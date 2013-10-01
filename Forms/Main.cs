@@ -22,7 +22,7 @@ namespace Grade_Manager
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            
+
         }
 
         private void logInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -36,15 +36,15 @@ namespace Grade_Manager
             //login_form.MdiParent = this;
             login_form.StartPosition = FormStartPosition.CenterParent;
             login_form.ShowDialog();
-            
+
             if (UserManager.CurrentUser != null && UserManager.CurrentUser.Name.Length > 0)
             {
                 //User has been logged in
-                
+
                 this.Text += " - User: " + UserManager.CurrentUser.Name;
                 ShowControls(true);
                 //ShowProfileForm();
-                
+
             }
         }
 
@@ -55,8 +55,8 @@ namespace Grade_Manager
                 //assignmentManagementRibbonBtn.Enabled =
                 //subjectsManagementRibbonBtn.Enabled =
                 semesterManagementRibbonBtn.Enabled = state;
-                //reportsManagementRibbonBtn.Enabled =
-                //studentManagementRibbonBtn.Enabled = state;
+            //reportsManagementRibbonBtn.Enabled =
+            //studentManagementRibbonBtn.Enabled = state;
 
             logInRibBtn.Enabled = !state;
         }
@@ -69,7 +69,7 @@ namespace Grade_Manager
             if (!gm_db_controller.IntegrityTest())
                 gm_db_controller.CreateDatabase(); //Creates database
 
-            
+
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
@@ -108,9 +108,9 @@ namespace Grade_Manager
                 assignmentManagementRibbonBtn.Enabled =
                 subjectsManagementRibbonBtn.Enabled =
                 reportsManagementRibbonBtn.Enabled =
-                studentManagementRibbonBtn.Enabled = 
+                studentManagementRibbonBtn.Enabled =
                 gradesManagementRibbonBtn.Enabled =
-                reportsManagementRibbonBtn.Enabled = 
+                reportsManagementRibbonBtn.Enabled =
                 statisticsRibbonButton.Enabled = true;
 
             }
@@ -118,12 +118,17 @@ namespace Grade_Manager
 
         private void subjectManagementBtn_Click(object sender, EventArgs e)
         {
+
             Subjects_Form s_form = new Subjects_Form();
-            s_form.StartPosition = FormStartPosition.CenterParent;
-            //s_form.MdiParent = this;
             s_form.TopLevel = false;
+
             panel1.Controls.Add(s_form);
+
+            s_form.Location = new Point((panel1.Width - s_form.Width) / 2, (panel1.Height - s_form.Height) / 2);
+
             s_form.Show();
+            s_form.BringToFront();
+
         }
 
         private void studentManagementBtn_Click(object sender, EventArgs e)

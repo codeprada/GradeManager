@@ -58,6 +58,7 @@ namespace Grade_Manager_DB_Controller
                     command.Parameters.AddWithValue("@student_id", student_id);
                     command.Parameters.AddWithValue("@subject_id", subject_id);
                     command.Parameters.AddWithValue("@assess_type_id", assess_type);
+                    command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
 
                     connection.Open();
 
@@ -74,5 +75,37 @@ namespace Grade_Manager_DB_Controller
 
             return sdo;
         }
+
+        public StatisticsDataObject Get(int subject_id, int assess_type)
+        {
+            StatisticsDataObject sdo;
+            
+
+            sdo = new StatisticsDataObject("AVERAGE");
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_STATS_AVG, connection))
+                {
+                    
+                    command.Parameters.AddWithValue("@subject_id", subject_id);
+                    command.Parameters.AddWithValue("@assess_type_id", assess_type);
+                    command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            sdo.Append(reader["Name"].ToString(), reader["Grade"]);
+                        }
+                    }
+
+                }
+            }
+
+            return sdo;
+        } 
     }
 }

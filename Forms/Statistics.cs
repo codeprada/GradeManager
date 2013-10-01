@@ -20,7 +20,8 @@ namespace Grade_Manager_DB_Controller
         private void lineGraphBtn_Click(object sender, EventArgs e)
         {
             LineGraph lg = new LineGraph();
-            lg.StartPosition = FormStartPosition.CenterParent;
+            lg.StartPosition = FormStartPosition.CenterScreen;
+            lg.WindowState = FormWindowState.Maximized;
             lg.ShowDialog();
         }
     }
