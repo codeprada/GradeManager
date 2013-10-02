@@ -51,12 +51,13 @@ namespace Grade_Manager_DB_Controller
 
         public void GenerateReport(int semester_id, string saveas)
         {
-            //Dictionary<string, char> grades = new Dictionary<string, char>();
 
+            //Does all the calculations
             List<Reports> reports = FetchData(semester_id);
 
             using (var document_report = DocX.Create(saveas))
             {
+                //Size of a legal size paper
                 document_report.PageHeight = 1344.0f;
                 document_report.PageWidth = 816.0f;
 
@@ -80,7 +81,7 @@ namespace Grade_Manager_DB_Controller
                                 new
                                 {
                                     SubjectName = x._Subject.Name,
-                                    Average = x.Average
+                                    Grade = Grade_Manager.GetLetter(x.Average)
                                 })
                         .Distinct();
 
@@ -152,7 +153,7 @@ namespace Grade_Manager_DB_Controller
                     };
 
                     string name = ("STUDENT: " + data.Select(x => x._Student.LastName).First() + ", " + data.Select(x => x._Student.FirstName).First()).ToUpper();
-                    //name = ApplyBuffer(name, BUFFER_NUMBER + 1);
+                    name = ApplyBuffer(name, BUFFER_NUMBER);
                     string class_name = "CLASS: " + data.Select(x => x._Class.Name).First().ToUpper();
                     //class_name = ApplyBuffer(class_name, BUFFER_NUMBER);
 
@@ -205,7 +206,7 @@ namespace Grade_Manager_DB_Controller
                         buffer = ("    " + count++ + ". " + g_pair.SubjectName).ToUpper();
                         buffer = ApplyBuffer(buffer, 6);
 
-                        document_report.InsertParagraph(String.Format("{0}{1}{2}", buffer, new String('\t', CalculateTabs(buffer, 11)), g_pair.Average), false, grade_legend);
+                        document_report.InsertParagraph(String.Format("{0}{1}{2}", buffer, new String('\t', CalculateTabs(buffer, 11)), g_pair.Grade), false, grade_legend);
                         document_report.InsertParagraph(line, false, (g_pair.SubjectName != last.SubjectName ? line_format_nu : line_format));
                     }
 

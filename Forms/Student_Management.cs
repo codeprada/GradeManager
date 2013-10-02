@@ -75,7 +75,7 @@ namespace Grade_Manager_DB_Controller
 
                 firstNameTxt.Clear();
                 lastNameTxt.Clear();
-
+                midNameTxt.Clear();
                 LoadStudentList();
             }
             else

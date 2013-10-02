@@ -138,7 +138,7 @@ namespace Grade_Manager_DB_Controller
             {
                 List<StatisticsDataObject> sdo_buffer = new List<StatisticsDataObject>();
 
-                //Average of each assessment
+                //Grade of each assessment
                 sdo_buffer.Add(statistics_manager.Get(
                     Convert.ToInt32(((ComboItem)subjectComboBox.SelectedItem).Id),
                     Convert.ToInt32(((ComboItem)typeComboBox.SelectedItem).Id)

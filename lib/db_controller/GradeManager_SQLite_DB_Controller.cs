@@ -12,6 +12,21 @@ namespace Grade_Manager_DB_Controller
 {
     public class GradeManager_SQLite_DB_Controller
     {
+        string[] TABLE_NAMES = 
+        {
+            "Accounts",
+            "Students",
+            "SubjectClass",
+            "Classes",
+            "Semester",
+            "Subjects",
+            "Assessment_Type",
+            "Assessments",
+            "Grades",
+            "StudentClass",
+            "sqlite_sequence"
+        };
+
         #region Initialization Code
         private const string DATABASE_CREATION_SQL = @"
 CREATE TABLE [Accounts] (
@@ -172,8 +187,13 @@ VALUES
                             
                             DBQ_GENERATE_REPORT = @"
 SELECT DISTINCT
-*,
-AVG((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id WHERE G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND A2.assess_type_id = AT.assess_type_id  GROUP BY A2.subject_id, A2.semester_id, A2.assess_type_id, G2.student_id)) [average]
+*,  
+(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test')) +
+((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz'))) /
+(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test') [average]
 FROM [Students] S 
 INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
 INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
@@ -256,7 +276,7 @@ ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
         public void InsertDefaultValues()
         {
             #region Default Values
-            string[] assessment_types = { "Exam", "Quiz", "Test" };
+            string[] assessment_types = { "Quiz", "Test" };
             #endregion
 
             using (var connection = new SQLiteConnection(CONNECTION_STRING))
@@ -286,12 +306,7 @@ ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
 
             if (File.Exists(DB_PATH))
             {
-                List<string> tables = new List<string>();
-
-                MatchCollection matches = Regex.Matches(DATABASE_CREATION_SQL, @"create table (if not exists)? \[([^\]].+?)\]", RegexOptions.IgnoreCase | RegexOptions.Multiline);
-
-                foreach (Match m in matches)
-                    tables.Add(m.Groups[2].Value);
+                List<string> tables = new List<string>(TABLE_NAMES);
 
                 try
                 {
@@ -300,8 +315,8 @@ ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
                         using (var command = new SQLiteCommand(connection))
                         {
                             command.CommandType = CommandType.Text;
-                            command.CommandText = @"SELECT name FROM sqlite_master WHERE assess_type = @assess_type";
-                            command.Parameters.AddWithValue("assess_type", "table");
+                            command.CommandText = @"SELECT name FROM sqlite_master WHERE type = @type";
+                            command.Parameters.AddWithValue("type", "table");
 
                             connection.Open();
                             using (var reader = command.ExecuteReader())

@@ -125,7 +125,7 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
                         adapter.Fill(grid_table);
                         studentGradeDataViewGrid.DataSource = grid_table;
                         studentGradeDataViewGrid.Columns["ID"].Visible = false;
-                        studentGradeDataViewGrid.Columns["A_ID"].Visible = false;
+                        //studentGradeDataViewGrid.Columns["A_ID"].Visible = false;
 
                         foreach (DataGridViewColumn column in studentGradeDataViewGrid.Columns)
                         {

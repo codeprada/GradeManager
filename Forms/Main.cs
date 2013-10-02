@@ -41,7 +41,7 @@ namespace Grade_Manager
             {
                 //User has been logged in
 
-                this.Text += " - User: " + UserManager.CurrentUser.Name;
+                this.Text += " - User: " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
                 ShowControls(true);
                 //ShowProfileForm();
 
@@ -118,64 +118,62 @@ namespace Grade_Manager
 
         private void subjectManagementBtn_Click(object sender, EventArgs e)
         {
-
             Subjects_Form s_form = new Subjects_Form();
             s_form.TopLevel = false;
-
             panel1.Controls.Add(s_form);
-
             s_form.Location = new Point((panel1.Width - s_form.Width) / 2, (panel1.Height - s_form.Height) / 2);
-
             s_form.Show();
             s_form.BringToFront();
-
         }
 
         private void studentManagementBtn_Click(object sender, EventArgs e)
         {
             Student_Management student_management_form = new Student_Management();
-            student_management_form.StartPosition = FormStartPosition.CenterScreen;
-            //student_management_form.MdiParent = this;
             student_management_form.TopLevel = false;
             panel1.Controls.Add(student_management_form);
+            student_management_form.Location = new Point((panel1.Width - student_management_form.Width) / 2, (panel1.Height - student_management_form.Height) / 2);
             student_management_form.Show();
+            student_management_form.BringToFront();
         }
 
         private void assignmentManagementRibbonBtn_Click(object sender, EventArgs e)
         {
             Assessments assess_form = new Assessments();
-            assess_form.StartPosition = FormStartPosition.CenterParent;
             assess_form.TopLevel = false;
             panel1.Controls.Add(assess_form);
+            assess_form.Location = new Point((panel1.Width - assess_form.Width) / 2, (panel1.Height - assess_form.Height) / 2);
             assess_form.Show();
+            assess_form.BringToFront();
         }
 
         private void gradesManagementRibbonBtn_Click(object sender, EventArgs e)
         {
             Grade_Main_Form grade_form = new Grade_Main_Form();
-            grade_form.StartPosition = FormStartPosition.CenterParent;
             grade_form.TopLevel = false;
             panel1.Controls.Add(grade_form);
+            grade_form.Location = new Point((panel1.Width - grade_form.Width) / 2, (panel1.Height - grade_form.Height) / 2);
             grade_form.Show();
-
+            grade_form.BringToFront();
         }
 
         private void reportsManagementRibbonBtn_Click(object sender, EventArgs e)
         {
             Report report_form = new Report();
-            report_form.StartPosition = FormStartPosition.CenterParent;
             report_form.TopLevel = false;
             panel1.Controls.Add(report_form);
+            report_form.Location = new Point((panel1.Width - report_form.Width) / 2, (panel1.Height - report_form.Height) / 2);
             report_form.Show();
+            report_form.BringToFront();
         }
 
         private void statisticsRibbonButton_Click(object sender, EventArgs e)
         {
             Statistics stats_form = new Statistics();
-            stats_form.StartPosition = FormStartPosition.CenterParent;
             stats_form.TopLevel = false;
             panel1.Controls.Add(stats_form);
             stats_form.Show();
+            stats_form.Location = new Point((panel1.Width - stats_form.Width) / 2, (panel1.Height - stats_form.Height) / 2);
+            stats_form.BringToFront();
         }
     }
 }
