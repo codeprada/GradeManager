@@ -65,7 +65,7 @@ CREATE TABLE Semester (
 	class_id INTEGER NOT NULL,
 	ending_school_year INTEGER NOT NULL,
 	starting_school_year INTEGER NOT NULL,
-	semester_description CHAR(255),
+	semester_description CHAR(255) DEFAULT '',
 	UNIQUE (account_id, current_term, class_id, starting_school_year),
 	FOREIGN KEY ([account_id]) REFERENCES [Accounts](account_id),
 	FOREIGN KEY ([class_id]) REFERENCES [Classes](class_id)
@@ -207,7 +207,35 @@ GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]
 ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
 ",
                             DBQ_GET_STATS = "SELECT [assess_name] [Name], [grade_mark] [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Students].student_id = @student_id AND [Assessments].[semester_id] = @semester_id ORDER BY [Assessments].[assess_id] ASC",
-                            DBQ_GET_STATS_AVG = "SELECT [Assessments].[assess_name] [Name], AVG([grade_mark]) [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Assessments].semester_id = @semester_id GROUP BY [Assessments].assess_id ORDER BY [Assessments].[assess_id] ASC";
+                            DBQ_GET_STATS_AVG = "SELECT [Assessments].[assess_name] [Name], AVG([grade_mark]) [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Assessments].semester_id = @semester_id GROUP BY [Assessments].assess_id ORDER BY [Assessments].[assess_id] ASC",
+                            DBQ_GET_RANKINGS = @"
+SELECT
+Z.student_first_name,
+Z.student_last_name,
+AVG(Z.average) [overall]
+FROM
+(
+SELECT DISTINCT
+*,  
+(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test')) +
+((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz'))) /
+(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test') [average]
+FROM [Students] S 
+INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
+INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
+INNER JOIN [Classes] C ON C.[class_id] = SM.[class_id] 
+INNER JOIN [Assessments] A ON A.[semester_id] = SM.[semester_id]
+INNER JOIN [Assessment_Type] AT ON AT.assess_type_id = A.assess_type_id  
+INNER JOIN [Grades] G ON G.[assess_id] = A.[assess_id]
+INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
+WHERE SM.[semester_id] = @semester_id
+GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]) [Z]
+GROUP BY Z.student_id
+ORDER BY [overall] DESC
+";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";

@@ -35,6 +35,30 @@ namespace Grade_Manager_DB_Controller
 
         }
 
+        public int CreateClass(string class_name)
+        {
+            int id = -1;
+
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_CLASS, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
+                    command.Parameters.AddWithValue("@class_name", class_name);
+
+                    connection.Open();
+
+                    if (command.ExecuteNonQuery() > 0)
+                        id = Convert.ToInt32(GradeManager_SQLite_DB_Controller.GetLastRowInserted(connection));
+
+                    
+                }
+            }
+
+            return id;
+        }
+
         public List<Class> GetAllClasses()
         {
             List<Class> classes = new List<Class>();

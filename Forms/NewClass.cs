@@ -24,21 +24,11 @@ namespace Grade_Manager_DB_Controller
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
-            {
-                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_CLASS, connection))
-                {
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
-                    command.Parameters.AddWithValue("@class_name", classTxt.Text);
+            ClassManager cm = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
-                    connection.Open();
-
-                    MessageBox.Show("Class Creation: " + ((command.ExecuteNonQuery() > 0) ? "Successful" : "Unsuccessful"));
-
-                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
-                }
-            }
+            
+            MessageBox.Show("Class Creation: " + ((cm.CreateClass(classTxt.Text) > -1) ? "Successful" : "Unsuccessful"));
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
 
             classTxt.Clear();
         }

@@ -203,8 +203,8 @@ namespace Grade_Manager_DB_Controller
                     var last = g.Last();
                     foreach (var g_pair in g)
                     {
-                        buffer = ("    " + count++ + ". " + g_pair.SubjectName).ToUpper();
-                        buffer = ApplyBuffer(buffer, 6);
+                        buffer = ("     " + count++ + ". " + g_pair.SubjectName).ToUpper();
+                        buffer = ApplyBuffer(buffer, BUFFER_NUMBER);
 
                         document_report.InsertParagraph(String.Format("{0}{1}{2}", buffer, new String('\t', CalculateTabs(buffer, 11)), g_pair.Grade), false, grade_legend);
                         document_report.InsertParagraph(line, false, (g_pair.SubjectName != last.SubjectName ? line_format_nu : line_format));

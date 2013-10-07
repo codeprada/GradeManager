@@ -147,6 +147,39 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
+        public int CreateSubject(Subject subject)
+        {
+            return CreateSubject(subject.Name);
+        }
+
+        public int CreateSubject(string subject)
+        {
+            int row = -1;
+
+            if (subject != String.Empty)
+            {
+                subject = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(subject.ToLower());
+
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT, connection))
+                    {
+                        command.Parameters.AddWithValue("@subject_name", subject);
+
+                        connection.Open();
+                        
+                        if (command.ExecuteNonQuery() > 0)
+                            row = Convert.ToInt32(GradeManager_SQLite_DB_Controller.GetLastRowInserted(connection));
+                        
+                    }
+                }
+            }
+            
+
+            return row;
+
+        }
+
         public bool SaveSubjectToClass(Subject subject, int class_id)
         {
             bool eval = false;

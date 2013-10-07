@@ -139,23 +139,17 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            Grade_Manager gm = new Grade_Manager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            foreach (DataGridViewRow row in studentGradeDataViewGrid.Rows)
             {
-                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_GRADE, connection))
-                {
-                    connection.Open();
+                gm.Save(
+                    Convert.ToInt32(row.Cells["ID"].Value),
+                    (int)(((ComboItem)assessmentComboBox.SelectedItem).Id),
+                    (row.Cells["Grade"].Value.Equals(null) ? 0.0 : Convert.ToDouble(row.Cells["Grade"].Value))
+                );
 
-
-                    foreach (DataGridViewRow row in studentGradeDataViewGrid.Rows)
-                    {
-                        command.Parameters.AddWithValue("@student_id", Convert.ToInt32(row.Cells["ID"].Value));
-                        command.Parameters.AddWithValue("@assess_id", (int)(((ComboItem)assessmentComboBox.SelectedItem).Id));
-                        command.Parameters.AddWithValue("@grade", (row.Cells["Grade"].Value.Equals(null) ? 0.0 : row.Cells["Grade"].Value));
-
-                        command.ExecuteNonQuery();
-                    }
-                }
             }
+                
         }
     }
 }

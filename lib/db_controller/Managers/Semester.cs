@@ -75,7 +75,7 @@ namespace Grade_Manager_DB_Controller
             sm.EndingSchoolYear = Convert.ToInt32(reader["ending_school_year"]);
             sm.OwnerId = Convert.ToInt32(reader["account_id"]);
             sm.Term = Convert.ToInt32(reader["current_term"]);
-            sm.Description = (string)reader["semester_description"];
+            sm.Description = (reader["semester_description"] == null ? "" : Convert.ToString(reader["semester_description"]));
             sm.Class = Convert.ToInt32(reader["class_id"]);
 
             return sm;
@@ -104,7 +104,7 @@ namespace Grade_Manager_DB_Controller
 
         public Semester GetSemester(int id)
         {
-            Semester db_profile = new Semester();
+            Semester db_semester = new Semester();
 
             //fetch semester according to profile_name
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
@@ -119,11 +119,11 @@ namespace Grade_Manager_DB_Controller
                 //if rows are returned then the credentials exist
                 if (reader.Read())
                 {
-                    db_profile = reader;
+                    db_semester = reader;
                 }
             }
 
-            return db_profile;
+            return db_semester;
         }
 
         public bool CreateSemester(Semester semester)
@@ -148,7 +148,9 @@ namespace Grade_Manager_DB_Controller
                     connection.Open();
 
                     if ((command.ExecuteNonQuery()) > 0)
+                    {
                         result = true;
+                    }
                 }
             }
             catch (Exception)

@@ -30,39 +30,20 @@ namespace Grade_Manager_DB_Controller
         {
             string status = String.Empty;
 
-            if (subject != String.Empty)
+            SubjectManager sm = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            try
             {
-                subject = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(subject.ToLower());
-
-                using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
-                {
-                    using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT, connection))
-                    {
-                        command.Parameters.AddWithValue("@subject_name", subject);
-
-                        connection.Open();
-                        try
-                        {
-                            if (command.ExecuteNonQuery() > 0)
-                                status = subject + " added.";
-                        }
-                        catch (Exception e)
-                        {
-                            if (e.Message.Contains("unique"))
-                                status = subject + " exists already.";
-                            else
-                                status = "Error adding " + subject;
-                        }
-                    }
-                }
+                sm.CreateSubject(subject);
             }
-            else
+            catch (Exception e)
             {
-                status = "No subject_id";
+                if (e.Message.Contains("unique"))
+                    status = subject + " exists already.";
+                else
+                    status = "Error adding " + subject;
             }
 
             return status;
-
         }
     }
 }

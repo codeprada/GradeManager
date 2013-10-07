@@ -7,16 +7,21 @@ using System.Data.SQLite;
 
 namespace Grade_Manager_DB_Controller
 {
-    class Grade
+    public class Grade
     {
         public string Letter { get; set; }
         public double Min { get; set; }
         public double Max { get; set; }
     }
 
-    class Grade_Manager
+    public class Grade_Manager : BaseManager
     {
         private static List<Grade> grades = new List<Grade>();
+
+        public Grade_Manager(string connection_string) : base(connection_string)
+        {
+
+        }
 
         private static void SetLetters()
         {
@@ -122,8 +127,29 @@ namespace Grade_Manager_DB_Controller
         {
             if (grades.Count == 0)
                 SetLetters();
+            grade = Math.Round(grade);
 
             return grades.Where(x => x.Max >= grade && x.Min <= grade).Select(x => x.Letter).First();
+        }
+
+        public void Save(int student, int assessment, double grade)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_GRADE, connection))
+                {
+                    connection.Open();
+
+
+                    
+                    command.Parameters.AddWithValue("@student_id", student);
+                    command.Parameters.AddWithValue("@assess_id", assessment);
+                    command.Parameters.AddWithValue("@grade", grade);
+
+                    command.ExecuteNonQuery();
+                    
+                }
+            }
         }
     }
 }
