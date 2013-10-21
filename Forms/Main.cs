@@ -41,7 +41,7 @@ namespace Grade_Manager
             {
                 //User has been logged in
 
-                this.Text += " - User: " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
+                mainStatusLabel.Text += " - User: " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
                 ShowControls(true);
                 //ShowProfileForm();
 
@@ -99,7 +99,7 @@ namespace Grade_Manager
             ////Verify if the user selected a semester
             if (semester_fm.ShowDialog() == System.Windows.Forms.DialogResult.OK && SemesterManager.CurrentSemester != null)
             {
-                this.Text += String.Format(" - Semester Year: {0}/{1}",
+                mainStatusLabel.Text += String.Format(" - Semester Year: {0}/{1}",
                     SemesterManager.CurrentSemester.StartingSchoolYear,
                     SemesterManager.CurrentSemester.EndingSchoolYear
                 );
@@ -111,7 +111,9 @@ namespace Grade_Manager
                 studentManagementRibbonBtn.Enabled =
                 gradesManagementRibbonBtn.Enabled =
                 reportsManagementRibbonBtn.Enabled =
-                statisticsRibbonButton.Enabled = true;
+                statisticsRibbonButton.Enabled = 
+                rankingRButton.Enabled = 
+                logoutRibbonBtn.Enabled = true;
 
             }
         }

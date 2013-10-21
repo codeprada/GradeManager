@@ -26,6 +26,19 @@ namespace Grade_Manager_DB_Controller
         {
             return usr.Id;
         }
+
+        public static implicit operator User(SQLiteDataReader reader)
+        {
+            User usr = new User();
+
+            usr.FirstName = Convert.ToString(reader["account_first_name"]);
+            usr.LastName = Convert.ToString(reader["account_last_name"]);
+            usr.Id = Convert.ToInt32(reader["account_id"]);
+            usr.Name = Convert.ToString(reader["account_name"]);
+            usr.Password = "***********************";
+
+            return usr;
+        }
     }
 
     public class UserManager : BaseManager
@@ -74,7 +87,7 @@ namespace Grade_Manager_DB_Controller
             int id = -1;
             //create our login query here
             //parameters are used to prevent SQL injections
-            string log_in_query = GradeManager_SQLite_DB_Controller.DBQ_LOG_IN;
+            string log_in_query = GradeManager_SQLite_DB_Controller.DBQ_GET_ACCOUNT_DETAILS_LOG_IN;
 
             //reading connection string from App.Config file
             using (var sql_connection = new SQLiteConnection(ConnectionString))
@@ -125,6 +138,29 @@ namespace Grade_Manager_DB_Controller
             }
 
             return rows;
+        }
+
+        public User GetUser(int id)
+        {
+            User usr = null;
+
+            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_ACCOUNT_DETAILS_ID, connection))
+                {
+                    connection.Open();
+
+                    command.Parameters.AddWithValue("id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            usr = reader;
+                    }
+                }
+            }
+
+            return usr;
         }
 
 

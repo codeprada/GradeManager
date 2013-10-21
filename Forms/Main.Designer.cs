@@ -33,12 +33,10 @@
             this.ribbon1 = new System.Windows.Forms.Ribbon();
             this.ribbonTab1 = new System.Windows.Forms.RibbonTab();
             this.loginPanel = new System.Windows.Forms.RibbonPanel();
-            this.logoutPanel = new System.Windows.Forms.RibbonPanel();
-            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
-            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.logInRibBtn = new System.Windows.Forms.RibbonButton();
+            this.logoutPanel = new System.Windows.Forms.RibbonPanel();
             this.semesterManagementRibbonBtn = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel1 = new System.Windows.Forms.RibbonPanel();
             this.studentManagementRibbonBtn = new System.Windows.Forms.RibbonButton();
             this.assignmentManagementRibbonBtn = new System.Windows.Forms.RibbonButton();
             this.subjectsManagementRibbonBtn = new System.Windows.Forms.RibbonButton();
@@ -46,12 +44,18 @@
             this.reportsManagementRibbonBtn = new System.Windows.Forms.RibbonButton();
             this.statisticsRibbonButton = new System.Windows.Forms.RibbonButton();
             this.rankingRButton = new System.Windows.Forms.RibbonButton();
-            this.logoutRibbonBtn = new System.Windows.Forms.RibbonButton();
             this.helpRibbonButton = new System.Windows.Forms.RibbonButton();
+            this.ribbonPanel2 = new System.Windows.Forms.RibbonPanel();
+            this.logoutRibbonBtn = new System.Windows.Forms.RibbonButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 544);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(914, 22);
@@ -94,10 +98,28 @@
             this.loginPanel.Items.Add(this.logInRibBtn);
             this.loginPanel.Text = "";
             // 
+            // logInRibBtn
+            // 
+            this.logInRibBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.login;
+            this.logInRibBtn.MinimumSize = new System.Drawing.Size(70, 50);
+            this.logInRibBtn.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
+            this.logInRibBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("logInRibBtn.SmallImage")));
+            this.logInRibBtn.Text = "Log In";
+            this.logInRibBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            // 
             // logoutPanel
             // 
             this.logoutPanel.Items.Add(this.semesterManagementRibbonBtn);
             this.logoutPanel.Text = "";
+            // 
+            // semesterManagementRibbonBtn
+            // 
+            this.semesterManagementRibbonBtn.Enabled = false;
+            this.semesterManagementRibbonBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.profiles;
+            this.semesterManagementRibbonBtn.MinimumSize = new System.Drawing.Size(70, 50);
+            this.semesterManagementRibbonBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("semesterManagementRibbonBtn.SmallImage")));
+            this.semesterManagementRibbonBtn.Text = "Semester";
+            this.semesterManagementRibbonBtn.Click += new System.EventHandler(this.semesterMangementBtn_Click);
             // 
             // ribbonPanel1
             // 
@@ -110,38 +132,6 @@
             this.ribbonPanel1.Items.Add(this.rankingRButton);
             this.ribbonPanel1.Items.Add(this.helpRibbonButton);
             this.ribbonPanel1.Text = "Management";
-            // 
-            // ribbonPanel2
-            // 
-            this.ribbonPanel2.Items.Add(this.logoutRibbonBtn);
-            this.ribbonPanel2.Text = "";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 129);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(914, 415);
-            this.panel1.TabIndex = 9;
-            // 
-            // logInRibBtn
-            // 
-            this.logInRibBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.login;
-            this.logInRibBtn.MinimumSize = new System.Drawing.Size(70, 50);
-            this.logInRibBtn.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Large;
-            this.logInRibBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("logInRibBtn.SmallImage")));
-            this.logInRibBtn.Text = "Log In";
-            this.logInRibBtn.Click += new System.EventHandler(this.loginBtn_Click);
-            // 
-            // semesterManagementRibbonBtn
-            // 
-            this.semesterManagementRibbonBtn.Enabled = false;
-            this.semesterManagementRibbonBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.profiles;
-            this.semesterManagementRibbonBtn.MinimumSize = new System.Drawing.Size(70, 50);
-            this.semesterManagementRibbonBtn.SmallImage = ((System.Drawing.Image)(resources.GetObject("semesterManagementRibbonBtn.SmallImage")));
-            this.semesterManagementRibbonBtn.Text = "Semester";
-            this.semesterManagementRibbonBtn.Click += new System.EventHandler(this.semesterMangementBtn_Click);
             // 
             // studentManagementRibbonBtn
             // 
@@ -206,6 +196,18 @@
             this.rankingRButton.Text = "Ranking";
             this.rankingRButton.Click += new System.EventHandler(this.rankingRButton_Click);
             // 
+            // helpRibbonButton
+            // 
+            this.helpRibbonButton.Image = global::Grade_Manager_DB_Controller.Properties.Resources.help;
+            this.helpRibbonButton.MinimumSize = new System.Drawing.Size(70, 50);
+            this.helpRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("helpRibbonButton.SmallImage")));
+            this.helpRibbonButton.Text = "Help";
+            // 
+            // ribbonPanel2
+            // 
+            this.ribbonPanel2.Items.Add(this.logoutRibbonBtn);
+            this.ribbonPanel2.Text = "";
+            // 
             // logoutRibbonBtn
             // 
             this.logoutRibbonBtn.Enabled = false;
@@ -215,12 +217,19 @@
             this.logoutRibbonBtn.Text = "Log Out";
             this.logoutRibbonBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
-            // helpRibbonButton
+            // panel1
             // 
-            this.helpRibbonButton.Image = global::Grade_Manager_DB_Controller.Properties.Resources.help;
-            this.helpRibbonButton.MinimumSize = new System.Drawing.Size(70, 50);
-            this.helpRibbonButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("helpRibbonButton.SmallImage")));
-            this.helpRibbonButton.Text = "Help";
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 129);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(914, 415);
+            this.panel1.TabIndex = 9;
+            // 
+            // mainStatusLabel
+            // 
+            this.mainStatusLabel.Name = "mainStatusLabel";
+            this.mainStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // MainForm
             // 
@@ -239,6 +248,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,6 +276,7 @@
         private System.Windows.Forms.RibbonButton statisticsRibbonButton;
         private System.Windows.Forms.RibbonButton rankingRButton;
         private System.Windows.Forms.RibbonButton helpRibbonButton;
+        private System.Windows.Forms.ToolStripStatusLabel mainStatusLabel;
 
 
     }

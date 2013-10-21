@@ -134,7 +134,8 @@ CREATE TABLE [SubjectClass] (
             ";
         #endregion
 
-        public const string DBQ_LOG_IN = "SELECT [account_id] FROM [Accounts] WHERE [account_name] = @name AND [account_password] = @password",
+        public const string DBQ_GET_ACCOUNT_DETAILS_LOG_IN = "SELECT * FROM [Accounts] WHERE [account_name] = @name AND [account_password] = @password",
+                            DBQ_GET_ACCOUNT_DETAILS_ID = "SELECT * FROM [Accounts] WHERE [account_id] = @id",
                             DBQ_GET_SEMESTER = "SELECT * FROM [Semester] WHERE [semester_id] = @id",
                             DBQ_GET_ALL_SEMESTERS = "SELECT [semester_id], ('Term:' || [current_term] || ', ' || [starting_school_year] || '-' || [ending_school_year] || ', ' || [Classes].[class_name]) AS [name] FROM [Semester] INNER JOIN [Classes] ON [Semester].[class_id] = [Classes].[class_id] WHERE [Semester].[account_id] = @account_id ORDER BY [starting_school_year], [ending_school_year] ASC",
                             DBQ_GET_ALL_SEMESTERS_TREE = "SELECT [semester_id], [Classes].[class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Semester] INNER JOIN [Classes] ON [Semester].[class_id] = [Classes].[class_id] WHERE [Semester].[account_id] = @account_id ORDER BY [Classes].[class_id] ASC",

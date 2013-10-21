@@ -45,16 +45,17 @@ namespace Grade_Manager
             //verify that the username and password is valid
             if ((id = CheckCredentials(usernameTxtBox.Text, passwordTxtBox.Text)) >= 0)
             {
-                User usr = new User();
-                usr.Id = id;
+                User usr = user_manager.GetUser(id);
+                
                 //should be hashed
                 //usr.Password = passwordTxtBox.Text; //shouldn't have stored the password here
-                usr.Name = usernameTxtBox.Text;
+                //usr.Name = usernameTxtBox.Text;
 
                 passwordTxtBox.Clear();
 
                 //Store the current user within this static variable
                 UserManager.CurrentUser = usr;
+
                 
                 //Profile_Form p_form = new Profile_Form();
 
