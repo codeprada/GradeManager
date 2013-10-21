@@ -55,18 +55,19 @@
             // saveFileDialog1
             // 
             this.saveFileDialog1.DefaultExt = "docx";
-            this.saveFileDialog1.Filter = "\"Word Files|*.docx\"";
+            this.saveFileDialog1.Filter = "Word Files|*.docx";
             this.saveFileDialog1.RestoreDirectory = true;
+            this.saveFileDialog1.SupportMultiDottedExtensions = true;
             this.saveFileDialog1.Title = "Save to Word File";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 24);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(439, 315);
+            this.tabControl1.Size = new System.Drawing.Size(439, 339);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage2
@@ -76,7 +77,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(431, 289);
+            this.tabPage2.Size = new System.Drawing.Size(431, 313);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Generation";
             this.tabPage2.UseVisualStyleBackColor = true;

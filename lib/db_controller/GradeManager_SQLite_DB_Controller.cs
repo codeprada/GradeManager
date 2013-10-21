@@ -188,12 +188,12 @@ VALUES
                             DBQ_GENERATE_REPORT = @"
 SELECT DISTINCT
 *,  
-(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test')) +
-((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz'))) /
-(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test') [average]
+(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id)) +
+((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz' AND Semester.semester_id = @semester_id))) /
+(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id) [average]
 FROM [Students] S 
 INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
 INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
@@ -217,12 +217,12 @@ FROM
 (
 SELECT DISTINCT
 *,  
-(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test')) +
-((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz'))) /
-(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test') [average]
+(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id)) +
+((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz' AND Semester.semester_id = @semester_id))) /
+(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
+G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id) [average]
 FROM [Students] S 
 INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
 INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
@@ -231,7 +231,7 @@ INNER JOIN [Assessments] A ON A.[semester_id] = SM.[semester_id]
 INNER JOIN [Assessment_Type] AT ON AT.assess_type_id = A.assess_type_id  
 INNER JOIN [Grades] G ON G.[assess_id] = A.[assess_id]
 INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
-WHERE SM.[semester_id] = @semester_id
+WHERE SM.[semester_id] = @semester_id {0}
 GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]) [Z]
 GROUP BY Z.student_id
 ORDER BY [overall] DESC

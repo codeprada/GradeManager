@@ -172,6 +172,12 @@
     <Compile Include="Forms\Statistics.Designer.cs">
       <DependentUpon>Statistics.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Rank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Rank.Designer.cs">
+      <DependentUpon>Rank.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Assessments.resx">
       <DependentUpon>Assessments.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Rank.resx">
+      <DependentUpon>Rank.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -301,6 +310,8 @@
     <Content Include="baptistacademylogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\help.png" />
+    <None Include="Resources\ranking.png" />
     <None Include="Resources\chart_line1.png" />
     <None Include="Resources\chart_line.png" />
     <None Include="Resources\statistics.png" />

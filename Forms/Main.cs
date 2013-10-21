@@ -171,9 +171,19 @@ namespace Grade_Manager
             Statistics stats_form = new Statistics();
             stats_form.TopLevel = false;
             panel1.Controls.Add(stats_form);
-            stats_form.Show();
             stats_form.Location = new Point((panel1.Width - stats_form.Width) / 2, (panel1.Height - stats_form.Height) / 2);
+            stats_form.Show();
             stats_form.BringToFront();
+        }
+
+        private void rankingRButton_Click(object sender, EventArgs e)
+        {
+            Rank rank_form = new Rank();
+            rank_form.TopLevel = false;
+            panel1.Controls.Add(rank_form);
+            rank_form.Location = new Point((panel1.Width - rank_form.Width) / 2, (panel1.Height - rank_form.Height) / 2);
+            rank_form.Show();
+            rank_form.BringToFront();
         }
     }
 }

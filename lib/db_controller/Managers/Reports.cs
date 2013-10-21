@@ -261,7 +261,7 @@ namespace Grade_Manager_DB_Controller
             return s += new String(' ', s.Length % n);
         }
 
-        private List<Reports> FetchData(int semester_id)
+        public List<Reports> FetchData(int semester_id)
         {
             List<Reports> reports = new List<Reports>();
 

@@ -60,6 +60,7 @@
     <Compile Include="Managers\Assessment.cs" />
     <Compile Include="Managers\Base.cs" />
     <Compile Include="Managers\Class.cs" />
+    <Compile Include="Managers\Ranks.cs" />
     <Compile Include="Objects\Database_Object.cs" />
     <Compile Include="GradeManager_SQLite_DB_Controller.cs" />
     <Compile Include="Managers\Semester.cs" />
