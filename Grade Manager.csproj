@@ -178,6 +178,12 @@
     <Compile Include="Forms\Rank.Designer.cs">
       <DependentUpon>Rank.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\WelcomeScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WelcomeScreen.Designer.cs">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Assessments.resx">
       <DependentUpon>Assessments.cs</DependentUpon>
     </EmbeddedResource>
@@ -234,6 +240,9 @@
     <EmbeddedResource Include="Forms\Rank.resx">
       <DependentUpon>Rank.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WelcomeScreen.resx">
+      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -277,9 +286,9 @@
     <Folder Include="lib\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="lib\db_controller\controller.csproj">
+    <ProjectReference Include="lib\db_controller\core.csproj">
       <Project>{daa5afe6-b9b4-4f39-b0ec-0ffd53866027}</Project>
-      <Name>controller</Name>
+      <Name>core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +319,21 @@
     <Content Include="baptistacademylogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\minimize_window-26.png" />
+    <None Include="Resources\maximize_window-26.png" />
+    <None Include="Resources\close_window-26.png" />
+    <None Include="Resources\help-32.png" />
+    <None Include="Resources\combo-32.png" />
+    <None Include="Resources\rating-32.png" />
+    <None Include="Resources\calculator-32.png" />
+    <None Include="Resources\age-32.png" />
+    <None Include="Resources\books-32.png" />
+    <None Include="Resources\student-32.png" />
+    <None Include="Resources\date_from-32.png" />
+    <None Include="Resources\login-32.png" />
+    <None Include="Resources\login-48.png" />
+    <None Include="Resources\WelcomeBackground2.png" />
+    <None Include="Resources\1382940545_45_Menu.png" />
     <None Include="Resources\help.png" />
     <None Include="Resources\ranking.png" />
     <None Include="Resources\chart_line1.png" />

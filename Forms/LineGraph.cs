@@ -126,7 +126,7 @@ namespace Grade_Manager_DB_Controller
 
             //Legend legend = new Legend("Legend");
 
-            chart.ChartAreas[0].AxisY.Minimum = minimum - (minimum % 5);
+            //chart.ChartAreas[0].AxisY.Minimum = minimum - (minimum % 5);
 
 
             return chart;
