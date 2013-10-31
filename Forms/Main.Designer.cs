@@ -33,24 +33,25 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
-            this.menuPanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.semester = new System.Windows.Forms.PictureBox();
+            this.menuPanel = new System.Windows.Forms.Panel();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.logoutPictureBox = new System.Windows.Forms.PictureBox();
+            this.helpPictureBox = new System.Windows.Forms.PictureBox();
+            this.statisticsPictureBox = new System.Windows.Forms.PictureBox();
+            this.reportsPictureBox = new System.Windows.Forms.PictureBox();
+            this.gradesPictureBox = new System.Windows.Forms.PictureBox();
+            this.ratingsPictureBox = new System.Windows.Forms.PictureBox();
+            this.assignmentsPictureBox = new System.Windows.Forms.PictureBox();
+            this.subjectsPictureBox = new System.Windows.Forms.PictureBox();
+            this.studentsPictureBox = new System.Windows.Forms.PictureBox();
+            this.semesterPictureBox = new System.Windows.Forms.PictureBox();
             this.loginPictureBox = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.ribbonOrbSubjects = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbGrades = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
@@ -60,27 +61,26 @@
             this.ribbonOrbRanking = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbHelp = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonTopLoginButton = new System.Windows.Forms.RibbonButton();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semester)).BeginInit();
+            this.menuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoutPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.helpPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradesPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ratingsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.assignmentsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.semesterPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // statusStrip1
@@ -110,159 +110,168 @@
             this.panel1.Size = new System.Drawing.Size(914, 768);
             this.panel1.TabIndex = 9;
             // 
-            // menuPanel
-            // 
-            this.menuPanel.Controls.Add(this.pictureBox14);
-            this.menuPanel.Controls.Add(this.pictureBox13);
-            this.menuPanel.Controls.Add(this.pictureBox12);
-            this.menuPanel.Controls.Add(this.label1);
-            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.menuPanel.Location = new System.Drawing.Point(0, 0);
-            this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(914, 35);
-            this.menuPanel.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Grade Manager";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 35);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 29);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox11);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox10);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox7);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox8);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox9);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox4);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox5);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox6);
-            this.splitContainer1.Panel1.Controls.Add(this.pictureBox3);
-            this.splitContainer1.Panel1.Controls.Add(this.semester);
+            this.splitContainer1.Panel1.Controls.Add(this.logoutPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.helpPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.statisticsPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.reportsPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.gradesPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.ratingsPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.assignmentsPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.subjectsPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.studentsPictureBox);
+            this.splitContainer1.Panel1.Controls.Add(this.semesterPictureBox);
             this.splitContainer1.Panel1.Controls.Add(this.loginPictureBox);
-            this.splitContainer1.Size = new System.Drawing.Size(914, 733);
+            this.splitContainer1.Size = new System.Drawing.Size(914, 739);
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 1;
             // 
-            // pictureBox11
+            // menuPanel
             // 
-            this.pictureBox11.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.logout;
-            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pictureBox11.Location = new System.Drawing.Point(0, 678);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox11.TabIndex = 10;
-            this.pictureBox11.TabStop = false;
+            this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.menuPanel.Controls.Add(this.maximizePictureBox);
+            this.menuPanel.Controls.Add(this.minimizePictureBox);
+            this.menuPanel.Controls.Add(this.closePictureBox);
+            this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Size = new System.Drawing.Size(914, 29);
+            this.menuPanel.TabIndex = 0;
             // 
-            // pictureBox10
+            // titleLabel
             // 
-            this.pictureBox10.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.help_32;
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox10.Location = new System.Drawing.Point(0, 555);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox10.TabIndex = 9;
-            this.pictureBox10.TabStop = false;
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
+            this.titleLabel.Location = new System.Drawing.Point(432, 9);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(124, 15);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Grade Manager";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox7
+            // toolTip1
             // 
-            this.pictureBox7.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.combo_32;
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox7.Location = new System.Drawing.Point(0, 495);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox7.TabIndex = 8;
-            this.pictureBox7.TabStop = false;
+            this.toolTip1.BackColor = System.Drawing.Color.Black;
+            this.toolTip1.ForeColor = System.Drawing.Color.White;
+            this.toolTip1.IsBalloon = true;
             // 
-            // pictureBox8
+            // logoutPictureBox
             // 
-            this.pictureBox8.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.reports;
-            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox8.Location = new System.Drawing.Point(0, 434);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox8.TabIndex = 7;
-            this.pictureBox8.TabStop = false;
+            this.logoutPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.logout;
+            this.logoutPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.logoutPictureBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logoutPictureBox.Location = new System.Drawing.Point(0, 684);
+            this.logoutPictureBox.Name = "logoutPictureBox";
+            this.logoutPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.logoutPictureBox.TabIndex = 10;
+            this.logoutPictureBox.TabStop = false;
             // 
-            // pictureBox9
+            // helpPictureBox
             // 
-            this.pictureBox9.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.calculator_32;
-            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox9.Location = new System.Drawing.Point(0, 312);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox9.TabIndex = 6;
-            this.pictureBox9.TabStop = false;
+            this.helpPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("helpPictureBox.BackgroundImage")));
+            this.helpPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.helpPictureBox.Location = new System.Drawing.Point(0, 555);
+            this.helpPictureBox.Name = "helpPictureBox";
+            this.helpPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.helpPictureBox.TabIndex = 9;
+            this.helpPictureBox.TabStop = false;
             // 
-            // pictureBox4
+            // statisticsPictureBox
             // 
-            this.pictureBox4.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.rating_32;
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 373);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
+            this.statisticsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("statisticsPictureBox.BackgroundImage")));
+            this.statisticsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.statisticsPictureBox.Location = new System.Drawing.Point(0, 495);
+            this.statisticsPictureBox.Name = "statisticsPictureBox";
+            this.statisticsPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.statisticsPictureBox.TabIndex = 8;
+            this.statisticsPictureBox.TabStop = false;
             // 
-            // pictureBox5
+            // reportsPictureBox
             // 
-            this.pictureBox5.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.age_32;
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox5.Location = new System.Drawing.Point(0, 251);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
+            this.reportsPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.check_book_32;
+            this.reportsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.reportsPictureBox.Location = new System.Drawing.Point(0, 434);
+            this.reportsPictureBox.Name = "reportsPictureBox";
+            this.reportsPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.reportsPictureBox.TabIndex = 7;
+            this.reportsPictureBox.TabStop = false;
             // 
-            // pictureBox6
+            // gradesPictureBox
             // 
-            this.pictureBox6.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.books_32;
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox6.Location = new System.Drawing.Point(0, 190);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox6.TabIndex = 3;
-            this.pictureBox6.TabStop = false;
+            this.gradesPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gradesPictureBox.BackgroundImage")));
+            this.gradesPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.gradesPictureBox.Location = new System.Drawing.Point(0, 312);
+            this.gradesPictureBox.Name = "gradesPictureBox";
+            this.gradesPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.gradesPictureBox.TabIndex = 6;
+            this.gradesPictureBox.TabStop = false;
             // 
-            // pictureBox3
+            // ratingsPictureBox
             // 
-            this.pictureBox3.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.student_32;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox3.Location = new System.Drawing.Point(0, 129);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(70, 55);
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
+            this.ratingsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ratingsPictureBox.BackgroundImage")));
+            this.ratingsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ratingsPictureBox.Location = new System.Drawing.Point(0, 373);
+            this.ratingsPictureBox.Name = "ratingsPictureBox";
+            this.ratingsPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.ratingsPictureBox.TabIndex = 5;
+            this.ratingsPictureBox.TabStop = false;
             // 
-            // semester
+            // assignmentsPictureBox
             // 
-            this.semester.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.date_from_32;
-            this.semester.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.semester.Location = new System.Drawing.Point(0, 68);
-            this.semester.Name = "semester";
-            this.semester.Size = new System.Drawing.Size(70, 55);
-            this.semester.TabIndex = 1;
-            this.semester.TabStop = false;
+            this.assignmentsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("assignmentsPictureBox.BackgroundImage")));
+            this.assignmentsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.assignmentsPictureBox.Location = new System.Drawing.Point(0, 251);
+            this.assignmentsPictureBox.Name = "assignmentsPictureBox";
+            this.assignmentsPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.assignmentsPictureBox.TabIndex = 4;
+            this.assignmentsPictureBox.TabStop = false;
+            // 
+            // subjectsPictureBox
+            // 
+            this.subjectsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("subjectsPictureBox.BackgroundImage")));
+            this.subjectsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.subjectsPictureBox.Location = new System.Drawing.Point(0, 190);
+            this.subjectsPictureBox.Name = "subjectsPictureBox";
+            this.subjectsPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.subjectsPictureBox.TabIndex = 3;
+            this.subjectsPictureBox.TabStop = false;
+            // 
+            // studentsPictureBox
+            // 
+            this.studentsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("studentsPictureBox.BackgroundImage")));
+            this.studentsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.studentsPictureBox.Location = new System.Drawing.Point(0, 129);
+            this.studentsPictureBox.Name = "studentsPictureBox";
+            this.studentsPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.studentsPictureBox.TabIndex = 2;
+            this.studentsPictureBox.TabStop = false;
+            // 
+            // semesterPictureBox
+            // 
+            this.semesterPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("semesterPictureBox.BackgroundImage")));
+            this.semesterPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.semesterPictureBox.Location = new System.Drawing.Point(0, 68);
+            this.semesterPictureBox.Name = "semesterPictureBox";
+            this.semesterPictureBox.Size = new System.Drawing.Size(70, 55);
+            this.semesterPictureBox.TabIndex = 1;
+            this.semesterPictureBox.TabStop = false;
             // 
             // loginPictureBox
             // 
-            this.loginPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.login_32;
+            this.loginPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loginPictureBox.BackgroundImage")));
             this.loginPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.loginPictureBox.Location = new System.Drawing.Point(0, 7);
             this.loginPictureBox.Name = "loginPictureBox";
@@ -270,49 +279,56 @@
             this.loginPictureBox.TabIndex = 0;
             this.loginPictureBox.TabStop = false;
             this.loginPictureBox.Tag = "Login";
-            this.loginPictureBox.Click += new System.EventHandler(this.loginBtn_Click);
+            this.loginPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.loginPictureBox_MouseClick);
+            this.loginPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.loginPictureBox_MouseDown);
+            this.loginPictureBox.MouseEnter += new System.EventHandler(this.loginPictureBox_MouseEnter);
+            this.loginPictureBox.MouseLeave += new System.EventHandler(this.loginPictureBox_MouseLeave);
+            this.loginPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.loginPictureBox_MouseUp);
             // 
-            // pictureBox14
+            // maximizePictureBox
             // 
-            this.pictureBox14.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.maximize_window_26;
-            this.pictureBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox14.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox14.Location = new System.Drawing.Point(836, 0);
-            this.pictureBox14.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.pictureBox14.Size = new System.Drawing.Size(26, 35);
-            this.pictureBox14.TabIndex = 2;
-            this.pictureBox14.TabStop = false;
-            this.pictureBox14.Click += new System.EventHandler(this.pictureBox14_Click);
+            this.maximizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
+            this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.maximizePictureBox.Location = new System.Drawing.Point(836, 0);
+            this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.maximizePictureBox.Name = "maximizePictureBox";
+            this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.maximizePictureBox.TabIndex = 2;
+            this.maximizePictureBox.TabStop = false;
+            this.maximizePictureBox.Click += new System.EventHandler(this.pictureBox14_Click);
             // 
-            // pictureBox13
+            // minimizePictureBox
             // 
-            this.pictureBox13.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.minimize_window_26;
-            this.pictureBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox13.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox13.Location = new System.Drawing.Point(862, 0);
-            this.pictureBox13.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.pictureBox13.Size = new System.Drawing.Size(26, 35);
-            this.pictureBox13.TabIndex = 1;
-            this.pictureBox13.TabStop = false;
-            this.pictureBox13.Click += new System.EventHandler(this.pictureBox13_Click);
+            this.minimizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
+            this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimizePictureBox.Location = new System.Drawing.Point(862, 0);
+            this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.minimizePictureBox.Name = "minimizePictureBox";
+            this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.minimizePictureBox.TabIndex = 1;
+            this.minimizePictureBox.TabStop = false;
+            this.minimizePictureBox.Click += new System.EventHandler(this.pictureBox13_Click);
             // 
-            // pictureBox12
+            // closePictureBox
             // 
-            this.pictureBox12.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.close_window_26;
-            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox12.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox12.Location = new System.Drawing.Point(888, 0);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.pictureBox12.Size = new System.Drawing.Size(26, 35);
-            this.pictureBox12.TabIndex = 0;
-            this.pictureBox12.TabStop = false;
-            this.pictureBox12.Click += new System.EventHandler(this.pictureBox12_Click);
+            this.closePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
+            this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePictureBox.Location = new System.Drawing.Point(888, 0);
+            this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.closePictureBox.TabIndex = 0;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Click += new System.EventHandler(this.pictureBox12_Click);
             // 
             // ribbonOrbSubjects
             // 
@@ -381,12 +397,6 @@
             this.ribbonTopLoginButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonTopLoginButton.SmallImage")));
             this.ribbonTopLoginButton.Text = "";
             // 
-            // toolTip1
-            // 
-            this.toolTip1.BackColor = System.Drawing.Color.Black;
-            this.toolTip1.ForeColor = System.Drawing.Color.White;
-            this.toolTip1.IsBalloon = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,25 +416,25 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.menuPanel.ResumeLayout(false);
-            this.menuPanel.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semester)).EndInit();
+            this.menuPanel.ResumeLayout(false);
+            this.menuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoutPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.helpPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.statisticsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reportsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gradesPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ratingsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.assignmentsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.subjectsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.semesterPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -450,21 +460,21 @@
         private System.Windows.Forms.RibbonButton ribbonTopLoginButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel menuPanel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox semester;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.PictureBox statisticsPictureBox;
+        private System.Windows.Forms.PictureBox reportsPictureBox;
+        private System.Windows.Forms.PictureBox gradesPictureBox;
+        private System.Windows.Forms.PictureBox ratingsPictureBox;
+        private System.Windows.Forms.PictureBox assignmentsPictureBox;
+        private System.Windows.Forms.PictureBox subjectsPictureBox;
+        private System.Windows.Forms.PictureBox studentsPictureBox;
+        private System.Windows.Forms.PictureBox semesterPictureBox;
         private System.Windows.Forms.PictureBox loginPictureBox;
-        private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.PictureBox pictureBox11;
-        private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.PictureBox pictureBox13;
-        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox helpPictureBox;
+        private System.Windows.Forms.PictureBox logoutPictureBox;
+        private System.Windows.Forms.PictureBox maximizePictureBox;
+        private System.Windows.Forms.PictureBox minimizePictureBox;
+        private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.ToolTip toolTip1;
 
 

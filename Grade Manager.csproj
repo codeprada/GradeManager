@@ -319,6 +319,12 @@
     <Content Include="baptistacademylogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\check_book-32.png" />
+    <None Include="Resources\login_32_over.png" />
+    <None Include="Resources\menu-background.png" />
+    <None Include="Resources\maximize_window-16.png" />
+    <None Include="Resources\minimize_window-16.png" />
+    <None Include="Resources\close_window-16.png" />
     <None Include="Resources\minimize_window-26.png" />
     <None Include="Resources\maximize_window-26.png" />
     <None Include="Resources\close_window-26.png" />

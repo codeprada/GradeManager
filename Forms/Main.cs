@@ -24,8 +24,6 @@ namespace Grade_Manager
             this.Height = working_area.Height;
             this.Location = working_area.Location;
 
-            toolTip1.SetToolTip(loginPictureBox, "Login\nClick here to access the system.");
-
             //ShowWelcomeScreen();
         }
 
@@ -43,14 +41,17 @@ namespace Grade_Manager
         {
             LogIn login_form = new LogIn();
             //login_form.MdiParent = this;
-            login_form.StartPosition = FormStartPosition.CenterParent;
+            login_form.TopLevel = false;
+            splitContainer1.Panel2.Controls.Add(login_form);
+            login_form.Location = new Point((splitContainer1.Panel2.Width - login_form.Width) / 2, (splitContainer1.Panel2.Height - login_form.Height) / 2);
+            login_form.BringToFront();
             login_form.ShowDialog();
-
+            
             if (UserManager.CurrentUser != null && UserManager.CurrentUser.Name.Length > 0)
             {
                 //User has been logged in
 
-                mainStatusLabel.Text += " - User: " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
+                mainStatusLabel.Text = "Hello " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
                 ShowControls(true);
                 //ShowProfileForm();
 
@@ -79,11 +80,6 @@ namespace Grade_Manager
                 gm_db_controller.CreateDatabase(); //Creates database
 
 
-        }
-
-        private void loginBtn_Click(object sender, EventArgs e)
-        {
-            Login();
         }
 
         private void logoutBtn_Click(object sender, EventArgs e)
@@ -230,6 +226,31 @@ namespace Grade_Manager
         private void pictureBox13_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void loginPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            ((PictureBox)(sender)).BackgroundImage = Grade_Manager_DB_Controller.Properties.Resources.login_32;
+        }
+
+        private void loginPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            ((PictureBox)(sender)).BackgroundImage = Grade_Manager_DB_Controller.Properties.Resources.login_32;
+        }
+
+        private void loginPictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            ((PictureBox)(sender)).BackgroundImage = Grade_Manager_DB_Controller.Properties.Resources.login_32_over;
+        }
+
+        private void loginPictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            ((PictureBox)(sender)).BackgroundImage = Grade_Manager_DB_Controller.Properties.Resources.login_32_over;
+        }
+
+        private void loginPictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            Login();
         }
     }
 }

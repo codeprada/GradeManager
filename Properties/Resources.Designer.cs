@@ -63,19 +63,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1382940545_45_Menu {
-            get {
-                object obj = ResourceManager.GetObject("1382940545_45_Menu", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap age_32 {
             get {
-                object obj = ResourceManager.GetObject("age-32", resourceCulture);
+                object obj = ResourceManager.GetObject("age_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +75,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap books_32 {
             get {
-                object obj = ResourceManager.GetObject("books-32", resourceCulture);
+                object obj = ResourceManager.GetObject("books_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +85,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap calculator_32 {
             get {
-                object obj = ResourceManager.GetObject("calculator-32", resourceCulture);
+                object obj = ResourceManager.GetObject("calculator_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,6 +113,16 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_book_32 {
+            get {
+                object obj = ResourceManager.GetObject("check_book_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap classes {
             get {
                 object obj = ResourceManager.GetObject("classes", resourceCulture);
@@ -133,9 +133,19 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap close_window_16 {
+            get {
+                object obj = ResourceManager.GetObject("close_window_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_window_26 {
             get {
-                object obj = ResourceManager.GetObject("close_window-26", resourceCulture);
+                object obj = ResourceManager.GetObject("close_window_26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -145,7 +155,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap combo_32 {
             get {
-                object obj = ResourceManager.GetObject("combo-32", resourceCulture);
+                object obj = ResourceManager.GetObject("combo_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -155,7 +165,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap date_from_32 {
             get {
-                object obj = ResourceManager.GetObject("date_from-32", resourceCulture);
+                object obj = ResourceManager.GetObject("date_from_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -185,7 +195,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap help_32 {
             get {
-                object obj = ResourceManager.GetObject("help-32", resourceCulture);
+                object obj = ResourceManager.GetObject("help_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -215,7 +225,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap login_32 {
             get {
-                object obj = ResourceManager.GetObject("login-32", resourceCulture);
+                object obj = ResourceManager.GetObject("login_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,9 +233,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap login_48 {
+        internal static System.Drawing.Bitmap login_32_over {
             get {
-                object obj = ResourceManager.GetObject("login-48", resourceCulture);
+                object obj = ResourceManager.GetObject("login_32_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +253,39 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap maximize_window_16 {
+            get {
+                object obj = ResourceManager.GetObject("maximize_window_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap maximize_window_26 {
             get {
-                object obj = ResourceManager.GetObject("maximize_window-26", resourceCulture);
+                object obj = ResourceManager.GetObject("maximize_window_26", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menu {
+            get {
+                object obj = ResourceManager.GetObject("menu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap minimize_window_16 {
+            get {
+                object obj = ResourceManager.GetObject("minimize_window_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -255,7 +295,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap minimize_window_26 {
             get {
-                object obj = ResourceManager.GetObject("minimize_window-26", resourceCulture);
+                object obj = ResourceManager.GetObject("minimize_window_26", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -285,7 +325,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap rating_32 {
             get {
-                object obj = ResourceManager.GetObject("rating-32", resourceCulture);
+                object obj = ResourceManager.GetObject("rating_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -325,7 +365,7 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap student_32 {
             get {
-                object obj = ResourceManager.GetObject("student-32", resourceCulture);
+                object obj = ResourceManager.GetObject("student_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

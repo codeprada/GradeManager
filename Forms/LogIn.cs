@@ -26,6 +26,7 @@ namespace Grade_Manager
             user_manager = new UserManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
         }
 
+
         /// <summary>
         /// Verifies with the UserManager class 
         /// if the user credentials are valid
