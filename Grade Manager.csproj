@@ -45,6 +45,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -56,9 +57,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DocX">
-      <HintPath>..\..\..\Downloads\DocX.dll</HintPath>
-    </Reference>
     <Reference Include="FastMember">
       <HintPath>packages\FastMember.1.0.0.11\lib\net40\FastMember.dll</HintPath>
     </Reference>
@@ -68,7 +66,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86" />
+    <Reference Include="System.Data.SQLite, Version=1.0.84.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\System.Data.SQLite\2012\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -184,6 +185,12 @@
     <Compile Include="Forms\WelcomeScreen.Designer.cs">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\StudentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StudentDetails.Designer.cs">
+      <DependentUpon>StudentDetails.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Forms\Assessments.resx">
       <DependentUpon>Assessments.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StudentDetails.resx">
+      <DependentUpon>StudentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -319,6 +329,19 @@
     <Content Include="baptistacademylogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\books_32_over.png" />
+    <None Include="Resources\calculator_32_over.png" />
+    <None Include="Resources\check_book_32_over.png" />
+    <None Include="Resources\close_window_16_over.png" />
+    <None Include="Resources\age_32_over.png" />
+    <None Include="Resources\combo_32_over.png" />
+    <None Include="Resources\date_from_32_over.png" />
+    <None Include="Resources\help_32_over.png" />
+    <None Include="Resources\logout_over.png" />
+    <None Include="Resources\student_32_over.png" />
+    <None Include="Resources\rating_32_over.png" />
+    <None Include="Resources\minimize_window_16_over.png" />
+    <None Include="Resources\maximize_window_16_over.png" />
     <None Include="Resources\check_book-32.png" />
     <None Include="Resources\login_32_over.png" />
     <None Include="Resources\menu-background.png" />

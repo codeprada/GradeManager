@@ -240,7 +240,7 @@ ORDER BY [overall] DESC
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
-        public static string CONNECTION_STRING = "Data Source=" + DB_PATH + "; Version=3";
+        public static string CONNECTION_STRING = "Data Source=" + DB_PATH + ";Pooling=true;FailIfMissing=false";//"Data Source=" + DB_PATH + "; Version=3";
 
         public GradeManager_SQLite_DB_Controller() { }
 

@@ -29,52 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.studentGridView = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Student_Management));
             this.studentDataGridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.midNameTxt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.saveBtn = new System.Windows.Forms.Button();
-            this.classesComboBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dobDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lastNameTxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.firstNameTxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.studentGridView = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.maleRadioButton = new System.Windows.Forms.RadioButton();
-            this.femaleRadioButton = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).BeginInit();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.studentDataGridContextMenu.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).BeginInit();
             this.panel2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // studentGridView
-            // 
-            this.studentGridView.AllowUserToAddRows = false;
-            this.studentGridView.AllowUserToDeleteRows = false;
-            this.studentGridView.AllowUserToOrderColumns = true;
-            this.studentGridView.AllowUserToResizeRows = false;
-            this.studentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.studentGridView.ContextMenuStrip = this.studentDataGridContextMenu;
-            this.studentGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentGridView.Location = new System.Drawing.Point(0, 0);
-            this.studentGridView.Name = "studentGridView";
-            this.studentGridView.ReadOnly = true;
-            this.studentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.studentGridView.ShowEditingIcon = false;
-            this.studentGridView.Size = new System.Drawing.Size(705, 238);
-            this.studentGridView.TabIndex = 1;
             // 
             // studentDataGridContextMenu
             // 
@@ -96,232 +71,161 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
-            // groupBox2
+            // studentGridView
             // 
-            this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.midNameTxt);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.saveBtn);
-            this.groupBox2.Controls.Add(this.classesComboBox);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.dobDatePicker);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.lastNameTxt);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.firstNameTxt);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(3, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(310, 184);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Create New Student";
-            // 
-            // midNameTxt
-            // 
-            this.midNameTxt.Location = new System.Drawing.Point(78, 76);
-            this.midNameTxt.Name = "midNameTxt";
-            this.midNameTxt.Size = new System.Drawing.Size(208, 20);
-            this.midNameTxt.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 79);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Middle Name";
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveBtn.Location = new System.Drawing.Point(229, 155);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveBtn.TabIndex = 5;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
-            // 
-            // classesComboBox
-            // 
-            this.classesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.classesComboBox.FormattingEnabled = true;
-            this.classesComboBox.Location = new System.Drawing.Point(78, 128);
-            this.classesComboBox.Name = "classesComboBox";
-            this.classesComboBox.Size = new System.Drawing.Size(86, 21);
-            this.classesComboBox.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Grade";
-            // 
-            // dobDatePicker
-            // 
-            this.dobDatePicker.Location = new System.Drawing.Point(78, 21);
-            this.dobDatePicker.Name = "dobDatePicker";
-            this.dobDatePicker.Size = new System.Drawing.Size(208, 20);
-            this.dobDatePicker.TabIndex = 0;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Date of Birth";
-            // 
-            // lastNameTxt
-            // 
-            this.lastNameTxt.Location = new System.Drawing.Point(78, 102);
-            this.lastNameTxt.Name = "lastNameTxt";
-            this.lastNameTxt.Size = new System.Drawing.Size(208, 20);
-            this.lastNameTxt.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Last Name";
-            // 
-            // firstNameTxt
-            // 
-            this.firstNameTxt.Location = new System.Drawing.Point(78, 53);
-            this.firstNameTxt.Name = "firstNameTxt";
-            this.firstNameTxt.Size = new System.Drawing.Size(208, 20);
-            this.firstNameTxt.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "First Name";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Location = new System.Drawing.Point(319, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(362, 156);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Filter";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.groupBox2);
-            this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(705, 193);
-            this.panel1.TabIndex = 4;
+            this.studentGridView.AllowUserToAddRows = false;
+            this.studentGridView.AllowUserToDeleteRows = false;
+            this.studentGridView.AllowUserToOrderColumns = true;
+            this.studentGridView.AllowUserToResizeRows = false;
+            this.studentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.studentGridView.ContextMenuStrip = this.studentDataGridContextMenu;
+            this.studentGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentGridView.Location = new System.Drawing.Point(0, 0);
+            this.studentGridView.Name = "studentGridView";
+            this.studentGridView.ReadOnly = true;
+            this.studentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.studentGridView.ShowEditingIcon = false;
+            this.studentGridView.Size = new System.Drawing.Size(685, 470);
+            this.studentGridView.TabIndex = 1;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.studentGridView);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 193);
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.maximizePictureBox);
+            this.panel2.Controls.Add(this.minimizePictureBox);
+            this.panel2.Controls.Add(this.closePictureBox);
+            this.panel2.Controls.Add(this.titleLabel);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(705, 238);
-            this.panel2.TabIndex = 5;
+            this.panel2.Size = new System.Drawing.Size(685, 29);
+            this.panel2.TabIndex = 2;
             // 
-            // groupBox1
+            // maximizePictureBox
             // 
-            this.groupBox1.Controls.Add(this.femaleRadioButton);
-            this.groupBox1.Controls.Add(this.maleRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(171, 121);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(115, 28);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
+            this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.maximizePictureBox.Location = new System.Drawing.Point(607, 0);
+            this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.maximizePictureBox.Name = "maximizePictureBox";
+            this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.maximizePictureBox.TabIndex = 6;
+            this.maximizePictureBox.TabStop = false;
+            this.maximizePictureBox.Tag = "maximize";
             // 
-            // maleRadioButton
+            // minimizePictureBox
             // 
-            this.maleRadioButton.AutoSize = true;
-            this.maleRadioButton.Location = new System.Drawing.Point(7, 10);
-            this.maleRadioButton.Name = "maleRadioButton";
-            this.maleRadioButton.Size = new System.Drawing.Size(48, 17);
-            this.maleRadioButton.TabIndex = 0;
-            this.maleRadioButton.TabStop = true;
-            this.maleRadioButton.Text = "Male";
-            this.maleRadioButton.UseVisualStyleBackColor = true;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
+            this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimizePictureBox.Location = new System.Drawing.Point(633, 0);
+            this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.minimizePictureBox.Name = "minimizePictureBox";
+            this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.minimizePictureBox.TabIndex = 5;
+            this.minimizePictureBox.TabStop = false;
+            this.minimizePictureBox.Tag = "minimize";
             // 
-            // femaleRadioButton
+            // closePictureBox
             // 
-            this.femaleRadioButton.AutoSize = true;
-            this.femaleRadioButton.Location = new System.Drawing.Point(59, 10);
-            this.femaleRadioButton.Name = "femaleRadioButton";
-            this.femaleRadioButton.Size = new System.Drawing.Size(59, 17);
-            this.femaleRadioButton.TabIndex = 1;
-            this.femaleRadioButton.TabStop = true;
-            this.femaleRadioButton.Text = "Female";
-            this.femaleRadioButton.UseVisualStyleBackColor = true;
+            this.closePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
+            this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePictureBox.Location = new System.Drawing.Point(659, 0);
+            this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.closePictureBox.TabIndex = 3;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Tag = "close";
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.titleLabel.Location = new System.Drawing.Point(279, 7);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(169, 15);
+            this.titleLabel.TabIndex = 4;
+            this.titleLabel.Text = "Student Management";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(685, 499);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.studentGridView);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 29);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(685, 470);
+            this.panel3.TabIndex = 3;
             // 
             // Student_Management
             // 
-            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 431);
-            this.Controls.Add(this.panel2);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(693, 507);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Student_Management";
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Student Management";
             this.Load += new System.EventHandler(this.Student_Management_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).EndInit();
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Student_Management_Paint);
             this.studentDataGridContextMenu.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView studentGridView;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox classesComboBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dobDatePicker;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox lastNameTxt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox firstNameTxt;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.ContextMenuStrip studentDataGridContextMenu;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.TextBox midNameTxt;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton femaleRadioButton;
-        private System.Windows.Forms.RadioButton maleRadioButton;
+        private System.Windows.Forms.DataGridView studentGridView;
+        private System.Windows.Forms.PictureBox maximizePictureBox;
+        private System.Windows.Forms.PictureBox minimizePictureBox;
+        private System.Windows.Forms.PictureBox closePictureBox;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
 
 
     }

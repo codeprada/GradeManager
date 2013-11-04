@@ -57,9 +57,7 @@ namespace Grade_Manager_DB_Controller
 
             using (var document_report = DocX.Create(saveas))
             {
-                //Size of a legal size paper
-                document_report.PageHeight = 1344.0f;
-                document_report.PageWidth = 816.0f;
+
 
                 foreach (var id in reports.Select(x => x._Student.ID).Distinct())
                 {
@@ -200,6 +198,7 @@ namespace Grade_Manager_DB_Controller
 
                     int count = 1;
                     string buffer;
+
                     var last = g.Last();
                     foreach (var g_pair in g)
                     {
@@ -223,8 +222,9 @@ namespace Grade_Manager_DB_Controller
                         .AppendPicture(pic);
 
                     document_report.InsertParagraph("________________________\nADMINISTRATOR", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman"), Bold = true });
-
+                    
                     document_report.InsertSectionPageBreak();
+                    
                 }
 
                 document_report.AddFooters();
@@ -238,9 +238,10 @@ namespace Grade_Manager_DB_Controller
 
                 document_report.Footers.odd.Paragraphs.Add(footer);
 
+                //Size of a legal size paper
                 document_report.PageHeight = 1344.0f;
                 document_report.PageWidth = 816.0f;
-                
+
                 
 
                 document_report.Save();

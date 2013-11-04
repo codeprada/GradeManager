@@ -14,6 +14,20 @@ namespace Grade_Manager_DB_Controller
         public double Max { get; set; }
     }
 
+    public class StudentGrade
+    {
+        public StudentGrade(int student, int assessment, double grade)
+        {
+            Student = student;
+            Assessment = assessment;
+            Grade = grade;
+        }
+
+        public int Student { get; set; }
+        public int Assessment { get; set; }
+        public double Grade { get; set; }
+    }
+
     public class Grade_Manager : BaseManager
     {
         private static List<Grade> grades = new List<Grade>();
@@ -151,5 +165,28 @@ namespace Grade_Manager_DB_Controller
                 }
             }
         }
+
+        public void Save(List<StudentGrade> sg)
+        {
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_GRADE, connection))
+                {
+                    connection.Open();
+
+                    foreach (StudentGrade s in sg)
+                    {
+
+                        command.Parameters.AddWithValue("@student_id", s.Student);
+                        command.Parameters.AddWithValue("@assess_id", s.Assessment);
+                        command.Parameters.AddWithValue("@grade", s.Grade);
+
+                        command.ExecuteNonQuery();
+                    }
+
+                }
+            }
+        }
+
     }
 }

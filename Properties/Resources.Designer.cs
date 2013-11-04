@@ -63,9 +63,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap age_32 {
+        internal static System.Drawing.Bitmap assignment {
             get {
-                object obj = ResourceManager.GetObject("age_32", resourceCulture);
+                object obj = ResourceManager.GetObject("assignment", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,19 +73,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap books_32 {
+        internal static System.Drawing.Bitmap assignment_over {
             get {
-                object obj = ResourceManager.GetObject("books_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap calculator_32 {
-            get {
-                object obj = ResourceManager.GetObject("calculator_32", resourceCulture);
+                object obj = ResourceManager.GetObject("assignment_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +103,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap check_book_32 {
+        internal static System.Drawing.Bitmap close_window {
             get {
-                object obj = ResourceManager.GetObject("check_book_32", resourceCulture);
+                object obj = ResourceManager.GetObject("close_window", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,49 +113,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap classes {
+        internal static System.Drawing.Bitmap close_window_over {
             get {
-                object obj = ResourceManager.GetObject("classes", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap close_window_16 {
-            get {
-                object obj = ResourceManager.GetObject("close_window_16", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap close_window_26 {
-            get {
-                object obj = ResourceManager.GetObject("close_window_26", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap combo_32 {
-            get {
-                object obj = ResourceManager.GetObject("combo_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap date_from_32 {
-            get {
-                object obj = ResourceManager.GetObject("date_from_32", resourceCulture);
+                object obj = ResourceManager.GetObject("close_window_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,6 +133,16 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap grades_over {
+            get {
+                object obj = ResourceManager.GetObject("grades_over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap help {
             get {
                 object obj = ResourceManager.GetObject("help", resourceCulture);
@@ -193,19 +153,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap help_32 {
+        internal static System.Drawing.Bitmap help_over {
             get {
-                object obj = ResourceManager.GetObject("help_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap library {
-            get {
-                object obj = ResourceManager.GetObject("library", resourceCulture);
+                object obj = ResourceManager.GetObject("help_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -223,19 +173,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap login_32 {
+        internal static System.Drawing.Bitmap login_over {
             get {
-                object obj = ResourceManager.GetObject("login_32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap login_32_over {
-            get {
-                object obj = ResourceManager.GetObject("login_32_over", resourceCulture);
+                object obj = ResourceManager.GetObject("login_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,9 +193,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maximize_window_16 {
+        internal static System.Drawing.Bitmap logout_over {
             get {
-                object obj = ResourceManager.GetObject("maximize_window_16", resourceCulture);
+                object obj = ResourceManager.GetObject("logout_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,9 +203,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap maximize_window_26 {
+        internal static System.Drawing.Bitmap maximize_window {
             get {
-                object obj = ResourceManager.GetObject("maximize_window_26", resourceCulture);
+                object obj = ResourceManager.GetObject("maximize_window", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +213,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menu {
+        internal static System.Drawing.Bitmap maximize_window_over {
             get {
-                object obj = ResourceManager.GetObject("menu", resourceCulture);
+                object obj = ResourceManager.GetObject("maximize_window_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -283,9 +223,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap minimize_window_16 {
+        internal static System.Drawing.Bitmap minimize_window {
             get {
-                object obj = ResourceManager.GetObject("minimize_window_16", resourceCulture);
+                object obj = ResourceManager.GetObject("minimize_window", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +233,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap minimize_window_26 {
+        internal static System.Drawing.Bitmap minimize_window_over {
             get {
-                object obj = ResourceManager.GetObject("minimize_window_26", resourceCulture);
+                object obj = ResourceManager.GetObject("minimize_window_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -303,9 +243,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap profiles {
+        internal static System.Drawing.Bitmap rating {
             get {
-                object obj = ResourceManager.GetObject("profiles", resourceCulture);
+                object obj = ResourceManager.GetObject("rating", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -313,19 +253,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ranking {
+        internal static System.Drawing.Bitmap rating_over {
             get {
-                object obj = ResourceManager.GetObject("ranking", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rating_32 {
-            get {
-                object obj = ResourceManager.GetObject("rating_32", resourceCulture);
+                object obj = ResourceManager.GetObject("rating_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +273,36 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap reports_over {
+            get {
+                object obj = ResourceManager.GetObject("reports_over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap semester {
+            get {
+                object obj = ResourceManager.GetObject("semester", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap semester_over {
+            get {
+                object obj = ResourceManager.GetObject("semester_over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap statistics {
             get {
                 object obj = ResourceManager.GetObject("statistics", resourceCulture);
@@ -353,9 +313,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap stats {
+        internal static System.Drawing.Bitmap statistics_over {
             get {
-                object obj = ResourceManager.GetObject("stats", resourceCulture);
+                object obj = ResourceManager.GetObject("statistics_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,9 +323,9 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap student_32 {
+        internal static System.Drawing.Bitmap students {
             get {
-                object obj = ResourceManager.GetObject("student_32", resourceCulture);
+                object obj = ResourceManager.GetObject("students", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,9 +333,29 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap user {
+        internal static System.Drawing.Bitmap students_over {
             get {
-                object obj = ResourceManager.GetObject("user", resourceCulture);
+                object obj = ResourceManager.GetObject("students_over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap subjects {
+            get {
+                object obj = ResourceManager.GetObject("subjects", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap subjects_over {
+            get {
+                object obj = ResourceManager.GetObject("subjects_over", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

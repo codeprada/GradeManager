@@ -85,6 +85,28 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
+        public void Save(List<Assessment> l)
+        {
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_ASSESSMENT, connection))
+                {
+                    connection.Open();
+
+                    foreach (Assessment a in l)
+                    {
+                        command.Parameters.AddWithValue("@assess_type_id", a.Type);
+                        command.Parameters.AddWithValue("@subject_id", a.Subject);
+                        command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
+                        command.Parameters.AddWithValue("@date", a.Date);
+
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }  
+        }
+
         public List<Assessment> GetAssessments()
         {
             List<Assessment> assessments = new List<Assessment>();

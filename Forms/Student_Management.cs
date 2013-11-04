@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Runtime.InteropServices;
 
 namespace Grade_Manager_DB_Controller
 {
@@ -53,7 +54,7 @@ namespace Grade_Manager_DB_Controller
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            Student student = new Student()
+            /*Student student = new Student()
             {
                 FirstName = firstNameTxt.Text,
                 LastName = lastNameTxt.Text,
@@ -81,7 +82,7 @@ namespace Grade_Manager_DB_Controller
             else
             {
                 MessageBox.Show("There was an error while saving Student.", "Error Saving", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         private bool CreateOrSaveStudentDetails()
@@ -101,8 +102,32 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadClasses()
         {
-            ClassManager class_manager = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-            class_manager.LoadToComboBox(classesComboBox);
+            /*ClassManager class_manager = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            class_manager.LoadToComboBox(classesComboBox);*/
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect, // x-coordinate of upper-left corner
+            int nTopRect, // y-coordinate of upper-left corner
+            int nRightRect, // x-coordinate of lower-right corner
+            int nBottomRect, // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+
+        private void Student_Management_Paint(object sender, PaintEventArgs e)
+        {
+            Form s = sender as Form;
+
+            s.Region = Region.FromHrgn(CreateRoundRectRgn(5, 5, s.Width - 5, s.Height -5, s.Width, s.Height));
+
         }
     }
 }
