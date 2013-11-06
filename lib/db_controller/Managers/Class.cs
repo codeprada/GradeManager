@@ -59,6 +59,31 @@ namespace Grade_Manager_DB_Controller
             return id;
         }
 
+        public Class GetClassOfStudent(int student_id)
+        {
+            Class c = null;
+
+            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
+            {
+                using (var command = new SQLiteCommand(connection))
+                {
+                    command.CommandText = GradeManager_SQLite_DB_Controller.DBQ_GET_CLASS_OF_STUDENT;
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("student_id", student_id);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            c = reader;
+                    }
+                }
+            }
+
+            return c;
+        }
+
         public List<Class> GetAllClasses()
         {
             List<Class> classes = new List<Class>();

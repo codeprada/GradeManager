@@ -87,8 +87,9 @@
             this.studentGridView.ReadOnly = true;
             this.studentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.studentGridView.ShowEditingIcon = false;
-            this.studentGridView.Size = new System.Drawing.Size(685, 470);
+            this.studentGridView.Size = new System.Drawing.Size(689, 474);
             this.studentGridView.TabIndex = 1;
+            this.studentGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.studentGridView_CellContextMenuStripNeeded);
             // 
             // panel2
             // 
@@ -100,8 +101,9 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(685, 29);
+            this.panel2.Size = new System.Drawing.Size(689, 29);
             this.panel2.TabIndex = 2;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // maximizePictureBox
             // 
@@ -110,7 +112,7 @@
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(607, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(611, 0);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -118,6 +120,11 @@
             this.maximizePictureBox.TabIndex = 6;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Click += new System.EventHandler(this.maximizePictureBox_Click);
+            this.maximizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.maximizePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.maximizePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.maximizePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
             // 
             // minimizePictureBox
             // 
@@ -126,7 +133,7 @@
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(633, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(637, 0);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -134,6 +141,11 @@
             this.minimizePictureBox.TabIndex = 5;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Click += new System.EventHandler(this.minimizePictureBox_Click);
+            this.minimizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.minimizePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.minimizePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.minimizePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
             // 
             // closePictureBox
             // 
@@ -142,7 +154,7 @@
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(659, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(663, 0);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -150,6 +162,11 @@
             this.closePictureBox.TabIndex = 3;
             this.closePictureBox.TabStop = false;
             this.closePictureBox.Tag = "close";
+            this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
+            this.closePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.closePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.closePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
             // 
             // titleLabel
             // 
@@ -169,9 +186,9 @@
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 4);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(685, 499);
+            this.panel1.Size = new System.Drawing.Size(689, 503);
             this.panel1.TabIndex = 4;
             // 
             // panel3
@@ -180,7 +197,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 29);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(685, 470);
+            this.panel3.Size = new System.Drawing.Size(689, 474);
             this.panel3.TabIndex = 3;
             // 
             // Student_Management
@@ -193,7 +210,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Student_Management";
-            this.Padding = new System.Windows.Forms.Padding(4);
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;

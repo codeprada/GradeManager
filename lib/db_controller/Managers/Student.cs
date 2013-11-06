@@ -86,6 +86,39 @@ namespace Grade_Manager_DB_Controller
             return row;
         }
 
+        public bool Update(Student student)
+        {
+            bool success = false;
+
+            if (student.isFilled())
+            {
+                using (var connection = new SQLiteConnection(ConnectionString))
+                {
+                    using (var command = new SQLiteCommand())
+                    {
+                        command.CommandText = GradeManager_SQLite_DB_Controller.DBQ_UPDATE_STUDENT;
+                        command.Connection = connection;
+                        command.CommandType = CommandType.Text;
+
+                        command.Parameters.AddWithValue("@student_id", student.ID);
+                        command.Parameters.AddWithValue("@first_name", student.FirstName);
+                        command.Parameters.AddWithValue("@last_name", student.LastName);
+                        command.Parameters.AddWithValue("@middle_name", student.MiddleName);
+                        command.Parameters.AddWithValue("@gender", student.Gender.ToUpper().Substring(0, 1));
+                        command.Parameters.AddWithValue("@dob", student.DateOfBirth.ToString("yyyy-MM-dd"));
+
+
+                        connection.Open();
+
+                        if (command.ExecuteNonQuery() > 0)
+                            success = true;
+                    }
+                }
+            }
+
+            return success;
+        }
+
         public Student Get(int id)
         {
             Student student = null;

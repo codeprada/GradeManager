@@ -17,8 +17,6 @@ namespace Grade_Manager
 {
     public partial class MainForm : Form
     {
-        private Dictionary<string, Bitmap> icons;
-
         public MainForm()
         {
             InitializeComponent();
@@ -33,58 +31,38 @@ namespace Grade_Manager
             this.Height = working_area.Height;
             this.Location = working_area.Location;
 
-            icons = new Dictionary<string, Bitmap>();
-
             //ShowWelcomeScreen();
             CenterTitle();
 
             //Add icons to dictionary. Prevents new handles from being created when calling from ResourceManager
-            icons.Add("login", Grade_Manager_DB_Controller.Properties.Resources.login);
-            icons.Add("login_over", Grade_Manager_DB_Controller.Properties.Resources.login_over);
-            icons.Add("assignments", Grade_Manager_DB_Controller.Properties.Resources.assignment);
-            icons.Add("assignments_over", Grade_Manager_DB_Controller.Properties.Resources.assignment_over);
-            icons.Add("close", Grade_Manager_DB_Controller.Properties.Resources.close_window);
-            icons.Add("close_over", Grade_Manager_DB_Controller.Properties.Resources.close_window_over);
-            icons.Add("grades", Grade_Manager_DB_Controller.Properties.Resources.grades);
-            icons.Add("grades_over", Grade_Manager_DB_Controller.Properties.Resources.grades_over);
-            icons.Add("help", Grade_Manager_DB_Controller.Properties.Resources.help);
-            icons.Add("help_over", Grade_Manager_DB_Controller.Properties.Resources.help_over);
-            icons.Add("logout", Grade_Manager_DB_Controller.Properties.Resources.logout);
-            icons.Add("logout_over", Grade_Manager_DB_Controller.Properties.Resources.logout_over);
-            icons.Add("maximize", Grade_Manager_DB_Controller.Properties.Resources.maximize_window);
-            icons.Add("maximize_over", Grade_Manager_DB_Controller.Properties.Resources.maximize_window_over);
-            icons.Add("minimize", Grade_Manager_DB_Controller.Properties.Resources.minimize_window);
-            icons.Add("minimize_over", Grade_Manager_DB_Controller.Properties.Resources.minimize_window_over);
-            icons.Add("ratings", Grade_Manager_DB_Controller.Properties.Resources.rating);
-            icons.Add("ratings_over", Grade_Manager_DB_Controller.Properties.Resources.rating_over);
-            icons.Add("reports", Grade_Manager_DB_Controller.Properties.Resources.reports);
-            icons.Add("reports_over", Grade_Manager_DB_Controller.Properties.Resources.reports_over);
-            icons.Add("semester", Grade_Manager_DB_Controller.Properties.Resources.semester);
-            icons.Add("semester_over", Grade_Manager_DB_Controller.Properties.Resources.semester_over);
-            icons.Add("statistics", Grade_Manager_DB_Controller.Properties.Resources.statistics);
-            icons.Add("statistics_over", Grade_Manager_DB_Controller.Properties.Resources.statistics_over);
-            icons.Add("students", Grade_Manager_DB_Controller.Properties.Resources.students);
-            icons.Add("students_over", Grade_Manager_DB_Controller.Properties.Resources.students_over);
-            icons.Add("subjects", Grade_Manager_DB_Controller.Properties.Resources.subjects);
-            icons.Add("subjects_over", Grade_Manager_DB_Controller.Properties.Resources.subjects_over);
-        }
-
-        public const int WM_NCLBUTTONDOWN = 0xA1;
-        public const int HT_CAPTION = 0x2;
-
-        [DllImportAttribute("user32.dll")]
-        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [DllImportAttribute("user32.dll")]
-        public static extern bool ReleaseCapture();
-
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logInToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Login();
+            Styles.Icons.Add("login", Grade_Manager_DB_Controller.Properties.Resources.login);
+            Styles.Icons.Add("login_over", Grade_Manager_DB_Controller.Properties.Resources.login_over);
+            Styles.Icons.Add("assignments", Grade_Manager_DB_Controller.Properties.Resources.assignment);
+            Styles.Icons.Add("assignments_over", Grade_Manager_DB_Controller.Properties.Resources.assignment_over);
+            Styles.Icons.Add("close", Grade_Manager_DB_Controller.Properties.Resources.close_window);
+            Styles.Icons.Add("close_over", Grade_Manager_DB_Controller.Properties.Resources.close_window_over);
+            Styles.Icons.Add("grades", Grade_Manager_DB_Controller.Properties.Resources.grades);
+            Styles.Icons.Add("grades_over", Grade_Manager_DB_Controller.Properties.Resources.grades_over);
+            Styles.Icons.Add("help", Grade_Manager_DB_Controller.Properties.Resources.help);
+            Styles.Icons.Add("help_over", Grade_Manager_DB_Controller.Properties.Resources.help_over);
+            Styles.Icons.Add("logout", Grade_Manager_DB_Controller.Properties.Resources.logout);
+            Styles.Icons.Add("logout_over", Grade_Manager_DB_Controller.Properties.Resources.logout_over);
+            Styles.Icons.Add("maximize", Grade_Manager_DB_Controller.Properties.Resources.maximize_window);
+            Styles.Icons.Add("maximize_over", Grade_Manager_DB_Controller.Properties.Resources.maximize_window_over);
+            Styles.Icons.Add("minimize", Grade_Manager_DB_Controller.Properties.Resources.minimize_window);
+            Styles.Icons.Add("minimize_over", Grade_Manager_DB_Controller.Properties.Resources.minimize_window_over);
+            Styles.Icons.Add("ratings", Grade_Manager_DB_Controller.Properties.Resources.rating);
+            Styles.Icons.Add("ratings_over", Grade_Manager_DB_Controller.Properties.Resources.rating_over);
+            Styles.Icons.Add("reports", Grade_Manager_DB_Controller.Properties.Resources.reports);
+            Styles.Icons.Add("reports_over", Grade_Manager_DB_Controller.Properties.Resources.reports_over);
+            Styles.Icons.Add("semester", Grade_Manager_DB_Controller.Properties.Resources.semester);
+            Styles.Icons.Add("semester_over", Grade_Manager_DB_Controller.Properties.Resources.semester_over);
+            Styles.Icons.Add("statistics", Grade_Manager_DB_Controller.Properties.Resources.statistics);
+            Styles.Icons.Add("statistics_over", Grade_Manager_DB_Controller.Properties.Resources.statistics_over);
+            Styles.Icons.Add("students", Grade_Manager_DB_Controller.Properties.Resources.students);
+            Styles.Icons.Add("students_over", Grade_Manager_DB_Controller.Properties.Resources.students_over);
+            Styles.Icons.Add("subjects", Grade_Manager_DB_Controller.Properties.Resources.subjects);
+            Styles.Icons.Add("subjects_over", Grade_Manager_DB_Controller.Properties.Resources.subjects_over);
         }
 
         private void Login()
@@ -205,30 +183,22 @@ namespace Grade_Manager
 
         private void PictureBox_MouseLeave(object sender, EventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-
-            pb.BackgroundImage = icons[pb.Tag.ToString()];
+            Styles.PictureBox_MouseLeave(sender, e);
         }
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-
-            pb.BackgroundImage = icons[pb.Tag.ToString()];
+            Styles.PictureBox_MouseDown(sender, e);
         }
 
         private void PictureBox_MouseUp(object sender, MouseEventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-
-            pb.BackgroundImage = icons[pb.Tag.ToString() + "_over"];
+            Styles.PictureBox_MouseUp(sender, e);
         }
 
         private void PictureBox_MouseEnter(object sender, EventArgs e)
         {
-            PictureBox pb = (PictureBox)sender;
-
-            pb.BackgroundImage = icons[pb.Tag.ToString() + "_over"];
+            Styles.PictureBox_MouseEnter(sender, e);
         }
 
         private void MainForm_Resize(object sender, EventArgs e)
@@ -332,11 +302,7 @@ namespace Grade_Manager
 
         private void menuPanel_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
+            Styles.MouseDown_Drag(sender, e);
         }
     }
 }

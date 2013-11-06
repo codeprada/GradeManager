@@ -80,6 +80,7 @@
     <Compile Include="Managers\User.cs" />
     <Compile Include="Managers\Reports.cs" />
     <Compile Include="Managers\Stats.cs" />
+    <Compile Include="Managers\Styles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
