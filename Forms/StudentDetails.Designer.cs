@@ -28,14 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDetails));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.savePictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.femaleRadioButton = new System.Windows.Forms.RadioButton();
             this.maleRadioButton = new System.Windows.Forms.RadioButton();
             this.midNameTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.classesComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dobDatePicker = new System.Windows.Forms.DateTimePicker();
@@ -50,21 +51,26 @@
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.savePictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.savePictureBox);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.midNameTxt);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.saveBtn);
             this.groupBox2.Controls.Add(this.classesComboBox);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dobDatePicker);
@@ -76,10 +82,28 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(5, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(382, 328);
+            this.groupBox2.Size = new System.Drawing.Size(295, 210);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
+            // 
+            // savePictureBox
+            // 
+            this.savePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.savePictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.save;
+            this.savePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.savePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.savePictureBox.Location = new System.Drawing.Point(134, 158);
+            this.savePictureBox.Name = "savePictureBox";
+            this.savePictureBox.Size = new System.Drawing.Size(47, 46);
+            this.savePictureBox.TabIndex = 13;
+            this.savePictureBox.TabStop = false;
+            this.savePictureBox.Tag = "save";
+            this.savePictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseClick);
+            this.savePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseDown);
+            this.savePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.savePictureBox.MouseLeave += new System.EventHandler(this.savePictureBox_MouseLeave);
+            this.savePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseUp);
             // 
             // groupBox1
             // 
@@ -129,17 +153,6 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Middle Name";
             // 
-            // saveBtn
-            // 
-            this.saveBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.saveBtn.Location = new System.Drawing.Point(307, 246);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(75, 23);
-            this.saveBtn.TabIndex = 5;
-            this.saveBtn.Text = "Save";
-            this.saveBtn.UseVisualStyleBackColor = true;
-            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
-            // 
             // classesComboBox
             // 
             this.classesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -176,6 +189,7 @@
             // 
             // lastNameTxt
             // 
+            this.lastNameTxt.BackColor = System.Drawing.SystemColors.Info;
             this.lastNameTxt.Location = new System.Drawing.Point(78, 102);
             this.lastNameTxt.Name = "lastNameTxt";
             this.lastNameTxt.Size = new System.Drawing.Size(208, 20);
@@ -192,6 +206,7 @@
             // 
             // firstNameTxt
             // 
+            this.firstNameTxt.BackColor = System.Drawing.SystemColors.Info;
             this.firstNameTxt.Location = new System.Drawing.Point(78, 53);
             this.firstNameTxt.Name = "firstNameTxt";
             this.firstNameTxt.Size = new System.Drawing.Size(208, 20);
@@ -214,7 +229,7 @@
             this.panel1.Location = new System.Drawing.Point(4, 33);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(392, 338);
+            this.panel1.Size = new System.Drawing.Size(305, 220);
             this.panel1.TabIndex = 4;
             // 
             // panel2
@@ -224,11 +239,13 @@
             this.panel2.Controls.Add(this.minimizePictureBox);
             this.panel2.Controls.Add(this.closePictureBox);
             this.panel2.Controls.Add(this.titleLabel);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(392, 29);
+            this.panel2.Size = new System.Drawing.Size(305, 29);
             this.panel2.TabIndex = 5;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // maximizePictureBox
             // 
@@ -237,7 +254,7 @@
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(314, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(227, 0);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -258,7 +275,7 @@
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(340, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(253, 0);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -279,7 +296,7 @@
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(366, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(279, 0);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -299,22 +316,45 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.titleLabel.Location = new System.Drawing.Point(124, 4);
+            this.titleLabel.Location = new System.Drawing.Point(8, 4);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(118, 17);
             this.titleLabel.TabIndex = 8;
             this.titleLabel.Text = "Student Details";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip});
+            this.statusStrip1.Location = new System.Drawing.Point(4, 253);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(305, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(0, 17);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 3000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // StudentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(400, 375);
+            this.ClientSize = new System.Drawing.Size(313, 279);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudentDetails";
             this.Padding = new System.Windows.Forms.Padding(4);
@@ -323,6 +363,7 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StudentDetails_Paint);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.savePictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -331,7 +372,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -343,7 +387,6 @@
         private System.Windows.Forms.RadioButton maleRadioButton;
         private System.Windows.Forms.TextBox midNameTxt;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.ComboBox classesComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dobDatePicker;
@@ -358,5 +401,9 @@
         private System.Windows.Forms.PictureBox minimizePictureBox;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.PictureBox savePictureBox;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusStrip;
+        private System.Windows.Forms.Timer timer1;
     }
 }

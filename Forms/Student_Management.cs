@@ -30,6 +30,8 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadStudentList()
         {
+            studentGridView.DataSource = null;
+
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
                 using (grid_adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_STUDENTS_TIDY, connection))
@@ -52,38 +54,6 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
-        private void saveBtn_Click(object sender, EventArgs e)
-        {
-            /*Student student = new Student()
-            {
-                FirstName = firstNameTxt.Text,
-                LastName = lastNameTxt.Text,
-                MiddleName = midNameTxt.Text,
-                DateOfBirth = dobDatePicker.Value,
-                Gender = (maleRadioButton.Checked ? "M" : "F")
-            };
-
-            int student_id;
-
-            if ((student_id = student_manager.Save(student)) > -1)
-            {
-
-                if (!student_manager.AssignToClass(Convert.ToInt32(((ComboItem)classesComboBox.SelectedItem).Id), student_id))
-                {
-                    MessageBox.Show("Student wasn't assigned to a class");
-                }
-
-
-                firstNameTxt.Clear();
-                lastNameTxt.Clear();
-                midNameTxt.Clear();
-                LoadStudentList();
-            }
-            else
-            {
-                MessageBox.Show("There was an error while saving Student.", "Error Saving", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
-        }
 
         private bool CreateOrSaveStudentDetails()
         {
@@ -93,12 +63,11 @@ namespace Grade_Manager_DB_Controller
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StudentDetails sd = new StudentDetails(Int32.Parse(studentGridView.SelectedRows[0].Cells[0].Value.ToString()));
+            sd.StartPosition = FormStartPosition.CenterParent;
+            Visible = false;
             sd.ShowDialog();
-        }
-
-        private void Student_Management_Load(object sender, EventArgs e)
-        {
-            
+            LoadStudentList();
+            Visible = true;
         }
 
         private void LoadClasses()
@@ -109,6 +78,18 @@ namespace Grade_Manager_DB_Controller
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are you sure you want to delete this student?\n\nN.B. Please note that delete a student will remove all graded assignments attached to student.", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
+            {
+                if (student_manager.Delete(Int32.Parse(studentGridView.SelectedRows[0].Cells[0].Value.ToString())))
+                {
+                    LoadStudentList();
+                    //MessageBox.Show("Student deleted");
+                }
+                else
+                {
+                    MessageBox.Show("Could not delete student list.");
+                }
+            }
 
         }
 

@@ -71,32 +71,7 @@ namespace Grade_Manager_DB_Controller
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            if (CurrentStudent == null)
-                CurrentStudent = new Student();
-
-            CurrentStudent.FirstName = firstNameTxt.Text;
-            CurrentStudent.LastName = lastNameTxt.Text;
-            CurrentStudent.MiddleName = midNameTxt.Text;
-            CurrentStudent.Gender = maleRadioButton.Checked ? "M" : "F";
-            CurrentStudent.DateOfBirth = dobDatePicker.Value;
-
-            bool completed = false;
-
-            if(CurrentStudent.ID == null)
-            {
-                if ((CurrentStudent.ID = student_manager.Save(CurrentStudent)) > 0)
-                    completed = true;
-            }
-            else
-            {
-                completed = student_manager.Update(CurrentStudent);
-            }
-            student_manager.AssignToClass((int)((ComboItem)classesComboBox.SelectedItem).Id, CurrentStudent.ID);
-
-            if (completed)
-                MessageBox.Show("Good Stuff");
-            else
-                MessageBox.Show("Error");
+            
         }
 
         private void LoadStudent(int student_id)
@@ -108,7 +83,9 @@ namespace Grade_Manager_DB_Controller
             lastNameTxt.Text = CurrentStudent.LastName;
             midNameTxt.Text = CurrentStudent.MiddleName;
 
-            classesComboBox.SelectedValue = c.Name;
+            classesComboBox.Text = c.Name;
+
+            dobDatePicker.Value = CurrentStudent.DateOfBirth;
 
             if (CurrentStudent.Gender.StartsWith("M"))
                 maleRadioButton.Checked = true;
@@ -120,7 +97,81 @@ namespace Grade_Manager_DB_Controller
         private void StudentDetails_Paint(object sender, PaintEventArgs e)
         {
             Form f = sender as Form;
-            Styles.CreateRoundRectRgn(0, 0, f.Width, f.Height, 5, 5);
+            f.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, f.Width, f.Height, 5, 5));
         }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void savePictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            timer1.Enabled = false;
+            statusStrip.Text = "";
+
+            if (CurrentStudent == null)
+                CurrentStudent = new Student();
+
+
+            CurrentStudent.FirstName = firstNameTxt.Text;
+            CurrentStudent.LastName = lastNameTxt.Text;
+            CurrentStudent.MiddleName = midNameTxt.Text;
+            CurrentStudent.Gender = maleRadioButton.Checked ? "M" : "F";
+            CurrentStudent.DateOfBirth = dobDatePicker.Value;
+
+            bool completed = false;
+
+            if (CurrentStudent.ID < 0)
+            {
+                if ((CurrentStudent.ID = student_manager.Save(CurrentStudent)) > 0)
+                    completed = true;
+            }
+            else
+            {
+                completed = student_manager.Update(CurrentStudent);
+            }
+            student_manager.AssignToClass((int)((ComboItem)classesComboBox.SelectedItem).Id, CurrentStudent.ID);
+
+            if (completed)
+                statusStrip.Text = "Updated information saved.";
+            else
+                statusStrip.Text = "There was an error while saving.";
+
+            timer1.Enabled = true;
+        }
+
+        private void PictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void savePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void savePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void savePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void titleLabel_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            statusStrip.Text = String.Empty;
+            timer1.Enabled = false;
+        }
+
+        
     }
 }

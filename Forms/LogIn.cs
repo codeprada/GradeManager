@@ -90,5 +90,17 @@ namespace Grade_Manager
             nu.ShowDialog();
           
         }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void LogIn_Paint(object sender, PaintEventArgs e)
+        {
+            Form s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width, s.Height, 4, 4));
+        }
     }
 }

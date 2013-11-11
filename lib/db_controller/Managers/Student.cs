@@ -188,5 +188,26 @@ namespace Grade_Manager_DB_Controller
 
             return success;
         }
+
+        public bool Delete(int student_id)
+        {
+            bool success = false;
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_STUDENT_DELETE, connection))
+                {
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("@student_id", student_id);
+
+                    connection.Open();
+
+                    if (command.ExecuteNonQuery() > 0)
+                        success = true;
+                }
+            }
+
+            return success;
+        }
     }
 }

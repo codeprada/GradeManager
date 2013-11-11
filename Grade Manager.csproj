@@ -329,6 +329,8 @@
     <Content Include="baptistacademylogo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\save-32.png" />
+    <None Include="Resources\save_32_over.png" />
     <None Include="Resources\books_32_over.png" />
     <None Include="Resources\calculator_32_over.png" />
     <None Include="Resources\check_book_32_over.png" />

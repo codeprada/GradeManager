@@ -63,6 +63,8 @@ namespace Grade_Manager
             Styles.Icons.Add("students_over", Grade_Manager_DB_Controller.Properties.Resources.students_over);
             Styles.Icons.Add("subjects", Grade_Manager_DB_Controller.Properties.Resources.subjects);
             Styles.Icons.Add("subjects_over", Grade_Manager_DB_Controller.Properties.Resources.subjects_over);
+            Styles.Icons.Add("save", Grade_Manager_DB_Controller.Properties.Resources.save);
+            Styles.Icons.Add("save_over", Grade_Manager_DB_Controller.Properties.Resources.save_over);
         }
 
         private void Login()
@@ -80,7 +82,8 @@ namespace Grade_Manager
                 //User has been logged in
 
                 mainStatusLabel.Text = "Hello " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
-                ShowControls(true);
+                semesterPictureBox.Visible = true;
+                //ShowControls(true);
                 //ShowProfileForm();
 
             }
@@ -136,18 +139,9 @@ namespace Grade_Manager
                     SemesterManager.CurrentSemester.StartingSchoolYear,
                     SemesterManager.CurrentSemester.EndingSchoolYear
                 );
-
-                //enable the other controls now that the user has selected a semester
-                /*assignmentManagementRibbonBtn.Enabled =
-                subjectsManagementRibbonBtn.Enabled =
-                reportsManagementRibbonBtn.Enabled =
-                studentManagementRibbonBtn.Enabled =
-                gradesManagementRibbonBtn.Enabled =
-                reportsManagementRibbonBtn.Enabled =
-                statisticsRibbonButton.Enabled = 
-                rankingRButton.Enabled = 
-                logoutRibbonBtn.Enabled = true;
-                 * */
+                //semesterPictureBox.Visible = false;
+                logoutPictureBox.Visible = true;
+                ShowControls(true);
 
             }
         }
