@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Grade_Main_Form));
             this.panel1 = new System.Windows.Forms.Panel();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,13 +45,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.studentGradeDataViewGrid = new System.Windows.Forms.DataGridView();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.statusTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGradeDataViewGrid)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.subjectComboBox);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.saveBtn);
@@ -63,9 +78,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(4, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(483, 165);
+            this.panel1.Size = new System.Drawing.Size(475, 164);
             this.panel1.TabIndex = 0;
             // 
             // subjectComboBox
@@ -180,9 +195,9 @@
             // 
             this.panel2.Controls.Add(this.studentGradeDataViewGrid);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 165);
+            this.panel2.Location = new System.Drawing.Point(4, 197);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(483, 340);
+            this.panel2.Size = new System.Drawing.Size(475, 339);
             this.panel2.TabIndex = 1;
             // 
             // studentGradeDataViewGrid
@@ -195,27 +210,132 @@
             this.studentGradeDataViewGrid.Name = "studentGradeDataViewGrid";
             this.studentGradeDataViewGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.studentGradeDataViewGrid.ShowEditingIcon = false;
-            this.studentGradeDataViewGrid.Size = new System.Drawing.Size(483, 340);
+            this.studentGradeDataViewGrid.Size = new System.Drawing.Size(475, 339);
             this.studentGradeDataViewGrid.TabIndex = 0;
+            this.studentGradeDataViewGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGradeDataViewGrid_CellEndEdit);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(4, 536);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(475, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.Controls.Add(this.maximizePictureBox);
+            this.panel3.Controls.Add(this.minimizePictureBox);
+            this.panel3.Controls.Add(this.closePictureBox);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(4, 4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(475, 29);
+            this.panel3.TabIndex = 3;
+            // 
+            // maximizePictureBox
+            // 
+            this.maximizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
+            this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.maximizePictureBox.Location = new System.Drawing.Point(397, 0);
+            this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.maximizePictureBox.Name = "maximizePictureBox";
+            this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.maximizePictureBox.TabIndex = 5;
+            this.maximizePictureBox.TabStop = false;
+            this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Visible = false;
+            // 
+            // minimizePictureBox
+            // 
+            this.minimizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
+            this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimizePictureBox.Location = new System.Drawing.Point(423, 0);
+            this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.minimizePictureBox.Name = "minimizePictureBox";
+            this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.minimizePictureBox.TabIndex = 4;
+            this.minimizePictureBox.TabStop = false;
+            this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Visible = false;
+            // 
+            // closePictureBox
+            // 
+            this.closePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
+            this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePictureBox.Location = new System.Drawing.Point(449, 0);
+            this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.closePictureBox.TabIndex = 3;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Tag = "close";
+            this.closePictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseClick);
+            this.closePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.closePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
+            this.closePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
+            // 
+            // statusTimer
+            // 
+            this.statusTimer.Interval = 2000;
+            this.statusTimer.Tick += new System.EventHandler(this.statusTimer_Tick);
             // 
             // Grade_Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 505);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.ClientSize = new System.Drawing.Size(483, 562);
+            this.ControlBox = false;
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Grade_Main_Form";
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Grades";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Grade_Main_Form_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentGradeDataViewGrid)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -236,5 +356,12 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.ComboBox assessmentComboBox;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.PictureBox maximizePictureBox;
+        private System.Windows.Forms.PictureBox minimizePictureBox;
+        private System.Windows.Forms.PictureBox closePictureBox;
+        private System.Windows.Forms.Timer statusTimer;
     }
 }

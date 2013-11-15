@@ -32,6 +32,7 @@ namespace Grade_Manager
 
                     //MessageBox.Show((string)treeView1.SelectedNode.Name);
                     SemesterManager.CurrentSemester = profile_manager.GetSemester(id);
+                    DialogResult = System.Windows.Forms.DialogResult.OK;
                     this.Close();
 
                     

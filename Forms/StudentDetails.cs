@@ -134,9 +134,15 @@ namespace Grade_Manager_DB_Controller
             student_manager.AssignToClass((int)((ComboItem)classesComboBox.SelectedItem).Id, CurrentStudent.ID);
 
             if (completed)
+            {
                 statusStrip.Text = "Updated information saved.";
+                DialogResult = System.Windows.Forms.DialogResult.Yes;
+            }
             else
+            {
                 statusStrip.Text = "There was an error while saving.";
+                DialogResult = System.Windows.Forms.DialogResult.No;
+            }
 
             timer1.Enabled = true;
         }

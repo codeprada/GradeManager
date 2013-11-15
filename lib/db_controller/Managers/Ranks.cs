@@ -17,7 +17,15 @@ namespace Grade_Manager_DB_Controller
         {
             Rank_Item ri = new Rank_Item();
             ri.StuName = Convert.ToString(reader["student_first_name"]) + " " + Convert.ToString(reader["student_last_name"]);
-            ri.Average = Convert.ToDouble(reader["overall"]);
+
+            try
+            {
+                ri.Average = Convert.ToDouble(reader["overall"]);
+            }
+            catch(Exception e)
+            {
+                ri.Average = 0.0;
+            }
 
             return ri;
         }

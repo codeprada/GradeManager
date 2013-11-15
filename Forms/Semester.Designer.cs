@@ -45,9 +45,9 @@
             // 
             this.loadBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.loadBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.loadBtn.Location = new System.Drawing.Point(3, 247);
+            this.loadBtn.Location = new System.Drawing.Point(3, 243);
             this.loadBtn.Name = "loadBtn";
-            this.loadBtn.Size = new System.Drawing.Size(127, 23);
+            this.loadBtn.Size = new System.Drawing.Size(129, 23);
             this.loadBtn.TabIndex = 2;
             this.loadBtn.Text = "Load";
             this.loadBtn.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // createNewBtn
             // 
             this.createNewBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.createNewBtn.Location = new System.Drawing.Point(136, 247);
+            this.createNewBtn.Location = new System.Drawing.Point(138, 243);
             this.createNewBtn.Name = "createNewBtn";
-            this.createNewBtn.Size = new System.Drawing.Size(127, 23);
+            this.createNewBtn.Size = new System.Drawing.Size(129, 23);
             this.createNewBtn.TabIndex = 3;
             this.createNewBtn.Text = "New";
             this.createNewBtn.UseVisualStyleBackColor = true;
@@ -81,14 +81,14 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.58334F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.41667F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(401, 273);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 269);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // cancelBtn
             // 
             this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cancelBtn.Location = new System.Drawing.Point(269, 247);
+            this.cancelBtn.Location = new System.Drawing.Point(273, 243);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(129, 23);
             this.cancelBtn.TabIndex = 4;
@@ -110,7 +110,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(3, 3);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(395, 238);
+            this.listView1.Size = new System.Drawing.Size(399, 234);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -145,7 +145,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(401, 273);
+            this.ClientSize = new System.Drawing.Size(405, 269);
             this.ControlBox = false;
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

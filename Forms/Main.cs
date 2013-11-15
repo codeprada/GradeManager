@@ -65,6 +65,8 @@ namespace Grade_Manager
             Styles.Icons.Add("subjects_over", Grade_Manager_DB_Controller.Properties.Resources.subjects_over);
             Styles.Icons.Add("save", Grade_Manager_DB_Controller.Properties.Resources.save);
             Styles.Icons.Add("save_over", Grade_Manager_DB_Controller.Properties.Resources.save_over);
+            Styles.Icons.Add("add_student", Grade_Manager_DB_Controller.Properties.Resources.add);
+            Styles.Icons.Add("add_student_over", Grade_Manager_DB_Controller.Properties.Resources.add_over);
         }
 
         private void Login()

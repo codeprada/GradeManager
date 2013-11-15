@@ -93,7 +93,7 @@
             this.savePictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.save;
             this.savePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.savePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.savePictureBox.Location = new System.Drawing.Point(134, 158);
+            this.savePictureBox.Location = new System.Drawing.Point(129, 158);
             this.savePictureBox.Name = "savePictureBox";
             this.savePictureBox.Size = new System.Drawing.Size(47, 46);
             this.savePictureBox.TabIndex = 13;

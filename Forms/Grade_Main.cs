@@ -14,12 +14,14 @@ namespace Grade_Manager_DB_Controller
     public partial class Grade_Main_Form : Form
     {
         private SubjectManager subject_manager;
+        private Grade_Manager grade_manager;
 
         public Grade_Main_Form()
         {
             InitializeComponent();
 
             subject_manager = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            grade_manager = new Grade_Manager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
             assessmentComboBox.ValueMember = "Id";
             assessmentComboBox.DisplayMember = "Text";
@@ -132,24 +134,91 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
                             column.ReadOnly = true;
                         }
                         studentGradeDataViewGrid.Columns["Grade"].ReadOnly = false;
+                        
+                        DataGridViewCellStyle style = new DataGridViewCellStyle();
+                        style.BackColor = Color.LightYellow;
+                        style.ForeColor = Color.Red;
+                        style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        style.DataSourceNullValue = 0;
+
+                        studentGradeDataViewGrid.Columns["Grade"].DefaultCellStyle = style;
                     }
                 }
             }
+
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            Grade_Manager gm = new Grade_Manager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            
             foreach (DataGridViewRow row in studentGradeDataViewGrid.Rows)
             {
-                gm.Save(
+                if (row.Cells["Grade"].Value == DBNull.Value)
+                    row.Cells["Grade"].Value = 0;
+
+                grade_manager.Save(
                     Convert.ToInt32(row.Cells["ID"].Value),
                     (int)(((ComboItem)assessmentComboBox.SelectedItem).Id),
-                    (row.Cells["Grade"].Value.Equals(null) ? 0.0 : Convert.ToDouble(row.Cells["Grade"].Value))
+                    Convert.ToDouble(row.Cells["Grade"].Value)
                 );
 
             }
                 
+        }
+
+        private void studentGradeDataViewGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == studentGradeDataViewGrid.Columns["Grade"].Index)
+            {
+                if (studentGradeDataViewGrid.Rows[e.RowIndex].Cells["Grade"].Value == DBNull.Value)
+                    studentGradeDataViewGrid.Rows[e.RowIndex].Cells["Grade"].Value = 0;
+
+                grade_manager.Save(
+                    Convert.ToInt32(studentGradeDataViewGrid.Rows[e.RowIndex].Cells["ID"].Value),
+                    (int)(((ComboItem)assessmentComboBox.SelectedItem).Id),
+                    Convert.ToDouble(studentGradeDataViewGrid.Rows[e.RowIndex].Cells["Grade"].Value)
+                );
+                statusLabel.Text = "Grade saved.";
+                statusTimer.Enabled = true;
+            }
+        }
+
+        private void closePictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void PictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void PictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void statusTimer_Tick(object sender, EventArgs e)
+        {
+            statusLabel.Text = String.Empty;
+            statusTimer.Enabled = false;
+        }
+
+        private void Grade_Main_Form_Paint(object sender, PaintEventArgs e)
+        {
+            Form f = sender as Form;
+
+            f.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, f.Width, f.Height, 5, 5));
         }
     }
 }

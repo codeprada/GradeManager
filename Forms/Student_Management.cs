@@ -147,5 +147,37 @@ namespace Grade_Manager_DB_Controller
         {
             studentGridView.CurrentCell = studentGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
         }
+
+        private void addNewStudentPictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            StudentDetails sd_form = new StudentDetails();
+            this.Visible = false;
+            sd_form.StartPosition = FormStartPosition.CenterParent;
+
+            if(sd_form.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+                LoadStudentList();
+
+            this.Visible = true;
+        }
+
+        private void addNewStudentPictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void addNewStudentPictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void addNewStudentPictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void addNewStudentPictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
     }
 }
