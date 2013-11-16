@@ -181,6 +181,7 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
                 statusLabel.Text = "Grade saved.";
                 statusTimer.Enabled = true;
             }
+            
         }
 
         private void closePictureBox_MouseClick(object sender, MouseEventArgs e)
@@ -219,6 +220,18 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
             Form f = sender as Form;
 
             f.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, f.Width, f.Height, 5, 5));
+        }
+
+        private void studentGradeDataViewGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            studentGradeDataViewGrid.CurrentCell = studentGradeDataViewGrid.Rows[e.RowIndex].Cells["Grade"];
+            studentGradeDataViewGrid.BeginEdit(false);
+            studentGradeDataViewGrid.EndEdit();
+        }
+
+        private void studentGradeDataViewGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

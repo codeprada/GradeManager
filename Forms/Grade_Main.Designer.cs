@@ -52,6 +52,7 @@
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.statusTimer = new System.Windows.Forms.Timer(this.components);
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGradeDataViewGrid)).BeginInit();
@@ -65,6 +66,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.subjectComboBox);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.saveBtn);
@@ -80,7 +82,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(4, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(475, 164);
+            this.panel1.Size = new System.Drawing.Size(475, 194);
             this.panel1.TabIndex = 0;
             // 
             // subjectComboBox
@@ -195,24 +197,29 @@
             // 
             this.panel2.Controls.Add(this.studentGradeDataViewGrid);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(4, 197);
+            this.panel2.Location = new System.Drawing.Point(4, 227);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(475, 339);
+            this.panel2.Size = new System.Drawing.Size(475, 309);
             this.panel2.TabIndex = 1;
             // 
             // studentGradeDataViewGrid
             // 
             this.studentGradeDataViewGrid.AllowUserToAddRows = false;
             this.studentGradeDataViewGrid.AllowUserToDeleteRows = false;
+            this.studentGradeDataViewGrid.AllowUserToResizeRows = false;
             this.studentGradeDataViewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentGradeDataViewGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentGradeDataViewGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.studentGradeDataViewGrid.Location = new System.Drawing.Point(0, 0);
+            this.studentGradeDataViewGrid.MultiSelect = false;
             this.studentGradeDataViewGrid.Name = "studentGradeDataViewGrid";
             this.studentGradeDataViewGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.studentGradeDataViewGrid.ShowEditingIcon = false;
-            this.studentGradeDataViewGrid.Size = new System.Drawing.Size(475, 339);
+            this.studentGradeDataViewGrid.Size = new System.Drawing.Size(475, 309);
             this.studentGradeDataViewGrid.TabIndex = 0;
+            this.studentGradeDataViewGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGradeDataViewGrid_CellDoubleClick);
             this.studentGradeDataViewGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGradeDataViewGrid_CellEndEdit);
+            this.studentGradeDataViewGrid.CurrentCellChanged += new System.EventHandler(this.studentGradeDataViewGrid_CurrentCellChanged);
             // 
             // statusStrip1
             // 
@@ -303,6 +310,15 @@
             this.statusTimer.Interval = 2000;
             this.statusTimer.Tick += new System.EventHandler(this.statusTimer_Tick);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(313, 152);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 39);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Tips\r\n*Double click a grade to edit it.\r\n*Grades are saved automatically.";
+            // 
             // Grade_Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -363,5 +379,6 @@
         private System.Windows.Forms.PictureBox minimizePictureBox;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Timer statusTimer;
+        private System.Windows.Forms.Label label7;
     }
 }
