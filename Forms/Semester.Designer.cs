@@ -28,73 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.loadBtn = new System.Windows.Forms.Button();
-            this.createNewBtn = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.semester_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.class_name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.current_term = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.starting_school_year = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ending_school_year = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.newBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.loadBtn = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // loadBtn
-            // 
-            this.loadBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.loadBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.loadBtn.Location = new System.Drawing.Point(3, 243);
-            this.loadBtn.Name = "loadBtn";
-            this.loadBtn.Size = new System.Drawing.Size(129, 23);
-            this.loadBtn.TabIndex = 2;
-            this.loadBtn.Text = "Load";
-            this.loadBtn.UseVisualStyleBackColor = true;
-            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
-            // 
-            // createNewBtn
-            // 
-            this.createNewBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.createNewBtn.Location = new System.Drawing.Point(138, 243);
-            this.createNewBtn.Name = "createNewBtn";
-            this.createNewBtn.Size = new System.Drawing.Size(129, 23);
-            this.createNewBtn.TabIndex = 3;
-            this.createNewBtn.Text = "New";
-            this.createNewBtn.UseVisualStyleBackColor = true;
-            this.createNewBtn.Click += new System.EventHandler(this.createNewBtn_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.createNewBtn, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.loadBtn, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.cancelBtn, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.listView1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.58334F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.41667F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(405, 269);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.cancelBtn.Location = new System.Drawing.Point(273, 243);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(129, 23);
-            this.cancelBtn.TabIndex = 4;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // listView1
             // 
@@ -104,13 +51,14 @@
             this.current_term,
             this.starting_school_year,
             this.ending_school_year});
-            this.tableLayoutPanel1.SetColumnSpan(this.listView1, 3);
             this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.Font = new System.Drawing.Font("Berlin Sans FB", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(3, 3);
+            this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(399, 234);
+            this.listView1.Size = new System.Drawing.Size(399, 379);
             this.listView1.TabIndex = 5;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -139,37 +87,121 @@
             this.ending_school_year.Text = "Ending Year";
             this.ending_school_year.Width = 90;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.listView1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(399, 379);
+            this.panel1.TabIndex = 6;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.loadBtn);
+            this.panel2.Controls.Add(this.cancelBtn);
+            this.panel2.Controls.Add(this.newBtn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(400, 1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(71, 379);
+            this.panel2.TabIndex = 7;
+            // 
+            // newBtn
+            // 
+            this.newBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.newBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.newBtn.FlatAppearance.BorderSize = 0;
+            this.newBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.newBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.newBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.newBtn.Location = new System.Drawing.Point(0, 0);
+            this.newBtn.Name = "newBtn";
+            this.newBtn.Size = new System.Drawing.Size(71, 55);
+            this.newBtn.TabIndex = 0;
+            this.newBtn.Tag = "new";
+            this.newBtn.Text = "New";
+            this.newBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.newBtn.UseVisualStyleBackColor = true;
+            this.newBtn.Click += new System.EventHandler(this.newBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.cancelBtn.FlatAppearance.BorderSize = 0;
+            this.cancelBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.cancelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.cancel;
+            this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.cancelBtn.Location = new System.Drawing.Point(0, 324);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(71, 55);
+            this.cancelBtn.TabIndex = 1;
+            this.cancelBtn.Tag = "cancel";
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
+            // loadBtn
+            // 
+            this.loadBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.loadBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.loadBtn.FlatAppearance.BorderSize = 0;
+            this.loadBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.loadBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.loadBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loadBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.loadBtn.Location = new System.Drawing.Point(0, 269);
+            this.loadBtn.Name = "loadBtn";
+            this.loadBtn.Size = new System.Drawing.Size(71, 55);
+            this.loadBtn.TabIndex = 2;
+            this.loadBtn.Tag = "load";
+            this.loadBtn.Text = "Load";
+            this.loadBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.loadBtn.UseVisualStyleBackColor = true;
+            this.loadBtn.Click += new System.EventHandler(this.loadBtn_Click);
+            // 
             // Semester_Form
             // 
-            this.AcceptButton = this.loadBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(405, 269);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(472, 381);
             this.ControlBox = false;
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Semester_Form";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Semesters";
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button loadBtn;
-        private System.Windows.Forms.Button createNewBtn;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader semester_id;
         private System.Windows.Forms.ColumnHeader class_name;
         private System.Windows.Forms.ColumnHeader starting_school_year;
         private System.Windows.Forms.ColumnHeader ending_school_year;
         private System.Windows.Forms.ColumnHeader current_term;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button loadBtn;
+        private System.Windows.Forms.Button cancelBtn;
+        private System.Windows.Forms.Button newBtn;
     }
 }

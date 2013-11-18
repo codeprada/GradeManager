@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Grade_Main_Form));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.saveBtn = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.statusTimer = new System.Windows.Forms.Timer(this.components);
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGradeDataViewGrid)).BeginInit();
@@ -84,6 +84,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(475, 194);
             this.panel1.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(313, 152);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 39);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Tips\r\n*Double click a grade to edit it.\r\n*Grades are saved automatically.";
             // 
             // subjectComboBox
             // 
@@ -209,7 +218,7 @@
             this.studentGradeDataViewGrid.AllowUserToResizeRows = false;
             this.studentGradeDataViewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentGradeDataViewGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.studentGradeDataViewGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.studentGradeDataViewGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.studentGradeDataViewGrid.Location = new System.Drawing.Point(0, 0);
             this.studentGradeDataViewGrid.MultiSelect = false;
             this.studentGradeDataViewGrid.Name = "studentGradeDataViewGrid";
@@ -309,15 +318,6 @@
             // 
             this.statusTimer.Interval = 2000;
             this.statusTimer.Tick += new System.EventHandler(this.statusTimer_Tick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(313, 152);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 39);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Tips\r\n*Double click a grade to edit it.\r\n*Grades are saved automatically.";
             // 
             // Grade_Main_Form
             // 

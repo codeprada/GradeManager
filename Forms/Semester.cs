@@ -21,31 +21,7 @@ namespace Grade_Manager
             LoadList();
         }
 
-        private void loadBtn_Click(object sender, EventArgs e)
-        {
-            if (listView1.SelectedItems.Count > 0)
-            {
-                int id;
-                if (Int32.TryParse(listView1.SelectedItems[0].Text, out id))
-                {
-                    SemesterManager profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
-                    //MessageBox.Show((string)treeView1.SelectedNode.Name);
-                    SemesterManager.CurrentSemester = profile_manager.GetSemester(id);
-                    DialogResult = System.Windows.Forms.DialogResult.OK;
-                    this.Close();
-
-                    
-                }
-                else
-                {
-                    MessageBox.Show("Select a semester from the list before trying to load.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-
-            
-
-        }
 
         private void LoadList()
         {
@@ -146,7 +122,12 @@ namespace Grade_Manager
         }
 
 
-        private void createNewBtn_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void newBtn_Click(object sender, EventArgs e)
         {
             CreateSemester c_form = new CreateSemester();
             c_form.StartPosition = FormStartPosition.CenterParent;
@@ -155,9 +136,27 @@ namespace Grade_Manager
             LoadList();
         }
 
-        private void cancelBtn_Click(object sender, EventArgs e)
+        private void loadBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (listView1.SelectedItems.Count > 0)
+            {
+                int id;
+                if (Int32.TryParse(listView1.SelectedItems[0].Text, out id))
+                {
+                    SemesterManager profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+
+                    //MessageBox.Show((string)treeView1.SelectedNode.Name);
+                    SemesterManager.CurrentSemester = profile_manager.GetSemester(id);
+                    DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.Close();
+
+
+                }
+                else
+                {
+                    MessageBox.Show("Select a semester from the list before trying to load.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
     }

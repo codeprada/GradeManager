@@ -17,6 +17,7 @@ namespace Grade_Manager
     {
 
         private UserManager user_manager;
+        private const int CS_DROPSHADOW = 0x00020000;
 
         public LogIn()
         {
@@ -24,6 +25,18 @@ namespace Grade_Manager
 
             //initalize usermanager with the connection string in the app.config file
             user_manager = new UserManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+        }
+        
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
         }
 
 
@@ -98,9 +111,30 @@ namespace Grade_Manager
 
         private void LogIn_Paint(object sender, PaintEventArgs e)
         {
-            Form s = sender as Form;
+            Control s = sender as Form;
 
             s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width, s.Height, 4, 4));
+        }
+
+        private void logInBtn_Paint(object sender, PaintEventArgs e)
+        {
+            Button b = sender as Button;
+
+            b.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, b.Width + 1, b.Height + 1, 4, 4));
+        }
+
+        private void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+
+            b.Image = Styles.Icons[b.Tag.ToString() + "_over"];
+        }
+
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+
+            b.Image = Styles.Icons[b.Tag.ToString()];
         }
     }
 }

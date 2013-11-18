@@ -22,6 +22,13 @@ namespace Grade_Manager_DB_Controller
 
         public static implicit operator Reports(SQLiteDataReader reader)
         {
+            double score;
+
+            if (reader["average"] == DBNull.Value)
+                score = 0.0;
+            else
+                score = Convert.ToDouble(reader["average"]);
+
             Reports report = new Reports()
             {
                 _Assessment = reader,
@@ -29,7 +36,7 @@ namespace Grade_Manager_DB_Controller
                 _Student = reader,
                 _Subject = reader,
                 _Class = reader,
-                Average = Convert.ToDouble(reader["average"])
+                Average = score
             };
 
             return report;
@@ -207,6 +214,9 @@ namespace Grade_Manager_DB_Controller
 
                         document_report.InsertParagraph(String.Format("{0}{1}{2}", buffer, new String('\t', CalculateTabs(buffer, 11)), g_pair.Grade), false, grade_legend);
                         document_report.InsertParagraph(line, false, (g_pair.SubjectName != last.SubjectName ? line_format_nu : line_format));
+
+                        document_report.PageHeight = 1344.0f;
+                        document_report.PageWidth = 816.0f;
                     }
 
                     document_report.InsertParagraph("GENERAL REMARKS:", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman"), Bold = true });
@@ -239,8 +249,7 @@ namespace Grade_Manager_DB_Controller
                 document_report.Footers.odd.Paragraphs.Add(footer);
 
                 //Size of a legal size paper
-                document_report.PageHeight = 1344.0f;
-                document_report.PageWidth = 816.0f;
+                
 
                 
 

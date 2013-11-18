@@ -34,24 +34,24 @@
             this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.helpPictureBox = new System.Windows.Forms.PictureBox();
-            this.statisticsPictureBox = new System.Windows.Forms.PictureBox();
-            this.reportsPictureBox = new System.Windows.Forms.PictureBox();
-            this.ratingsPictureBox = new System.Windows.Forms.PictureBox();
-            this.gradesPictureBox = new System.Windows.Forms.PictureBox();
-            this.subjectsPictureBox = new System.Windows.Forms.PictureBox();
-            this.studentsPictureBox = new System.Windows.Forms.PictureBox();
-            this.assignmentsPictureBox = new System.Windows.Forms.PictureBox();
-            this.semesterPictureBox = new System.Windows.Forms.PictureBox();
-            this.logoutPictureBox = new System.Windows.Forms.PictureBox();
-            this.loginPictureBox = new System.Windows.Forms.PictureBox();
             this.menuPanel = new System.Windows.Forms.Panel();
-            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
-            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
-            this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.logoutBtn = new System.Windows.Forms.Button();
+            this.helpBtn = new System.Windows.Forms.Button();
+            this.statisticsBtn = new System.Windows.Forms.Button();
+            this.reportsBtn = new System.Windows.Forms.Button();
+            this.rankingBtn = new System.Windows.Forms.Button();
+            this.gradeBtn = new System.Windows.Forms.Button();
+            this.subjectsBtn = new System.Windows.Forms.Button();
+            this.studentsBtn = new System.Windows.Forms.Button();
+            this.assignmentsBtn = new System.Windows.Forms.Button();
+            this.semesterBtn = new System.Windows.Forms.Button();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.ribbonOrbSubjects = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbGrades = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
@@ -66,17 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.helpPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statisticsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ratingsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradesPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.subjectsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assignmentsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semesterPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoutPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).BeginInit();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
@@ -85,11 +74,12 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 768);
+            this.statusStrip1.Location = new System.Drawing.Point(1, 745);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(914, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1022, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
@@ -105,9 +95,9 @@
             this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Controls.Add(this.menuPanel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(914, 768);
+            this.panel1.Size = new System.Drawing.Size(1022, 744);
             this.panel1.TabIndex = 9;
             // 
             // splitContainer1
@@ -120,231 +110,29 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.splitContainer1.Panel1.Controls.Add(this.helpPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.statisticsPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.reportsPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.ratingsPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.gradesPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.subjectsPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.studentsPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.assignmentsPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.semesterPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.logoutPictureBox);
-            this.splitContainer1.Panel1.Controls.Add(this.loginPictureBox);
-            this.splitContainer1.Size = new System.Drawing.Size(914, 739);
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel1.Controls.Add(this.logoutBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.helpBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.statisticsBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.reportsBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.rankingBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.gradeBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.subjectsBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.studentsBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.assignmentsBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.semesterBtn);
+            this.splitContainer1.Panel1.Controls.Add(this.loginBtn);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Size = new System.Drawing.Size(1022, 715);
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 1;
             // 
-            // helpPictureBox
-            // 
-            this.helpPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("helpPictureBox.BackgroundImage")));
-            this.helpPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.helpPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.helpPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.helpPictureBox.Location = new System.Drawing.Point(0, 495);
-            this.helpPictureBox.Name = "helpPictureBox";
-            this.helpPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.helpPictureBox.TabIndex = 9;
-            this.helpPictureBox.TabStop = false;
-            this.helpPictureBox.Tag = "help";
-            this.helpPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.helpPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.helpPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.helpPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // statisticsPictureBox
-            // 
-            this.statisticsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("statisticsPictureBox.BackgroundImage")));
-            this.statisticsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.statisticsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.statisticsPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.statisticsPictureBox.Location = new System.Drawing.Point(0, 440);
-            this.statisticsPictureBox.Name = "statisticsPictureBox";
-            this.statisticsPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.statisticsPictureBox.TabIndex = 8;
-            this.statisticsPictureBox.TabStop = false;
-            this.statisticsPictureBox.Tag = "statistics";
-            this.statisticsPictureBox.Visible = false;
-            this.statisticsPictureBox.Click += new System.EventHandler(this.statisticsPictureBox_Click);
-            this.statisticsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.statisticsPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.statisticsPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.statisticsPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // reportsPictureBox
-            // 
-            this.reportsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("reportsPictureBox.BackgroundImage")));
-            this.reportsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.reportsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.reportsPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.reportsPictureBox.Location = new System.Drawing.Point(0, 385);
-            this.reportsPictureBox.Name = "reportsPictureBox";
-            this.reportsPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.reportsPictureBox.TabIndex = 7;
-            this.reportsPictureBox.TabStop = false;
-            this.reportsPictureBox.Tag = "reports";
-            this.reportsPictureBox.Visible = false;
-            this.reportsPictureBox.Click += new System.EventHandler(this.reportsPictureBox_Click);
-            this.reportsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.reportsPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.reportsPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.reportsPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // ratingsPictureBox
-            // 
-            this.ratingsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ratingsPictureBox.BackgroundImage")));
-            this.ratingsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ratingsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ratingsPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ratingsPictureBox.Location = new System.Drawing.Point(0, 330);
-            this.ratingsPictureBox.Name = "ratingsPictureBox";
-            this.ratingsPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.ratingsPictureBox.TabIndex = 5;
-            this.ratingsPictureBox.TabStop = false;
-            this.ratingsPictureBox.Tag = "ratings";
-            this.ratingsPictureBox.Visible = false;
-            this.ratingsPictureBox.Click += new System.EventHandler(this.ratingsPictureBox_Click);
-            this.ratingsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.ratingsPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.ratingsPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.ratingsPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // gradesPictureBox
-            // 
-            this.gradesPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("gradesPictureBox.BackgroundImage")));
-            this.gradesPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.gradesPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gradesPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gradesPictureBox.Location = new System.Drawing.Point(0, 275);
-            this.gradesPictureBox.Name = "gradesPictureBox";
-            this.gradesPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.gradesPictureBox.TabIndex = 6;
-            this.gradesPictureBox.TabStop = false;
-            this.gradesPictureBox.Tag = "grades";
-            this.gradesPictureBox.Visible = false;
-            this.gradesPictureBox.Click += new System.EventHandler(this.gradesPictureBox_Click);
-            this.gradesPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.gradesPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.gradesPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.gradesPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // subjectsPictureBox
-            // 
-            this.subjectsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("subjectsPictureBox.BackgroundImage")));
-            this.subjectsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.subjectsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.subjectsPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.subjectsPictureBox.Location = new System.Drawing.Point(0, 220);
-            this.subjectsPictureBox.Name = "subjectsPictureBox";
-            this.subjectsPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.subjectsPictureBox.TabIndex = 3;
-            this.subjectsPictureBox.TabStop = false;
-            this.subjectsPictureBox.Tag = "subjects";
-            this.subjectsPictureBox.Visible = false;
-            this.subjectsPictureBox.Click += new System.EventHandler(this.subjectsPictureBox_Click);
-            this.subjectsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.subjectsPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.subjectsPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.subjectsPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // studentsPictureBox
-            // 
-            this.studentsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("studentsPictureBox.BackgroundImage")));
-            this.studentsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.studentsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.studentsPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.studentsPictureBox.Location = new System.Drawing.Point(0, 165);
-            this.studentsPictureBox.Name = "studentsPictureBox";
-            this.studentsPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.studentsPictureBox.TabIndex = 2;
-            this.studentsPictureBox.TabStop = false;
-            this.studentsPictureBox.Tag = "students";
-            this.studentsPictureBox.Visible = false;
-            this.studentsPictureBox.Click += new System.EventHandler(this.studentsPictureBox_Click);
-            this.studentsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.studentsPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.studentsPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.studentsPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // assignmentsPictureBox
-            // 
-            this.assignmentsPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("assignmentsPictureBox.BackgroundImage")));
-            this.assignmentsPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.assignmentsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.assignmentsPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.assignmentsPictureBox.Location = new System.Drawing.Point(0, 110);
-            this.assignmentsPictureBox.Name = "assignmentsPictureBox";
-            this.assignmentsPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.assignmentsPictureBox.TabIndex = 4;
-            this.assignmentsPictureBox.TabStop = false;
-            this.assignmentsPictureBox.Tag = "assignments";
-            this.assignmentsPictureBox.Visible = false;
-            this.assignmentsPictureBox.Click += new System.EventHandler(this.assignmentsPictureBox_Click);
-            this.assignmentsPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.assignmentsPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.assignmentsPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.assignmentsPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // semesterPictureBox
-            // 
-            this.semesterPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("semesterPictureBox.BackgroundImage")));
-            this.semesterPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.semesterPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.semesterPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.semesterPictureBox.Location = new System.Drawing.Point(0, 55);
-            this.semesterPictureBox.Name = "semesterPictureBox";
-            this.semesterPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.semesterPictureBox.TabIndex = 1;
-            this.semesterPictureBox.TabStop = false;
-            this.semesterPictureBox.Tag = "semester";
-            this.semesterPictureBox.Visible = false;
-            this.semesterPictureBox.Click += new System.EventHandler(this.semesterPictureBox_Click);
-            this.semesterPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.semesterPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.semesterPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.semesterPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // logoutPictureBox
-            // 
-            this.logoutPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.logout;
-            this.logoutPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.logoutPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logoutPictureBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.logoutPictureBox.Location = new System.Drawing.Point(0, 684);
-            this.logoutPictureBox.Name = "logoutPictureBox";
-            this.logoutPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.logoutPictureBox.TabIndex = 10;
-            this.logoutPictureBox.TabStop = false;
-            this.logoutPictureBox.Tag = "logout";
-            this.logoutPictureBox.Visible = false;
-            this.logoutPictureBox.Click += new System.EventHandler(this.logoutPictureBox_Click);
-            this.logoutPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.logoutPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.logoutPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.logoutPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // loginPictureBox
-            // 
-            this.loginPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("loginPictureBox.BackgroundImage")));
-            this.loginPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.loginPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.loginPictureBox.Dock = System.Windows.Forms.DockStyle.Top;
-            this.loginPictureBox.Location = new System.Drawing.Point(0, 0);
-            this.loginPictureBox.Name = "loginPictureBox";
-            this.loginPictureBox.Size = new System.Drawing.Size(70, 55);
-            this.loginPictureBox.TabIndex = 0;
-            this.loginPictureBox.TabStop = false;
-            this.loginPictureBox.Tag = "login";
-            this.loginPictureBox.Click += new System.EventHandler(this.loginPictureBox_Click);
-            this.loginPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
-            this.loginPictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.loginPictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
-            this.loginPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
             // menuPanel
             // 
-            this.menuPanel.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuPanel.BackColor = System.Drawing.Color.White;
             this.menuPanel.Controls.Add(this.maximizePictureBox);
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
@@ -352,18 +140,321 @@
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(914, 29);
+            this.menuPanel.Size = new System.Drawing.Size(1022, 29);
             this.menuPanel.TabIndex = 0;
             this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
             // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleLabel.Location = new System.Drawing.Point(468, 8);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(112, 18);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Grade Manager";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.Black;
+            this.toolTip1.ForeColor = System.Drawing.Color.White;
+            this.toolTip1.IsBalloon = true;
+            // 
+            // logoutBtn
+            // 
+            this.logoutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.logoutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.logoutBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.logoutBtn.FlatAppearance.BorderSize = 0;
+            this.logoutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.logoutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logoutBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logoutBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.logout;
+            this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.logoutBtn.Location = new System.Drawing.Point(0, 660);
+            this.logoutBtn.Name = "logoutBtn";
+            this.logoutBtn.Size = new System.Drawing.Size(70, 55);
+            this.logoutBtn.TabIndex = 30;
+            this.logoutBtn.TabStop = false;
+            this.logoutBtn.Tag = "logout";
+            this.logoutBtn.Text = "Logout";
+            this.logoutBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.logoutBtn.UseVisualStyleBackColor = true;
+            this.logoutBtn.Visible = false;
+            this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click_1);
+            this.logoutBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.logoutBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // helpBtn
+            // 
+            this.helpBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.helpBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.helpBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.helpBtn.FlatAppearance.BorderSize = 0;
+            this.helpBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.helpBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.helpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.helpBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.help;
+            this.helpBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.helpBtn.Location = new System.Drawing.Point(0, 495);
+            this.helpBtn.Name = "helpBtn";
+            this.helpBtn.Size = new System.Drawing.Size(70, 55);
+            this.helpBtn.TabIndex = 29;
+            this.helpBtn.TabStop = false;
+            this.helpBtn.Tag = "help";
+            this.helpBtn.Text = "Help";
+            this.helpBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.helpBtn.UseVisualStyleBackColor = true;
+            this.helpBtn.Click += new System.EventHandler(this.helpBtn_Click);
+            this.helpBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.helpBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // statisticsBtn
+            // 
+            this.statisticsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.statisticsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.statisticsBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.statisticsBtn.FlatAppearance.BorderSize = 0;
+            this.statisticsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.statisticsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.statisticsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.statisticsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statisticsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.statistics;
+            this.statisticsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.statisticsBtn.Location = new System.Drawing.Point(0, 440);
+            this.statisticsBtn.Name = "statisticsBtn";
+            this.statisticsBtn.Size = new System.Drawing.Size(70, 55);
+            this.statisticsBtn.TabIndex = 28;
+            this.statisticsBtn.TabStop = false;
+            this.statisticsBtn.Tag = "statistics";
+            this.statisticsBtn.Text = "Statistics";
+            this.statisticsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.statisticsBtn.UseVisualStyleBackColor = true;
+            this.statisticsBtn.Visible = false;
+            this.statisticsBtn.Click += new System.EventHandler(this.statisticsBtn_Click);
+            this.statisticsBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.statisticsBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // reportsBtn
+            // 
+            this.reportsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.reportsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.reportsBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.reportsBtn.FlatAppearance.BorderSize = 0;
+            this.reportsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.reportsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.reportsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reportsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.reports;
+            this.reportsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.reportsBtn.Location = new System.Drawing.Point(0, 385);
+            this.reportsBtn.Name = "reportsBtn";
+            this.reportsBtn.Size = new System.Drawing.Size(70, 55);
+            this.reportsBtn.TabIndex = 27;
+            this.reportsBtn.TabStop = false;
+            this.reportsBtn.Tag = "reports";
+            this.reportsBtn.Text = "Reports";
+            this.reportsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.reportsBtn.UseVisualStyleBackColor = true;
+            this.reportsBtn.Visible = false;
+            this.reportsBtn.Click += new System.EventHandler(this.reportsBtn_Click);
+            this.reportsBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.reportsBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // rankingBtn
+            // 
+            this.rankingBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rankingBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rankingBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.rankingBtn.FlatAppearance.BorderSize = 0;
+            this.rankingBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.rankingBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.rankingBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rankingBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rankingBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.rating;
+            this.rankingBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.rankingBtn.Location = new System.Drawing.Point(0, 330);
+            this.rankingBtn.Name = "rankingBtn";
+            this.rankingBtn.Size = new System.Drawing.Size(70, 55);
+            this.rankingBtn.TabIndex = 26;
+            this.rankingBtn.TabStop = false;
+            this.rankingBtn.Tag = "ratings";
+            this.rankingBtn.Text = "Ranking";
+            this.rankingBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.rankingBtn.UseVisualStyleBackColor = true;
+            this.rankingBtn.Visible = false;
+            this.rankingBtn.Click += new System.EventHandler(this.rankingBtn_Click);
+            this.rankingBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.rankingBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // gradeBtn
+            // 
+            this.gradeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.gradeBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gradeBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.gradeBtn.FlatAppearance.BorderSize = 0;
+            this.gradeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.gradeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.gradeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gradeBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gradeBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.grades;
+            this.gradeBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.gradeBtn.Location = new System.Drawing.Point(0, 275);
+            this.gradeBtn.Name = "gradeBtn";
+            this.gradeBtn.Size = new System.Drawing.Size(70, 55);
+            this.gradeBtn.TabIndex = 25;
+            this.gradeBtn.TabStop = false;
+            this.gradeBtn.Tag = "grades";
+            this.gradeBtn.Text = "Grades";
+            this.gradeBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.gradeBtn.UseVisualStyleBackColor = true;
+            this.gradeBtn.Visible = false;
+            this.gradeBtn.Click += new System.EventHandler(this.gradeBtn_Click);
+            this.gradeBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.gradeBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // subjectsBtn
+            // 
+            this.subjectsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.subjectsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.subjectsBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.subjectsBtn.FlatAppearance.BorderSize = 0;
+            this.subjectsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.subjectsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.subjectsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.subjectsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subjectsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.subjects;
+            this.subjectsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.subjectsBtn.Location = new System.Drawing.Point(0, 220);
+            this.subjectsBtn.Name = "subjectsBtn";
+            this.subjectsBtn.Size = new System.Drawing.Size(70, 55);
+            this.subjectsBtn.TabIndex = 24;
+            this.subjectsBtn.TabStop = false;
+            this.subjectsBtn.Tag = "subjects";
+            this.subjectsBtn.Text = "Subjects";
+            this.subjectsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.subjectsBtn.UseVisualStyleBackColor = true;
+            this.subjectsBtn.Visible = false;
+            this.subjectsBtn.Click += new System.EventHandler(this.subjectsBtn_Click);
+            this.subjectsBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.subjectsBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // studentsBtn
+            // 
+            this.studentsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.studentsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.studentsBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.studentsBtn.FlatAppearance.BorderSize = 0;
+            this.studentsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.studentsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.studentsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.studentsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.studentsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.students;
+            this.studentsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.studentsBtn.Location = new System.Drawing.Point(0, 165);
+            this.studentsBtn.Name = "studentsBtn";
+            this.studentsBtn.Size = new System.Drawing.Size(70, 55);
+            this.studentsBtn.TabIndex = 23;
+            this.studentsBtn.TabStop = false;
+            this.studentsBtn.Tag = "students";
+            this.studentsBtn.Text = "Students";
+            this.studentsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.studentsBtn.UseVisualStyleBackColor = true;
+            this.studentsBtn.Visible = false;
+            this.studentsBtn.Click += new System.EventHandler(this.studentsBtn_Click);
+            this.studentsBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.studentsBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // assignmentsBtn
+            // 
+            this.assignmentsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.assignmentsBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.assignmentsBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.assignmentsBtn.FlatAppearance.BorderSize = 0;
+            this.assignmentsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.assignmentsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.assignmentsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.assignmentsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F);
+            this.assignmentsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.assignment;
+            this.assignmentsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.assignmentsBtn.Location = new System.Drawing.Point(0, 110);
+            this.assignmentsBtn.Name = "assignmentsBtn";
+            this.assignmentsBtn.Size = new System.Drawing.Size(70, 55);
+            this.assignmentsBtn.TabIndex = 22;
+            this.assignmentsBtn.TabStop = false;
+            this.assignmentsBtn.Tag = "assignments";
+            this.assignmentsBtn.Text = "Tests";
+            this.assignmentsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.assignmentsBtn.UseVisualStyleBackColor = true;
+            this.assignmentsBtn.Visible = false;
+            this.assignmentsBtn.Click += new System.EventHandler(this.assignmentsBtn_Click);
+            this.assignmentsBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.assignmentsBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // semesterBtn
+            // 
+            this.semesterBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.semesterBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.semesterBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.semesterBtn.FlatAppearance.BorderSize = 0;
+            this.semesterBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.semesterBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.semesterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.semesterBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F);
+            this.semesterBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.semester;
+            this.semesterBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.semesterBtn.Location = new System.Drawing.Point(0, 55);
+            this.semesterBtn.Name = "semesterBtn";
+            this.semesterBtn.Size = new System.Drawing.Size(70, 55);
+            this.semesterBtn.TabIndex = 21;
+            this.semesterBtn.TabStop = false;
+            this.semesterBtn.Tag = "semester";
+            this.semesterBtn.Text = "Semester";
+            this.semesterBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.semesterBtn.UseVisualStyleBackColor = true;
+            this.semesterBtn.Visible = false;
+            this.semesterBtn.Click += new System.EventHandler(this.semesterBtn_Click);
+            this.semesterBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.semesterBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
+            // loginBtn
+            // 
+            this.loginBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.loginBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.loginBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.loginBtn.FlatAppearance.BorderSize = 0;
+            this.loginBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.loginBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.login;
+            this.loginBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.loginBtn.Location = new System.Drawing.Point(0, 0);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(70, 55);
+            this.loginBtn.TabIndex = 20;
+            this.loginBtn.TabStop = false;
+            this.loginBtn.Tag = "login";
+            this.loginBtn.Text = "Login";
+            this.loginBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.loginBtn.UseVisualStyleBackColor = true;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            this.loginBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.loginBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
             // maximizePictureBox
             // 
-            this.maximizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.White;
             this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(836, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(944, 0);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -379,12 +470,12 @@
             // 
             // minimizePictureBox
             // 
-            this.minimizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.White;
             this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(862, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(970, 0);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -400,12 +491,12 @@
             // 
             // closePictureBox
             // 
-            this.closePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.closePictureBox.BackColor = System.Drawing.Color.White;
             this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(888, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(996, 0);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -418,25 +509,6 @@
             this.closePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             this.closePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.titleLabel.Location = new System.Drawing.Point(432, 9);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(124, 15);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Grade Manager";
-            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.BackColor = System.Drawing.Color.Black;
-            this.toolTip1.ForeColor = System.Drawing.Color.White;
-            this.toolTip1.IsBalloon = true;
             // 
             // ribbonOrbSubjects
             // 
@@ -497,14 +569,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(914, 790);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(1024, 768);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "MainForm";
+            this.Padding = new System.Windows.Forms.Padding(1);
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
@@ -514,17 +588,6 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.helpPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.statisticsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reportsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ratingsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gradesPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.subjectsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assignmentsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.semesterPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.logoutPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loginPictureBox)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
@@ -556,21 +619,21 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.PictureBox statisticsPictureBox;
-        private System.Windows.Forms.PictureBox reportsPictureBox;
-        private System.Windows.Forms.PictureBox gradesPictureBox;
-        private System.Windows.Forms.PictureBox ratingsPictureBox;
-        private System.Windows.Forms.PictureBox assignmentsPictureBox;
-        private System.Windows.Forms.PictureBox subjectsPictureBox;
-        private System.Windows.Forms.PictureBox studentsPictureBox;
-        private System.Windows.Forms.PictureBox semesterPictureBox;
-        private System.Windows.Forms.PictureBox loginPictureBox;
-        private System.Windows.Forms.PictureBox helpPictureBox;
-        private System.Windows.Forms.PictureBox logoutPictureBox;
         private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox minimizePictureBox;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.Button semesterBtn;
+        private System.Windows.Forms.Button logoutBtn;
+        private System.Windows.Forms.Button helpBtn;
+        private System.Windows.Forms.Button statisticsBtn;
+        private System.Windows.Forms.Button reportsBtn;
+        private System.Windows.Forms.Button rankingBtn;
+        private System.Windows.Forms.Button gradeBtn;
+        private System.Windows.Forms.Button subjectsBtn;
+        private System.Windows.Forms.Button studentsBtn;
+        private System.Windows.Forms.Button assignmentsBtn;
 
 
     }

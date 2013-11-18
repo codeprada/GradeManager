@@ -105,5 +105,17 @@ namespace Grade_Manager_DB_Controller
             LoadList();
             LoadSubjectsToList();
         }
+
+        private void Subjects_Form_Paint(object sender, PaintEventArgs e)
+        {
+            Form sf = sender as Form;
+
+            sf.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, sf.Width, sf.Height, 5, 5));
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
