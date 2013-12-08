@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 
 using Novacode;
 
 namespace Grade_Manager_DB_Controller
 {
+    public class ReportEventArgs : EventArgs
+    {
+        public Student CurrentStudent { get; set; }
+        public int Total { get; set; }
+        public int Counter { get; set; }
+    }
+
+    public delegate void ReportEventHandler(ReportEventArgs rea);
 
     public class Reports : Database_Object
     {
@@ -48,48 +58,83 @@ namespace Grade_Manager_DB_Controller
     {
         public enum REPORT_TYPE { DOCUMENT, CHART }
 
+        public ReportEventHandler ReportHandler;
+        public Dictionary<string, Stream> Images;
+        public string SaveAs { get; set; }
+
         private const int BUFFER_NUMBER = 6;
 
         public ReportsManager(string connection)
             : base(connection)
         {
-
+            ReportHandler = null;
+            Images = new Dictionary<string, Stream>();
+            SaveAs = "report.docx";
         }
 
-        public void GenerateReport(int semester_id, string saveas)
+        private static string GetDaySuffix(int day)
         {
-
-            //Does all the calculations
-            List<Reports> reports = FetchData(semester_id);
-
-            using (var document_report = DocX.Create(saveas))
+            switch (day)
             {
+                case 1:
+                case 21:
+                case 31:
+                    return "st";
+                case 2:
+                case 22:
+                    return "nd";
+                case 3:
+                case 23:
+                    return "rd";
+                default:
+                    return "th";
+            }
+        }
+
+        public void GenerateReport(int semester_id)
+        {
+            Thread thread = new Thread(WorkerThreadProcess);
+            
+            thread.Start(semester_id);
+        }
+
+        private void WorkerThreadProcess(object semester_obj)
+        {
+            int semester_id = Convert.ToInt32(semester_obj);
+
+            StudentManager student_manager = new StudentManager(ConnectionString);
+            Student[] students = student_manager.Get();
+            Semester semester = new SemesterManager(ConnectionString).GetSemester(semester_id);
+
+            List<Subject> subjects = new SubjectManager(ConnectionString).GetSubjects(semester_id);
+
+            WeightManager weight_manager = new WeightManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING, UserManager.CurrentUser.Id);
+            StudentSubjectGradeObjectListManager student_subject_grade_obj_list_manager = new StudentSubjectGradeObjectListManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            
+            //Add a Get assessor to ClassManager
+            Class _class = new ClassManager(ConnectionString).GetClassOfStudent(students[0].ID);
+
+            //Calculate the weightings here
+            weight_manager.CalculateWeighting();
+
+            int counter = 0;
+            //Does all the calculations
+            //List<Reports> reports = FetchData(semester_id);
 
 
-                foreach (var id in reports.Select(x => x._Student.ID).Distinct())
+            using (var document_report = DocX.Create(SaveAs))
+            {
+                //add footers and headers
+                document_report.AddFooters();
+                document_report.AddHeaders();
+
+
+                foreach (Student student in students)
                 {
-                    var data = reports
-                        .Where(x => x._Student.ID == id)
-                        .Select(
-                            x => x
-                        )
-                        .Distinct();
+                    Dictionary<int, double> grades = 
+                        student_subject_grade_obj_list_manager.CalculateOverallAverage(student.ID, weight_manager.SubjectWeightObjList);
 
-                    var g = reports
-                        .Where(x => x._Student.ID == id)
-                        .Distinct()
-                        .Join(
-                            reports,
-                            x => x._Subject.Id,
-                            y => y._Subject.Id,
-                            (x, y) =>
-                                new
-                                {
-                                    SubjectName = x._Subject.Name,
-                                    Grade = Grade_Manager.GetLetter(x.Average)
-                                })
-                        .Distinct();
-
+                    #region old code
                     //HEADING
                     Formatting heading_format = new Formatting()
                     {
@@ -157,21 +202,21 @@ namespace Grade_Manager_DB_Controller
                         Size = 11.0
                     };
 
-                    string name = ("STUDENT: " + data.Select(x => x._Student.LastName).First() + ", " + data.Select(x => x._Student.FirstName).First()).ToUpper();
+                    string name = ("STUDENT: " + student.LastName.ToUpper() + ", " + student.FirstName.ToUpper());
                     name = ApplyBuffer(name, BUFFER_NUMBER);
-                    string class_name = "CLASS: " + data.Select(x => x._Class.Name).First().ToUpper();
+                    string class_name = "CLASS: " + _class.Name.ToUpper();
                     //class_name = ApplyBuffer(class_name, BUFFER_NUMBER);
 
                     document_report.InsertParagraph(String.Format("{0}{1}{2}", name, new String('\t', CalculateTabs(name, 7)), class_name), false, student_details);
 
-                    string dob = ("DATE OF BIRTH: " + data.Select(x => x._Student.DateOfBirth.ToString("d, MMM., yyyy")).First()).ToUpper();
-                    //dob = ApplyBuffer(dob, BUFFER_NUMBER + 1);
-                    string semester = "SEMESTER: " + data.Select(x => x._Semester.Term).First().ToString().ToUpper();
+                    string dob = ("DATE OF BIRTH: " + student.DateOfBirth.Day + GetDaySuffix(student.DateOfBirth.Day)).ToString().ToUpper() + student.DateOfBirth.ToString(", MMM., yyyy").ToUpper();
+                    dob = ApplyBuffer(dob, BUFFER_NUMBER + 1);
+                    string semester_string = "SEMESTER: " + semester.Term.ToString().ToUpper();
                     //semester = ApplyBuffer(semester, BUFFER_NUMBER);
 
-                    document_report.InsertParagraph(String.Format("{0}{1}{2}", dob, new String('\t', CalculateTabs(dob, 7)), semester), false, student_details);
+                    document_report.InsertParagraph(String.Format("{0}{1}{2}", dob, new String('\t', CalculateTabs(dob, 7)), semester_string), false, student_details);
 
-                    string year = "YEAR: " + data.Select(x => x._Semester.StartingSchoolYear.ToString() + "/" + x._Semester.EndingSchoolYear.ToString()).First().ToString().ToUpper();
+                    string year = "YEAR: " + semester.StartingSchoolYear.ToString() + "/" + semester.EndingSchoolYear.ToString().ToString().ToUpper();
                     //year = ApplyBuffer(year, BUFFER_NUMBER + 1);
                     string attendance = "LATE: 0\tABSENCE: 0\n";
                     //attendance = ApplyBuffer(attendance, BUFFER_NUMBER);
@@ -206,35 +251,48 @@ namespace Grade_Manager_DB_Controller
                     int count = 1;
                     string buffer;
 
-                    var last = g.Last();
-                    foreach (var g_pair in g)
+                    if (grades.Count > 0)
                     {
-                        buffer = ("     " + count++ + ". " + g_pair.SubjectName).ToUpper();
-                        buffer = ApplyBuffer(buffer, BUFFER_NUMBER);
+                        var last = grades.Last();
 
-                        document_report.InsertParagraph(String.Format("{0}{1}{2}", buffer, new String('\t', CalculateTabs(buffer, 11)), g_pair.Grade), false, grade_legend);
-                        document_report.InsertParagraph(line, false, (g_pair.SubjectName != last.SubjectName ? line_format_nu : line_format));
+                        foreach (KeyValuePair<int, double> g_pair in grades)
+                        {
+                            string subject_name = subjects.Where(x => x.Id == g_pair.Key).Select(x => x.Name).First();
 
-                        document_report.PageHeight = 1344.0f;
-                        document_report.PageWidth = 816.0f;
+                            buffer = ("     " + count++ + ". " + subject_name).ToUpper();
+                            buffer = ApplyBuffer(buffer, BUFFER_NUMBER);
+
+                            document_report.InsertParagraph(String.Format("{0}{1}{2}", buffer, new String('\t', CalculateTabs(buffer, 11)), Grade_Manager.GetLetter(g_pair.Value)), false, grade_legend);
+                            document_report.InsertParagraph(line, false, (g_pair.Key != last.Key ? line_format_nu : line_format));
+
+
+                        }
                     }
 
                     document_report.InsertParagraph("GENERAL REMARKS:", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman"), Bold = true });
                     document_report.InsertParagraph("\n\n", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman") });
 
-                    Novacode.Image img = document_report.AddImage("baptistacademylogo.png");
+                    //Images["logo"]
+                    Novacode.Image img = document_report.AddImage(Images["logo"]);
 
                     Picture pic = img.CreatePicture();
+                    
                     pic.Height = (int)(pic.Height * .7);
                     pic.Width = (int)(pic.Width * .66);
 
                     document_report.InsertParagraph("________________________\nTEACHER\n\t\t\t\t\t\t\t\t", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman"), Bold = true })
                         .AppendPicture(pic);
 
-                    document_report.InsertParagraph("________________________\nADMINISTRATOR", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman"), Bold = true });
-                    
-                    document_report.InsertSectionPageBreak();
-                    
+                    document_report.InsertParagraph("________________________\nADMINISTRATOR", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman"), Bold = true }).InsertPageBreakAfterSelf();
+
+                    #endregion
+
+                    counter++;
+
+                    if (ReportHandler != null)
+                    {
+                        ReportHandler(new ReportEventArgs() { Counter = counter, CurrentStudent = student, Total = students.Length });
+                    }
                 }
 
                 document_report.AddFooters();
@@ -249,11 +307,14 @@ namespace Grade_Manager_DB_Controller
                 document_report.Footers.odd.Paragraphs.Add(footer);
 
                 //Size of a legal size paper
-                
+                document_report.PageHeight = 1344.0f;
+                document_report.PageWidth = 816.0f;
 
                 
 
                 document_report.Save();
+
+
             }
 
         }

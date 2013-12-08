@@ -271,7 +271,7 @@ namespace Grade_Manager
 
         private void studentsBtn_Click(object sender, EventArgs e)
         {
-            Student_Management student_management_form = new Student_Management();
+            StudentManagementForm student_management_form = new StudentManagementForm();
             student_management_form.TopLevel = false;
             splitContainer1.Panel2.Controls.Add(student_management_form);
             student_management_form.Location = new Point((splitContainer1.Panel2.Width - student_management_form.Width) / 2, (splitContainer1.Panel2.Height - student_management_form.Height) / 2);

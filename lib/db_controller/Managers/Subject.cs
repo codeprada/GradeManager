@@ -13,8 +13,19 @@ namespace Grade_Manager_DB_Controller
 {
     public class Subject : Database_Object
     {
+        public Subject()
+        {
+            Weights = new WeightObjectList();
+        }
+
         public int Id { get; set; }
         public string Name { get; set; }
+
+        public WeightObjectList Weights
+        {
+            get;
+            set;
+        }
 
         public override string ToString()
         {
@@ -213,4 +224,5 @@ namespace Grade_Manager_DB_Controller
         }
         
     }
+
 }

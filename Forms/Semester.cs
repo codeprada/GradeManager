@@ -14,6 +14,8 @@ namespace Grade_Manager
 {
     public partial class Semester_Form : Form
     {
+        private const int CS_DROPSHADOW = 0x00020000;
+
         public Semester_Form()
         {
             InitializeComponent();
@@ -21,13 +23,23 @@ namespace Grade_Manager
             LoadList();
         }
 
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
+        }
 
         private void LoadList()
         {
             //profileComboList.Items.Clear();
             //treeView1.Nodes.Clear();
-            listView1.Items.Clear();
+            semesterListView.Items.Clear();
 
             //SELECT [semester_id], [Classes].[class_name], [starting_school_year], 
             //[ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] 
@@ -52,7 +64,7 @@ namespace Grade_Manager
                         {
                             item = GenerateItem(reader);
                             if (item != null)
-                                listView1.Items.Add(item);
+                                semesterListView.Items.Add(item);
                         }
                     }
                         
@@ -138,10 +150,10 @@ namespace Grade_Manager
 
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
+            if (semesterListView.SelectedItems.Count > 0)
             {
                 int id;
-                if (Int32.TryParse(listView1.SelectedItems[0].Text, out id))
+                if (Int32.TryParse(semesterListView.SelectedItems[0].Text, out id))
                 {
                     SemesterManager profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 

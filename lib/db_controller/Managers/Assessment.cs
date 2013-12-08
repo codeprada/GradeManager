@@ -61,6 +61,30 @@ namespace Grade_Manager_DB_Controller
         }
     }
 
+    public class Assessment_Weight : Database_Object
+    {
+        public Assessment_Weight()
+            : base()
+        {
+
+        }
+
+        public int Type { get; set; }
+        public double Weight { get; set; }
+        public int Type_Relational { get; set; }
+
+        public static implicit operator Assessment_Weight(SQLiteDataReader reader)
+        {
+            Assessment_Weight assess_weight = new Assessment_Weight();
+
+            assess_weight.Type = Convert.ToInt32(reader["assess_type_id"]);
+            assess_weight.Weight = (reader["assess_type_weight"] == DBNull.Value ? 0 : Convert.ToDouble(reader["assess_type_weight"]));
+            assess_weight.Type_Relational = (reader["assess_type_id_relational"] == DBNull.Value ? 0 : Convert.ToInt32(reader["assess_type_id_relational"]));
+
+            return assess_weight;
+        }
+    }
+
     public class Assessment_Manager : BaseManager
     {
         public Assessment_Manager(string connection_string) : base(connection_string)
@@ -268,6 +292,29 @@ namespace Grade_Manager_DB_Controller
                 foreach (Assessment_Type type in GetTypes())
                     comboBox.Items.Add(new ComboItem() { Id = type.ID, Text = type.Name }); 
             }
+        }
+
+        public List<Assessment_Weight> GetWeights(int account_id)
+        {
+            List<Assessment_Weight> weights = new List<Assessment_Weight>();
+
+            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_ASSESSMENT_WEIGHTS, connection))
+                {
+                    command.Parameters.AddWithValue("@account_id", account_id);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                            weights.Add(reader);
+                    }
+                }
+            }
+
+            return weights;
         }
     }
 }

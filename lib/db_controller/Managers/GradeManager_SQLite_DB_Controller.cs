@@ -21,6 +21,7 @@ namespace Grade_Manager_DB_Controller
             "Semester",
             "Subjects",
             "Assessment_Type",
+            "Assessment_Type_Weights",
             "Assessments",
             "Grades",
             "StudentClass",
@@ -83,6 +84,20 @@ CREATE TABLE [Assessment_Type] (
     [assess_type] CHAR(12) NOT NULL,
     UNIQUE (assess_type)
 );
+
+CREATE TABLE [Assessment_Type_Weights]
+(
+	[assess_type_weight_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+	[assess_type_id] INTEGER NOT NULL,
+	[assess_type_weight] FLOAT NOT NULL,
+	[assess_type_id_relational] INTEGER,
+	[assess_is_linked] INTEGER NOT NULL DEFAULT 0,
+	[account_id] INTEGER NOT NULL,
+	FOREIGN KEY ([assess_type_id]) REFERENCES [Assessment_Type] ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY ([assess_type_id_relational]) REFERENCES [Assessment_Type] ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY ([account_id]) REFERENCES [Accounts] ON UPDATE CASCADE ON DELETE CASCADE,
+	UNIQUE ([assess_type_id], [account_id])
+);
 	
 CREATE TABLE [Assessments] (
 	assess_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -96,8 +111,6 @@ CREATE TABLE [Assessments] (
     FOREIGN KEY ([assess_type_id]) REFERENCES [Assessment_Type](assess_type_id) ON UPDATE CASCADE ON DELETE CASCADE
 	);
 
-
-
 CREATE TABLE [Grades] (
 	[grade_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	[student_id] INTEGER NOT NULL,
@@ -107,9 +120,6 @@ CREATE TABLE [Grades] (
 	FOREIGN KEY ([student_id]) REFERENCES [Students]([student_id]) ON UPDATE CASCADE ON DELETE CASCADE,
 	UNIQUE (student_id, assess_id)
 	);
-
-
-
 	
 CREATE TABLE [StudentClass] (
 	[stu_cla_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -119,8 +129,6 @@ CREATE TABLE [StudentClass] (
 	FOREIGN KEY ([student_id]) REFERENCES [Students]([student_id]) ON UPDATE CASCADE ON DELETE CASCADE,
 	UNIQUE (student_id, class_id)
 	);
-
-
 
 CREATE TABLE [SubjectClass] (
 	[sub_pro_id] INTEGER PRIMARY KEY NOT NULL,
@@ -164,7 +172,7 @@ CREATE TABLE [SubjectClass] (
                             DBQ_STUDENT_DELETE = "pragma foreign_keys=on; DELETE FROM [Students] WHERE [student_id] = @student_id",
 
                             DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name]) VALUES (@subject_name)",
-                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id ORDER BY [subject_name] ASC",
+                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT  DISTINCT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id ORDER BY [subject_name] ASC",
                             DBQ_CLEAR_SUBJECTS_ON_CLASS = "pragma foreign_keys=on; DELETE FROM [SubjectClass] WHERE [semester_id] = @semester_id AND [class_id] = @class_id",
                             DBQ_INSERT_SUBJECT_ON_CLASS = "pragma foreign_keys=on; INSERT INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
 
@@ -183,6 +191,19 @@ VALUES
 )",
                             DBQ_SELECT_ASSESSMENT_FROM_SUBJECT = "SELECT assess_id, assess_name FROM [Assessments] A WHERE [semester_id] = @semester_id AND [subject_id] = @subject_id ORDER BY assess_name ASC",
                             DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] ORDER BY assess_type ASC",
+                            DBQ_GET_ASSESSMENT_COUNT = @"SELECT
+	[Assessments].assess_type_id,
+	Subjects.subject_name,
+	Subjects.subject_id,
+	Assessment_Type.assess_type,
+	COUNT([Assessments].assess_id) [Count]
+FROM
+	Assessments
+	INNER JOIN Assessment_Type ON Assessments.assess_type_id = Assessment_Type.assess_type_id
+	INNER JOIN Subjects ON Assessments.subject_id = Subjects.subject_id
+	INNER JOIN Semester ON Semester.semester_id = Assessments.semester_id
+WHERE account_id = @account_id
+GROUP BY Assessments.assess_type_id, Assessments.subject_id",
                             DBQ_INSERT_ASSESSMENT_TYPE = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] (assess_type) VALUES (@assess_type)",
 
                             DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
@@ -240,7 +261,25 @@ WHERE SM.[semester_id] = @semester_id {0}
 GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]) [Z]
 GROUP BY Z.student_id
 ORDER BY [overall] DESC
-";
+",
+                            DBQ_GET_ASSESSMENT_WEIGHTS = @"
+SELECT
+	[Assessments].assess_type_id,
+	Subjects.subject_name,
+	Subjects.subject_id,
+	Assessment_Type.assess_type,
+	Assessment_Type_Weights.*,
+	COUNT([Assessments].assess_id) [Amount]
+FROM
+	Assessments
+	INNER JOIN Assessment_Type ON Assessments.assess_type_id = Assessment_Type.assess_type_id
+	INNER JOIN Assessment_Type_Weights ON Assessment_Type_Weights.assess_type_id = Assessments.assess_type_id
+	INNER JOIN Subjects ON Assessments.subject_id = Subjects.subject_id
+	INNER JOIN Semester ON Semester.semester_id = Assessments.semester_id
+WHERE Semester.account_id = @account_id
+GROUP BY Assessments.assess_type_id, Assessments.subject_id",
+                            DBQ_GET_ASSESSMENT_WEIGHTS_WHERE = "SELECT DISTINCT [AT].[assess_type_id] [ID], [assess_type] [Name], [assess_type_weight] [Weight], [assess_type_id_relational] [RelationID], [assess_is_linked] [isLinkWith] FROM [Assessment_Type_Weights] [ATW] INNER JOIN [Assessment_Type] [AT] ON [ATW].assess_type_id = [AT].assess_type_id WHERE [account_id] = @account_id AND [ID] = @id",
+                            DBQ_GET_STUDENT_SUBJECT_ASSESS_GRADES = @"select Students.student_id, student_first_name, student_last_name, subject_name, Subjects.subject_id, assess_type_id, avg(grade_mark) [Average] from Grades inner join Assessments on Assessments.assess_id = Grades.assess_id inner join Students on Grades.student_id = Students.student_id inner join Subjects on Subjects.subject_id = Assessments.subject_id where Students.student_id = @student_id group by Students.student_id, Assessments.assess_type_id, Subjects.subject_id";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";

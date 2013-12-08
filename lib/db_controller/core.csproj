@@ -19,6 +19,7 @@
     </SccAuxPath>
     <SccProvider>
     </SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,6 +38,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DocX, Version=1.0.1.13, Culture=neutral, processorArchitecture=MSIL">
@@ -52,10 +55,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.89.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\Program Files\System.Data.SQLite\2012\bin\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq">
-      <HintPath>..\..\..\..\..\..\..\Program Files\System.Data.SQLite\2012\bin\System.Data.SQLite.Linq.dll</HintPath>
+      <HintPath>..\..\..\SQLite.NET\x86\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -66,6 +66,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\iObject.cs" />
+    <Compile Include="Managers\iObjectList.cs" />
     <Compile Include="Managers\Grade.cs" />
     <Compile Include="Managers\Assessment.cs" />
     <Compile Include="Managers\Base.cs" />
@@ -81,6 +83,12 @@
     <Compile Include="Managers\Reports.cs" />
     <Compile Include="Managers\Stats.cs" />
     <Compile Include="Managers\Styles.cs" />
+    <Compile Include="Managers\Weights.cs" />
+    <Compile Include="Managers\StudentSubjectGrade.cs" />
+    <Compile Include="Managers\SubjectWeightObject.cs" />
+    <Compile Include="Managers\SubjectWeightObjectList.cs" />
+    <Compile Include="Managers\Weight.cs" />
+    <Compile Include="Managers\WeightObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
