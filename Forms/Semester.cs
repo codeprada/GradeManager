@@ -37,7 +37,7 @@ namespace Grade_Manager
 
         private void LoadList()
         {
-            //profileComboList.Items.Clear();
+            /*//profileComboList.Items.Clear();
             //treeView1.Nodes.Clear();
             semesterListView.Items.Clear();
 
@@ -69,6 +69,26 @@ namespace Grade_Manager
                     }
                         
 
+                }
+            }*/
+
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_SEMESTERS_TREE, connection))
+                {
+                    adapter.SelectCommand.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
+                    connection.Open();
+
+                    using (var grid_table = new DataTable())
+                    {
+                        adapter.Fill(grid_table);
+                        semesterGridView.DataSource = grid_table;
+                        semesterGridView.Columns["ID"].Visible = false;
+                        foreach (DataGridViewColumn column in semesterGridView.Columns)
+                        {
+                            column.ReadOnly = true;
+                        }
+                    }
                 }
             }
         }
@@ -150,10 +170,10 @@ namespace Grade_Manager
 
         private void loadBtn_Click(object sender, EventArgs e)
         {
-            if (semesterListView.SelectedItems.Count > 0)
+            if (semesterGridView.SelectedRows.Count > 0)
             {
                 int id;
-                if (Int32.TryParse(semesterListView.SelectedItems[0].Text, out id))
+                if (Int32.TryParse(semesterGridView.SelectedRows[0].Cells["ID"].Value.ToString(), out id))
                 {
                     SemesterManager profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
@@ -169,6 +189,21 @@ namespace Grade_Manager
                     MessageBox.Show("Select a semester from the list before trying to load.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+        }
+
+        private void loadBtn_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void loadBtn_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void semesterGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            loadBtn_Click(sender, e);
         }
 
     }

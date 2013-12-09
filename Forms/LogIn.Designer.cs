@@ -34,12 +34,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.passwordTxtBox = new System.Windows.Forms.TextBox();
             this.usernameTxtBox = new System.Windows.Forms.TextBox();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.loginStatusLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.logInBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,7 +55,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(326, 104);
+            this.groupBox1.Size = new System.Drawing.Size(326, 105);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details Here";
@@ -96,7 +96,7 @@
             // 
             this.passwordTxtBox.BackColor = System.Drawing.Color.White;
             this.passwordTxtBox.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.passwordTxtBox.ForeColor = System.Drawing.Color.Black;
             this.passwordTxtBox.Location = new System.Drawing.Point(88, 45);
             this.passwordTxtBox.Name = "passwordTxtBox";
             this.passwordTxtBox.Size = new System.Drawing.Size(232, 22);
@@ -108,37 +108,12 @@
             // 
             this.usernameTxtBox.BackColor = System.Drawing.Color.White;
             this.usernameTxtBox.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usernameTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.usernameTxtBox.ForeColor = System.Drawing.Color.Black;
             this.usernameTxtBox.Location = new System.Drawing.Point(88, 19);
             this.usernameTxtBox.Name = "usernameTxtBox";
             this.usernameTxtBox.Size = new System.Drawing.Size(232, 22);
             this.usernameTxtBox.TabIndex = 0;
             this.usernameTxtBox.WordWrap = false;
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.cancelBtn.FlatAppearance.BorderSize = 0;
-            this.cancelBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.cancelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.cancel;
-            this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cancelBtn.Location = new System.Drawing.Point(371, 87);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(70, 55);
-            this.cancelBtn.TabIndex = 5;
-            this.cancelBtn.Tag = "cancel";
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.button1_Click);
-            this.cancelBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.logInBtn_Paint);
-            this.cancelBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.cancelBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // loginStatusLabel
             // 
@@ -160,7 +135,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(444, 29);
+            this.panel1.Size = new System.Drawing.Size(423, 29);
             this.panel1.TabIndex = 2;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -185,7 +160,7 @@
             this.panel2.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel2.Location = new System.Drawing.Point(1, 30);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(444, 145);
+            this.panel2.Size = new System.Drawing.Size(423, 145);
             this.panel2.TabIndex = 3;
             // 
             // logInBtn
@@ -201,7 +176,7 @@
             this.logInBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logInBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.login;
             this.logInBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.logInBtn.Location = new System.Drawing.Point(371, 3);
+            this.logInBtn.Location = new System.Drawing.Point(345, 3);
             this.logInBtn.Name = "logInBtn";
             this.logInBtn.Size = new System.Drawing.Size(70, 55);
             this.logInBtn.TabIndex = 2;
@@ -214,6 +189,31 @@
             this.logInBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.logInBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.cancelBtn.FlatAppearance.BorderSize = 0;
+            this.cancelBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.cancelBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.cancel;
+            this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.cancelBtn.Location = new System.Drawing.Point(345, 69);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(70, 55);
+            this.cancelBtn.TabIndex = 5;
+            this.cancelBtn.Tag = "cancel";
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.button1_Click);
+            this.cancelBtn.Paint += new System.Windows.Forms.PaintEventHandler(this.logInBtn_Paint);
+            this.cancelBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.cancelBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
+            // 
             // LogIn
             // 
             this.AcceptButton = this.logInBtn;
@@ -221,7 +221,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.CancelButton = this.cancelBtn;
-            this.ClientSize = new System.Drawing.Size(446, 176);
+            this.ClientSize = new System.Drawing.Size(425, 176);
             this.ControlBox = false;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

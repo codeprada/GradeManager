@@ -172,7 +172,7 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadAssessment_Types()
         {
-            Assessment_Manager assessment_manager = new Assessment_Manager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            AssessmentManager assessment_manager = new AssessmentManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             assessment_manager.LoadToComboBox(typeComboBox, DB_Object.TYPE);
         }
 

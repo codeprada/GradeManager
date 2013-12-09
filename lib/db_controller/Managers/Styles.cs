@@ -74,5 +74,18 @@ namespace Grade_Manager_DB_Controller
             pb.BackgroundImage = Styles.Icons[pb.Tag.ToString() + "_over"];
         }
 
+        public static void Button_MouseEnter(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+
+            b.Image = Styles.Icons[b.Tag.ToString() + "_over"];
+        }
+
+        public static void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+
+            b.Image = Styles.Icons[b.Tag.ToString()];
+        }
     }
 }

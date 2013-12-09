@@ -16,13 +16,13 @@ namespace Grade_Manager_DB_Controller
     {
         private SQLiteDataAdapter grid_adapter;
         private DataTable grid_table;
-        private Assessment_Manager assessment_manager;
+        private AssessmentManager assessment_manager;
 
         public Assessments()
         {
             InitializeComponent();
 
-            assessment_manager = new Assessment_Manager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            assessment_manager = new AssessmentManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
             LoadAssessments();
             LoadAssessment_Types();
@@ -129,6 +129,13 @@ namespace Grade_Manager_DB_Controller
         private void filterSubject_CheckedChanged(object sender, EventArgs e)
         {
             filterSubjectCombo.Enabled = filterSubject.Checked;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CreateAssessmentType cat = new CreateAssessmentType();
+
+            cat.ShowDialog();
         }
     }
 }

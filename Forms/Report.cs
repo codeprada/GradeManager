@@ -25,12 +25,12 @@ namespace Grade_Manager_DB_Controller
         {
             report_manager = new ReportsManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
-            Dictionary<string, Stream> images = new Dictionary<string, Stream>();
-            images["logo"] = ConvertToStream(Grade_Manager_DB_Controller.Properties.Resources.logo);
+            //Dictionary<string, Stream> images = new Dictionary<string, Stream>();
+            //images["logo"] = ConvertToStream(Grade_Manager_DB_Controller.Properties.Resources.logo);
 
             report_manager.SaveAs = saveFileTxtBox.Text;
             report_manager.ReportHandler = ReportHandler;
-            report_manager.Images = images;
+            //report_manager.Images = images;
 
             report_manager.GenerateReport(SemesterManager.CurrentSemester.Id);
         }
@@ -77,8 +77,8 @@ namespace Grade_Manager_DB_Controller
         /// <returns></returns>
         private Stream ConvertToStream(Bitmap bitmap)
         {
-            Stream mem = new MemoryStream();
-            bitmap.Save(mem, ImageFormat.MemoryBmp);
+            MemoryStream mem = new MemoryStream();
+            bitmap.Save(mem, ImageFormat.Png);
             
             return mem;
         }

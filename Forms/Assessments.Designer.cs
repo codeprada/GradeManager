@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.filterSubject = new System.Windows.Forms.CheckBox();
+            this.filterTimePeriod = new System.Windows.Forms.CheckBox();
+            this.filterTypeCheckbox = new System.Windows.Forms.CheckBox();
+            this.clearFilterBtn = new System.Windows.Forms.Button();
+            this.filterBtn = new System.Windows.Forms.Button();
+            this.filterSubjectCombo = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.filterDateTo = new System.Windows.Forms.DateTimePicker();
+            this.filterDateFrom = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.filterTypeCombo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
@@ -39,27 +51,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.assessmentDataGridView = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.filterTypeCombo = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.filterDateFrom = new System.Windows.Forms.DateTimePicker();
-            this.filterDateTo = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.filterSubjectCombo = new System.Windows.Forms.ComboBox();
-            this.filterBtn = new System.Windows.Forms.Button();
-            this.clearFilterBtn = new System.Windows.Forms.Button();
-            this.filterTypeCheckbox = new System.Windows.Forms.CheckBox();
-            this.filterTimePeriod = new System.Windows.Forms.CheckBox();
-            this.filterSubject = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).BeginInit();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -67,6 +69,136 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(818, 167);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.filterSubject);
+            this.groupBox2.Controls.Add(this.filterTimePeriod);
+            this.groupBox2.Controls.Add(this.filterTypeCheckbox);
+            this.groupBox2.Controls.Add(this.clearFilterBtn);
+            this.groupBox2.Controls.Add(this.filterBtn);
+            this.groupBox2.Controls.Add(this.filterSubjectCombo);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.filterDateTo);
+            this.groupBox2.Controls.Add(this.filterDateFrom);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.filterTypeCombo);
+            this.groupBox2.Location = new System.Drawing.Point(322, 3);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(423, 160);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Filter";
+            // 
+            // filterSubject
+            // 
+            this.filterSubject.AutoSize = true;
+            this.filterSubject.Location = new System.Drawing.Point(6, 78);
+            this.filterSubject.Name = "filterSubject";
+            this.filterSubject.Size = new System.Drawing.Size(62, 17);
+            this.filterSubject.TabIndex = 15;
+            this.filterSubject.Text = "Subject";
+            this.filterSubject.UseVisualStyleBackColor = true;
+            this.filterSubject.CheckedChanged += new System.EventHandler(this.filterSubject_CheckedChanged);
+            // 
+            // filterTimePeriod
+            // 
+            this.filterTimePeriod.AutoSize = true;
+            this.filterTimePeriod.Location = new System.Drawing.Point(6, 51);
+            this.filterTimePeriod.Name = "filterTimePeriod";
+            this.filterTimePeriod.Size = new System.Drawing.Size(82, 17);
+            this.filterTimePeriod.TabIndex = 14;
+            this.filterTimePeriod.Text = "Time Period";
+            this.filterTimePeriod.UseVisualStyleBackColor = true;
+            this.filterTimePeriod.CheckedChanged += new System.EventHandler(this.filterTimePeriod_CheckedChanged);
+            // 
+            // filterTypeCheckbox
+            // 
+            this.filterTypeCheckbox.AutoSize = true;
+            this.filterTypeCheckbox.Location = new System.Drawing.Point(6, 25);
+            this.filterTypeCheckbox.Name = "filterTypeCheckbox";
+            this.filterTypeCheckbox.Size = new System.Drawing.Size(50, 17);
+            this.filterTypeCheckbox.TabIndex = 13;
+            this.filterTypeCheckbox.Text = "Type";
+            this.filterTypeCheckbox.UseVisualStyleBackColor = true;
+            this.filterTypeCheckbox.CheckedChanged += new System.EventHandler(this.filterTypeCheckbox_CheckedChanged);
+            // 
+            // clearFilterBtn
+            // 
+            this.clearFilterBtn.Location = new System.Drawing.Point(195, 131);
+            this.clearFilterBtn.Name = "clearFilterBtn";
+            this.clearFilterBtn.Size = new System.Drawing.Size(75, 23);
+            this.clearFilterBtn.TabIndex = 11;
+            this.clearFilterBtn.Text = "Clear Filter";
+            this.clearFilterBtn.UseVisualStyleBackColor = true;
+            this.clearFilterBtn.Click += new System.EventHandler(this.clearFilterBtn_Click);
+            // 
+            // filterBtn
+            // 
+            this.filterBtn.Location = new System.Drawing.Point(278, 131);
+            this.filterBtn.Name = "filterBtn";
+            this.filterBtn.Size = new System.Drawing.Size(75, 23);
+            this.filterBtn.TabIndex = 10;
+            this.filterBtn.Text = "Filter";
+            this.filterBtn.UseVisualStyleBackColor = true;
+            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
+            // 
+            // filterSubjectCombo
+            // 
+            this.filterSubjectCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterSubjectCombo.Enabled = false;
+            this.filterSubjectCombo.FormattingEnabled = true;
+            this.filterSubjectCombo.Location = new System.Drawing.Point(123, 75);
+            this.filterSubjectCombo.Name = "filterSubjectCombo";
+            this.filterSubjectCombo.Size = new System.Drawing.Size(121, 21);
+            this.filterSubjectCombo.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(227, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(13, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "--";
+            // 
+            // filterDateTo
+            // 
+            this.filterDateTo.CustomFormat = "dd/MM/yyyy";
+            this.filterDateTo.Enabled = false;
+            this.filterDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.filterDateTo.Location = new System.Drawing.Point(246, 49);
+            this.filterDateTo.Name = "filterDateTo";
+            this.filterDateTo.Size = new System.Drawing.Size(98, 20);
+            this.filterDateTo.TabIndex = 6;
+            // 
+            // filterDateFrom
+            // 
+            this.filterDateFrom.CustomFormat = "dd/MM/yyyy";
+            this.filterDateFrom.Enabled = false;
+            this.filterDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.filterDateFrom.Location = new System.Drawing.Point(123, 49);
+            this.filterDateFrom.Name = "filterDateFrom";
+            this.filterDateFrom.Size = new System.Drawing.Size(98, 20);
+            this.filterDateFrom.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 51);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 13);
+            this.label2.TabIndex = 4;
+            // 
+            // filterTypeCombo
+            // 
+            this.filterTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filterTypeCombo.Enabled = false;
+            this.filterTypeCombo.FormattingEnabled = true;
+            this.filterTypeCombo.Location = new System.Drawing.Point(123, 17);
+            this.filterTypeCombo.Name = "filterTypeCombo";
+            this.filterTypeCombo.Size = new System.Drawing.Size(121, 21);
+            this.filterTypeCombo.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -170,135 +302,15 @@
             this.assessmentDataGridView.Size = new System.Drawing.Size(818, 321);
             this.assessmentDataGridView.TabIndex = 0;
             // 
-            // groupBox2
+            // button1
             // 
-            this.groupBox2.Controls.Add(this.filterSubject);
-            this.groupBox2.Controls.Add(this.filterTimePeriod);
-            this.groupBox2.Controls.Add(this.filterTypeCheckbox);
-            this.groupBox2.Controls.Add(this.clearFilterBtn);
-            this.groupBox2.Controls.Add(this.filterBtn);
-            this.groupBox2.Controls.Add(this.filterSubjectCombo);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.filterDateTo);
-            this.groupBox2.Controls.Add(this.filterDateFrom);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.filterTypeCombo);
-            this.groupBox2.Location = new System.Drawing.Point(322, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(423, 160);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Filter";
-            // 
-            // filterTypeCombo
-            // 
-            this.filterTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.filterTypeCombo.Enabled = false;
-            this.filterTypeCombo.FormattingEnabled = true;
-            this.filterTypeCombo.Location = new System.Drawing.Point(123, 17);
-            this.filterTypeCombo.Name = "filterTypeCombo";
-            this.filterTypeCombo.Size = new System.Drawing.Size(121, 21);
-            this.filterTypeCombo.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 13);
-            this.label2.TabIndex = 4;
-            // 
-            // filterDateFrom
-            // 
-            this.filterDateFrom.CustomFormat = "dd/MM/yyyy";
-            this.filterDateFrom.Enabled = false;
-            this.filterDateFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.filterDateFrom.Location = new System.Drawing.Point(123, 49);
-            this.filterDateFrom.Name = "filterDateFrom";
-            this.filterDateFrom.Size = new System.Drawing.Size(98, 20);
-            this.filterDateFrom.TabIndex = 5;
-            // 
-            // filterDateTo
-            // 
-            this.filterDateTo.CustomFormat = "dd/MM/yyyy";
-            this.filterDateTo.Enabled = false;
-            this.filterDateTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.filterDateTo.Location = new System.Drawing.Point(246, 49);
-            this.filterDateTo.Name = "filterDateTo";
-            this.filterDateTo.Size = new System.Drawing.Size(98, 20);
-            this.filterDateTo.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(227, 51);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "--";
-            // 
-            // filterSubjectCombo
-            // 
-            this.filterSubjectCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.filterSubjectCombo.Enabled = false;
-            this.filterSubjectCombo.FormattingEnabled = true;
-            this.filterSubjectCombo.Location = new System.Drawing.Point(123, 75);
-            this.filterSubjectCombo.Name = "filterSubjectCombo";
-            this.filterSubjectCombo.Size = new System.Drawing.Size(121, 21);
-            this.filterSubjectCombo.TabIndex = 9;
-            // 
-            // filterBtn
-            // 
-            this.filterBtn.Location = new System.Drawing.Point(278, 131);
-            this.filterBtn.Name = "filterBtn";
-            this.filterBtn.Size = new System.Drawing.Size(75, 23);
-            this.filterBtn.TabIndex = 10;
-            this.filterBtn.Text = "Filter";
-            this.filterBtn.UseVisualStyleBackColor = true;
-            this.filterBtn.Click += new System.EventHandler(this.filterBtn_Click);
-            // 
-            // clearFilterBtn
-            // 
-            this.clearFilterBtn.Location = new System.Drawing.Point(195, 131);
-            this.clearFilterBtn.Name = "clearFilterBtn";
-            this.clearFilterBtn.Size = new System.Drawing.Size(75, 23);
-            this.clearFilterBtn.TabIndex = 11;
-            this.clearFilterBtn.Text = "Clear Filter";
-            this.clearFilterBtn.UseVisualStyleBackColor = true;
-            this.clearFilterBtn.Click += new System.EventHandler(this.clearFilterBtn_Click);
-            // 
-            // filterTypeCheckbox
-            // 
-            this.filterTypeCheckbox.AutoSize = true;
-            this.filterTypeCheckbox.Location = new System.Drawing.Point(6, 25);
-            this.filterTypeCheckbox.Name = "filterTypeCheckbox";
-            this.filterTypeCheckbox.Size = new System.Drawing.Size(50, 17);
-            this.filterTypeCheckbox.TabIndex = 13;
-            this.filterTypeCheckbox.Text = "Type";
-            this.filterTypeCheckbox.UseVisualStyleBackColor = true;
-            this.filterTypeCheckbox.CheckedChanged += new System.EventHandler(this.filterTypeCheckbox_CheckedChanged);
-            // 
-            // filterTimePeriod
-            // 
-            this.filterTimePeriod.AutoSize = true;
-            this.filterTimePeriod.Location = new System.Drawing.Point(6, 51);
-            this.filterTimePeriod.Name = "filterTimePeriod";
-            this.filterTimePeriod.Size = new System.Drawing.Size(82, 17);
-            this.filterTimePeriod.TabIndex = 14;
-            this.filterTimePeriod.Text = "Time Period";
-            this.filterTimePeriod.UseVisualStyleBackColor = true;
-            this.filterTimePeriod.CheckedChanged += new System.EventHandler(this.filterTimePeriod_CheckedChanged);
-            // 
-            // filterSubject
-            // 
-            this.filterSubject.AutoSize = true;
-            this.filterSubject.Location = new System.Drawing.Point(6, 78);
-            this.filterSubject.Name = "filterSubject";
-            this.filterSubject.Size = new System.Drawing.Size(62, 17);
-            this.filterSubject.TabIndex = 15;
-            this.filterSubject.Text = "Subject";
-            this.filterSubject.UseVisualStyleBackColor = true;
-            this.filterSubject.CheckedChanged += new System.EventHandler(this.filterSubject_CheckedChanged);
+            this.button1.Location = new System.Drawing.Point(751, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Assessments
             // 
@@ -313,12 +325,12 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Assessments";
             this.panel1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -348,5 +360,6 @@
         private System.Windows.Forms.CheckBox filterSubject;
         private System.Windows.Forms.CheckBox filterTimePeriod;
         private System.Windows.Forms.CheckBox filterTypeCheckbox;
+        private System.Windows.Forms.Button button1;
     }
 }

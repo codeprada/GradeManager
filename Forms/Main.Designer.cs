@@ -34,10 +34,6 @@
             this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.menuPanel = new System.Windows.Forms.Panel();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.logoutBtn = new System.Windows.Forms.Button();
             this.helpBtn = new System.Windows.Forms.Button();
             this.statisticsBtn = new System.Windows.Forms.Button();
@@ -49,9 +45,13 @@
             this.assignmentsBtn = new System.Windows.Forms.Button();
             this.semesterBtn = new System.Windows.Forms.Button();
             this.loginBtn = new System.Windows.Forms.Button();
+            this.menuPanel = new System.Windows.Forms.Panel();
             this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ribbonOrbSubjects = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbGrades = new System.Windows.Forms.RibbonOrbMenuItem();
             this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
@@ -129,39 +129,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1022, 715);
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 1;
-            // 
-            // menuPanel
-            // 
-            this.menuPanel.BackColor = System.Drawing.Color.White;
-            this.menuPanel.Controls.Add(this.maximizePictureBox);
-            this.menuPanel.Controls.Add(this.minimizePictureBox);
-            this.menuPanel.Controls.Add(this.closePictureBox);
-            this.menuPanel.Controls.Add(this.titleLabel);
-            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.menuPanel.Location = new System.Drawing.Point(0, 0);
-            this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(1022, 29);
-            this.menuPanel.TabIndex = 0;
-            this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Berlin Sans FB", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.titleLabel.Location = new System.Drawing.Point(468, 8);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(112, 18);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Grade Manager";
-            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // toolTip1
-            // 
-            this.toolTip1.BackColor = System.Drawing.Color.Black;
-            this.toolTip1.ForeColor = System.Drawing.Color.White;
-            this.toolTip1.IsBalloon = true;
             // 
             // logoutBtn
             // 
@@ -447,6 +414,20 @@
             this.loginBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
             this.loginBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
+            // menuPanel
+            // 
+            this.menuPanel.BackColor = System.Drawing.Color.White;
+            this.menuPanel.Controls.Add(this.maximizePictureBox);
+            this.menuPanel.Controls.Add(this.minimizePictureBox);
+            this.menuPanel.Controls.Add(this.closePictureBox);
+            this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.menuPanel.Location = new System.Drawing.Point(0, 0);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Size = new System.Drawing.Size(1022, 29);
+            this.menuPanel.TabIndex = 0;
+            this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
+            // 
             // maximizePictureBox
             // 
             this.maximizePictureBox.BackColor = System.Drawing.Color.White;
@@ -509,6 +490,25 @@
             this.closePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             this.closePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleLabel.Location = new System.Drawing.Point(468, 6);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(111, 18);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Grade Manager";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.BackColor = System.Drawing.Color.Black;
+            this.toolTip1.ForeColor = System.Drawing.Color.White;
+            this.toolTip1.IsBalloon = true;
             // 
             // ribbonOrbSubjects
             // 

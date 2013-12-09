@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Grade_Main_Form));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
@@ -53,6 +55,7 @@
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.statusTimer = new System.Windows.Forms.Timer(this.components);
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGradeDataViewGrid)).BeginInit();
@@ -65,7 +68,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.subjectComboBox);
             this.panel1.Controls.Add(this.label6);
@@ -80,9 +83,9 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(4, 33);
+            this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(475, 194);
+            this.panel1.Size = new System.Drawing.Size(479, 194);
             this.panel1.TabIndex = 0;
             // 
             // label7
@@ -96,11 +99,13 @@
             // 
             // subjectComboBox
             // 
-            this.subjectComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.subjectComboBox.BackColor = System.Drawing.Color.White;
+            this.subjectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.subjectComboBox.FormattingEnabled = true;
             this.subjectComboBox.Location = new System.Drawing.Point(76, 101);
             this.subjectComboBox.Name = "subjectComboBox";
             this.subjectComboBox.Size = new System.Drawing.Size(100, 21);
+            this.subjectComboBox.Sorted = true;
             this.subjectComboBox.TabIndex = 11;
             this.subjectComboBox.SelectedIndexChanged += new System.EventHandler(this.subjectComboBox_SelectedIndexChanged);
             // 
@@ -115,21 +120,35 @@
             // 
             // saveBtn
             // 
+            this.saveBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.saveBtn.FlatAppearance.BorderSize = 0;
+            this.saveBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.saveBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
+            this.saveBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.saveBtn.Location = new System.Drawing.Point(184, 32);
             this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(108, 85);
+            this.saveBtn.Size = new System.Drawing.Size(79, 63);
             this.saveBtn.TabIndex = 9;
+            this.saveBtn.Tag = "save";
             this.saveBtn.Text = "Save Grades";
+            this.saveBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            this.saveBtn.MouseEnter += new System.EventHandler(this.saveBtn_MouseEnter);
+            this.saveBtn.MouseLeave += new System.EventHandler(this.saveBtn_MouseLeave);
             // 
             // assessmentComboBox
             // 
-            this.assessmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.assessmentComboBox.BackColor = System.Drawing.Color.White;
+            this.assessmentComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.assessmentComboBox.FormattingEnabled = true;
             this.assessmentComboBox.Location = new System.Drawing.Point(76, 128);
             this.assessmentComboBox.Name = "assessmentComboBox";
             this.assessmentComboBox.Size = new System.Drawing.Size(100, 21);
+            this.assessmentComboBox.Sorted = true;
             this.assessmentComboBox.TabIndex = 8;
             this.assessmentComboBox.SelectedIndexChanged += new System.EventHandler(this.assessmentComboBox_SelectedIndexChanged);
             // 
@@ -144,6 +163,7 @@
             // 
             // SemesterTextBox
             // 
+            this.SemesterTextBox.BackColor = System.Drawing.Color.White;
             this.SemesterTextBox.Location = new System.Drawing.Point(76, 75);
             this.SemesterTextBox.Name = "SemesterTextBox";
             this.SemesterTextBox.ReadOnly = true;
@@ -152,6 +172,7 @@
             // 
             // yearTextBox
             // 
+            this.yearTextBox.BackColor = System.Drawing.Color.White;
             this.yearTextBox.Location = new System.Drawing.Point(76, 53);
             this.yearTextBox.Name = "yearTextBox";
             this.yearTextBox.ReadOnly = true;
@@ -160,6 +181,7 @@
             // 
             // classTextBox
             // 
+            this.classTextBox.BackColor = System.Drawing.Color.White;
             this.classTextBox.Location = new System.Drawing.Point(76, 32);
             this.classTextBox.Name = "classTextBox";
             this.classTextBox.ReadOnly = true;
@@ -206,9 +228,9 @@
             // 
             this.panel2.Controls.Add(this.studentGradeDataViewGrid);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(4, 227);
+            this.panel2.Location = new System.Drawing.Point(2, 225);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(475, 309);
+            this.panel2.Size = new System.Drawing.Size(479, 313);
             this.panel2.TabIndex = 1;
             // 
             // studentGradeDataViewGrid
@@ -216,15 +238,36 @@
             this.studentGradeDataViewGrid.AllowUserToAddRows = false;
             this.studentGradeDataViewGrid.AllowUserToDeleteRows = false;
             this.studentGradeDataViewGrid.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.studentGradeDataViewGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.studentGradeDataViewGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.studentGradeDataViewGrid.BackgroundColor = System.Drawing.Color.White;
+            this.studentGradeDataViewGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.studentGradeDataViewGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.studentGradeDataViewGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.NullValue = "0";
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(4);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.studentGradeDataViewGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.studentGradeDataViewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentGradeDataViewGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.studentGradeDataViewGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.studentGradeDataViewGrid.EnableHeadersVisualStyles = false;
+            this.studentGradeDataViewGrid.GridColor = System.Drawing.Color.White;
             this.studentGradeDataViewGrid.Location = new System.Drawing.Point(0, 0);
             this.studentGradeDataViewGrid.MultiSelect = false;
             this.studentGradeDataViewGrid.Name = "studentGradeDataViewGrid";
+            this.studentGradeDataViewGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.studentGradeDataViewGrid.RowHeadersVisible = false;
             this.studentGradeDataViewGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.studentGradeDataViewGrid.ShowEditingIcon = false;
-            this.studentGradeDataViewGrid.Size = new System.Drawing.Size(475, 309);
+            this.studentGradeDataViewGrid.Size = new System.Drawing.Size(479, 313);
             this.studentGradeDataViewGrid.TabIndex = 0;
             this.studentGradeDataViewGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGradeDataViewGrid_CellDoubleClick);
             this.studentGradeDataViewGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.studentGradeDataViewGrid_CellEndEdit);
@@ -232,11 +275,12 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(4, 536);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 538);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(475, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(479, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
@@ -249,14 +293,15 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.maximizePictureBox);
             this.panel3.Controls.Add(this.minimizePictureBox);
             this.panel3.Controls.Add(this.closePictureBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(4, 4);
+            this.panel3.Location = new System.Drawing.Point(2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(475, 29);
+            this.panel3.Size = new System.Drawing.Size(479, 29);
             this.panel3.TabIndex = 3;
             // 
             // maximizePictureBox
@@ -266,7 +311,7 @@
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(397, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(401, 0);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -283,7 +328,7 @@
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(423, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(427, 0);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -300,7 +345,7 @@
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(449, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(453, 0);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -319,6 +364,16 @@
             this.statusTimer.Interval = 2000;
             this.statusTimer.Tick += new System.EventHandler(this.statusTimer_Tick);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(229, 6);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 15);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Grades";
+            // 
             // Grade_Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,7 +389,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Grade_Main_Form";
-            this.Padding = new System.Windows.Forms.Padding(4);
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -347,6 +402,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
@@ -380,5 +436,6 @@
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Timer statusTimer;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }

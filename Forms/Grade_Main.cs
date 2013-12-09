@@ -233,5 +233,16 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
         {
             
         }
+
+        private void saveBtn_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void saveBtn_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
     }
 }

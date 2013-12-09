@@ -74,6 +74,8 @@ namespace Grade_Manager
             Styles.Icons.Add("add_student_over", Grade_Manager_DB_Controller.Properties.Resources.add_over);
             Styles.Icons.Add("cancel", Grade_Manager_DB_Controller.Properties.Resources.cancel);
             Styles.Icons.Add("cancel_over", Grade_Manager_DB_Controller.Properties.Resources.cancel_over);
+            Styles.Icons.Add("load", Grade_Manager_DB_Controller.Properties.Resources.load);
+            Styles.Icons.Add("load_over", Grade_Manager_DB_Controller.Properties.Resources.load_over);
         }
 
         protected override CreateParams CreateParams

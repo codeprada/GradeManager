@@ -39,31 +39,9 @@ namespace Grade_Manager_DB_Controller
         }
     }
 
-    public class Assessment_Type : Database_Object
+    public class AssessmentWeight : Database_Object
     {
-        public Assessment_Type()
-            : base()
-        {
-
-        }
-
-        public int ID { get; set; }
-        public string Name { get; set; }
-
-        public static implicit operator Assessment_Type(SQLiteDataReader reader)
-        {
-            Assessment_Type a_type = new Assessment_Type();
-
-            a_type.ID = Convert.ToInt32(reader["assess_type_id"]);
-            a_type.Name = Convert.ToString(reader["assess_type"]);
-
-            return a_type;
-        }
-    }
-
-    public class Assessment_Weight : Database_Object
-    {
-        public Assessment_Weight()
+        public AssessmentWeight()
             : base()
         {
 
@@ -73,9 +51,9 @@ namespace Grade_Manager_DB_Controller
         public double Weight { get; set; }
         public int Type_Relational { get; set; }
 
-        public static implicit operator Assessment_Weight(SQLiteDataReader reader)
+        public static implicit operator AssessmentWeight(SQLiteDataReader reader)
         {
-            Assessment_Weight assess_weight = new Assessment_Weight();
+            AssessmentWeight assess_weight = new AssessmentWeight();
 
             assess_weight.Type = Convert.ToInt32(reader["assess_type_id"]);
             assess_weight.Weight = (reader["assess_type_weight"] == DBNull.Value ? 0 : Convert.ToDouble(reader["assess_type_weight"]));
@@ -85,9 +63,9 @@ namespace Grade_Manager_DB_Controller
         }
     }
 
-    public class Assessment_Manager : BaseManager
+    public class AssessmentManager : BaseManager
     {
-        public Assessment_Manager(string connection_string) : base(connection_string)
+        public AssessmentManager(string connection_string) : base(connection_string)
         {
 
         }
@@ -255,9 +233,9 @@ namespace Grade_Manager_DB_Controller
             return assessment;
         }
 
-        public List<Assessment_Type> GetTypes()
+        public List<AssessmentType> GetTypes()
         {
-            List<Assessment_Type> types = new List<Assessment_Type>();
+            List<AssessmentType> types = new List<AssessmentType>();
 
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
@@ -289,14 +267,14 @@ namespace Grade_Manager_DB_Controller
 
             if (db_obj == DB_Object.TYPE)
             {
-                foreach (Assessment_Type type in GetTypes())
+                foreach (AssessmentType type in GetTypes())
                     comboBox.Items.Add(new ComboItem() { Id = type.ID, Text = type.Name }); 
             }
         }
 
-        public List<Assessment_Weight> GetWeights(int account_id)
+        public List<AssessmentWeight> GetWeights(int account_id)
         {
-            List<Assessment_Weight> weights = new List<Assessment_Weight>();
+            List<AssessmentWeight> weights = new List<AssessmentWeight>();
 
             using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
             {
