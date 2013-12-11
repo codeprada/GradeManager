@@ -273,7 +273,10 @@ namespace Grade_Manager_DB_Controller
                     document_report.InsertParagraph("\n\n", false, new Formatting() { Size = 12, FontFamily = new FontFamily("Times New Roman") });
 
                     //Images["logo"]
-                    Novacode.Image img = document_report.AddImage(Images["logo"]);
+                    MemoryStream image_buffer = new MemoryStream();
+                    Images["logo"].CopyTo(image_buffer);
+                    Images["logo"].Position = image_buffer.Position = 0;
+                    Novacode.Image img = document_report.AddImage(image_buffer);
 
                     Picture pic = img.CreatePicture();
                     

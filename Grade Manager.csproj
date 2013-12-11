@@ -88,151 +88,160 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\CreateAssessmentType.cs">
+    <Compile Include="Forms\fCreateAssessmentType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateAssessmentType.Designer.cs">
-      <DependentUpon>CreateAssessmentType.cs</DependentUpon>
+    <Compile Include="Forms\fCreateAssessmentType.Designer.cs">
+      <DependentUpon>fCreateAssessmentType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Assessments.cs">
+    <Compile Include="Forms\fAssessmentType.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Assessments.Designer.cs">
-      <DependentUpon>Assessments.cs</DependentUpon>
+    <Compile Include="Forms\fAssessmentType.Designer.cs">
+      <DependentUpon>fAssessmentType.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewClass.cs">
+    <Compile Include="Forms\fAssessments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewClass.Designer.cs">
-      <DependentUpon>NewClass.cs</DependentUpon>
+    <Compile Include="Forms\fAssessments.Designer.cs">
+      <DependentUpon>fAssessments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CreateSemester.cs">
+    <Compile Include="Forms\fNewClass.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CreateSemester.Designer.cs">
-      <DependentUpon>CreateSemester.cs</DependentUpon>
+    <Compile Include="Forms\fNewClass.Designer.cs">
+      <DependentUpon>fNewClass.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Grade_Main.cs">
+    <Compile Include="Forms\fCreateSemester.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Grade_Main.Designer.cs">
-      <DependentUpon>Grade_Main.cs</DependentUpon>
+    <Compile Include="Forms\fCreateSemester.Designer.cs">
+      <DependentUpon>fCreateSemester.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LogIn.cs">
+    <Compile Include="Forms\fGrade.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LogIn.Designer.cs">
-      <DependentUpon>LogIn.cs</DependentUpon>
+    <Compile Include="Forms\fGrade.Designer.cs">
+      <DependentUpon>fGrade.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Forms\fLogIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Forms\fLogIn.Designer.cs">
+      <DependentUpon>fLogIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewSubject.cs">
+    <Compile Include="Forms\fMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewSubject.Designer.cs">
-      <DependentUpon>NewSubject.cs</DependentUpon>
+    <Compile Include="Forms\fMain.Designer.cs">
+      <DependentUpon>fMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Semester.cs">
+    <Compile Include="Forms\fNewSubject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Semester.Designer.cs">
-      <DependentUpon>Semester.cs</DependentUpon>
+    <Compile Include="Forms\fNewSubject.Designer.cs">
+      <DependentUpon>fNewSubject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewUser.cs">
+    <Compile Include="Forms\fSemester.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewUser.Designer.cs">
-      <DependentUpon>NewUser.cs</DependentUpon>
+    <Compile Include="Forms\fSemester.Designer.cs">
+      <DependentUpon>fSemester.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LineGraph.cs">
+    <Compile Include="Forms\fNewUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LineGraph.Designer.cs">
-      <DependentUpon>LineGraph.cs</DependentUpon>
+    <Compile Include="Forms\fNewUser.Designer.cs">
+      <DependentUpon>fNewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\fLineGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fLineGraph.Designer.cs">
+      <DependentUpon>fLineGraph.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\StudentManagement.cs">
+    <Compile Include="Forms\fStudentManagement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\StudentManagement.Designer.cs">
-      <DependentUpon>StudentManagement.cs</DependentUpon>
+    <Compile Include="Forms\fStudentManagement.Designer.cs">
+      <DependentUpon>fStudentManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Subjects.cs">
+    <Compile Include="Forms\fSubjects.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Subjects.Designer.cs">
-      <DependentUpon>Subjects.cs</DependentUpon>
+    <Compile Include="Forms\fSubjects.Designer.cs">
+      <DependentUpon>fSubjects.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Report.cs">
+    <Compile Include="Forms\fReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Report.Designer.cs">
-      <DependentUpon>Report.cs</DependentUpon>
+    <Compile Include="Forms\fReport.Designer.cs">
+      <DependentUpon>fReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Statistics.cs">
+    <Compile Include="Forms\fStatistics.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Statistics.Designer.cs">
-      <DependentUpon>Statistics.cs</DependentUpon>
+    <Compile Include="Forms\fStatistics.Designer.cs">
+      <DependentUpon>fStatistics.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Rank.cs">
+    <Compile Include="Forms\fRank.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Rank.Designer.cs">
-      <DependentUpon>Rank.cs</DependentUpon>
+    <Compile Include="Forms\fRank.Designer.cs">
+      <DependentUpon>fRank.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\WelcomeScreen.cs">
+    <Compile Include="Forms\fWelcomeScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\WelcomeScreen.Designer.cs">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    <Compile Include="Forms\fWelcomeScreen.Designer.cs">
+      <DependentUpon>fWelcomeScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\StudentDetails.cs">
+    <Compile Include="Forms\fStudentDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\StudentDetails.Designer.cs">
-      <DependentUpon>StudentDetails.cs</DependentUpon>
+    <Compile Include="Forms\fStudentDetails.Designer.cs">
+      <DependentUpon>fStudentDetails.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\CreateAssessmentType.resx">
-      <DependentUpon>CreateAssessmentType.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fAssessmentType.resx">
+      <DependentUpon>fAssessmentType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Assessments.resx">
-      <DependentUpon>Assessments.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fAssessments.resx">
+      <DependentUpon>fAssessments.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewClass.resx">
-      <DependentUpon>NewClass.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fCreateAssessmentType.resx">
+      <DependentUpon>fCreateAssessmentType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CreateSemester.resx">
-      <DependentUpon>CreateSemester.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fNewClass.resx">
+      <DependentUpon>fNewClass.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Grade_Main.resx">
-      <DependentUpon>Grade_Main.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fCreateSemester.resx">
+      <DependentUpon>fCreateSemester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LogIn.resx">
-      <DependentUpon>LogIn.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fGrade.resx">
+      <DependentUpon>fGrade.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fLogIn.resx">
+      <DependentUpon>fLogIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewSubject.resx">
-      <DependentUpon>NewSubject.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fMain.resx">
+      <DependentUpon>fMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Semester.resx">
-      <DependentUpon>Semester.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fNewSubject.resx">
+      <DependentUpon>fNewSubject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewUser.resx">
-      <DependentUpon>NewUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fSemester.resx">
+      <DependentUpon>fSemester.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Statistics.resx">
-      <DependentUpon>Statistics.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fNewUser.resx">
+      <DependentUpon>fNewUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\LineGraph.resx">
-      <DependentUpon>LineGraph.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fStatistics.resx">
+      <DependentUpon>fStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fLineGraph.resx">
+      <DependentUpon>fLineGraph.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -240,23 +249,23 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StudentManagement.resx">
-      <DependentUpon>StudentManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fStudentManagement.resx">
+      <DependentUpon>fStudentManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Subjects.resx">
-      <DependentUpon>Subjects.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fSubjects.resx">
+      <DependentUpon>fSubjects.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Report.resx">
-      <DependentUpon>Report.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fReport.resx">
+      <DependentUpon>fReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Rank.resx">
-      <DependentUpon>Rank.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fRank.resx">
+      <DependentUpon>fRank.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\WelcomeScreen.resx">
-      <DependentUpon>WelcomeScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fWelcomeScreen.resx">
+      <DependentUpon>fWelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StudentDetails.resx">
-      <DependentUpon>StudentDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\fStudentDetails.resx">
+      <DependentUpon>fStudentDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

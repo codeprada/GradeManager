@@ -35,23 +35,32 @@
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.assessmentDataGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.yesRadioButton = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.assessmentDataGridView);
+            this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(682, 452);
+            this.panel1.Size = new System.Drawing.Size(310, 333);
             this.panel1.TabIndex = 0;
             // 
             // menuPanel
@@ -64,8 +73,8 @@
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(2, 2);
             this.menuPanel.Name = "menuPanel";
-            this.menuPanel.Size = new System.Drawing.Size(682, 29);
-            this.menuPanel.TabIndex = 1;
+            this.menuPanel.Size = new System.Drawing.Size(310, 29);
+            this.menuPanel.TabIndex = 2;
             // 
             // maximizePictureBox
             // 
@@ -74,7 +83,7 @@
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(604, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(232, 0);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -90,7 +99,7 @@
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(630, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(258, 0);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -106,7 +115,7 @@
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(656, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(284, 0);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -122,54 +131,121 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.titleLabel.Location = new System.Drawing.Point(252, 4);
+            this.titleLabel.Location = new System.Drawing.Point(38, 4);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(134, 18);
+            this.titleLabel.Size = new System.Drawing.Size(182, 18);
             this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Assessment Types";
+            this.titleLabel.Text = "Create Assessment Types";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // assessmentDataGridView
+            // groupBox1
             // 
-            this.assessmentDataGridView.AllowUserToAddRows = false;
-            this.assessmentDataGridView.AllowUserToDeleteRows = false;
-            this.assessmentDataGridView.AllowUserToResizeRows = false;
-            this.assessmentDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.assessmentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.assessmentDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.assessmentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.assessmentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.assessmentDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.assessmentDataGridView.EnableHeadersVisualStyles = false;
-            this.assessmentDataGridView.GridColor = System.Drawing.Color.White;
-            this.assessmentDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.assessmentDataGridView.MultiSelect = false;
-            this.assessmentDataGridView.Name = "assessmentDataGridView";
-            this.assessmentDataGridView.ReadOnly = true;
-            this.assessmentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.assessmentDataGridView.Size = new System.Drawing.Size(682, 452);
-            this.assessmentDataGridView.TabIndex = 0;
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(3, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(304, 214);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Details";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(104, 21);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(177, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.groupBox3);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Location = new System.Drawing.Point(6, 56);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(292, 152);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Assessment Weight";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Apart of Link";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButton1);
+            this.groupBox3.Controls.Add(this.yesRadioButton);
+            this.groupBox3.Location = new System.Drawing.Point(98, 19);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(177, 34);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            // 
+            // yesRadioButton
+            // 
+            this.yesRadioButton.AutoSize = true;
+            this.yesRadioButton.Location = new System.Drawing.Point(7, 11);
+            this.yesRadioButton.Name = "yesRadioButton";
+            this.yesRadioButton.Size = new System.Drawing.Size(43, 17);
+            this.yesRadioButton.TabIndex = 0;
+            this.yesRadioButton.TabStop = true;
+            this.yesRadioButton.Text = "Yes";
+            this.yesRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(56, 11);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(39, 17);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "No";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // CreateAssessmentType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(686, 485);
+            this.ClientSize = new System.Drawing.Size(314, 366);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CreateAssessmentType";
             this.Padding = new System.Windows.Forms.Padding(2);
-            this.Text = "CreateAssessmentType";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Text = "Create Assessment";
             this.panel1.ResumeLayout(false);
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -177,11 +253,18 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView assessmentDataGridView;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox minimizePictureBox;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton yesRadioButton;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label1;
     }
 }

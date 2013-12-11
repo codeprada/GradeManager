@@ -133,7 +133,7 @@ namespace Grade_Manager_DB_Controller
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CreateAssessmentType cat = new CreateAssessmentType();
+            fAssessmentType cat = new fAssessmentType();
 
             cat.ShowDialog();
         }
