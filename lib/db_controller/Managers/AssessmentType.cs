@@ -40,6 +40,64 @@ namespace Grade_Manager_DB_Controller
 
             return atol;
         }
+
+        /// <summary>
+        /// Save an assessmentType and its weighting
+        /// </summary>
+        /// <param name="assessTypeObject"></param>
+        public bool Save(AssessmentType assessTypeObject)
+        {
+            bool saved = false;
+
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_ASSESSMENT_TYPE, connection))
+                {
+                    command.Parameters.AddWithValue("@assess_type", assessTypeObject.Name);
+
+                    command.Connection.Open();
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        object last_id = GradeManager_SQLite_DB_Controller.GetLastRowInserted(connection);
+                        if (last_id != null)
+                        {
+
+                            using (var secondary_command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_ASSESSMENTTYPE_WEIGHT, connection))
+                            {
+                                secondary_command.Parameters.AddWithValue("@assess_type_id", last_id);
+                                secondary_command.Parameters.AddWithValue("@assess_type_weight", assessTypeObject.Weight.Weight);
+                                secondary_command.Parameters.AddWithValue("@assess_type_relational_id", assessTypeObject.Weight.Type_Relational);
+                                secondary_command.Parameters.AddWithValue("@assess_type_is_linked", assessTypeObject.IsLinked ? 1 : 0);
+                                secondary_command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
+
+                                if (secondary_command.ExecuteNonQuery() > 0)
+                                    saved = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return saved;
+        }
+
+        public bool Delete(int assess_type_id)
+        {
+            bool deleted = false;
+
+            using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_DELETE_ASSESSMENT_TYPE, GradeManager_SQLite_DB_Controller.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@assess_type_id", assess_type_id);
+
+                command.Connection.Open();
+
+                if (command.ExecuteNonQuery() > 0)
+                    deleted = true;
+            }
+
+            return deleted;
+        }
     }
 
     /// <summary>

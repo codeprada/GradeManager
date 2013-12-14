@@ -80,6 +80,7 @@ namespace Grade_Manager_DB_Controller
         {
             if (MessageBox.Show("Are you sure you want to delete this student?\n\nN.B. Please note that delete a student will remove all graded assignments attached to student.", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == System.Windows.Forms.DialogResult.Yes)
             {
+                //The ID cell
                 if (student_manager.Delete(Int32.Parse(studentGridView.SelectedRows[0].Cells[0].Value.ToString())))
                 {
                     LoadStudentList();

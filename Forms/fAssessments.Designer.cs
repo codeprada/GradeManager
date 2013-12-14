@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.filterSubject = new System.Windows.Forms.CheckBox();
             this.filterTimePeriod = new System.Windows.Forms.CheckBox();
@@ -51,7 +52,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.assessmentDataGridView = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,6 +62,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
@@ -69,6 +71,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(818, 167);
             this.panel1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(751, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "View";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
@@ -302,15 +314,15 @@
             this.assessmentDataGridView.Size = new System.Drawing.Size(818, 321);
             this.assessmentDataGridView.TabIndex = 0;
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(751, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button2.Location = new System.Drawing.Point(751, 41);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(55, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Add";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Assessments
             // 
@@ -361,5 +373,6 @@
         private System.Windows.Forms.CheckBox filterTimePeriod;
         private System.Windows.Forms.CheckBox filterTypeCheckbox;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

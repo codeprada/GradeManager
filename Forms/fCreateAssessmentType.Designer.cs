@@ -1,6 +1,6 @@
 ﻿namespace Grade_Manager_DB_Controller
 {
-    partial class CreateAssessmentType
+    partial class fCreateAssessmentType
     {
         /// <summary>
         /// Required designer variable.
@@ -28,40 +28,241 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAssessmentType));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fCreateAssessmentType));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.saveBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.weightingGroupBox = new System.Windows.Forms.GroupBox();
+            this.weightNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.linkedToGroupBox = new System.Windows.Forms.GroupBox();
+            this.linkToComboBox = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.apartOfLinkGroupBox = new System.Windows.Forms.GroupBox();
+            this.noRadioButton = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.yesRadioButton = new System.Windows.Forms.RadioButton();
+            this.assessTypeNameTxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.yesRadioButton = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.weightingGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).BeginInit();
+            this.linkedToGroupBox.SuspendLayout();
+            this.apartOfLinkGroupBox.SuspendLayout();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(310, 333);
+            this.panel1.Size = new System.Drawing.Size(310, 256);
             this.panel1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.saveBtn);
+            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox4.Location = new System.Drawing.Point(0, 220);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(310, 36);
+            this.groupBox4.TabIndex = 1;
+            this.groupBox4.TabStop = false;
+            // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(232, 10);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 0;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.assessTypeNameTxt);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(3, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(304, 215);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Details";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.weightingGroupBox);
+            this.groupBox2.Controls.Add(this.linkedToGroupBox);
+            this.groupBox2.Controls.Add(this.apartOfLinkGroupBox);
+            this.groupBox2.Location = new System.Drawing.Point(6, 56);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(292, 140);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Assessment Weight";
+            // 
+            // weightingGroupBox
+            // 
+            this.weightingGroupBox.Controls.Add(this.weightNumericUpDown);
+            this.weightingGroupBox.Controls.Add(this.label4);
+            this.weightingGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.weightingGroupBox.Location = new System.Drawing.Point(3, 88);
+            this.weightingGroupBox.Name = "weightingGroupBox";
+            this.weightingGroupBox.Size = new System.Drawing.Size(286, 47);
+            this.weightingGroupBox.TabIndex = 6;
+            this.weightingGroupBox.TabStop = false;
+            this.weightingGroupBox.Visible = false;
+            // 
+            // weightNumericUpDown
+            // 
+            this.weightNumericUpDown.BackColor = System.Drawing.SystemColors.Info;
+            this.weightNumericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.weightNumericUpDown.Location = new System.Drawing.Point(95, 14);
+            this.weightNumericUpDown.Maximum = new decimal(new int[] {
+            1316134911,
+            2328,
+            0,
+            0});
+            this.weightNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.weightNumericUpDown.Name = "weightNumericUpDown";
+            this.weightNumericUpDown.Size = new System.Drawing.Size(121, 20);
+            this.weightNumericUpDown.TabIndex = 7;
+            this.weightNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Weighting";
+            // 
+            // linkedToGroupBox
+            // 
+            this.linkedToGroupBox.Controls.Add(this.linkToComboBox);
+            this.linkedToGroupBox.Controls.Add(this.label3);
+            this.linkedToGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.linkedToGroupBox.Location = new System.Drawing.Point(3, 50);
+            this.linkedToGroupBox.Name = "linkedToGroupBox";
+            this.linkedToGroupBox.Size = new System.Drawing.Size(286, 38);
+            this.linkedToGroupBox.TabIndex = 2;
+            this.linkedToGroupBox.TabStop = false;
+            this.linkedToGroupBox.Visible = false;
+            // 
+            // linkToComboBox
+            // 
+            this.linkToComboBox.BackColor = System.Drawing.Color.White;
+            this.linkToComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.linkToComboBox.FormattingEnabled = true;
+            this.linkToComboBox.Location = new System.Drawing.Point(95, 10);
+            this.linkToComboBox.Name = "linkToComboBox";
+            this.linkToComboBox.Size = new System.Drawing.Size(121, 21);
+            this.linkToComboBox.Sorted = true;
+            this.linkToComboBox.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(55, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Linked To";
+            // 
+            // apartOfLinkGroupBox
+            // 
+            this.apartOfLinkGroupBox.Controls.Add(this.noRadioButton);
+            this.apartOfLinkGroupBox.Controls.Add(this.label2);
+            this.apartOfLinkGroupBox.Controls.Add(this.yesRadioButton);
+            this.apartOfLinkGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.apartOfLinkGroupBox.Location = new System.Drawing.Point(3, 16);
+            this.apartOfLinkGroupBox.Name = "apartOfLinkGroupBox";
+            this.apartOfLinkGroupBox.Size = new System.Drawing.Size(286, 34);
+            this.apartOfLinkGroupBox.TabIndex = 1;
+            this.apartOfLinkGroupBox.TabStop = false;
+            // 
+            // noRadioButton
+            // 
+            this.noRadioButton.AutoSize = true;
+            this.noRadioButton.Location = new System.Drawing.Point(144, 9);
+            this.noRadioButton.Name = "noRadioButton";
+            this.noRadioButton.Size = new System.Drawing.Size(39, 17);
+            this.noRadioButton.TabIndex = 1;
+            this.noRadioButton.TabStop = true;
+            this.noRadioButton.Text = "No";
+            this.noRadioButton.UseVisualStyleBackColor = true;
+            this.noRadioButton.CheckedChanged += new System.EventHandler(this.noRadioButton_CheckedChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Apart of Link";
+            // 
+            // yesRadioButton
+            // 
+            this.yesRadioButton.AutoSize = true;
+            this.yesRadioButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.yesRadioButton.FlatAppearance.BorderSize = 0;
+            this.yesRadioButton.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
+            this.yesRadioButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.yesRadioButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.yesRadioButton.Location = new System.Drawing.Point(95, 9);
+            this.yesRadioButton.Name = "yesRadioButton";
+            this.yesRadioButton.Size = new System.Drawing.Size(43, 17);
+            this.yesRadioButton.TabIndex = 0;
+            this.yesRadioButton.TabStop = true;
+            this.yesRadioButton.Text = "Yes";
+            this.yesRadioButton.UseVisualStyleBackColor = true;
+            this.yesRadioButton.CheckedChanged += new System.EventHandler(this.yesRadioButton_CheckedChanged);
+            // 
+            // assessTypeNameTxt
+            // 
+            this.assessTypeNameTxt.Location = new System.Drawing.Point(104, 21);
+            this.assessTypeNameTxt.Name = "assessTypeNameTxt";
+            this.assessTypeNameTxt.Size = new System.Drawing.Size(177, 20);
+            this.assessTypeNameTxt.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Name";
             // 
             // menuPanel
             // 
@@ -91,6 +292,7 @@
             this.maximizePictureBox.TabIndex = 2;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Visible = false;
             // 
             // minimizePictureBox
             // 
@@ -107,6 +309,7 @@
             this.minimizePictureBox.TabIndex = 1;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Visible = false;
             // 
             // closePictureBox
             // 
@@ -138,114 +341,42 @@
             this.titleLabel.Text = "Create Assessment Types";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(3, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 214);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Details";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(104, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(177, 20);
-            this.textBox1.TabIndex = 1;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(6, 56);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(292, 152);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Assessment Weight";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Apart of Link";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.radioButton1);
-            this.groupBox3.Controls.Add(this.yesRadioButton);
-            this.groupBox3.Location = new System.Drawing.Point(98, 19);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(177, 34);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            // 
-            // yesRadioButton
-            // 
-            this.yesRadioButton.AutoSize = true;
-            this.yesRadioButton.Location = new System.Drawing.Point(7, 11);
-            this.yesRadioButton.Name = "yesRadioButton";
-            this.yesRadioButton.Size = new System.Drawing.Size(43, 17);
-            this.yesRadioButton.TabIndex = 0;
-            this.yesRadioButton.TabStop = true;
-            this.yesRadioButton.Text = "Yes";
-            this.yesRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(56, 11);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(39, 17);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "No";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // CreateAssessmentType
+            // fCreateAssessmentType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(314, 366);
+            this.ClientSize = new System.Drawing.Size(314, 289);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CreateAssessmentType";
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "fCreateAssessmentType";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Create Assessment";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.weightingGroupBox.ResumeLayout(false);
+            this.weightingGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weightNumericUpDown)).EndInit();
+            this.linkedToGroupBox.ResumeLayout(false);
+            this.linkedToGroupBox.PerformLayout();
+            this.apartOfLinkGroupBox.ResumeLayout(false);
+            this.apartOfLinkGroupBox.PerformLayout();
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -260,11 +391,19 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.GroupBox apartOfLinkGroupBox;
+        private System.Windows.Forms.RadioButton noRadioButton;
         private System.Windows.Forms.RadioButton yesRadioButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox assessTypeNameTxt;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox linkedToGroupBox;
+        private System.Windows.Forms.ComboBox linkToComboBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.GroupBox weightingGroupBox;
+        private System.Windows.Forms.NumericUpDown weightNumericUpDown;
+        private System.Windows.Forms.Label label4;
     }
 }

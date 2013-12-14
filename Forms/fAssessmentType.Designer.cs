@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAssessmentType));
             this.panel1 = new System.Windows.Forms.Panel();
             this.assessmentDataGridView = new System.Windows.Forms.DataGridView();
@@ -38,6 +39,8 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
@@ -45,6 +48,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.panel2.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -67,6 +71,7 @@
             this.assessmentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.assessmentDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.assessmentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.assessmentDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.assessmentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.assessmentDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.assessmentDataGridView.EnableHeadersVisualStyles = false;
@@ -177,7 +182,21 @@
             this.linkLabel1.Text = "New";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // CreateAssessmentType
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // fAssessmentType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +207,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "CreateAssessmentType";
+            this.Name = "fAssessmentType";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.Text = "CreateAssessmentType";
             this.panel1.ResumeLayout(false);
@@ -200,6 +219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -215,5 +235,7 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

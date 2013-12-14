@@ -22,11 +22,14 @@ namespace Grade_Manager_DB_Controller
         public void LoadAssessmentTypes()
         {
             assessmentDataGridView.DataSource = null;
+            assessmentDataGridView.Rows.Clear();
+            assessmentDataGridView.Columns.Clear();
 
             assessmentDataGridView.Columns.Add("ID", "ID");
             assessmentDataGridView.Columns.Add("Assessment", "Assessment");
             assessmentDataGridView.Columns.Add("Link", "Linked To");
             assessmentDataGridView.Columns.Add("Weight", "Weight");
+            
 
             AssessmentTypeManager atm = new AssessmentTypeManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
@@ -55,7 +58,22 @@ namespace Grade_Manager_DB_Controller
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            fCreateAssessmentType fcat = new fCreateAssessmentType();
+            fcat.StartPosition = FormStartPosition.CenterParent;
+            this.Visible = false;
+            fcat.ShowDialog(this);
+            this.Visible = true;
 
+            LoadAssessmentTypes();
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AssessmentTypeManager atm = new AssessmentTypeManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+
+            atm.Delete(Int32.Parse(assessmentDataGridView.SelectedRows[0].Cells[0].Value.ToString()));
+
+            LoadAssessmentTypes();
         }
     }
 }

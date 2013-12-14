@@ -9,7 +9,6 @@ namespace Grade_Manager_DB_Controller
 {
     public class Rank_Item
     {
-        public int RankCount { get; set; }
         public string StuName { get; set; }
         public double Average { get; set; }
 
@@ -33,18 +32,52 @@ namespace Grade_Manager_DB_Controller
 
     public class Ranks_Manager : BaseManager
     {
+        private WeightManager weight_manager;
+        private SubjectWeightObjectList swobl;
+        private StudentManager student_manager;
+
         public Ranks_Manager(string connection_string)
             : base(connection_string)
         {
-
+            weight_manager = new WeightManager(connection_string, UserManager.CurrentUser.Id);
+            weight_manager.CalculateWeighting();
+            swobl = weight_manager.SubjectWeightObjList;
+            student_manager = new StudentManager(connection_string);
         }
 
         public List<Rank_Item> GetRankings(int subject_id = -1)
         {
             List<Rank_Item> rank_items = new List<Rank_Item>();
-            string query = String.Format(GradeManager_SQLite_DB_Controller.DBQ_GET_RANKINGS, (subject_id > -1 ? " AND SJ.subject_id = @subject_id " : ""));
 
-            using (var connection = new SQLiteConnection(ConnectionString))
+            StudentSubjectGradeObjectListManager ssgolm = new StudentSubjectGradeObjectListManager(ConnectionString);
+
+            foreach (Student student in student_manager.Get())
+            {
+                Dictionary<int, double> grade = ssgolm.CalculateOverallAverage(student.ID, swobl, subject_id);
+                foreach (KeyValuePair<int, double> kv in grade)
+                {
+                    Rank_Item r = new Rank_Item();
+                    r.StuName = student.ToString();
+                    r.Average = kv.Value;
+
+                    rank_items.Add(r);
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            //string query = String.Format(GradeManager_SQLite_DB_Controller.DBQ_GET_RANKINGS, (subject_id > -1 ? " AND SJ.subject_id = @subject_id " : ""));
+
+            /*using (var connection = new SQLiteConnection(ConnectionString))
             {
                 using (var command = new SQLiteCommand(query, connection))
                 {
@@ -60,7 +93,7 @@ namespace Grade_Manager_DB_Controller
                             rank_items.Add(reader);
                     }
                 }
-            }
+            }*/
 
             return rank_items;
         }

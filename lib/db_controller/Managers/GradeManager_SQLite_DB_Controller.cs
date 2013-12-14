@@ -279,9 +279,12 @@ FROM
 WHERE Semester.account_id = @account_id
 GROUP BY Assessments.assess_type_id, Assessments.subject_id",
                             DBQ_GET_ASSESSMENT_WEIGHTS_WHERE = "SELECT DISTINCT [AT].[assess_type_id] [ID], [assess_type] [Name], [assess_type_weight] [Weight], [assess_type_id_relational] [RelationID], [assess_is_linked] [isLinkWith] FROM [Assessment_Type_Weights] [ATW] INNER JOIN [Assessment_Type] [AT] ON [ATW].assess_type_id = [AT].assess_type_id WHERE [account_id] = @account_id AND [ID] = @id",
-                            DBQ_GET_STUDENT_SUBJECT_ASSESS_GRADES = @"select Students.student_id, student_first_name, student_last_name, subject_name, Subjects.subject_id, assess_type_id, avg(grade_mark) [Average] from Grades inner join Assessments on Assessments.assess_id = Grades.assess_id inner join Students on Grades.student_id = Students.student_id inner join Subjects on Subjects.subject_id = Assessments.subject_id where Students.student_id = @student_id group by Students.student_id, Assessments.assess_type_id, Subjects.subject_id",
+                            DBQ_GET_STUDENT_SUBJECT_ASSESS_GRADES = @"select Students.student_id, student_first_name, student_last_name, subject_name, Subjects.subject_id, assess_type_id, avg(grade_mark) [Average] from Grades inner join Assessments on Assessments.assess_id = Grades.assess_id inner join Students on Grades.student_id = Students.student_id inner join Subjects on Subjects.subject_id = Assessments.subject_id where Students.student_id = @student_id {0} group by Students.student_id, Assessments.assess_type_id, Subjects.subject_id",
                             
-                            DBQ_GET_ASSESSMENTTYPE_AND_WEIGHTS = @"SELECT Assessment_Type.assess_type_id, assess_type, assess_type_weight, assess_type_id_relational, assess_is_linked FROM [Assessment_Type] LEFT JOIN [Assessment_Type_Weights] ON [Assessment_Type].assess_type_id = [Assessment_Type_Weights].assess_type_id WHERE account_id = @account_id";
+                            DBQ_GET_ASSESSMENTTYPE_AND_WEIGHTS = @"SELECT Assessment_Type.assess_type_id, assess_type, assess_type_weight, assess_type_id_relational, assess_is_linked FROM [Assessment_Type] LEFT JOIN [Assessment_Type_Weights] ON [Assessment_Type].assess_type_id = [Assessment_Type_Weights].assess_type_id WHERE account_id = @account_id",
+                            DBQ_INSERT_ASSESSMENTTYPE_WEIGHT = @"INSERT INTO [Assessment_Type_Weights] ([assess_type_id], [assess_type_weight], [assess_type_id_relational], [assess_is_linked], [account_id])
+VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @assess_type_is_linked, @account_id)",
+                            DBQ_DELETE_ASSESSMENT_TYPE = "pragma foreign_keys=on; DELETE FROM Assessment_Type WHERE assess_type_id = @assess_type_id";
 
 
         private static string DB_PATH = Environment.GetEnvironmentVariable("LOCALAPPDATA") + @"\Grade Manager\gm_storage.db";
@@ -290,7 +293,7 @@ GROUP BY Assessments.assess_type_id, Assessments.subject_id",
         public GradeManager_SQLite_DB_Controller() { }
 
         /// <summary>
-        /// 
+        /// Creates a new database
         /// </summary>
         public void CreateDatabase()
         {
@@ -347,6 +350,9 @@ GROUP BY Assessments.assess_type_id, Assessments.subject_id",
             return row_id;
         }
 
+        /// <summary>
+        /// Populate a newly created database with default values
+        /// </summary>
         public void InsertDefaultValues()
         {
             #region Default Values

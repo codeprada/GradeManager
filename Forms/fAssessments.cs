@@ -137,5 +137,14 @@ namespace Grade_Manager_DB_Controller
 
             cat.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            fCreateAssessmentType fcat = new fCreateAssessmentType();
+            //fcat.StartPosition = FormStartPosition.CenterParent;
+            //this.Visible = false;
+            fcat.Show();
+            //this.Visible = true;
+        }
     }
 }

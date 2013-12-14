@@ -70,15 +70,27 @@ namespace Grade_Manager_DB_Controller
     {
         public StudentSubjectGradeObjectListManager(string connection) : base(connection) { }
 
-        public Dictionary<int, double> CalculateOverallAverage(int student_id, SubjectWeightObjectList _SubjectWeightObjectList)
+        /// <summary>
+        /// Returns the average grade for students
+        /// </summary>
+        /// <param name="student_id">Student ID</param>
+        /// <param name="_SubjectWeightObjectList">Weight Object List</param>
+        /// <param name="subject_id">Subject ID (Optional)</param>
+        /// <returns>(int, double) => Subject ID, Grade</returns>
+        public Dictionary<int, double> CalculateOverallAverage(int student_id, SubjectWeightObjectList _SubjectWeightObjectList, int subject_id = -1)
         {
             Dictionary<int, double> grades = new Dictionary<int, double>();
 
             using (var connection = new SQLiteConnection(ConnectionString))
             {
-                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_STUDENT_SUBJECT_ASSESS_GRADES, connection))
+                using (var command = new SQLiteCommand(String.Format(GradeManager_SQLite_DB_Controller.DBQ_GET_STUDENT_SUBJECT_ASSESS_GRADES, (subject_id < 0 ? String.Empty : " AND Subjects.subject_id = @subject_id ")), connection))
                 {
                     command.Parameters.AddWithValue("@student_id", student_id);
+
+                    if (subject_id >= 0)
+                        command.Parameters.AddWithValue("@subject_id", subject_id);
+                    
+
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
