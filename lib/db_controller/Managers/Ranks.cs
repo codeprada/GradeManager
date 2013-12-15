@@ -9,6 +9,7 @@ namespace Grade_Manager_DB_Controller
 {
     public class Rank_Item
     {
+        public Rank_Item() { Average = 0.0; }
         public string StuName { get; set; }
         public double Average { get; set; }
 
@@ -54,14 +55,14 @@ namespace Grade_Manager_DB_Controller
             foreach (Student student in student_manager.Get())
             {
                 Dictionary<int, double> grade = ssgolm.CalculateOverallAverage(student.ID, swobl, subject_id);
-                foreach (KeyValuePair<int, double> kv in grade)
-                {
-                    Rank_Item r = new Rank_Item();
-                    r.StuName = student.ToString();
-                    r.Average = kv.Value;
+                
+                Rank_Item r = new Rank_Item();
+                r.StuName = student.ToString();
+                if(grade.Count > 0)
+                    r.Average = grade.Average(x => x.Value);
 
-                    rank_items.Add(r);
-                }
+                rank_items.Add(r);
+                
             }
 
 
