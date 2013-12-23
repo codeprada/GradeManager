@@ -22,7 +22,7 @@ namespace Grade_Manager_DB_Controller
             {
                 ri.Average = Convert.ToDouble(reader["overall"]);
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 ri.Average = 0.0;
             }

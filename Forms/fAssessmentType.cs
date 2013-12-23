@@ -59,9 +59,9 @@ namespace Grade_Manager_DB_Controller
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             fCreateAssessmentType fcat = new fCreateAssessmentType();
-            fcat.StartPosition = FormStartPosition.CenterParent;
+            fcat.StartPosition = FormStartPosition.CenterScreen;
             this.Visible = false;
-            fcat.ShowDialog(this);
+            fcat.ShowDialog(this.Parent);
             this.Visible = true;
 
             LoadAssessmentTypes();
@@ -72,6 +72,22 @@ namespace Grade_Manager_DB_Controller
             AssessmentTypeManager atm = new AssessmentTypeManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
             atm.Delete(Int32.Parse(assessmentDataGridView.SelectedRows[0].Cells[0].Value.ToString()));
+
+            LoadAssessmentTypes();
+        }
+
+        private void menuPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fCreateAssessmentType fcat = new fCreateAssessmentType(Int32.Parse(assessmentDataGridView.SelectedRows[0].Cells[0].Value.ToString()));
+            fcat.StartPosition = FormStartPosition.CenterScreen;
+            this.Visible = false;
+            fcat.ShowDialog(this.Parent);
+            this.Visible = true;
 
             LoadAssessmentTypes();
         }

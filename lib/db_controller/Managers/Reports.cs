@@ -105,14 +105,15 @@ namespace Grade_Manager_DB_Controller
             StudentManager student_manager = new StudentManager(ConnectionString);
             Student[] students = student_manager.Get();
             Semester semester = new SemesterManager(ConnectionString).GetSemester(semester_id);
+            //Add a Get assessor to ClassManager
+            Class _class = new ClassManager(ConnectionString).GetClassOfStudent(students[0].ID);
 
-            List<Subject> subjects = new SubjectManager(ConnectionString).GetSubjects(semester_id);
+            List<Subject> subjects = new SubjectManager(ConnectionString).GetSubjects(SemesterManager.CurrentSemester);
 
             WeightManager weight_manager = new WeightManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING, UserManager.CurrentUser.Id);
             StudentSubjectGradeObjectListManager student_subject_grade_obj_list_manager = new StudentSubjectGradeObjectListManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             
-            //Add a Get assessor to ClassManager
-            Class _class = new ClassManager(ConnectionString).GetClassOfStudent(students[0].ID);
+            
 
             //Calculate the weightings here
             weight_manager.CalculateWeighting();
@@ -333,32 +334,6 @@ namespace Grade_Manager_DB_Controller
         private string ApplyBuffer(string s, int n)
         {
             return s += new String(' ', s.Length % n);
-        }
-
-        public List<Reports> FetchData(int semester_id)
-        {
-            List<Reports> reports = new List<Reports>();
-
-            using (var connection = GradeManager_SQLite_DB_Controller.GetConnection())
-            {
-                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GENERATE_REPORT, connection))
-                {
-                    command.Parameters.AddWithValue("@semester_id", semester_id);
-
-                    connection.Open();
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            reports.Add(reader);
-                        }
-                    }
-                }
-            }
-
-
-            return reports;
         }
     }
 }

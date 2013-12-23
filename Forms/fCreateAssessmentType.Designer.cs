@@ -271,11 +271,13 @@
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
             this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(2, 2);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(310, 29);
             this.menuPanel.TabIndex = 2;
+            this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
             // 
             // maximizePictureBox
             // 
@@ -359,6 +361,7 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Create Assessment";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.fCreateAssessmentType_Paint);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);

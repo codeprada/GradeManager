@@ -38,7 +38,13 @@ namespace Grade_Manager_DB_Controller
         public static implicit operator WeightObject(SQLiteDataReader reader)
         {
             WeightObject w = new WeightObject();
-            w.Name = Convert.ToString(reader["assess_type"]);
+
+            try
+            {
+                w.Name = Convert.ToString(reader["assess_type"]);
+            }
+            catch (Exception) { }
+
             w.ID = Convert.ToInt32(reader["assess_type_id"]);
             w.isLinkWith = (Convert.ToInt32(reader["assess_is_linked"]) == 1 ? true : false);
             w.RelationID = Convert.ToInt32(reader["assess_type_id_relational"]);

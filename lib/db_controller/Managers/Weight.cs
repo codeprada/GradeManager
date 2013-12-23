@@ -19,9 +19,39 @@ namespace Grade_Manager_DB_Controller
         public SubjectWeightObjectList SubjectWeightObjList { get { return _SubWeightObjList; } }
 
         /// <summary>
-        /// Fetch all the information pertaining to Subject Weightings and their Amounts
+        /// Get Assessment Type Weight
         /// </summary>
         /// <param name="account_id"></param>
+        /// <param name="assess_type_id"></param>
+        /// <returns></returns>
+        public WeightObject GetWeight(int account_id, int assess_type_id)
+        {
+            WeightObject wo = null;
+
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSMENT_TYPE_WEIGHT, connection))
+                {
+                    command.Parameters.AddWithValue("@account_id", account_id);
+                    command.Parameters.AddWithValue("@assess_type_id", assess_type_id);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if(reader.Read())
+                            wo = reader;
+                    }
+                }
+            }
+
+            return wo;
+        }
+
+        /// <summary>
+        /// Fetch all the information pertaining to Subject Weightings and their Amounts
+        /// </summary>
+        /// <param name="account_id">Account ID</param>
         /// <returns></returns>
         private SubjectWeightObjectList FetchAll(int account_id)
         {
@@ -66,6 +96,9 @@ namespace Grade_Manager_DB_Controller
             return swo_list;
         }
 
+        /// <summary>
+        /// Calculate the weighting of each assessment based on each subject
+        /// </summary>
         public void CalculateWeighting()
         {
             foreach (SubjectWeightObject s in _SubWeightObjList)
@@ -120,8 +153,6 @@ namespace Grade_Manager_DB_Controller
                         else
                         {
                             
-                            //links.Insert(0, wol.Where(w => w.ID == relationships.Where(x => x.Value < 0).Select(x => x.Key).First()).Select(x => x).First());
-                            //links.Insert(0, index);
                             links.Move(0, index.ID);
                             //Console.WriteLine("{0} is apart of a link", index.Name);
                         }

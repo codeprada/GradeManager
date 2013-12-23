@@ -20,6 +20,10 @@ namespace Grade_Manager_DB_Controller
         //Dictionary<string, Color> names_to_colors;
         //KnownColor[] allColors;
 
+        const int WM_NCHITTEST = 0x0084;
+        const int HTCLIENT = 1;
+        const int HTCAPTION = 2;
+        
         public LineGraph()
         {
             InitializeComponent();
@@ -38,6 +42,29 @@ namespace Grade_Manager_DB_Controller
             statistics_manager = new StatsManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
             //chartPanel.Controls.Add(GenerateChart(new StatisticsDataObject[] { statistics_manager.Get(1, 2, 2) }, chartPanel.Width, chartPanel.Height));
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            switch (m.Msg)
+            {
+                case WM_NCHITTEST:
+                    if (m.Result == (IntPtr)HTCLIENT)
+                    {
+                        m.Result = (IntPtr)HTCAPTION;
+                    }
+                    break;
+            }
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= 0x40000;
+                return cp;
+            }
         }
 
         private Chart GenerateChart(StatisticsDataObject[] series_data, int width, int height)
@@ -111,7 +138,7 @@ namespace Grade_Manager_DB_Controller
                     series.Points.Add(
                         new DataPoint()
                         {
-                            AxisLabel = value.Key.Replace("Quiz ", "").Replace("Test ", "").Replace("Exam ", ""),
+                            AxisLabel = value.Key,//.Replace("Quiz ", "").Replace("Test ", "").Replace("Exam ", ""),
                             YValues = new double[] { value.Value },
                             
                         }
@@ -161,13 +188,13 @@ namespace Grade_Manager_DB_Controller
                 chartPanel.Controls.Add(GenerateChart(sdo_buffer.ToArray(), chartPanel.Width, chartPanel.Height));
             }
             else
-                MessageBox.Show("Selected a subject and type of assignment first");
+                MessageBox.Show("Select a subject and type of assignment first");
         }
 
         private void LoadSubjects()
         {
             SubjectManager subject_manager = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester.Id);
+            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester);
         }
 
         private void LoadAssessment_Types()
@@ -182,6 +209,31 @@ namespace Grade_Manager_DB_Controller
             Student[] students = new StudentManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING).Get();
 
             studentCheckedListBox.Items.AddRange(students);
+        }
+
+        private void generateBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void generateBtn_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void generateBtn_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void generateBtn_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }

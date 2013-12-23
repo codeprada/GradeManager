@@ -1,6 +1,6 @@
 ﻿namespace Grade_Manager
 {
-    partial class MainForm
+    partial class fMainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fMainForm));
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.aboutBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.helpBtn = new System.Windows.Forms.Button();
             this.statisticsBtn = new System.Windows.Forms.Button();
@@ -111,6 +112,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel1.Controls.Add(this.aboutBtn);
             this.splitContainer1.Panel1.Controls.Add(this.logoutBtn);
             this.splitContainer1.Panel1.Controls.Add(this.helpBtn);
             this.splitContainer1.Panel1.Controls.Add(this.statisticsBtn);
@@ -129,6 +131,31 @@
             this.splitContainer1.Size = new System.Drawing.Size(1022, 715);
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // aboutBtn
+            // 
+            this.aboutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.aboutBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.aboutBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.aboutBtn.FlatAppearance.BorderSize = 0;
+            this.aboutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.aboutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.aboutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.help;
+            this.aboutBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.aboutBtn.Location = new System.Drawing.Point(0, 550);
+            this.aboutBtn.Name = "aboutBtn";
+            this.aboutBtn.Size = new System.Drawing.Size(70, 55);
+            this.aboutBtn.TabIndex = 31;
+            this.aboutBtn.TabStop = false;
+            this.aboutBtn.Tag = "help";
+            this.aboutBtn.Text = "About";
+            this.aboutBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.aboutBtn.UseVisualStyleBackColor = true;
+            this.aboutBtn.Visible = false;
+            this.aboutBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.aboutBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // logoutBtn
             // 
@@ -421,9 +448,11 @@
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
             this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(0, 0);
             this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Padding = new System.Windows.Forms.Padding(2);
             this.menuPanel.Size = new System.Drawing.Size(1022, 29);
             this.menuPanel.TabIndex = 0;
             this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
@@ -435,11 +464,11 @@
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(944, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(942, 2);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.maximizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 25);
             this.maximizePictureBox.TabIndex = 2;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
@@ -456,11 +485,11 @@
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(970, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(968, 2);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.minimizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 25);
             this.minimizePictureBox.TabIndex = 1;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
@@ -477,11 +506,11 @@
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(996, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(994, 2);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.closePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 25);
             this.closePictureBox.TabIndex = 0;
             this.closePictureBox.TabStop = false;
             this.closePictureBox.Tag = "close";
@@ -495,9 +524,10 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.titleLabel.Location = new System.Drawing.Point(468, 6);
+            this.titleLabel.Location = new System.Drawing.Point(2, 2);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(111, 18);
             this.titleLabel.TabIndex = 0;
@@ -564,7 +594,7 @@
             this.ribbonTopLoginButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonTopLoginButton.SmallImage")));
             this.ribbonTopLoginButton.Text = "";
             // 
-            // MainForm
+            // fMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -576,9 +606,8 @@
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
-            this.Name = "MainForm";
+            this.Name = "fMainForm";
             this.Padding = new System.Windows.Forms.Padding(1);
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
@@ -634,6 +663,7 @@
         private System.Windows.Forms.Button subjectsBtn;
         private System.Windows.Forms.Button studentsBtn;
         private System.Windows.Forms.Button assignmentsBtn;
+        private System.Windows.Forms.Button aboutBtn;
 
 
     }

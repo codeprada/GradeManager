@@ -77,7 +77,7 @@ namespace Grade_Manager_DB_Controller
             return subjects;
         }
 
-        public List<Subject> GetSubjects(int semester_id)
+        public List<Subject> GetSubjects(Semester semester)
         {
             List<Subject> subjects = new List<Subject>();
 
@@ -86,8 +86,8 @@ namespace Grade_Manager_DB_Controller
                 using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_SUBJECT_CURRENT_SEMESTER, connection))
                 {
                     command.CommandType = CommandType.Text;
-                    //command.Parameters.AddWithValue("@class_id", class_id);
-                    command.Parameters.AddWithValue("@semester_id", semester_id);
+                    command.Parameters.AddWithValue("@class_id", semester.Class);
+                    command.Parameters.AddWithValue("@semester_id", semester.Id);
 
                     connection.Open();
 
@@ -114,48 +114,60 @@ namespace Grade_Manager_DB_Controller
 
             foreach (Subject s in GetSubjects())
             {
-                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
+                if (s.Id >= 0)
+                    comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
             }
 
         }
 
-        public void LoadToComboBox(ComboBox comboBox, int id)
+        public void LoadToComboBox(ComboBox comboBox, Semester semester)
         {
             comboBox.Items.Clear();
 
             comboBox.DisplayMember = "Text";
             comboBox.ValueMember = "Id";
 
-            foreach (Subject s in GetSubjects(id))
+            foreach (Subject s in GetSubjects(semester))
             {
-                comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
+                if(s.Id >= 0)
+                    comboBox.Items.Add(new ComboItem() { Id = s.Id, Text = s.Name });
             }
         }
 
         
 
-        public void ClearClassSubjects(int class_id)
+        public bool DeleteClassSubject(int subject, Semester semester)
         {
+            bool ok = false;
+
             try
             {
                 using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
                 {
-                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_CLEAR_SUBJECTS_ON_CLASS, connection))
+                    using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_CLEAR_SUBJECT_ON_CLASS, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        //DELETE FROM [SubjectProfile] WHERE [semester_id] = @semester_id
-                        command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
-                        command.Parameters.AddWithValue("@class_id", class_id);
+
+                        command.Parameters.AddWithValue("@semester_id", semester.Id);
+                        command.Parameters.AddWithValue("@class_id", semester.Class);
+                        command.Parameters.AddWithValue("@subject_id", subject);
 
                         connection.Open();
-                        command.ExecuteNonQuery();
+                        if (command.ExecuteNonQuery() > 0)
+                            ok = true;
                     }
                 }
+            }
+            catch (SQLiteException e)
+            {
+                ok = false;
             }
             catch (Exception)
             {
 
             }
+
+            return ok;
         }
 
         public int CreateSubject(Subject subject)
@@ -191,7 +203,7 @@ namespace Grade_Manager_DB_Controller
 
         }
 
-        public bool SaveSubjectToClass(Subject subject, int class_id)
+        public bool SaveOrUpdateSubjectClass(Subject subject, Semester semester)
         {
             bool eval = false;
 
@@ -202,10 +214,10 @@ namespace Grade_Manager_DB_Controller
                     using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT_ON_CLASS, connection))
                     {
                         command.CommandType = CommandType.Text;
-                        //INSERT INTO [SubjectProfile] ([subject_id], [class_id]) VALUES (@subject_id, @class_id)
+                        
                         command.Parameters.AddWithValue("@subject_id", subject.Id);
-                        command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
-                        command.Parameters.AddWithValue("@class_id", class_id);
+                        command.Parameters.AddWithValue("@semester_id", semester.Id);
+                        command.Parameters.AddWithValue("@class_id", semester.Class);
 
                         connection.Open();
 

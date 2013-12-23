@@ -29,6 +29,7 @@ namespace Grade_Manager_DB_Controller
 
     public class ClassManager : BaseManager
     {
+
         public ClassManager(string connection_string)
             : base(connection_string)
         {

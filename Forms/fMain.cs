@@ -15,15 +15,32 @@ using Grade_Manager_DB_Controller;
 
 namespace Grade_Manager
 {
-    public partial class MainForm : Form
+    public partial class fMainForm : Form
     {
         private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
 
-        public MainForm()
+        private Dictionary<Button, Button[]> FirstLevelButtons;
+
+        public fMainForm()
         {
             InitializeComponent();
 
             Initialize();
+
+            FirstLevelButtons = new Dictionary<Button, Button[]>{ 
+                {semesterBtn, new Button[0]},
+                {assignmentsBtn, new Button[0]},
+                {studentsBtn, new Button[0]},
+                {subjectsBtn, new Button[0]},
+                {gradeBtn, new Button[0]},
+                {rankingBtn, new Button[0]},
+                {reportsBtn, new Button[0]},
+                {statisticsBtn, new Button[0]},
+                {helpBtn, new Button[] { aboutBtn }}
+            };
         }
 
         private void Initialize()
@@ -32,9 +49,6 @@ namespace Grade_Manager
             //this.Width = Convert.ToInt32(working_area.Width * .80);
             //this.Height = working_area.Height - 300;
             this.StartPosition = FormStartPosition.CenterScreen;
-            //loginBtn.Focus();
-
-            //loginBtn.FlatAppearance.CheckedBackColor = Color.FromArgb(0, 255, 255, 255);
 
             //ShowWelcomeScreen();
             CenterTitle();
@@ -70,12 +84,14 @@ namespace Grade_Manager
             Styles.Icons.Add("subjects_over", Grade_Manager_DB_Controller.Properties.Resources.subjects_over);
             Styles.Icons.Add("save", Grade_Manager_DB_Controller.Properties.Resources.save);
             Styles.Icons.Add("save_over", Grade_Manager_DB_Controller.Properties.Resources.save_over);
-            Styles.Icons.Add("add_student", Grade_Manager_DB_Controller.Properties.Resources.add);
-            Styles.Icons.Add("add_student_over", Grade_Manager_DB_Controller.Properties.Resources.add_over);
+            Styles.Icons.Add("add", Grade_Manager_DB_Controller.Properties.Resources.add);
+            Styles.Icons.Add("add_over", Grade_Manager_DB_Controller.Properties.Resources.add_over);
             Styles.Icons.Add("cancel", Grade_Manager_DB_Controller.Properties.Resources.cancel);
             Styles.Icons.Add("cancel_over", Grade_Manager_DB_Controller.Properties.Resources.cancel_over);
             Styles.Icons.Add("load", Grade_Manager_DB_Controller.Properties.Resources.load);
             Styles.Icons.Add("load_over", Grade_Manager_DB_Controller.Properties.Resources.load_over);
+            Styles.Icons.Add("generate", Grade_Manager_DB_Controller.Properties.Resources.generate);
+            Styles.Icons.Add("generate_over", Grade_Manager_DB_Controller.Properties.Resources.generate_over);
         }
 
         protected override CreateParams CreateParams
@@ -86,10 +102,25 @@ namespace Grade_Manager
                 // a drop shadow around the form
                 CreateParams cp = base.CreateParams;
                 cp.ClassStyle |= CS_DROPSHADOW;
+                cp.Style |= 0x40000;
                 return cp;
             }
         }
-        
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            switch (m.Msg)
+            {
+                case WM_NCHITTEST:
+                    if (m.Result == (IntPtr)HTCLIENT)
+                    {
+                        m.Result = (IntPtr)HTCAPTION;
+                    }
+                    break;
+            }
+        }
+
         private void Login()
         {
             LogIn login_form = new LogIn();
@@ -98,9 +129,9 @@ namespace Grade_Manager
             splitContainer1.Panel2.Controls.Add(login_form);
             login_form.Location = new Point((splitContainer1.Panel2.Width - login_form.Width) / 2, (splitContainer1.Panel2.Height - login_form.Height) / 2);
             login_form.BringToFront();*/
-            
+
             login_form.ShowDialog();
-            
+
             if (UserManager.CurrentUser != null && UserManager.CurrentUser.Name.Length > 0)
             {
                 //User has been logged in
@@ -119,10 +150,10 @@ namespace Grade_Manager
             semesterBtn.Visible =
             studentsBtn.Visible =
             subjectsBtn.Visible =
-            assignmentsBtn.Visible =     
+            assignmentsBtn.Visible =
             gradeBtn.Visible =
             reportsBtn.Visible =
-            rankingBtn.Visible = 
+            rankingBtn.Visible =
             statisticsBtn.Visible =
             logoutBtn.Visible =
                                                 state; //State of Pictureboxes
@@ -144,7 +175,7 @@ namespace Grade_Manager
 
         private void logoutBtn_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void semesterMangementBtn_Click(object sender, EventArgs e)
@@ -157,8 +188,9 @@ namespace Grade_Manager
             Semester_Form semester_fm = new Semester_Form();
             semester_fm.StartPosition = FormStartPosition.CenterParent;
 
+
             ////Verify if the user selected a semester
-            if (semester_fm.ShowDialog() == System.Windows.Forms.DialogResult.OK && SemesterManager.CurrentSemester != null)
+            if (semester_fm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK && SemesterManager.CurrentSemester != null)
             {
                 mainStatusLabel.Text += String.Format(" - Semester Year: {0}/{1}",
                     SemesterManager.CurrentSemester.StartingSchoolYear,
@@ -263,17 +295,18 @@ namespace Grade_Manager
 
         private void assignmentsBtn_Click(object sender, EventArgs e)
         {
-            Assessments assess_form = new Assessments();
+            fAssessments assess_form = new fAssessments();
             assess_form.TopLevel = false;
             splitContainer1.Panel2.Controls.Add(assess_form);
             assess_form.Location = new Point((splitContainer1.Panel2.Width - assess_form.Width) / 2, (splitContainer1.Panel2.Height - assess_form.Height) / 2);
+            assess_form.Parent = splitContainer1.Panel2;
             assess_form.Show();
             assess_form.BringToFront();
         }
 
         private void studentsBtn_Click(object sender, EventArgs e)
         {
-            StudentManagementForm student_management_form = new StudentManagementForm();
+            fStudentManagementForm student_management_form = new fStudentManagementForm();
             student_management_form.TopLevel = false;
             splitContainer1.Panel2.Controls.Add(student_management_form);
             student_management_form.Location = new Point((splitContainer1.Panel2.Width - student_management_form.Width) / 2, (splitContainer1.Panel2.Height - student_management_form.Height) / 2);
@@ -283,7 +316,7 @@ namespace Grade_Manager
 
         private void subjectsBtn_Click(object sender, EventArgs e)
         {
-            Subjects_Form s_form = new Subjects_Form();
+            fSubjects s_form = new fSubjects();
             s_form.TopLevel = false;
             splitContainer1.Panel2.Controls.Add(s_form);
             s_form.Location = new Point((splitContainer1.Panel2.Width - s_form.Width) / 2, (splitContainer1.Panel2.Height - s_form.Height) / 2);
@@ -333,7 +366,8 @@ namespace Grade_Manager
 
         private void helpBtn_Click(object sender, EventArgs e)
         {
-
+            
+            
         }
 
         private void logoutBtn_Click_1(object sender, EventArgs e)

@@ -39,7 +39,7 @@ namespace Grade_Manager_DB_Controller
         }
     }
 
-    public class AssessmentWeight : Database_Object
+    public class AssessmentWeight : iObject
     {
         public AssessmentWeight()
             : base()
@@ -58,8 +58,13 @@ namespace Grade_Manager_DB_Controller
             assess_weight.Type = Convert.ToInt32(reader["assess_type_id"]);
             assess_weight.Weight = (reader["assess_type_weight"] == DBNull.Value ? 0 : Convert.ToDouble(reader["assess_type_weight"]));
             assess_weight.Type_Relational = (reader["assess_type_id_relational"] == DBNull.Value ? 0 : Convert.ToInt32(reader["assess_type_id_relational"]));
-
+            assess_weight.ID = Convert.ToInt32(reader["assess_type_weight_id"]);
             return assess_weight;
+        }
+
+        public override string ToString()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -268,7 +273,10 @@ namespace Grade_Manager_DB_Controller
             if (db_obj == DB_Object.TYPE)
             {
                 foreach (AssessmentType type in GetTypes())
-                    comboBox.Items.Add(new ComboItem() { Id = type.ID, Text = type.Name }); 
+                {
+                    if(type.ID >= 0)
+                        comboBox.Items.Add(new ComboItem() { Id = type.ID, Text = type.Name });
+                }
             }
         }
 

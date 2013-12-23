@@ -15,6 +15,7 @@ namespace Grade_Manager_DB_Controller
     {
         private SubjectManager subject_manager;
         private Grade_Manager grade_manager;
+        private int class_id = -1;
 
         public Grade_Main_Form()
         {
@@ -60,6 +61,7 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
                             SemesterTextBox.Text = Convert.ToString(reader["current_term"]);
                             classTextBox.Text = Convert.ToString(reader["class_name"]);
                             yearTextBox.Text = Convert.ToString(reader["starting_school_year"]) + "/" + Convert.ToString(reader["ending_school_year"]);
+                            class_id = Convert.ToInt32(reader["class_id"]);
                         }
                     }
                 }
@@ -68,7 +70,7 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
 
         public void LoadSubjects()
         {
-            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester.Id);     
+            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester);     
         }
 
         private void assessmentComboBox_SelectedIndexChanged(object sender, EventArgs e)

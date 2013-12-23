@@ -61,6 +61,7 @@ namespace Grade_Manager
             {
                 User usr = user_manager.GetUser(id);
                 
+                
                 //should be hashed
                 //usr.Password = passwordTxtBox.Text; //shouldn't have stored the password here
                 //usr.Name = usernameTxtBox.Text;
@@ -113,7 +114,7 @@ namespace Grade_Manager
         {
             Control s = sender as Form;
 
-            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width, s.Height, 4, 4));
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
         }
 
         private void logInBtn_Paint(object sender, PaintEventArgs e)

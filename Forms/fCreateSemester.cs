@@ -14,6 +14,11 @@ namespace Grade_Manager
 {
     public partial class CreateSemester : Form
     {
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
         private SemesterManager profile_manager;
 
         public CreateSemester()
@@ -23,6 +28,33 @@ namespace Grade_Manager
             profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING); 
 
             LoadClasses();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000; //RESIZING
+                return cp;
+            }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            switch (m.Msg)
+            {
+                case WM_NCHITTEST:
+                    if (m.Result == (IntPtr)HTCLIENT)
+                    {
+                        m.Result = (IntPtr)HTCAPTION;
+                    }
+                    break;
+            }
         }
 
         private void createBtn_Click(object sender, EventArgs e)
@@ -61,10 +93,25 @@ namespace Grade_Manager
 
         private void newClassLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            Opacity = 0.20;
+            //Application.DoEvents();
             NewClass class_form = new NewClass();
             class_form.StartPosition = FormStartPosition.CenterParent;
             class_form.ShowDialog();
             LoadClasses();
+            Opacity = 1;
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void CreateSemester_Paint(object sender, PaintEventArgs e)
+        {
+            Form s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
         }
     }
 }

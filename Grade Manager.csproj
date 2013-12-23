@@ -336,6 +336,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\sgm.png" />
+    <None Include="Resources\generate_over.png" />
+    <None Include="Resources\generate.png" />
     <None Include="Resources\load_over.png" />
     <None Include="Resources\load.png" />
     <None Include="bin\Debug\baptistacademylogo.png" />
@@ -436,9 +439,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\login-32.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\WelcomeBackground2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\chart_line1.png">

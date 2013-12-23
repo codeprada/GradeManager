@@ -41,6 +41,32 @@ namespace Grade_Manager_DB_Controller
             return atol;
         }
 
+        public AssessmentType GetTypeWeight(int assess_type_id, int account_id)
+        {
+            AssessmentType at = null;
+
+            using (var connection = new SQLiteConnection(ConnectionString))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_ASSESSMENTTYPE_AND_WEIGHT, connection))
+                {
+                    command.Parameters.AddWithValue("@account_id", account_id);
+                    command.Parameters.AddWithValue("@assess_type_id", assess_type_id);
+
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            at = reader;
+                        }
+                    }
+                }
+            }
+
+            return at;
+        }
+
         /// <summary>
         /// Save an assessmentType and its weighting
         /// </summary>
@@ -82,6 +108,49 @@ namespace Grade_Manager_DB_Controller
             return saved;
         }
 
+        /// <summary>
+        /// Update Assessment Type Object
+        /// </summary>
+        /// <param name="assessTypeObject"></param>
+        /// <returns></returns>
+        public bool Update(AssessmentType assessTypeObject)
+        {
+            bool updated = false;
+
+            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
+            {
+                using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_UPDATE_ASSESSMENT_TYPE, connection))
+                {
+                    command.Parameters.AddWithValue("@assess_type", assessTypeObject.Name);
+                    command.Parameters.AddWithValue("@assess_type_id", assessTypeObject.ID);
+                    command.Connection.Open();
+
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        using (var secondary_command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_UPDATE_ASSESSMENTTYPE_WEIGHT, connection))
+                        {
+                            secondary_command.Parameters.AddWithValue("@assess_type_id", assessTypeObject.ID);
+                            secondary_command.Parameters.AddWithValue("@assess_type_weight", assessTypeObject.Weight.Weight);
+                            secondary_command.Parameters.AddWithValue("@assess_type_relational_id", assessTypeObject.Weight.Type_Relational);
+                            secondary_command.Parameters.AddWithValue("@assess_type_is_linked", assessTypeObject.IsLinked ? 1 : 0);
+                            secondary_command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
+                            secondary_command.Parameters.AddWithValue("@assess_type_weight_id", assessTypeObject.Weight.ID);
+                            if (secondary_command.ExecuteNonQuery() > 0)
+                                updated = true;
+                        }
+                        
+                    }
+                }
+            }
+
+            return updated;
+        }
+
+        /// <summary>
+        /// Delete an Assessment Type such as a Quiz, Test, etc...
+        /// </summary>
+        /// <param name="assess_type_id"></param>
+        /// <returns></returns>
         public bool Delete(int assess_type_id)
         {
             bool deleted = false;
@@ -127,7 +196,7 @@ namespace Grade_Manager_DB_Controller
                 a_type.Weight = reader;
                 a_type.IsLinked = (Convert.ToInt32(reader["assess_is_linked"]) == 0 ? false : true);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 a_type.Weight = null;
                 a_type.IsLinked = false;

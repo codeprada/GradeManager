@@ -12,13 +12,13 @@ using System.Runtime.InteropServices;
 
 namespace Grade_Manager_DB_Controller
 {
-    public partial class StudentManagementForm : Form
+    public partial class fStudentManagementForm : Form
     {
         private SQLiteDataAdapter grid_adapter;
         private DataTable grid_table;
         private StudentManager student_manager;
 
-        public StudentManagementForm()
+        public fStudentManagementForm()
         {
             InitializeComponent();
 
@@ -100,7 +100,7 @@ namespace Grade_Manager_DB_Controller
         {
             Form s = sender as Form;
 
-            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width, s.Height, 4, 4));
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
 
         }
 

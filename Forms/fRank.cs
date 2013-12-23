@@ -29,7 +29,12 @@ namespace Grade_Manager_DB_Controller
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
-            rankListView.Items.Clear();
+            rankDataGridView.Rows.Clear();
+            rankDataGridView.Columns.Clear();
+
+            rankDataGridView.Columns.Add("rank", "No.");
+            rankDataGridView.Columns.Add("student", "Student Name");
+            rankDataGridView.Columns.Add("grade", "Grade");
 
             int subject_id = -1;
             if (subjectComboBox.SelectedItem != null)
@@ -45,18 +50,22 @@ namespace Grade_Manager_DB_Controller
                 track++;
                 current = roundedRB.Checked ? Math.Round(ri.Average, 2) : ri.Average;
                 if (last != current) count = track;
-                
 
-                ListViewItem lvi = rankListView.Items.Add(new ListViewItem(Convert.ToString(count)));
-
-                lvi.SubItems.Add(ri.StuName);
-                lvi.SubItems.Add(
-                    Convert.ToString(current)
-                );
+                rankDataGridView.Rows.Add(new object[] { count, ri.StuName, current });
 
                 last = current;
                 
             }
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void menuPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateSemester));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.newClassLinkLabel = new System.Windows.Forms.LinkLabel();
             this.classesComboBox = new System.Windows.Forms.ComboBox();
@@ -43,11 +44,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.menuPanel = new System.Windows.Forms.Panel();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endingSchoolYearNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.currentTermNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.startingSchoolYearNumeric)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.menuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -64,9 +76,10 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.startingSchoolYearNumeric);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 11);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(210, 235);
+            this.groupBox1.Size = new System.Drawing.Size(240, 224);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
@@ -85,7 +98,7 @@
             // 
             // classesComboBox
             // 
-            this.classesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.classesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classesComboBox.FormattingEnabled = true;
             this.classesComboBox.Location = new System.Drawing.Point(77, 74);
             this.classesComboBox.Name = "classesComboBox";
@@ -112,6 +125,8 @@
             // 
             // endingSchoolYearNumeric
             // 
+            this.endingSchoolYearNumeric.BackColor = System.Drawing.Color.White;
+            this.endingSchoolYearNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.endingSchoolYearNumeric.Location = new System.Drawing.Point(148, 22);
             this.endingSchoolYearNumeric.Maximum = new decimal(new int[] {
             2100,
@@ -125,7 +140,7 @@
             0});
             this.endingSchoolYearNumeric.Name = "endingSchoolYearNumeric";
             this.endingSchoolYearNumeric.ReadOnly = true;
-            this.endingSchoolYearNumeric.Size = new System.Drawing.Size(52, 20);
+            this.endingSchoolYearNumeric.Size = new System.Drawing.Size(52, 16);
             this.endingSchoolYearNumeric.TabIndex = 10;
             this.endingSchoolYearNumeric.Value = new decimal(new int[] {
             2013,
@@ -135,7 +150,7 @@
             // 
             // createBtn
             // 
-            this.createBtn.Location = new System.Drawing.Point(125, 186);
+            this.createBtn.Location = new System.Drawing.Point(159, 186);
             this.createBtn.Name = "createBtn";
             this.createBtn.Size = new System.Drawing.Size(75, 23);
             this.createBtn.TabIndex = 8;
@@ -148,7 +163,7 @@
             this.profileDescriptionTxt.Location = new System.Drawing.Point(6, 123);
             this.profileDescriptionTxt.Multiline = true;
             this.profileDescriptionTxt.Name = "profileDescriptionTxt";
-            this.profileDescriptionTxt.Size = new System.Drawing.Size(196, 57);
+            this.profileDescriptionTxt.Size = new System.Drawing.Size(228, 57);
             this.profileDescriptionTxt.TabIndex = 7;
             // 
             // label4
@@ -162,6 +177,8 @@
             // 
             // currentTermNumeric
             // 
+            this.currentTermNumeric.BackColor = System.Drawing.Color.White;
+            this.currentTermNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.currentTermNumeric.Location = new System.Drawing.Point(77, 48);
             this.currentTermNumeric.Maximum = new decimal(new int[] {
             3,
@@ -175,7 +192,7 @@
             0});
             this.currentTermNumeric.Name = "currentTermNumeric";
             this.currentTermNumeric.ReadOnly = true;
-            this.currentTermNumeric.Size = new System.Drawing.Size(52, 20);
+            this.currentTermNumeric.Size = new System.Drawing.Size(52, 16);
             this.currentTermNumeric.TabIndex = 3;
             this.currentTermNumeric.Value = new decimal(new int[] {
             1,
@@ -194,6 +211,8 @@
             // 
             // startingSchoolYearNumeric
             // 
+            this.startingSchoolYearNumeric.BackColor = System.Drawing.Color.White;
+            this.startingSchoolYearNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.startingSchoolYearNumeric.Location = new System.Drawing.Point(77, 22);
             this.startingSchoolYearNumeric.Maximum = new decimal(new int[] {
             2100,
@@ -207,7 +226,7 @@
             0});
             this.startingSchoolYearNumeric.Name = "startingSchoolYearNumeric";
             this.startingSchoolYearNumeric.ReadOnly = true;
-            this.startingSchoolYearNumeric.Size = new System.Drawing.Size(52, 20);
+            this.startingSchoolYearNumeric.Size = new System.Drawing.Size(52, 16);
             this.startingSchoolYearNumeric.TabIndex = 1;
             this.startingSchoolYearNumeric.Value = new decimal(new int[] {
             2012,
@@ -226,11 +245,12 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 261);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 255);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(235, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(240, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
@@ -240,19 +260,113 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(240, 224);
+            this.panel1.TabIndex = 2;
+            // 
+            // menuPanel
+            // 
+            this.menuPanel.BackColor = System.Drawing.Color.White;
+            this.menuPanel.Controls.Add(this.maximizePictureBox);
+            this.menuPanel.Controls.Add(this.minimizePictureBox);
+            this.menuPanel.Controls.Add(this.closePictureBox);
+            this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.menuPanel.Location = new System.Drawing.Point(2, 2);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Padding = new System.Windows.Forms.Padding(4);
+            this.menuPanel.Size = new System.Drawing.Size(240, 29);
+            this.menuPanel.TabIndex = 4;
+            // 
+            // maximizePictureBox
+            // 
+            this.maximizePictureBox.BackColor = System.Drawing.Color.White;
+            this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
+            this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.maximizePictureBox.Location = new System.Drawing.Point(158, 4);
+            this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.maximizePictureBox.Name = "maximizePictureBox";
+            this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 21);
+            this.maximizePictureBox.TabIndex = 2;
+            this.maximizePictureBox.TabStop = false;
+            this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Visible = false;
+            // 
+            // minimizePictureBox
+            // 
+            this.minimizePictureBox.BackColor = System.Drawing.Color.White;
+            this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
+            this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimizePictureBox.Location = new System.Drawing.Point(184, 4);
+            this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.minimizePictureBox.Name = "minimizePictureBox";
+            this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 21);
+            this.minimizePictureBox.TabIndex = 1;
+            this.minimizePictureBox.TabStop = false;
+            this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Visible = false;
+            // 
+            // closePictureBox
+            // 
+            this.closePictureBox.BackColor = System.Drawing.Color.White;
+            this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
+            this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePictureBox.Location = new System.Drawing.Point(210, 4);
+            this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 21);
+            this.closePictureBox.TabIndex = 0;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Tag = "close";
+            this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleLabel.Location = new System.Drawing.Point(4, 4);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(154, 18);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Create New Semester";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // CreateSemester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(235, 283);
+            this.BackColor = System.Drawing.SystemColors.Highlight;
+            this.ClientSize = new System.Drawing.Size(244, 279);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CreateSemester";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Create New Semester";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.CreateSemester_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.endingSchoolYearNumeric)).EndInit();
@@ -260,6 +374,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.startingSchoolYearNumeric)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.menuPanel.ResumeLayout(false);
+            this.menuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +402,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox classesComboBox;
         private System.Windows.Forms.LinkLabel newClassLinkLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel menuPanel;
+        private System.Windows.Forms.PictureBox maximizePictureBox;
+        private System.Windows.Forms.PictureBox minimizePictureBox;
+        private System.Windows.Forms.PictureBox closePictureBox;
+        private System.Windows.Forms.Label titleLabel;
     }
 }

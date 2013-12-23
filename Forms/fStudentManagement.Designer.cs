@@ -1,6 +1,6 @@
 ﻿namespace Grade_Manager_DB_Controller
 {
-    partial class StudentManagementForm
+    partial class fStudentManagementForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentManagementForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fStudentManagementForm));
             this.studentDataGridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentGridView = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.addNewStudentPictureBox = new System.Windows.Forms.PictureBox();
-            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
-            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
-            this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.studentDataGridContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.addNewStudentPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // studentDataGridContextMenu
@@ -83,14 +85,36 @@
             this.studentGridView.AllowUserToDeleteRows = false;
             this.studentGridView.AllowUserToOrderColumns = true;
             this.studentGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.studentGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.studentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.studentGridView.BackgroundColor = System.Drawing.Color.White;
+            this.studentGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.studentGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.studentGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.studentGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.studentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.studentGridView.ContextMenuStrip = this.studentDataGridContextMenu;
             this.studentGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentGridView.GridColor = System.Drawing.Color.White;
             this.studentGridView.Location = new System.Drawing.Point(0, 48);
+            this.studentGridView.MultiSelect = false;
             this.studentGridView.Name = "studentGridView";
             this.studentGridView.ReadOnly = true;
+            this.studentGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.studentGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.studentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.studentGridView.ShowCellErrors = false;
+            this.studentGridView.ShowCellToolTips = false;
             this.studentGridView.ShowEditingIcon = false;
+            this.studentGridView.ShowRowErrors = false;
             this.studentGridView.Size = new System.Drawing.Size(716, 579);
             this.studentGridView.TabIndex = 1;
             this.studentGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.studentGridView_CellContextMenuStripNeeded);
@@ -108,66 +132,6 @@
             this.panel2.Size = new System.Drawing.Size(716, 29);
             this.panel2.TabIndex = 2;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
-            // 
-            // titleLabel
-            // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.titleLabel.Location = new System.Drawing.Point(304, 7);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(144, 17);
-            this.titleLabel.TabIndex = 4;
-            this.titleLabel.Text = "Student Management";
-            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(716, 656);
-            this.panel1.TabIndex = 4;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.studentGridView);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(716, 627);
-            this.panel3.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.addNewStudentPictureBox);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(716, 48);
-            this.panel4.TabIndex = 2;
-            // 
-            // addNewStudentPictureBox
-            // 
-            this.addNewStudentPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.add;
-            this.addNewStudentPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.addNewStudentPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addNewStudentPictureBox.Location = new System.Drawing.Point(20, 6);
-            this.addNewStudentPictureBox.Name = "addNewStudentPictureBox";
-            this.addNewStudentPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.addNewStudentPictureBox.TabIndex = 0;
-            this.addNewStudentPictureBox.TabStop = false;
-            this.addNewStudentPictureBox.Tag = "add_student";
-            this.addNewStudentPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseClick);
-            this.addNewStudentPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseDown);
-            this.addNewStudentPictureBox.MouseEnter += new System.EventHandler(this.addNewStudentPictureBox_MouseEnter);
-            this.addNewStudentPictureBox.MouseLeave += new System.EventHandler(this.addNewStudentPictureBox_MouseLeave);
-            this.addNewStudentPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseUp);
             // 
             // maximizePictureBox
             // 
@@ -232,7 +196,67 @@
             this.closePictureBox.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
             // 
-            // StudentManagementForm
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.titleLabel.Location = new System.Drawing.Point(304, 7);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(144, 17);
+            this.titleLabel.TabIndex = 4;
+            this.titleLabel.Text = "Student Management";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(716, 656);
+            this.panel1.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.studentGridView);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 29);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(716, 627);
+            this.panel3.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.addNewStudentPictureBox);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(716, 48);
+            this.panel4.TabIndex = 2;
+            // 
+            // addNewStudentPictureBox
+            // 
+            this.addNewStudentPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.add;
+            this.addNewStudentPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.addNewStudentPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addNewStudentPictureBox.Location = new System.Drawing.Point(20, 6);
+            this.addNewStudentPictureBox.Name = "addNewStudentPictureBox";
+            this.addNewStudentPictureBox.Size = new System.Drawing.Size(32, 32);
+            this.addNewStudentPictureBox.TabIndex = 0;
+            this.addNewStudentPictureBox.TabStop = false;
+            this.addNewStudentPictureBox.Tag = "add";
+            this.addNewStudentPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseClick);
+            this.addNewStudentPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseDown);
+            this.addNewStudentPictureBox.MouseEnter += new System.EventHandler(this.addNewStudentPictureBox_MouseEnter);
+            this.addNewStudentPictureBox.MouseLeave += new System.EventHandler(this.addNewStudentPictureBox_MouseLeave);
+            this.addNewStudentPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseUp);
+            // 
+            // fStudentManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +265,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StudentManagementForm";
+            this.Name = "fStudentManagementForm";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -252,13 +276,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.addNewStudentPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

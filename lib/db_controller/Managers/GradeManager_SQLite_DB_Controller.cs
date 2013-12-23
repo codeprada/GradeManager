@@ -172,9 +172,9 @@ CREATE TABLE [SubjectClass] (
                             DBQ_STUDENT_DELETE = "pragma foreign_keys=on; DELETE FROM [Students] WHERE [student_id] = @student_id",
 
                             DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name]) VALUES (@subject_name)",
-                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT  DISTINCT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id ORDER BY [subject_name] ASC",
-                            DBQ_CLEAR_SUBJECTS_ON_CLASS = "pragma foreign_keys=on; DELETE FROM [SubjectClass] WHERE [semester_id] = @semester_id AND [class_id] = @class_id",
-                            DBQ_INSERT_SUBJECT_ON_CLASS = "pragma foreign_keys=on; INSERT INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
+                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT  DISTINCT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id AND [SubjectClass].class_id = @class_id ORDER BY [subject_name] ASC",
+                            DBQ_CLEAR_SUBJECT_ON_CLASS = "pragma foreign_keys=on; DELETE FROM [SubjectClass] WHERE [semester_id] = @semester_id AND [class_id] = @class_id AND [subject_id] = @subject_id",
+                            DBQ_INSERT_SUBJECT_ON_CLASS = "pragma foreign_keys=on; INSERT OR REPLACE INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
 
 
                             DBQ_SELECT_ASSESSMENTS_SUBJECTS = "SELECT assess_id ID, assess_date [Date], assess_name [Name], subject_name [Subject], class_name [Class], current_term [Semester] FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id INNER JOIN [Semester] P ON p.semester_id = A.semester_id INNER JOIN [Classes] C ON P.class_id = C.class_id INNER JOIN [Assessment_Type] AT ON a.assess_type_id = AT.assess_type_id WHERE A.semester_id = @semester_id ORDER BY starting_school_year, Semester, Date",
@@ -205,63 +205,14 @@ FROM
 WHERE account_id = @account_id
 GROUP BY Assessments.assess_type_id, Assessments.subject_id",
                             DBQ_INSERT_ASSESSMENT_TYPE = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] (assess_type) VALUES (@assess_type)",
-
-                            DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
+                            DBQ_INSERT_ASSESSMENT_TYPE_W_ID = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] VALUES (@assess_type_id, @assess_type)",
+                            DBQ_UPDATE_ASSESSMENT_TYPE = "pragma foreign_keys=on; UPDATE [Assessment_Type] SET [assess_type] = @assess_type WHERE [assess_type_id] = @assess_type_id",
+                            DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT C.class_id, [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
                             DBQ_SELECT_SUBJECT_GRADES = "SELECT DISTINCT S.subject_id, S.subject_name FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id WHERE semester_id = @semester_id",
                             DBQ_SELECT_ASSESSMENT_STUDENT = "SELECT DISTINCT S.[student_id] ID, [student_last_name] [Last Name], [student_first_name] [First Name], [student_middle_name] [Middle Name(s)], (SELECT [grade_mark] FROM [Grades] WHERE [assess_id] = @assess_id AND S.[student_id] = [Grades].[student_id]) [Grade] FROM [Students] S ORDER BY [student_last_name], [student_first_name] ASC",
                             DBQ_INSERT_GRADE = "pragma foreign_keys=on; INSERT OR REPLACE INTO [Grades] ([student_id], [assess_id], [grade_mark]) VALUES (@student_id, @assess_id, @grade);",
-                            
-                            DBQ_GENERATE_REPORT = @"
-SELECT DISTINCT
-*,  
-(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id)) +
-((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz' AND Semester.semester_id = @semester_id))) /
-(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id) [average]
-FROM [Students] S 
-INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
-INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
-INNER JOIN [Classes] C ON C.[class_id] = SM.[class_id] 
-INNER JOIN [Assessments] A ON A.[semester_id] = SM.[semester_id]
-INNER JOIN [Assessment_Type] AT ON AT.assess_type_id = A.assess_type_id  
-INNER JOIN [Grades] G ON G.[assess_id] = A.[assess_id]
-INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
-WHERE SM.[semester_id] = @semester_id
-GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]
-ORDER BY S.[student_last_name], S.[student_first_name], S.[student_dob] ASC
-",
                             DBQ_GET_STATS = "SELECT [assess_name] [Name], [grade_mark] [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Students].student_id = @student_id AND [Assessments].[semester_id] = @semester_id ORDER BY [Assessments].[assess_id] ASC",
                             DBQ_GET_STATS_AVG = "SELECT [Assessments].[assess_name] [Name], AVG([grade_mark]) [Grade] FROM [Grades] INNER JOIN [Students] ON [Grades].student_id = [Students].student_id INNER JOIN [Assessments] ON [Grades].assess_id = [Assessments].assess_id WHERE [subject_id] = @subject_id AND [assess_type_id] = @assess_type_id AND [Assessments].semester_id = @semester_id GROUP BY [Assessments].assess_id ORDER BY [Assessments].[assess_id] ASC",
-                            DBQ_GET_RANKINGS = @"
-SELECT
-Z.student_first_name,
-Z.student_last_name,
-AVG(Z.average) [overall]
-FROM
-(
-SELECT DISTINCT
-*,  
-(((SELECT SUM([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id)) +
-((SELECT AVG([grade_mark]) FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Quiz' AND Semester.semester_id = @semester_id))) /
-(SELECT COUNT(grade_mark) + 1 FROM Grades G2 INNER JOIN Assessments A2 ON A2.assess_id = G2.assess_id INNER JOIN Assessment_Type AT2 ON A2.assess_type_id = AT2.assess_type_id INNER JOIN Semester ON Semester.semester_id = A2.semester_id WHERE 
-G2.[student_id] = S.[student_id] AND A2.subject_id = SJ.[subject_id] AND AT2.[assess_type] = 'Test' AND Semester.semester_id = @semester_id) [average]
-FROM [Students] S 
-INNER JOIN [StudentClass] SC ON S.[student_id] = SC.[student_id] 
-INNER JOIN [Semester] SM ON SC.[class_id] = SM.[class_id] 
-INNER JOIN [Classes] C ON C.[class_id] = SM.[class_id] 
-INNER JOIN [Assessments] A ON A.[semester_id] = SM.[semester_id]
-INNER JOIN [Assessment_Type] AT ON AT.assess_type_id = A.assess_type_id  
-INNER JOIN [Grades] G ON G.[assess_id] = A.[assess_id]
-INNER JOIN [Subjects] SJ ON SJ.subject_id = A.subject_id
-WHERE SM.[semester_id] = @semester_id {0}
-GROUP BY S.[student_id], SJ.[subject_id], SM.[semester_id]) [Z]
-GROUP BY Z.student_id
-ORDER BY [overall] DESC
-",
                             DBQ_GET_ASSESSMENT_WEIGHTS = @"
 SELECT
 	[Assessments].assess_type_id,
@@ -280,10 +231,12 @@ WHERE Semester.account_id = @account_id
 GROUP BY Assessments.assess_type_id, Assessments.subject_id",
                             DBQ_GET_ASSESSMENT_WEIGHTS_WHERE = "SELECT DISTINCT [AT].[assess_type_id] [ID], [assess_type] [Name], [assess_type_weight] [Weight], [assess_type_id_relational] [RelationID], [assess_is_linked] [isLinkWith] FROM [Assessment_Type_Weights] [ATW] INNER JOIN [Assessment_Type] [AT] ON [ATW].assess_type_id = [AT].assess_type_id WHERE [account_id] = @account_id AND [ID] = @id",
                             DBQ_GET_STUDENT_SUBJECT_ASSESS_GRADES = @"select Students.student_id, student_first_name, student_last_name, subject_name, Subjects.subject_id, assess_type_id, avg(grade_mark) [Average] from Grades inner join Assessments on Assessments.assess_id = Grades.assess_id inner join Students on Grades.student_id = Students.student_id inner join Subjects on Subjects.subject_id = Assessments.subject_id where Students.student_id = @student_id {0} group by Students.student_id, Assessments.assess_type_id, Subjects.subject_id",
-                            
-                            DBQ_GET_ASSESSMENTTYPE_AND_WEIGHTS = @"SELECT Assessment_Type.assess_type_id, assess_type, assess_type_weight, assess_type_id_relational, assess_is_linked FROM [Assessment_Type] LEFT JOIN [Assessment_Type_Weights] ON [Assessment_Type].assess_type_id = [Assessment_Type_Weights].assess_type_id WHERE account_id = @account_id",
+                            DBQ_SELECT_ASSESSMENT_TYPE_WEIGHT = @"SELECT * FROM [Assessment_Type_Weights] WHERE account_id = @account_id AND assess_type_id = @assess_type_id",
+                            DBQ_GET_ASSESSMENTTYPE_AND_WEIGHTS = @"SELECT [Assessment_Type_Weights].assess_type_weight_id, Assessment_Type.assess_type_id, assess_type, assess_type_weight, assess_type_id_relational, assess_is_linked FROM [Assessment_Type] LEFT JOIN [Assessment_Type_Weights] ON [Assessment_Type].assess_type_id = [Assessment_Type_Weights].assess_type_id WHERE account_id = @account_id",
+                            DBQ_GET_ASSESSMENTTYPE_AND_WEIGHT = @"SELECT [Assessment_Type_Weights].assess_type_weight_id, Assessment_Type.assess_type_id, assess_type, assess_type_weight, assess_type_id_relational, assess_is_linked FROM [Assessment_Type] LEFT JOIN [Assessment_Type_Weights] ON [Assessment_Type].assess_type_id = [Assessment_Type_Weights].assess_type_id WHERE account_id = @account_id AND Assessment_Type.assess_type_id = @assess_type_id",
                             DBQ_INSERT_ASSESSMENTTYPE_WEIGHT = @"INSERT INTO [Assessment_Type_Weights] ([assess_type_id], [assess_type_weight], [assess_type_id_relational], [assess_is_linked], [account_id])
 VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @assess_type_is_linked, @account_id)",
+                            DBQ_UPDATE_ASSESSMENTTYPE_WEIGHT = "UPDATE [Assessment_Type_Weights] SET [assess_type_id] = @assess_type_id,  [assess_type_weight] = @assess_type_weight, [assess_type_id_relational] = @assess_type_relational_id,  [assess_is_linked] = @assess_type_is_linked WHERE [account_id] = @account_id AND [assess_type_weight_id] = @assess_type_weight_id",
                             DBQ_DELETE_ASSESSMENT_TYPE = "pragma foreign_keys=on; DELETE FROM Assessment_Type WHERE assess_type_id = @assess_type_id";
 
 
@@ -356,15 +309,18 @@ VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @asses
         public void InsertDefaultValues()
         {
             #region Default Values
-            string[] assessment_types = { "Quiz", "Test" };
+            //string[] assessment_types = { "Quiz", "Test" };
             #endregion
 
             using (var connection = new SQLiteConnection(CONNECTION_STRING))
             {
-                using (var command = new SQLiteCommand(DBQ_INSERT_ASSESSMENT_TYPE, connection))
+                using (var command = new SQLiteCommand(DBQ_INSERT_ASSESSMENT_TYPE_W_ID, connection))
                 {
                     connection.Open();
 
+                    command.Parameters.AddWithValue("@assess_type_id", -1);
+                    command.Parameters.AddWithValue("@assess_type", "N/A");
+                    /*
                     foreach (string a_type in assessment_types)
                     {
                         command.Parameters.AddWithValue("@assess_type", a_type);
@@ -376,6 +332,7 @@ VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @asses
                         catch(Exception) {}
 
                     }
+                     * */
                 }
             }
         }

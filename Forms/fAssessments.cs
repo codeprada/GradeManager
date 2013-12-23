@@ -12,13 +12,18 @@ using FastMember;
 
 namespace Grade_Manager_DB_Controller
 {
-    public partial class Assessments : Form
+    public partial class fAssessments : Form
     {
         private SQLiteDataAdapter grid_adapter;
         private DataTable grid_table;
         private AssessmentManager assessment_manager;
 
-        public Assessments()
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
+        public fAssessments()
         {
             InitializeComponent();
 
@@ -55,6 +60,33 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                cp.Style |= 0x40000;
+                return cp;
+            }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            switch (m.Msg)
+            {
+                case WM_NCHITTEST:
+                    if (m.Result == (IntPtr)HTCLIENT)
+                    {
+                        m.Result = (IntPtr)HTCAPTION;
+                    }
+                    break;
+            }
+        }
+
         private void LoadAssessmentsWithFilter()
         {
             List<object> list = assessment_manager.GetAssessments(
@@ -82,8 +114,8 @@ namespace Grade_Manager_DB_Controller
         private void LoadSubjects()
         {
             SubjectManager subject_manager = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester.Id);
-            subject_manager.LoadToComboBox(filterSubjectCombo, SemesterManager.CurrentSemester.Id);
+            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester);
+            subject_manager.LoadToComboBox(filterSubjectCombo, SemesterManager.CurrentSemester);
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -133,18 +165,82 @@ namespace Grade_Manager_DB_Controller
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Panel p = ((Panel)Parent);
             fAssessmentType cat = new fAssessmentType();
-
-            cat.ShowDialog();
+            cat.TopLevel = false;
+            p.Controls.Add(cat);
+            cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
+            cat.Show();
+            cat.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            fCreateAssessmentType fcat = new fCreateAssessmentType();
-            //fcat.StartPosition = FormStartPosition.CenterParent;
-            //this.Visible = false;
-            fcat.Show();
-            //this.Visible = true;
+            Panel p = ((Panel)Parent);
+            fAssessmentType cat = new fAssessmentType();
+            cat.TopLevel = false;
+            p.Controls.Add(cat);
+            cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
+            cat.Show();
+            cat.BringToFront();
+        }
+
+        private void closePictureBox_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void closePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void minimizePictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void maximizePictureBox_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void closePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void closePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void closePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void saveBtn_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void saveBtn_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void FormDrag_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void fAssessments_Paint(object sender, PaintEventArgs e)
+        {
+            Control s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+
         }
     }
 }

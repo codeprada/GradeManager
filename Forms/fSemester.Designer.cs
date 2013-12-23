@@ -68,7 +68,7 @@
             this.semesterGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.NullValue = "0";
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -170,7 +170,7 @@
             this.newBtn.Name = "newBtn";
             this.newBtn.Size = new System.Drawing.Size(66, 55);
             this.newBtn.TabIndex = 0;
-            this.newBtn.Tag = "add_student";
+            this.newBtn.Tag = "add";
             this.newBtn.Text = "New";
             this.newBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.newBtn.UseVisualStyleBackColor = true;

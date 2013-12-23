@@ -163,6 +163,26 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap generate {
+            get {
+                object obj = ResourceManager.GetObject("generate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap generate_over {
+            get {
+                object obj = ResourceManager.GetObject("generate_over", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap grades {
             get {
                 object obj = ResourceManager.GetObject("grades", resourceCulture);
@@ -393,6 +413,16 @@ namespace Grade_Manager_DB_Controller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap sgm {
+            get {
+                object obj = ResourceManager.GetObject("sgm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap statistics {
             get {
                 object obj = ResourceManager.GetObject("statistics", resourceCulture);
@@ -446,16 +476,6 @@ namespace Grade_Manager_DB_Controller.Properties {
         public static System.Drawing.Bitmap subjects_over {
             get {
                 object obj = ResourceManager.GetObject("subjects_over", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap WelcomeBackground2 {
-            get {
-                object obj = ResourceManager.GetObject("WelcomeBackground2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

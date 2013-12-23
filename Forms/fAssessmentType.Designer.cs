@@ -29,9 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAssessmentType));
             this.panel1 = new System.Windows.Forms.Panel();
             this.assessmentDataGridView = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
@@ -39,16 +44,14 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.panel2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,10 +69,20 @@
             this.assessmentDataGridView.AllowUserToAddRows = false;
             this.assessmentDataGridView.AllowUserToDeleteRows = false;
             this.assessmentDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.assessmentDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.assessmentDataGridView.BackgroundColor = System.Drawing.Color.White;
             this.assessmentDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.assessmentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.assessmentDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.assessmentDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.assessmentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.assessmentDataGridView.ContextMenuStrip = this.contextMenuStrip1;
             this.assessmentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -83,8 +96,34 @@
             this.assessmentDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.assessmentDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.assessmentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.assessmentDataGridView.ShowCellErrors = false;
+            this.assessmentDataGridView.ShowCellToolTips = false;
+            this.assessmentDataGridView.ShowEditingIcon = false;
+            this.assessmentDataGridView.ShowRowErrors = false;
             this.assessmentDataGridView.Size = new System.Drawing.Size(559, 421);
             this.assessmentDataGridView.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editToolStripMenuItem,
+            this.deleteToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.editToolStripMenuItem.Text = "Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // menuPanel
             // 
@@ -93,11 +132,13 @@
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
             this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(2, 2);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Size = new System.Drawing.Size(559, 29);
             this.menuPanel.TabIndex = 1;
+            this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
             // 
             // maximizePictureBox
             // 
@@ -182,20 +223,6 @@
             this.linkLabel1.Text = "New";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
             // fAssessmentType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +239,7 @@
             this.Text = "CreateAssessmentType";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
@@ -219,7 +247,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -237,5 +264,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

@@ -163,8 +163,11 @@ namespace Grade_Manager
         {
             CreateSemester c_form = new CreateSemester();
             c_form.StartPosition = FormStartPosition.CenterParent;
+            c_form.Parent = this.Parent;
             //this.Close();
+            Opacity = 10;
             c_form.ShowDialog();
+            Opacity = 100;
             LoadList();
         }
 
