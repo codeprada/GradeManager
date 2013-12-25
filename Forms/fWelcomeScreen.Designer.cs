@@ -1,6 +1,6 @@
-﻿namespace Grade_Manager_DB_Controller
+﻿namespace Grade_Manager
 {
-    partial class WelcomeScreen
+    partial class fWelcomeScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label2.Location = new System.Drawing.Point(12, 409);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(327, 48);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Version: ~1.1.1a\r\n\r\nAnalyze student grades and generate reports instantly";
-            // 
-            // WelcomeScreen
+            // fWelcomeScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.sgm;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(520, 466);
+            this.ClientSize = new System.Drawing.Size(516, 462);
             this.ControlBox = false;
-            this.Controls.Add(this.label2);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "WelcomeScreen";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "fWelcomeScreen";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
 
     }
 }

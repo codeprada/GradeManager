@@ -49,7 +49,7 @@ namespace Grade_Manager_DB_Controller
                 // a drop shadow around the form
                 CreateParams cp = base.CreateParams;
                 cp.ClassStyle |= CS_DROPSHADOW;
-                cp.Style |= 0x40000;
+                //cp.Style |= 0x40000;
                 return cp;
             }
         }

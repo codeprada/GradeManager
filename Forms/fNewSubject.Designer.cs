@@ -28,60 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewSubject));
             this.label2 = new System.Windows.Forms.Label();
             this.subjectTxt = new System.Windows.Forms.TextBox();
             this.createBtn = new System.Windows.Forms.Button();
-            this.subjectStatusLabel = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.menuPanel = new System.Windows.Forms.Panel();
+            this.maximizePictureBox = new System.Windows.Forms.PictureBox();
+            this.minimizePictureBox = new System.Windows.Forms.PictureBox();
+            this.closePictureBox = new System.Windows.Forms.PictureBox();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
+            this.menuPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.subjectTxt, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.createBtn, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.subjectStatusLabel, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.43478F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.56522F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(222, 49);
-            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(86, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 24);
+            this.label2.Size = new System.Drawing.Size(66, 12);
             this.label2.TabIndex = 3;
             this.label2.Text = "Create Subject";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // subjectTxt
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.subjectTxt, 2);
-            this.subjectTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subjectTxt.Location = new System.Drawing.Point(76, 3);
+            this.subjectTxt.Location = new System.Drawing.Point(45, 24);
             this.subjectTxt.Name = "subjectTxt";
             this.subjectTxt.Size = new System.Drawing.Size(143, 20);
             this.subjectTxt.TabIndex = 4;
             // 
             // createBtn
             // 
-            this.createBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createBtn.Location = new System.Drawing.Point(150, 27);
+            this.createBtn.Location = new System.Drawing.Point(88, 50);
             this.createBtn.Name = "createBtn";
             this.createBtn.Size = new System.Drawing.Size(69, 19);
             this.createBtn.TabIndex = 5;
@@ -89,43 +74,136 @@
             this.createBtn.UseVisualStyleBackColor = true;
             this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
             // 
-            // subjectStatusLabel
+            // panel1
             // 
-            this.subjectStatusLabel.AutoSize = true;
-            this.subjectStatusLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.subjectStatusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subjectStatusLabel.ForeColor = System.Drawing.Color.Red;
-            this.subjectStatusLabel.Location = new System.Drawing.Point(3, 24);
-            this.subjectStatusLabel.Name = "subjectStatusLabel";
-            this.subjectStatusLabel.Size = new System.Drawing.Size(67, 25);
-            this.subjectStatusLabel.TabIndex = 6;
-            this.subjectStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.createBtn);
+            this.panel1.Controls.Add(this.subjectTxt);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(230, 84);
+            this.panel1.TabIndex = 6;
+            // 
+            // menuPanel
+            // 
+            this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.menuPanel.Controls.Add(this.maximizePictureBox);
+            this.menuPanel.Controls.Add(this.minimizePictureBox);
+            this.menuPanel.Controls.Add(this.closePictureBox);
+            this.menuPanel.Controls.Add(this.titleLabel);
+            this.menuPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.menuPanel.Location = new System.Drawing.Point(2, 2);
+            this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Padding = new System.Windows.Forms.Padding(2);
+            this.menuPanel.Size = new System.Drawing.Size(230, 29);
+            this.menuPanel.TabIndex = 8;
+            // 
+            // maximizePictureBox
+            // 
+            this.maximizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
+            this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.maximizePictureBox.Location = new System.Drawing.Point(150, 2);
+            this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.maximizePictureBox.Name = "maximizePictureBox";
+            this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 25);
+            this.maximizePictureBox.TabIndex = 2;
+            this.maximizePictureBox.TabStop = false;
+            this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Visible = false;
+            // 
+            // minimizePictureBox
+            // 
+            this.minimizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
+            this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.minimizePictureBox.Location = new System.Drawing.Point(176, 2);
+            this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.minimizePictureBox.Name = "minimizePictureBox";
+            this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 25);
+            this.minimizePictureBox.TabIndex = 1;
+            this.minimizePictureBox.TabStop = false;
+            this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Visible = false;
+            // 
+            // closePictureBox
+            // 
+            this.closePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
+            this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closePictureBox.Location = new System.Drawing.Point(202, 2);
+            this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.closePictureBox.Name = "closePictureBox";
+            this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 25);
+            this.closePictureBox.TabIndex = 0;
+            this.closePictureBox.TabStop = false;
+            this.closePictureBox.Tag = "close";
+            this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.Color.Transparent;
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
+            this.titleLabel.Location = new System.Drawing.Point(2, 2);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(96, 16);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Create Subject";
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NewSubject
             // 
             this.AcceptButton = this.createBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(222, 49);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(234, 117);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewSubject";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "New Subject";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.NewSubject_Paint);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.menuPanel.ResumeLayout(false);
+            this.menuPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox subjectTxt;
         private System.Windows.Forms.Button createBtn;
-        private System.Windows.Forms.Label subjectStatusLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel menuPanel;
+        private System.Windows.Forms.PictureBox maximizePictureBox;
+        private System.Windows.Forms.PictureBox minimizePictureBox;
+        private System.Windows.Forms.PictureBox closePictureBox;
+        private System.Windows.Forms.Label titleLabel;
 
     }
 }

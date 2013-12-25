@@ -79,7 +79,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(240, 224);
+            this.groupBox1.Size = new System.Drawing.Size(285, 224);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
@@ -88,7 +88,7 @@
             // newClassLinkLabel
             // 
             this.newClassLinkLabel.AutoSize = true;
-            this.newClassLinkLabel.Location = new System.Drawing.Point(145, 82);
+            this.newClassLinkLabel.Location = new System.Drawing.Point(167, 82);
             this.newClassLinkLabel.Name = "newClassLinkLabel";
             this.newClassLinkLabel.Size = new System.Drawing.Size(57, 13);
             this.newClassLinkLabel.TabIndex = 14;
@@ -100,7 +100,7 @@
             // 
             this.classesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classesComboBox.FormattingEnabled = true;
-            this.classesComboBox.Location = new System.Drawing.Point(77, 74);
+            this.classesComboBox.Location = new System.Drawing.Point(99, 74);
             this.classesComboBox.Name = "classesComboBox";
             this.classesComboBox.Size = new System.Drawing.Size(65, 21);
             this.classesComboBox.TabIndex = 13;
@@ -108,7 +108,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 77);
+            this.label6.Location = new System.Drawing.Point(28, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 12;
@@ -117,7 +117,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(130, 24);
+            this.label5.Location = new System.Drawing.Point(152, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(12, 13);
             this.label5.TabIndex = 11;
@@ -127,7 +127,7 @@
             // 
             this.endingSchoolYearNumeric.BackColor = System.Drawing.Color.White;
             this.endingSchoolYearNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.endingSchoolYearNumeric.Location = new System.Drawing.Point(148, 22);
+            this.endingSchoolYearNumeric.Location = new System.Drawing.Point(170, 22);
             this.endingSchoolYearNumeric.Maximum = new decimal(new int[] {
             2100,
             0,
@@ -150,7 +150,7 @@
             // 
             // createBtn
             // 
-            this.createBtn.Location = new System.Drawing.Point(159, 186);
+            this.createBtn.Location = new System.Drawing.Point(181, 186);
             this.createBtn.Name = "createBtn";
             this.createBtn.Size = new System.Drawing.Size(75, 23);
             this.createBtn.TabIndex = 8;
@@ -160,7 +160,7 @@
             // 
             // profileDescriptionTxt
             // 
-            this.profileDescriptionTxt.Location = new System.Drawing.Point(6, 123);
+            this.profileDescriptionTxt.Location = new System.Drawing.Point(28, 123);
             this.profileDescriptionTxt.Multiline = true;
             this.profileDescriptionTxt.Name = "profileDescriptionTxt";
             this.profileDescriptionTxt.Size = new System.Drawing.Size(228, 57);
@@ -169,7 +169,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 107);
+            this.label4.Location = new System.Drawing.Point(28, 107);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 5;
@@ -179,7 +179,7 @@
             // 
             this.currentTermNumeric.BackColor = System.Drawing.Color.White;
             this.currentTermNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.currentTermNumeric.Location = new System.Drawing.Point(77, 48);
+            this.currentTermNumeric.Location = new System.Drawing.Point(99, 48);
             this.currentTermNumeric.Maximum = new decimal(new int[] {
             3,
             0,
@@ -203,7 +203,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Location = new System.Drawing.Point(28, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 2;
@@ -213,7 +213,7 @@
             // 
             this.startingSchoolYearNumeric.BackColor = System.Drawing.Color.White;
             this.startingSchoolYearNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.startingSchoolYearNumeric.Location = new System.Drawing.Point(77, 22);
+            this.startingSchoolYearNumeric.Location = new System.Drawing.Point(99, 22);
             this.startingSchoolYearNumeric.Maximum = new decimal(new int[] {
             2100,
             0,
@@ -237,7 +237,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 29);
+            this.label1.Location = new System.Drawing.Point(28, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 0;
@@ -245,12 +245,12 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.BackColor = System.Drawing.SystemColors.Control;
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(2, 255);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(240, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(285, 22);
             this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
@@ -267,12 +267,12 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(240, 224);
+            this.panel1.Size = new System.Drawing.Size(285, 224);
             this.panel1.TabIndex = 2;
             // 
             // menuPanel
             // 
-            this.menuPanel.BackColor = System.Drawing.Color.White;
+            this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.menuPanel.Controls.Add(this.maximizePictureBox);
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
@@ -282,17 +282,17 @@
             this.menuPanel.Location = new System.Drawing.Point(2, 2);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Padding = new System.Windows.Forms.Padding(4);
-            this.menuPanel.Size = new System.Drawing.Size(240, 29);
+            this.menuPanel.Size = new System.Drawing.Size(285, 29);
             this.menuPanel.TabIndex = 4;
             // 
             // maximizePictureBox
             // 
-            this.maximizePictureBox.BackColor = System.Drawing.Color.White;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(158, 4);
+            this.maximizePictureBox.Location = new System.Drawing.Point(203, 4);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -304,12 +304,12 @@
             // 
             // minimizePictureBox
             // 
-            this.minimizePictureBox.BackColor = System.Drawing.Color.White;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(184, 4);
+            this.minimizePictureBox.Location = new System.Drawing.Point(229, 4);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -321,12 +321,12 @@
             // 
             // closePictureBox
             // 
-            this.closePictureBox.BackColor = System.Drawing.Color.White;
+            this.closePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(210, 4);
+            this.closePictureBox.Location = new System.Drawing.Point(255, 4);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -342,7 +342,7 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(4, 4);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(154, 18);
@@ -355,7 +355,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(244, 279);
+            this.ClientSize = new System.Drawing.Size(289, 279);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuPanel);
             this.Controls.Add(this.statusStrip1);

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Semester_Form));
             this.panel1 = new System.Windows.Forms.Panel();
             this.semesterGridView = new System.Windows.Forms.DataGridView();
@@ -58,7 +59,7 @@
             this.semesterGridView.AllowUserToAddRows = false;
             this.semesterGridView.AllowUserToDeleteRows = false;
             this.semesterGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.semesterGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.semesterGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.semesterGridView.BackgroundColor = System.Drawing.Color.White;
@@ -67,15 +68,16 @@
             this.semesterGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.semesterGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.NullValue = "0";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.semesterGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.semesterGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.semesterGridView.ColumnHeadersHeight = 25;
+            this.semesterGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.semesterGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.semesterGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.semesterGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -88,6 +90,10 @@
             this.semesterGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.semesterGridView.RowHeadersVisible = false;
             this.semesterGridView.RowHeadersWidth = 28;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.semesterGridView.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.semesterGridView.RowTemplate.ReadOnly = true;
             this.semesterGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.semesterGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -120,7 +126,7 @@
             this.loadBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.load;
             this.loadBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.loadBtn.Location = new System.Drawing.Point(85, 5);
+            this.loadBtn.Location = new System.Drawing.Point(5, 6);
             this.loadBtn.Name = "loadBtn";
             this.loadBtn.Size = new System.Drawing.Size(66, 55);
             this.loadBtn.TabIndex = 2;
@@ -143,7 +149,7 @@
             this.cancelBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cancelBtn.Image = ((System.Drawing.Image)(resources.GetObject("cancelBtn.Image")));
             this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.cancelBtn.Location = new System.Drawing.Point(157, 5);
+            this.cancelBtn.Location = new System.Drawing.Point(407, 4);
             this.cancelBtn.Name = "cancelBtn";
             this.cancelBtn.Size = new System.Drawing.Size(62, 55);
             this.cancelBtn.TabIndex = 1;
@@ -166,7 +172,7 @@
             this.newBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.newBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.add;
             this.newBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.newBtn.Location = new System.Drawing.Point(13, 5);
+            this.newBtn.Location = new System.Drawing.Point(207, 6);
             this.newBtn.Name = "newBtn";
             this.newBtn.Size = new System.Drawing.Size(66, 55);
             this.newBtn.TabIndex = 0;

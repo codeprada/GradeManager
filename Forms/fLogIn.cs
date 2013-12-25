@@ -26,7 +26,7 @@ namespace Grade_Manager
             //initalize usermanager with the connection string in the app.config file
             user_manager = new UserManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
         }
-        
+
         protected override CreateParams CreateParams
         {
             get
@@ -35,6 +35,7 @@ namespace Grade_Manager
                 // a drop shadow around the form
                 CreateParams cp = base.CreateParams;
                 cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000;
                 return cp;
             }
         }

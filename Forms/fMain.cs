@@ -23,6 +23,7 @@ namespace Grade_Manager
         private const int HTCAPTION = 2;
 
         private Dictionary<Button, Button[]> FirstLevelButtons;
+        private bool HiddenButtons = false;
 
         public fMainForm()
         {
@@ -39,7 +40,7 @@ namespace Grade_Manager
                 {rankingBtn, new Button[0]},
                 {reportsBtn, new Button[0]},
                 {statisticsBtn, new Button[0]},
-                {helpBtn, new Button[] { aboutBtn }}
+                //{helpBtn, new Button[] { aboutBtn }}
             };
         }
 
@@ -147,7 +148,9 @@ namespace Grade_Manager
 
         private void ShowControls(bool state)
         {
-            semesterBtn.Visible =
+            semesterBtn.Visible = !state;
+
+            semesterBtn.Visible = 
             studentsBtn.Visible =
             subjectsBtn.Visible =
             assignmentsBtn.Visible =
@@ -155,8 +158,7 @@ namespace Grade_Manager
             reportsBtn.Visible =
             rankingBtn.Visible =
             statisticsBtn.Visible =
-            logoutBtn.Visible =
-                                                state; //State of Pictureboxes
+            logoutBtn.Visible = state; //State of Buttons
 
 
             loginBtn.Visible = !state;
@@ -205,7 +207,7 @@ namespace Grade_Manager
 
         private void ShowWelcomeScreen()
         {
-            WelcomeScreen welcome_screen = new WelcomeScreen();
+            fWelcomeScreen welcome_screen = new fWelcomeScreen();
             welcome_screen.TopLevel = false;
             splitContainer1.Panel2.Controls.Add(welcome_screen);
             welcome_screen.Location = new Point((splitContainer1.Panel2.Width - welcome_screen.Width) / 2, (splitContainer1.Panel2.Height - welcome_screen.Height) / 2);
@@ -366,8 +368,37 @@ namespace Grade_Manager
 
         private void helpBtn_Click(object sender, EventArgs e)
         {
+            //ManageHiddenButtons((Button)sender);
             
-            
+        }
+
+        private void ManageHiddenButtons(Button current_button)
+        {
+            bool state;
+
+            if (FirstLevelButtons[current_button].Count() > 0)
+            {
+                state = FirstLevelButtons[current_button][0].Visible;
+            }
+            else
+            {
+                state = false;
+            }
+
+            foreach (KeyValuePair<Button, Button[]> kv in FirstLevelButtons.Reverse())
+            {
+                if (kv.Key != current_button)
+                {
+                    kv.Key.Visible = state;
+                }
+                else
+                {
+                    foreach (Button b in kv.Value)
+                    {
+                        b.Visible = !state;
+                    }
+                }
+            }
         }
 
         private void logoutBtn_Click_1(object sender, EventArgs e)

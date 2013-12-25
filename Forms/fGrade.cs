@@ -17,6 +17,11 @@ namespace Grade_Manager_DB_Controller
         private Grade_Manager grade_manager;
         private int class_id = -1;
 
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
         public Grade_Main_Form()
         {
             InitializeComponent();
@@ -43,6 +48,33 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
          * 
          * 
          */
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000; //RESIZING
+                return cp;
+            }
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            switch (m.Msg)
+            {
+                case WM_NCHITTEST:
+                    if (m.Result == (IntPtr)HTCLIENT)
+                    {
+                        m.Result = (IntPtr)HTCAPTION;
+                    }
+                    break;
+            }
+        }
 
         public void LoadDefaultValues()
         {
@@ -244,6 +276,16 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
         private void saveBtn_MouseLeave(object sender, EventArgs e)
         {
             Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
         }
 
     }

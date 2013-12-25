@@ -34,7 +34,6 @@
             this.mainStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.aboutBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.helpBtn = new System.Windows.Forms.Button();
             this.statisticsBtn = new System.Windows.Forms.Button();
@@ -112,7 +111,6 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel1.Controls.Add(this.aboutBtn);
             this.splitContainer1.Panel1.Controls.Add(this.logoutBtn);
             this.splitContainer1.Panel1.Controls.Add(this.helpBtn);
             this.splitContainer1.Panel1.Controls.Add(this.statisticsBtn);
@@ -124,6 +122,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.assignmentsBtn);
             this.splitContainer1.Panel1.Controls.Add(this.semesterBtn);
             this.splitContainer1.Panel1.Controls.Add(this.loginBtn);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(1);
             // 
             // splitContainer1.Panel2
             // 
@@ -131,31 +130,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1022, 715);
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 1;
-            // 
-            // aboutBtn
-            // 
-            this.aboutBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.aboutBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.aboutBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.aboutBtn.FlatAppearance.BorderSize = 0;
-            this.aboutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.aboutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.aboutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aboutBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.help;
-            this.aboutBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.aboutBtn.Location = new System.Drawing.Point(0, 550);
-            this.aboutBtn.Name = "aboutBtn";
-            this.aboutBtn.Size = new System.Drawing.Size(70, 55);
-            this.aboutBtn.TabIndex = 31;
-            this.aboutBtn.TabStop = false;
-            this.aboutBtn.Tag = "help";
-            this.aboutBtn.Text = "About";
-            this.aboutBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.aboutBtn.UseVisualStyleBackColor = true;
-            this.aboutBtn.Visible = false;
-            this.aboutBtn.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
-            this.aboutBtn.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // logoutBtn
             // 
@@ -169,9 +143,9 @@
             this.logoutBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.logout;
             this.logoutBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.logoutBtn.Location = new System.Drawing.Point(0, 660);
+            this.logoutBtn.Location = new System.Drawing.Point(1, 659);
             this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(70, 55);
+            this.logoutBtn.Size = new System.Drawing.Size(68, 55);
             this.logoutBtn.TabIndex = 30;
             this.logoutBtn.TabStop = false;
             this.logoutBtn.Tag = "logout";
@@ -195,9 +169,9 @@
             this.helpBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.helpBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.help;
             this.helpBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.helpBtn.Location = new System.Drawing.Point(0, 495);
+            this.helpBtn.Location = new System.Drawing.Point(1, 496);
             this.helpBtn.Name = "helpBtn";
-            this.helpBtn.Size = new System.Drawing.Size(70, 55);
+            this.helpBtn.Size = new System.Drawing.Size(68, 55);
             this.helpBtn.TabIndex = 29;
             this.helpBtn.TabStop = false;
             this.helpBtn.Tag = "help";
@@ -220,9 +194,9 @@
             this.statisticsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statisticsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.statistics;
             this.statisticsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.statisticsBtn.Location = new System.Drawing.Point(0, 440);
+            this.statisticsBtn.Location = new System.Drawing.Point(1, 441);
             this.statisticsBtn.Name = "statisticsBtn";
-            this.statisticsBtn.Size = new System.Drawing.Size(70, 55);
+            this.statisticsBtn.Size = new System.Drawing.Size(68, 55);
             this.statisticsBtn.TabIndex = 28;
             this.statisticsBtn.TabStop = false;
             this.statisticsBtn.Tag = "statistics";
@@ -246,9 +220,9 @@
             this.reportsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.reports;
             this.reportsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.reportsBtn.Location = new System.Drawing.Point(0, 385);
+            this.reportsBtn.Location = new System.Drawing.Point(1, 386);
             this.reportsBtn.Name = "reportsBtn";
-            this.reportsBtn.Size = new System.Drawing.Size(70, 55);
+            this.reportsBtn.Size = new System.Drawing.Size(68, 55);
             this.reportsBtn.TabIndex = 27;
             this.reportsBtn.TabStop = false;
             this.reportsBtn.Tag = "reports";
@@ -272,9 +246,9 @@
             this.rankingBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rankingBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.rating;
             this.rankingBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.rankingBtn.Location = new System.Drawing.Point(0, 330);
+            this.rankingBtn.Location = new System.Drawing.Point(1, 331);
             this.rankingBtn.Name = "rankingBtn";
-            this.rankingBtn.Size = new System.Drawing.Size(70, 55);
+            this.rankingBtn.Size = new System.Drawing.Size(68, 55);
             this.rankingBtn.TabIndex = 26;
             this.rankingBtn.TabStop = false;
             this.rankingBtn.Tag = "ratings";
@@ -298,9 +272,9 @@
             this.gradeBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gradeBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.grades;
             this.gradeBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.gradeBtn.Location = new System.Drawing.Point(0, 275);
+            this.gradeBtn.Location = new System.Drawing.Point(1, 276);
             this.gradeBtn.Name = "gradeBtn";
-            this.gradeBtn.Size = new System.Drawing.Size(70, 55);
+            this.gradeBtn.Size = new System.Drawing.Size(68, 55);
             this.gradeBtn.TabIndex = 25;
             this.gradeBtn.TabStop = false;
             this.gradeBtn.Tag = "grades";
@@ -324,9 +298,9 @@
             this.subjectsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subjectsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.subjects;
             this.subjectsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.subjectsBtn.Location = new System.Drawing.Point(0, 220);
+            this.subjectsBtn.Location = new System.Drawing.Point(1, 221);
             this.subjectsBtn.Name = "subjectsBtn";
-            this.subjectsBtn.Size = new System.Drawing.Size(70, 55);
+            this.subjectsBtn.Size = new System.Drawing.Size(68, 55);
             this.subjectsBtn.TabIndex = 24;
             this.subjectsBtn.TabStop = false;
             this.subjectsBtn.Tag = "subjects";
@@ -350,9 +324,9 @@
             this.studentsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.students;
             this.studentsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.studentsBtn.Location = new System.Drawing.Point(0, 165);
+            this.studentsBtn.Location = new System.Drawing.Point(1, 166);
             this.studentsBtn.Name = "studentsBtn";
-            this.studentsBtn.Size = new System.Drawing.Size(70, 55);
+            this.studentsBtn.Size = new System.Drawing.Size(68, 55);
             this.studentsBtn.TabIndex = 23;
             this.studentsBtn.TabStop = false;
             this.studentsBtn.Tag = "students";
@@ -376,9 +350,9 @@
             this.assignmentsBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F);
             this.assignmentsBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.assignment;
             this.assignmentsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.assignmentsBtn.Location = new System.Drawing.Point(0, 110);
+            this.assignmentsBtn.Location = new System.Drawing.Point(1, 111);
             this.assignmentsBtn.Name = "assignmentsBtn";
-            this.assignmentsBtn.Size = new System.Drawing.Size(70, 55);
+            this.assignmentsBtn.Size = new System.Drawing.Size(68, 55);
             this.assignmentsBtn.TabIndex = 22;
             this.assignmentsBtn.TabStop = false;
             this.assignmentsBtn.Tag = "assignments";
@@ -402,9 +376,9 @@
             this.semesterBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F);
             this.semesterBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.semester;
             this.semesterBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.semesterBtn.Location = new System.Drawing.Point(0, 55);
+            this.semesterBtn.Location = new System.Drawing.Point(1, 56);
             this.semesterBtn.Name = "semesterBtn";
-            this.semesterBtn.Size = new System.Drawing.Size(70, 55);
+            this.semesterBtn.Size = new System.Drawing.Size(68, 55);
             this.semesterBtn.TabIndex = 21;
             this.semesterBtn.TabStop = false;
             this.semesterBtn.Tag = "semester";
@@ -428,9 +402,9 @@
             this.loginBtn.Font = new System.Drawing.Font("Berlin Sans FB", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.login;
             this.loginBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.loginBtn.Location = new System.Drawing.Point(0, 0);
+            this.loginBtn.Location = new System.Drawing.Point(1, 1);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(70, 55);
+            this.loginBtn.Size = new System.Drawing.Size(68, 55);
             this.loginBtn.TabIndex = 20;
             this.loginBtn.TabStop = false;
             this.loginBtn.Tag = "login";
@@ -443,7 +417,7 @@
             // 
             // menuPanel
             // 
-            this.menuPanel.BackColor = System.Drawing.Color.White;
+            this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.menuPanel.Controls.Add(this.maximizePictureBox);
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
@@ -459,7 +433,7 @@
             // 
             // maximizePictureBox
             // 
-            this.maximizePictureBox.BackColor = System.Drawing.Color.White;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -480,7 +454,7 @@
             // 
             // minimizePictureBox
             // 
-            this.minimizePictureBox.BackColor = System.Drawing.Color.White;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -501,7 +475,7 @@
             // 
             // closePictureBox
             // 
-            this.closePictureBox.BackColor = System.Drawing.Color.White;
+            this.closePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -526,7 +500,7 @@
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(2, 2);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(111, 18);
@@ -663,7 +637,6 @@
         private System.Windows.Forms.Button subjectsBtn;
         private System.Windows.Forms.Button studentsBtn;
         private System.Windows.Forms.Button assignmentsBtn;
-        private System.Windows.Forms.Button aboutBtn;
 
 
     }
