@@ -15,6 +15,11 @@ namespace Grade_Manager_DB_Controller
         private SubjectManager subject_manager;
         private Ranks_Manager rank_manager;
 
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
         public Rank()
         {
             InitializeComponent();
@@ -22,9 +27,22 @@ namespace Grade_Manager_DB_Controller
             subject_manager = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             subject_manager.LoadToComboBox(subjectComboBox);
 
-            subjectComboBox.Items.Insert(0, new ComboItem() { Id = -1, Text = "None" });
+            subjectComboBox.Items.Insert(0, new ComboItem() { Id = -1, Text = "Overall" });
 
             rank_manager = new Ranks_Manager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000;
+                return cp;
+            }
         }
 
         private void generateBtn_Click(object sender, EventArgs e)
@@ -66,6 +84,43 @@ namespace Grade_Manager_DB_Controller
         private void menuPanel_MouseDown(object sender, MouseEventArgs e)
         {
             Styles.MouseDown_Drag(this, e);
+        }
+
+        private void closePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void closePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void closePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void closePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void generateBtn_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void generateBtn_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void Rank_Paint(object sender, PaintEventArgs e)
+        {
+            Control s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
         }
     }
 }

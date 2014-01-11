@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,9 +39,12 @@
             this.loadBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.newBtn = new System.Windows.Forms.Button();
+            this.semesterContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.semesterGridView)).BeginInit();
             this.panel2.SuspendLayout();
+            this.semesterContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -51,7 +55,7 @@
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(2);
-            this.panel1.Size = new System.Drawing.Size(474, 313);
+            this.panel1.Size = new System.Drawing.Size(474, 309);
             this.panel1.TabIndex = 6;
             // 
             // semesterGridView
@@ -78,6 +82,7 @@
             this.semesterGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.semesterGridView.ColumnHeadersHeight = 25;
             this.semesterGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.semesterGridView.ContextMenuStrip = this.semesterContextMenu;
             this.semesterGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             this.semesterGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.semesterGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -98,8 +103,9 @@
             this.semesterGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.semesterGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.semesterGridView.ShowEditingIcon = false;
-            this.semesterGridView.Size = new System.Drawing.Size(470, 309);
+            this.semesterGridView.Size = new System.Drawing.Size(470, 305);
             this.semesterGridView.TabIndex = 0;
+            this.semesterGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.semesterGridView_CellContextMenuStripNeeded);
             this.semesterGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.semesterGridView_CellDoubleClick);
             // 
             // panel2
@@ -109,10 +115,10 @@
             this.panel2.Controls.Add(this.cancelBtn);
             this.panel2.Controls.Add(this.newBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(2, 315);
+            this.panel2.Location = new System.Drawing.Point(2, 311);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(474, 64);
+            this.panel2.Size = new System.Drawing.Size(474, 68);
             this.panel2.TabIndex = 7;
             // 
             // loadBtn
@@ -184,11 +190,25 @@
             this.newBtn.MouseEnter += new System.EventHandler(this.loadBtn_MouseEnter);
             this.newBtn.MouseLeave += new System.EventHandler(this.loadBtn_MouseLeave);
             // 
+            // semesterContextMenu
+            // 
+            this.semesterContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.semesterContextMenu.Name = "semesterContextMenu";
+            this.semesterContextMenu.Size = new System.Drawing.Size(108, 26);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
             // Semester_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(478, 381);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
@@ -200,9 +220,11 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Semesters";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Semester_Form_Paint);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.semesterGridView)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.semesterContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -215,5 +237,7 @@
         private System.Windows.Forms.Button cancelBtn;
         private System.Windows.Forms.Button newBtn;
         private System.Windows.Forms.DataGridView semesterGridView;
+        private System.Windows.Forms.ContextMenuStrip semesterContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
     }
 }

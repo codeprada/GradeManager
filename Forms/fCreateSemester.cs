@@ -25,9 +25,23 @@ namespace Grade_Manager
         {
             InitializeComponent();
             //Set UP CLASSES!!!
-            profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING); 
+            profile_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+
+            Initialize();
 
             LoadClasses();
+        }
+
+        private void Initialize()
+        {
+            int year;
+            if(DateTime.Now.Month > 6)
+                year = DateTime.Now.Year;
+            else
+                year = DateTime.Now.Year - 1;
+
+            startingSchoolYearNumeric.Value = year;
+            endingSchoolYearNumeric.Value = year + 1;
         }
 
         protected override CreateParams CreateParams
@@ -59,24 +73,32 @@ namespace Grade_Manager
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-
-            Semester profile = new Semester()
+            if (classesComboBox.SelectedItem != null)
             {
-                Description = profileDescriptionTxt.Text,
-                OwnerId = UserManager.CurrentUser.Id,
-                StartingSchoolYear = (int)startingSchoolYearNumeric.Value,
-                EndingSchoolYear = (int)endingSchoolYearNumeric.Value,
-                Term = (int)currentTermNumeric.Value,
-                Class = Convert.ToInt32(((ComboItem)classesComboBox.SelectedItem).Id)
-            };
-            
-            //verify that this is complete
+                Semester profile = new Semester()
+                {
+                    Description = profileDescriptionTxt.Text,
+                    OwnerId = UserManager.CurrentUser.Id,
+                    StartingSchoolYear = (int)startingSchoolYearNumeric.Value,
+                    EndingSchoolYear = (int)endingSchoolYearNumeric.Value,
+                    Term = (int)currentTermNumeric.Value,
+                    Class = Convert.ToInt32(((ComboItem)classesComboBox.SelectedItem).Id)
+                };
 
-            if (profile_manager.CreateSemester(profile))
-                statusLabel.Text = "Semester successfully created.";
+                //verify that this is complete
+
+                if (profile_manager.CreateSemester(profile))
+                {
+                    statusLabel.Text = "Semester successfully created.";
+                    Close();
+                }
+                else
+                    statusLabel.Text = "There was an error creating semester.";
+            }
             else
-                statusLabel.Text = "There was an error creating semester.";
-            
+            {
+                statusLabel.Text = "Fill in the required information.";
+            }
             
         }
 
@@ -84,11 +106,6 @@ namespace Grade_Manager
         {
             ClassManager class_manager = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             class_manager.LoadToComboBox(classesComboBox);
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void newClassLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -112,6 +129,31 @@ namespace Grade_Manager
             Form s = sender as Form;
 
             s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+        }
+
+        private void closePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void closePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void closePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void closePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void startingSchoolYearNumeric_ValueChanged(object sender, EventArgs e)
+        {
+            endingSchoolYearNumeric.Value = startingSchoolYearNumeric.Value + 1;
         }
     }
 }

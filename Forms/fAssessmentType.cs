@@ -12,6 +12,11 @@ namespace Grade_Manager_DB_Controller
 {
     public partial class fAssessmentType : Form
     {
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
         public fAssessmentType()
         {
             InitializeComponent();
@@ -49,6 +54,19 @@ namespace Grade_Manager_DB_Controller
                 );
             }
             
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000;
+                return cp;
+            }
         }
 
         private void closePictureBox_Click(object sender, EventArgs e)
@@ -90,6 +108,43 @@ namespace Grade_Manager_DB_Controller
             this.Visible = true;
 
             LoadAssessmentTypes();
+        }
+
+        private void closePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void closePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void closePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void closePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
+        }
+
+        private void menuPanel_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void fAssessmentType_Paint(object sender, PaintEventArgs e)
+        {
+            Control s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+        }
+
+        private void assessmentDataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            assessmentDataGridView.CurrentCell = assessmentDataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
         }
     }
 }

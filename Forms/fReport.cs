@@ -14,33 +14,48 @@ namespace Grade_Manager_DB_Controller
 {
     public partial class Report : Form
     {
-        ReportsManager report_manager;
+        private ReportsManager report_manager;
+
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
 
         public Report()
         {
             InitializeComponent();
+
+            LoadStudents();
         }
 
-        private void generateBtn_Click(object sender, EventArgs e)
+        private void LoadStudents()
         {
-            report_manager = new ReportsManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            StudentManager student_manager = new StudentManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
-            Dictionary<string, Stream> images = new Dictionary<string, Stream>();
-            images["logo"] = ConvertToStream(Grade_Manager_DB_Controller.Properties.Resources.logo);
-
-            report_manager.SaveAs = saveFileTxtBox.Text;
-            report_manager.ReportHandler = ReportHandler;
-            report_manager.Images = images;
-
-            report_manager.GenerateReport(SemesterManager.CurrentSemester.Id);
-        }
-
-        private void browseSaveBtn_Click(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            foreach (Student s in student_manager.Get())
             {
-                saveFileTxtBox.Text = saveFileDialog1.FileName;
+                studentExcludeListCheckBox.Items.Add(new ComboItem() { Id = s.ID, Text = s.LastName + " " + s.FirstName });
             }
+        }
+
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void PictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void PictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
         }
 
         /// <summary>
@@ -82,6 +97,67 @@ namespace Grade_Manager_DB_Controller
             mem.Position = 0;
             
             return mem;
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void generateButton_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                report_manager = new ReportsManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+
+                Dictionary<string, Stream> images = new Dictionary<string, Stream>();
+                images["logo"] = ConvertToStream(Grade_Manager_DB_Controller.Properties.Resources.logo);
+
+                report_manager.SaveAs = saveFileDialog1.FileName;
+                report_manager.ReportHandler = ReportHandler;
+                report_manager.Images = images;
+
+                report_manager.GenerateReport(SemesterManager.CurrentSemester.Id, studentExcludeListCheckBox.CheckedItems.Cast<ComboItem>().Select(x => (int)x.Id).ToArray());
+            }
+        }
+
+        private void generateButton_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void generateButton_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void Report_Paint(object sender, PaintEventArgs e)
+        {
+            Form s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                cp.Style |= 0x40000;
+                return cp;
+            }
+        }
+
+        private void selectAllCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (CheckBox ckbx in studentExcludeListCheckBox.Items)
+            {
+                ckbx.Checked = selectAllCheckBox.Checked;
+            }
+
         }
     }
 }

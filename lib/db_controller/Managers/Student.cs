@@ -118,8 +118,13 @@ namespace Grade_Manager_DB_Controller
 
             return success;
         }
-
-        public Student Get(int id)
+        
+        /// <summary>
+        /// Return a single Student object with the specified ID
+        /// </summary>
+        /// <param name="student_id">Student's ID</param>
+        /// <returns>Student Object</returns>
+        public Student Get(int student_id)
         {
             Student student = null;
 
@@ -127,7 +132,7 @@ namespace Grade_Manager_DB_Controller
             {
                 using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_STUDENT, connection))
                 {
-                    command.Parameters.AddWithValue("@student_id", id);
+                    command.Parameters.AddWithValue("@student_id", student_id);
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
@@ -143,6 +148,10 @@ namespace Grade_Manager_DB_Controller
             return student;
         }
 
+        /// <summary>
+        /// Returns an array of students associated with the current account
+        /// </summary>
+        /// <returns>Student Object Array</returns>
         public Student[] Get()
         {
             List<Student> students = new List<Student>();

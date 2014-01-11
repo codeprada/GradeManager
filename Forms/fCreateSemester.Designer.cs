@@ -83,7 +83,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // newClassLinkLabel
             // 
@@ -98,6 +97,7 @@
             // 
             // classesComboBox
             // 
+            this.classesComboBox.BackColor = System.Drawing.SystemColors.Info;
             this.classesComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classesComboBox.FormattingEnabled = true;
             this.classesComboBox.Location = new System.Drawing.Point(99, 74);
@@ -125,7 +125,7 @@
             // 
             // endingSchoolYearNumeric
             // 
-            this.endingSchoolYearNumeric.BackColor = System.Drawing.Color.White;
+            this.endingSchoolYearNumeric.BackColor = System.Drawing.SystemColors.Info;
             this.endingSchoolYearNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.endingSchoolYearNumeric.Location = new System.Drawing.Point(170, 22);
             this.endingSchoolYearNumeric.Maximum = new decimal(new int[] {
@@ -142,6 +142,7 @@
             this.endingSchoolYearNumeric.ReadOnly = true;
             this.endingSchoolYearNumeric.Size = new System.Drawing.Size(52, 16);
             this.endingSchoolYearNumeric.TabIndex = 10;
+            this.endingSchoolYearNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.endingSchoolYearNumeric.Value = new decimal(new int[] {
             2013,
             0,
@@ -177,7 +178,7 @@
             // 
             // currentTermNumeric
             // 
-            this.currentTermNumeric.BackColor = System.Drawing.Color.White;
+            this.currentTermNumeric.BackColor = System.Drawing.SystemColors.Info;
             this.currentTermNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.currentTermNumeric.Location = new System.Drawing.Point(99, 48);
             this.currentTermNumeric.Maximum = new decimal(new int[] {
@@ -211,7 +212,7 @@
             // 
             // startingSchoolYearNumeric
             // 
-            this.startingSchoolYearNumeric.BackColor = System.Drawing.Color.White;
+            this.startingSchoolYearNumeric.BackColor = System.Drawing.SystemColors.Info;
             this.startingSchoolYearNumeric.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.startingSchoolYearNumeric.Location = new System.Drawing.Point(99, 22);
             this.startingSchoolYearNumeric.Maximum = new decimal(new int[] {
@@ -228,11 +229,13 @@
             this.startingSchoolYearNumeric.ReadOnly = true;
             this.startingSchoolYearNumeric.Size = new System.Drawing.Size(52, 16);
             this.startingSchoolYearNumeric.TabIndex = 1;
+            this.startingSchoolYearNumeric.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.startingSchoolYearNumeric.Value = new decimal(new int[] {
             2012,
             0,
             0,
             0});
+            this.startingSchoolYearNumeric.ValueChanged += new System.EventHandler(this.startingSchoolYearNumeric_ValueChanged);
             // 
             // label1
             // 
@@ -301,6 +304,10 @@
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
             this.maximizePictureBox.Visible = false;
+            this.maximizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseDown);
+            this.maximizePictureBox.MouseEnter += new System.EventHandler(this.closePictureBox_MouseEnter);
+            this.maximizePictureBox.MouseLeave += new System.EventHandler(this.closePictureBox_MouseLeave);
+            this.maximizePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseUp);
             // 
             // minimizePictureBox
             // 
@@ -318,6 +325,10 @@
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
             this.minimizePictureBox.Visible = false;
+            this.minimizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseDown);
+            this.minimizePictureBox.MouseEnter += new System.EventHandler(this.closePictureBox_MouseEnter);
+            this.minimizePictureBox.MouseLeave += new System.EventHandler(this.closePictureBox_MouseLeave);
+            this.minimizePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseUp);
             // 
             // closePictureBox
             // 
@@ -335,17 +346,21 @@
             this.closePictureBox.TabStop = false;
             this.closePictureBox.Tag = "close";
             this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
+            this.closePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseDown);
+            this.closePictureBox.MouseEnter += new System.EventHandler(this.closePictureBox_MouseEnter);
+            this.closePictureBox.MouseLeave += new System.EventHandler(this.closePictureBox_MouseLeave);
+            this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseUp);
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(4, 4);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(154, 18);
+            this.titleLabel.Size = new System.Drawing.Size(139, 16);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Create New Semester";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

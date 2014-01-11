@@ -18,6 +18,11 @@ namespace Grade_Manager_DB_Controller
         private DataTable grid_table;
         private StudentManager student_manager;
 
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
         public fStudentManagementForm()
         {
             InitializeComponent();
@@ -26,6 +31,19 @@ namespace Grade_Manager_DB_Controller
             
             LoadClasses();
             LoadStudentList();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000;
+                return cp;
+            }
         }
 
         private void LoadStudentList()
@@ -54,20 +72,14 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
-
-        private bool CreateOrSaveStudentDetails()
-        {
-            return false;
-        }
-
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StudentDetails sd = new StudentDetails(Int32.Parse(studentGridView.SelectedRows[0].Cells[0].Value.ToString()));
             sd.StartPosition = FormStartPosition.CenterParent;
-            Visible = false;
+            //Visible = false;
             sd.ShowDialog();
             LoadStudentList();
-            Visible = true;
+            //Visible = true;
         }
 
         private void LoadClasses()
@@ -146,39 +158,33 @@ namespace Grade_Manager_DB_Controller
 
         private void studentGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
+            //Regardless of right click or left click the current row will be selected
+
             studentGridView.CurrentCell = studentGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
         }
 
-        private void addNewStudentPictureBox_MouseClick(object sender, MouseEventArgs e)
+        private void newStudentBtn_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.Button_MouseEnter(sender, e);
+        }
+
+        private void newStudentBtn_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.Button_MouseLeave(sender, e);
+        }
+
+        private void newStudentBtn_Click(object sender, EventArgs e)
         {
             StudentDetails sd_form = new StudentDetails();
-            this.Visible = false;
+            Opacity = .20;
+            Application.DoEvents();
+
             sd_form.StartPosition = FormStartPosition.CenterParent;
 
-            if(sd_form.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            if (sd_form.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
                 LoadStudentList();
 
-            this.Visible = true;
-        }
-
-        private void addNewStudentPictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            Styles.PictureBox_MouseDown(sender, e);
-        }
-
-        private void addNewStudentPictureBox_MouseEnter(object sender, EventArgs e)
-        {
-            Styles.PictureBox_MouseEnter(sender, e);
-        }
-
-        private void addNewStudentPictureBox_MouseLeave(object sender, EventArgs e)
-        {
-            Styles.PictureBox_MouseLeave(sender, e);
-        }
-
-        private void addNewStudentPictureBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            Styles.PictureBox_MouseUp(sender, e);
+            Opacity = 1.0;
         }
     }
 }

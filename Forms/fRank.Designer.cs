@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rank));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rank));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
@@ -37,21 +40,21 @@
             this.preciseRB = new System.Windows.Forms.RadioButton();
             this.roundedRB = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rankDataGridView = new System.Windows.Forms.DataGridView();
             this.menuPanel = new System.Windows.Forms.Panel();
             this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rankDataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rankDataGridView)).BeginInit();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rankDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -80,6 +83,7 @@
             // 
             // subjectComboBox
             // 
+            this.subjectComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.subjectComboBox.FormattingEnabled = true;
             this.subjectComboBox.Location = new System.Drawing.Point(9, 104);
             this.subjectComboBox.Name = "subjectComboBox";
@@ -88,13 +92,25 @@
             // 
             // generateBtn
             // 
-            this.generateBtn.Location = new System.Drawing.Point(7, 135);
+            this.generateBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.generateBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.generateBtn.FlatAppearance.BorderSize = 0;
+            this.generateBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.generateBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.generateBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.generateBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.generate;
+            this.generateBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.generateBtn.Location = new System.Drawing.Point(7, 141);
             this.generateBtn.Name = "generateBtn";
-            this.generateBtn.Size = new System.Drawing.Size(139, 23);
+            this.generateBtn.Size = new System.Drawing.Size(139, 60);
             this.generateBtn.TabIndex = 2;
+            this.generateBtn.Tag = "generate";
             this.generateBtn.Text = "Generate";
+            this.generateBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.generateBtn.UseVisualStyleBackColor = true;
             this.generateBtn.Click += new System.EventHandler(this.generateBtn_Click);
+            this.generateBtn.MouseEnter += new System.EventHandler(this.generateBtn_MouseEnter);
+            this.generateBtn.MouseLeave += new System.EventHandler(this.generateBtn_MouseLeave);
             // 
             // preciseRB
             // 
@@ -130,9 +146,62 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Rank List";
             // 
+            // rankDataGridView
+            // 
+            this.rankDataGridView.AllowUserToAddRows = false;
+            this.rankDataGridView.AllowUserToDeleteRows = false;
+            this.rankDataGridView.AllowUserToResizeColumns = false;
+            this.rankDataGridView.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.rankDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.rankDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.rankDataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.rankDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rankDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.rankDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rankDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.rankDataGridView.ColumnHeadersHeight = 25;
+            this.rankDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.rankDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rankDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.rankDataGridView.EnableHeadersVisualStyles = false;
+            this.rankDataGridView.GridColor = System.Drawing.Color.White;
+            this.rankDataGridView.Location = new System.Drawing.Point(5, 18);
+            this.rankDataGridView.MultiSelect = false;
+            this.rankDataGridView.Name = "rankDataGridView";
+            this.rankDataGridView.ReadOnly = true;
+            this.rankDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.rankDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.rankDataGridView.RowHeadersVisible = false;
+            this.rankDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.rankDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.rankDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.rankDataGridView.ShowCellErrors = false;
+            this.rankDataGridView.ShowCellToolTips = false;
+            this.rankDataGridView.ShowEditingIcon = false;
+            this.rankDataGridView.ShowRowErrors = false;
+            this.rankDataGridView.Size = new System.Drawing.Size(468, 458);
+            this.rankDataGridView.TabIndex = 0;
+            // 
             // menuPanel
             // 
-            this.menuPanel.BackColor = System.Drawing.Color.White;
+            this.menuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.menuPanel.Controls.Add(this.maximizePictureBox);
             this.menuPanel.Controls.Add(this.minimizePictureBox);
             this.menuPanel.Controls.Add(this.closePictureBox);
@@ -141,22 +210,23 @@
             this.menuPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.menuPanel.Location = new System.Drawing.Point(2, 2);
             this.menuPanel.Name = "menuPanel";
+            this.menuPanel.Padding = new System.Windows.Forms.Padding(2);
             this.menuPanel.Size = new System.Drawing.Size(631, 29);
             this.menuPanel.TabIndex = 2;
             this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
             // 
             // maximizePictureBox
             // 
-            this.maximizePictureBox.BackColor = System.Drawing.Color.White;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(553, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(551, 2);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.maximizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 25);
             this.maximizePictureBox.TabIndex = 2;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
@@ -164,16 +234,16 @@
             // 
             // minimizePictureBox
             // 
-            this.minimizePictureBox.BackColor = System.Drawing.Color.White;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(579, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(577, 2);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.minimizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 25);
             this.minimizePictureBox.TabIndex = 1;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
@@ -181,33 +251,39 @@
             // 
             // closePictureBox
             // 
-            this.closePictureBox.BackColor = System.Drawing.Color.White;
+            this.closePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(605, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(603, 2);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.closePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 25);
             this.closePictureBox.TabIndex = 0;
             this.closePictureBox.TabStop = false;
             this.closePictureBox.Tag = "close";
             this.closePictureBox.Click += new System.EventHandler(this.closePictureBox_Click);
+            this.closePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseDown);
+            this.closePictureBox.MouseEnter += new System.EventHandler(this.closePictureBox_MouseEnter);
+            this.closePictureBox.MouseLeave += new System.EventHandler(this.closePictureBox_MouseLeave);
+            this.closePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseUp);
             // 
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.titleLabel.Location = new System.Drawing.Point(278, 6);
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
+            this.titleLabel.Location = new System.Drawing.Point(2, 2);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(116, 18);
+            this.titleLabel.Size = new System.Drawing.Size(106, 16);
             this.titleLabel.TabIndex = 0;
             this.titleLabel.Text = "Student Ranking";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown);
             // 
             // panel1
             // 
@@ -220,37 +296,11 @@
             this.panel1.Size = new System.Drawing.Size(631, 481);
             this.panel1.TabIndex = 3;
             // 
-            // rankDataGridView
-            // 
-            this.rankDataGridView.AllowUserToAddRows = false;
-            this.rankDataGridView.AllowUserToDeleteRows = false;
-            this.rankDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.rankDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.rankDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.rankDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.rankDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.rankDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.rankDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.rankDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.rankDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rankDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.rankDataGridView.EnableHeadersVisualStyles = false;
-            this.rankDataGridView.GridColor = System.Drawing.Color.White;
-            this.rankDataGridView.Location = new System.Drawing.Point(5, 18);
-            this.rankDataGridView.MultiSelect = false;
-            this.rankDataGridView.Name = "rankDataGridView";
-            this.rankDataGridView.ReadOnly = true;
-            this.rankDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.rankDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.rankDataGridView.Size = new System.Drawing.Size(468, 458);
-            this.rankDataGridView.TabIndex = 0;
-            // 
             // Rank
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(635, 514);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuPanel);
@@ -262,16 +312,17 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Rank";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Rank_Paint);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.rankDataGridView)).EndInit();
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rankDataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }

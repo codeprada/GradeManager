@@ -32,8 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAssessments));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.filterSubject = new System.Windows.Forms.CheckBox();
             this.filterTimePeriod = new System.Windows.Forms.CheckBox();
@@ -47,6 +45,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.filterTypeCombo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.assessTypeLink = new System.Windows.Forms.LinkLabel();
             this.saveBtn = new System.Windows.Forms.Button();
             this.subjectComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,35 +77,13 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(814, 179);
+            this.panel1.Size = new System.Drawing.Size(814, 159);
             this.panel1.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(751, 41);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(55, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Add";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(751, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(55, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "View";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox2
             // 
@@ -122,9 +99,9 @@
             this.groupBox2.Controls.Add(this.filterDateFrom);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.filterTypeCombo);
-            this.groupBox2.Location = new System.Drawing.Point(322, 3);
+            this.groupBox2.Location = new System.Drawing.Point(353, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(423, 170);
+            this.groupBox2.Size = new System.Drawing.Size(458, 151);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filter";
@@ -175,7 +152,7 @@
             this.clearFilterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clearFilterBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.cancel;
             this.clearFilterBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.clearFilterBtn.Location = new System.Drawing.Point(273, 107);
+            this.clearFilterBtn.Location = new System.Drawing.Point(377, 84);
             this.clearFilterBtn.Name = "clearFilterBtn";
             this.clearFilterBtn.Size = new System.Drawing.Size(75, 57);
             this.clearFilterBtn.TabIndex = 11;
@@ -197,7 +174,7 @@
             this.filterBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filterBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.add;
             this.filterBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.filterBtn.Location = new System.Drawing.Point(342, 107);
+            this.filterBtn.Location = new System.Drawing.Point(377, 12);
             this.filterBtn.Name = "filterBtn";
             this.filterBtn.Size = new System.Drawing.Size(75, 57);
             this.filterBtn.TabIndex = 10;
@@ -269,6 +246,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.assessTypeLink);
             this.groupBox1.Controls.Add(this.saveBtn);
             this.groupBox1.Controls.Add(this.subjectComboBox);
             this.groupBox1.Controls.Add(this.label4);
@@ -278,10 +256,22 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(313, 170);
+            this.groupBox1.Size = new System.Drawing.Size(344, 151);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create New";
+            // 
+            // assessTypeLink
+            // 
+            this.assessTypeLink.AutoSize = true;
+            this.assessTypeLink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.assessTypeLink.Location = new System.Drawing.Point(183, 30);
+            this.assessTypeLink.Name = "assessTypeLink";
+            this.assessTypeLink.Size = new System.Drawing.Size(78, 13);
+            this.assessTypeLink.TabIndex = 9;
+            this.assessTypeLink.TabStop = true;
+            this.assessTypeLink.Text = "Manage Types";
+            this.assessTypeLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.assessTypeLink_LinkClicked);
             // 
             // saveBtn
             // 
@@ -293,7 +283,7 @@
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.save;
             this.saveBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.saveBtn.Location = new System.Drawing.Point(232, 107);
+            this.saveBtn.Location = new System.Drawing.Point(263, 44);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 57);
             this.saveBtn.TabIndex = 8;
@@ -398,7 +388,7 @@
             this.assessmentDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.assessmentDataGridView.EnableHeadersVisualStyles = false;
             this.assessmentDataGridView.GridColor = System.Drawing.Color.White;
-            this.assessmentDataGridView.Location = new System.Drawing.Point(0, 179);
+            this.assessmentDataGridView.Location = new System.Drawing.Point(0, 159);
             this.assessmentDataGridView.MultiSelect = false;
             this.assessmentDataGridView.Name = "assessmentDataGridView";
             this.assessmentDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -412,7 +402,7 @@
             this.assessmentDataGridView.ShowCellToolTips = false;
             this.assessmentDataGridView.ShowEditingIcon = false;
             this.assessmentDataGridView.ShowRowErrors = false;
-            this.assessmentDataGridView.Size = new System.Drawing.Size(814, 318);
+            this.assessmentDataGridView.Size = new System.Drawing.Size(814, 338);
             this.assessmentDataGridView.TabIndex = 0;
             // 
             // menuPanel
@@ -590,8 +580,6 @@
         private System.Windows.Forms.CheckBox filterSubject;
         private System.Windows.Forms.CheckBox filterTimePeriod;
         private System.Windows.Forms.CheckBox filterTypeCheckbox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox minimizePictureBox;
@@ -599,5 +587,6 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusStripLabel;
+        private System.Windows.Forms.LinkLabel assessTypeLink;
     }
 }

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fStudentManagementForm));
             this.studentDataGridContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +46,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.addNewStudentPictureBox = new System.Windows.Forms.PictureBox();
+            this.newStudentBtn = new System.Windows.Forms.Button();
             this.studentDataGridContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentGridView)).BeginInit();
             this.panel2.SuspendLayout();
@@ -54,7 +56,6 @@
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.addNewStudentPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // studentDataGridContextMenu
@@ -83,9 +84,9 @@
             // 
             this.studentGridView.AllowUserToAddRows = false;
             this.studentGridView.AllowUserToDeleteRows = false;
-            this.studentGridView.AllowUserToOrderColumns = true;
+            this.studentGridView.AllowUserToResizeColumns = false;
             this.studentGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.studentGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.studentGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.studentGridView.BackgroundColor = System.Drawing.Color.White;
@@ -93,58 +94,82 @@
             this.studentGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.studentGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.studentGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.studentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.studentGridView.ColumnHeadersHeight = 25;
+            this.studentGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.studentGridView.ContextMenuStrip = this.studentDataGridContextMenu;
+            this.studentGridView.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.studentGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.studentGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.studentGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.studentGridView.EnableHeadersVisualStyles = false;
             this.studentGridView.GridColor = System.Drawing.Color.White;
-            this.studentGridView.Location = new System.Drawing.Point(0, 48);
+            this.studentGridView.Location = new System.Drawing.Point(0, 55);
             this.studentGridView.MultiSelect = false;
             this.studentGridView.Name = "studentGridView";
             this.studentGridView.ReadOnly = true;
             this.studentGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.studentGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.studentGridView.RowHeadersVisible = false;
             this.studentGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             this.studentGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.studentGridView.ShowCellErrors = false;
             this.studentGridView.ShowCellToolTips = false;
             this.studentGridView.ShowEditingIcon = false;
             this.studentGridView.ShowRowErrors = false;
-            this.studentGridView.Size = new System.Drawing.Size(716, 579);
+            this.studentGridView.Size = new System.Drawing.Size(716, 572);
+            this.studentGridView.StandardTab = true;
             this.studentGridView.TabIndex = 1;
             this.studentGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.studentGridView_CellContextMenuStripNeeded);
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.maximizePictureBox);
             this.panel2.Controls.Add(this.minimizePictureBox);
             this.panel2.Controls.Add(this.closePictureBox);
             this.panel2.Controls.Add(this.titleLabel);
+            this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(2);
             this.panel2.Size = new System.Drawing.Size(716, 29);
             this.panel2.TabIndex = 2;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // maximizePictureBox
             // 
-            this.maximizePictureBox.BackColor = System.Drawing.Color.White;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(638, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(636, 2);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.maximizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.maximizePictureBox.Size = new System.Drawing.Size(26, 25);
             this.maximizePictureBox.TabIndex = 6;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
@@ -156,16 +181,16 @@
             // 
             // minimizePictureBox
             // 
-            this.minimizePictureBox.BackColor = System.Drawing.Color.White;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(664, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(662, 2);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.minimizePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.minimizePictureBox.Size = new System.Drawing.Size(26, 25);
             this.minimizePictureBox.TabIndex = 5;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
@@ -177,16 +202,16 @@
             // 
             // closePictureBox
             // 
-            this.closePictureBox.BackColor = System.Drawing.Color.White;
+            this.closePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(690, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(688, 2);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.closePictureBox.Size = new System.Drawing.Size(26, 29);
+            this.closePictureBox.Size = new System.Drawing.Size(26, 25);
             this.closePictureBox.TabIndex = 3;
             this.closePictureBox.TabStop = false;
             this.closePictureBox.Tag = "close";
@@ -200,14 +225,17 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
-            this.titleLabel.Font = new System.Drawing.Font("Berlin Sans FB", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.DimGray;
-            this.titleLabel.Location = new System.Drawing.Point(304, 7);
+            this.titleLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.titleLabel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
+            this.titleLabel.Location = new System.Drawing.Point(2, 2);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(144, 17);
+            this.titleLabel.Size = new System.Drawing.Size(135, 16);
             this.titleLabel.TabIndex = 4;
             this.titleLabel.Text = "Student Management";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // panel1
             // 
@@ -232,35 +260,40 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.addNewStudentPictureBox);
+            this.panel4.Controls.Add(this.newStudentBtn);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(716, 48);
+            this.panel4.Size = new System.Drawing.Size(716, 55);
             this.panel4.TabIndex = 2;
             // 
-            // addNewStudentPictureBox
+            // newStudentBtn
             // 
-            this.addNewStudentPictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.add;
-            this.addNewStudentPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.addNewStudentPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addNewStudentPictureBox.Location = new System.Drawing.Point(20, 6);
-            this.addNewStudentPictureBox.Name = "addNewStudentPictureBox";
-            this.addNewStudentPictureBox.Size = new System.Drawing.Size(32, 32);
-            this.addNewStudentPictureBox.TabIndex = 0;
-            this.addNewStudentPictureBox.TabStop = false;
-            this.addNewStudentPictureBox.Tag = "add";
-            this.addNewStudentPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseClick);
-            this.addNewStudentPictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseDown);
-            this.addNewStudentPictureBox.MouseEnter += new System.EventHandler(this.addNewStudentPictureBox_MouseEnter);
-            this.addNewStudentPictureBox.MouseLeave += new System.EventHandler(this.addNewStudentPictureBox_MouseLeave);
-            this.addNewStudentPictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.addNewStudentPictureBox_MouseUp);
+            this.newStudentBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.newStudentBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.newStudentBtn.FlatAppearance.BorderSize = 0;
+            this.newStudentBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.newStudentBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.newStudentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newStudentBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.add;
+            this.newStudentBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.newStudentBtn.Location = new System.Drawing.Point(5, 2);
+            this.newStudentBtn.Name = "newStudentBtn";
+            this.newStudentBtn.Size = new System.Drawing.Size(74, 50);
+            this.newStudentBtn.TabIndex = 1;
+            this.newStudentBtn.Tag = "add";
+            this.newStudentBtn.Text = "New";
+            this.newStudentBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.newStudentBtn.UseVisualStyleBackColor = true;
+            this.newStudentBtn.Click += new System.EventHandler(this.newStudentBtn_Click);
+            this.newStudentBtn.MouseEnter += new System.EventHandler(this.newStudentBtn_MouseEnter);
+            this.newStudentBtn.MouseLeave += new System.EventHandler(this.newStudentBtn_MouseLeave);
             // 
             // fStudentManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(720, 660);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
@@ -269,7 +302,7 @@
             this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Student_Management_Paint);
             this.studentDataGridContextMenu.ResumeLayout(false);
@@ -282,7 +315,6 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.addNewStudentPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -301,7 +333,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox addNewStudentPictureBox;
+        private System.Windows.Forms.Button newStudentBtn;
 
 
     }

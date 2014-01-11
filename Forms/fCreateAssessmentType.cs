@@ -81,9 +81,9 @@ namespace Grade_Manager_DB_Controller
             }
 
             if (status)
-                MessageBox.Show("Successful");
+                MessageBox.Show("Operation Successful");
             else
-                MessageBox.Show("Unsuccessful");
+                MessageBox.Show("Operation Unsuccessful");
             
         }
 
@@ -125,6 +125,31 @@ namespace Grade_Manager_DB_Controller
             Control s = sender as Form;
 
             s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+        }
+
+        private void titleLabel_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void closePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void closePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void closePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void closePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
         }
 
 

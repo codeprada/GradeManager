@@ -236,5 +236,13 @@ namespace Grade_Manager_DB_Controller
             this.Close();
         }
 
+        private void LineGraph_Paint(object sender, PaintEventArgs e)
+        {
+            Control s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+
+        }
+
     }
 }

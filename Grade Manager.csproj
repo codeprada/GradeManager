@@ -88,6 +88,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\fHelp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\fHelp.Designer.cs">
+      <DependentUpon>fHelp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\fCreateAssessmentType.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,9 @@
     <EmbeddedResource Include="Forms\fCreateAssessmentType.resx">
       <DependentUpon>fCreateAssessmentType.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\fHelp.resx">
+      <DependentUpon>fHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\fNewClass.resx">
       <DependentUpon>fNewClass.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,12 +345,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\minimize_window_over.png" />
+    <None Include="Resources\maximize_window_over.png" />
+    <None Include="Resources\close_window_over.png" />
     <None Include="Resources\sgm.png" />
     <None Include="Resources\generate_over.png" />
     <None Include="Resources\generate.png" />
     <None Include="Resources\load_over.png" />
     <None Include="Resources\load.png" />
     <None Include="bin\Debug\baptistacademylogo.png" />
+    <Content Include="Resources\help.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Resources\baptistacademylogo.png" />
     <None Include="Resources\cancel.png" />
     <None Include="Resources\cancel_over.png" />
@@ -385,12 +401,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\rating_32_over.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\minimize_window_16_over.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\maximize_window_16_over.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\reports.png">

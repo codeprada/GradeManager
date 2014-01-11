@@ -15,6 +15,11 @@ namespace Grade_Manager_DB_Controller
         private SubjectManager subject_manager;
         private ClassManager class_manager;
 
+        private const int CS_DROPSHADOW = 0x00020000;
+        private const int WM_NCHITTEST = 0x0084;
+        private const int HTCLIENT = 1;
+        private const int HTCAPTION = 2;
+
         public fSubjects()
         {
             InitializeComponent();
@@ -29,6 +34,19 @@ namespace Grade_Manager_DB_Controller
         private void Subjects_Form_Load(object sender, EventArgs e)
         {
             
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                // add the drop shadow flag for automatically drawing
+                // a drop shadow around the form
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000;
+                return cp;
+            }
         }
 
         private void LoadList()
@@ -131,6 +149,31 @@ namespace Grade_Manager_DB_Controller
                 //delete subject from subjectclass
                 subject_manager.DeleteClassSubject(subject.Id, SemesterManager.CurrentSemester);
             }
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.MouseDown_Drag(this, e);
+        }
+
+        private void maximizePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void maximizePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void maximizePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void maximizePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
         }
     }
 }

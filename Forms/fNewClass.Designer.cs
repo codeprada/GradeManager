@@ -68,24 +68,21 @@
             // 
             // createBtn
             // 
+            this.createBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.createBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.createBtn.FlatAppearance.BorderSize = 0;
             this.createBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.createBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.createBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createBtn.Image = global::Grade_Manager_DB_Controller.Properties.Resources.save;
             this.createBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.createBtn.Location = new System.Drawing.Point(85, 59);
+            this.createBtn.Location = new System.Drawing.Point(87, 59);
             this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(69, 42);
+            this.createBtn.Size = new System.Drawing.Size(59, 22);
             this.createBtn.TabIndex = 5;
             this.createBtn.Tag = "save";
-            this.createBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.createBtn.Text = "Save";
             this.createBtn.UseVisualStyleBackColor = true;
             this.createBtn.Click += new System.EventHandler(this.createBtn_Click);
-            this.createBtn.MouseEnter += new System.EventHandler(this.createBtn_MouseEnter);
-            this.createBtn.MouseLeave += new System.EventHandler(this.createBtn_MouseLeave);
             // 
             // panel1
             // 
@@ -96,7 +93,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(226, 104);
+            this.panel1.Size = new System.Drawing.Size(226, 94);
             this.panel1.TabIndex = 6;
             // 
             // menuPanel
@@ -186,7 +183,7 @@
             this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusToolStrip});
-            this.statusStrip1.Location = new System.Drawing.Point(2, 135);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 125);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(226, 22);
             this.statusStrip1.SizingGrip = false;
@@ -204,7 +201,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(230, 159);
+            this.ClientSize = new System.Drawing.Size(230, 149);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuPanel);

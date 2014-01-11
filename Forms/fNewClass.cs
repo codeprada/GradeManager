@@ -30,15 +30,22 @@ namespace Grade_Manager_DB_Controller
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            ClassManager cm = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+            if (classTxt.Text != String.Empty)
+            {
+                ClassManager cm = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
-            
-            statusToolStrip.Text = ("Class Creation: " + ((cm.CreateClass(classTxt.Text) > -1) ? "Successful" : "Unsuccessful"));
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                statusToolStrip.Text = ("Class Creation: " + ((cm.CreateClass(classTxt.Text) > -1) ? "Successful" : "Unsuccessful"));
 
-            classTxt.Clear();
-            Close();
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+
+                classTxt.Clear();
+                Close();
+            }
+            else
+            {
+                statusToolStrip.Text = "Fill out the required information.";
+            }
         }
 
         protected override CreateParams CreateParams

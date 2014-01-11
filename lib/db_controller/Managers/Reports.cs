@@ -60,6 +60,8 @@ namespace Grade_Manager_DB_Controller
 
         public ReportEventHandler ReportHandler;
         public Dictionary<string, Stream> Images;
+
+        private int[] OmitStudent_IDs;
         public string SaveAs { get; set; }
 
         private const int BUFFER_NUMBER = 6;
@@ -91,8 +93,10 @@ namespace Grade_Manager_DB_Controller
             }
         }
 
-        public void GenerateReport(int semester_id)
+        public void GenerateReport(int semester_id, int[] omit)
         {
+            OmitStudent_IDs = omit;
+
             Thread thread = new Thread(WorkerThreadProcess);
             
             thread.Start(semester_id);
@@ -132,6 +136,9 @@ namespace Grade_Manager_DB_Controller
 
                 foreach (Student student in students)
                 {
+                    if (OmitStudent_IDs.Contains(student.ID))
+                        continue; //skip the ones to be ommited
+
                     Dictionary<int, double> grades = 
                         student_subject_grade_obj_list_manager.CalculateOverallAverage(student.ID, weight_manager.SubjectWeightObjList);
 
@@ -295,7 +302,7 @@ namespace Grade_Manager_DB_Controller
 
                     if (ReportHandler != null)
                     {
-                        ReportHandler(new ReportEventArgs() { Counter = counter, CurrentStudent = student, Total = students.Length });
+                        ReportHandler(new ReportEventArgs() { Counter = counter, CurrentStudent = student, Total = students.Length - OmitStudent_IDs.Length });
                     }
                 }
 

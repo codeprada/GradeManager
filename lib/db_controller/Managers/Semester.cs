@@ -160,6 +160,39 @@ namespace Grade_Manager_DB_Controller
 
             return result;
         }
+
+        public bool DeleteSemester(Semester semester)
+        {
+            return DeleteSemester(semester.Id, semester.OwnerId);   
+        }
+
+        public bool DeleteSemester(int semester, int account)
+        {
+            bool result = false;
+
+            try
+            {
+                using (SQLiteConnection connection = GradeManager_SQLite_DB_Controller.GetConnection())
+                using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_DELETE_SEMESTER, connection))
+                {
+                    command.Parameters.AddWithValue("@semester_id", semester);
+                    command.Parameters.AddWithValue("@account_id", account);
+
+                    connection.Open();
+
+                    if ((command.ExecuteNonQuery()) > 0)
+                    {
+                        result = true;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return result;
+        }
         
     }
 }

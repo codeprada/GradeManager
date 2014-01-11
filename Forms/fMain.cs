@@ -22,8 +22,8 @@ namespace Grade_Manager
         private const int HTCLIENT = 1;
         private const int HTCAPTION = 2;
 
-        private Dictionary<Button, Button[]> FirstLevelButtons;
-        private bool HiddenButtons = false;
+        //private Dictionary<Button, Button[]> FirstLevelButtons;
+        //private bool HiddenButtons = false;
 
         public fMainForm()
         {
@@ -31,7 +31,7 @@ namespace Grade_Manager
 
             Initialize();
 
-            FirstLevelButtons = new Dictionary<Button, Button[]>{ 
+            /*FirstLevelButtons = new Dictionary<Button, Button[]>{ 
                 {semesterBtn, new Button[0]},
                 {assignmentsBtn, new Button[0]},
                 {studentsBtn, new Button[0]},
@@ -41,7 +41,7 @@ namespace Grade_Manager
                 {reportsBtn, new Button[0]},
                 {statisticsBtn, new Button[0]},
                 //{helpBtn, new Button[] { aboutBtn }}
-            };
+            };*/
         }
 
         private void Initialize()
@@ -139,9 +139,15 @@ namespace Grade_Manager
 
                 mainStatusLabel.Text = "Hello " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName;
                 semesterBtn.Visible = true;
+                logoutBtn.Visible = true;
+                loginBtn.Visible = false;
                 //ShowControls(true);
                 //ShowProfileForm();
 
+            }
+            else
+            {
+                mainStatusLabel.Text = String.Empty;
             }
 
         }
@@ -166,17 +172,7 @@ namespace Grade_Manager
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            GradeManager_SQLite_DB_Controller gm_db_controller = new GradeManager_SQLite_DB_Controller();
-
-            //Making sure database exists with the needed correct columns
-            if (!gm_db_controller.IntegrityTest())
-                gm_db_controller.CreateDatabase(); //Creates database
-
-
-        }
-
-        private void logoutBtn_Click(object sender, EventArgs e)
-        {
+            
 
         }
 
@@ -368,11 +364,11 @@ namespace Grade_Manager
 
         private void helpBtn_Click(object sender, EventArgs e)
         {
-            //ManageHiddenButtons((Button)sender);
-            
+            fHelp help = new fHelp();
+            help.Show();
         }
 
-        private void ManageHiddenButtons(Button current_button)
+        /*private void ManageHiddenButtons(Button current_button)
         {
             bool state;
 
@@ -399,13 +395,14 @@ namespace Grade_Manager
                     }
                 }
             }
-        }
+        }*/
 
         private void logoutBtn_Click_1(object sender, EventArgs e)
         {
             UserManager.CurrentUser = null;
 
             this.Text = "Grade Manager";
+            mainStatusLabel.Text = String.Empty;
 
             ShowControls(false);
         }

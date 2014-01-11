@@ -62,20 +62,6 @@ SELECT DISTINCT [class_name], [starting_school_year], [ending_school_year], [cur
             }
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            base.WndProc(ref m);
-            switch (m.Msg)
-            {
-                case WM_NCHITTEST:
-                    if (m.Result == (IntPtr)HTCLIENT)
-                    {
-                        m.Result = (IntPtr)HTCAPTION;
-                    }
-                    break;
-            }
-        }
-
         public void LoadDefaultValues()
         {
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))

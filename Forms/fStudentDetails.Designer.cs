@@ -37,7 +37,6 @@
             this.maleRadioButton = new System.Windows.Forms.RadioButton();
             this.midNameTxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.classesComboBox = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dobDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -67,11 +66,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.White;
             this.groupBox2.Controls.Add(this.savePictureBox);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.midNameTxt);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.classesComboBox);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dobDatePicker);
             this.groupBox2.Controls.Add(this.label3);
@@ -82,7 +81,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(5, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(295, 210);
+            this.groupBox2.Size = new System.Drawing.Size(307, 180);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
@@ -93,13 +92,13 @@
             this.savePictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.save;
             this.savePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.savePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.savePictureBox.Location = new System.Drawing.Point(129, 158);
+            this.savePictureBox.Location = new System.Drawing.Point(265, 132);
             this.savePictureBox.Name = "savePictureBox";
-            this.savePictureBox.Size = new System.Drawing.Size(47, 46);
+            this.savePictureBox.Size = new System.Drawing.Size(36, 31);
             this.savePictureBox.TabIndex = 13;
             this.savePictureBox.TabStop = false;
             this.savePictureBox.Tag = "save";
-            this.savePictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseClick);
+            this.savePictureBox.Click += new System.EventHandler(this.savePictureBox_Click);
             this.savePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseDown);
             this.savePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             this.savePictureBox.MouseLeave += new System.EventHandler(this.savePictureBox_MouseLeave);
@@ -109,9 +108,9 @@
             // 
             this.groupBox1.Controls.Add(this.femaleRadioButton);
             this.groupBox1.Controls.Add(this.maleRadioButton);
-            this.groupBox1.Location = new System.Drawing.Point(171, 121);
+            this.groupBox1.Location = new System.Drawing.Point(78, 128);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(115, 28);
+            this.groupBox1.Size = new System.Drawing.Size(130, 35);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             // 
@@ -129,7 +128,7 @@
             // maleRadioButton
             // 
             this.maleRadioButton.AutoSize = true;
-            this.maleRadioButton.Location = new System.Drawing.Point(7, 10);
+            this.maleRadioButton.Location = new System.Drawing.Point(6, 10);
             this.maleRadioButton.Name = "maleRadioButton";
             this.maleRadioButton.Size = new System.Drawing.Size(48, 17);
             this.maleRadioButton.TabIndex = 0;
@@ -141,7 +140,7 @@
             // 
             this.midNameTxt.Location = new System.Drawing.Point(78, 76);
             this.midNameTxt.Name = "midNameTxt";
-            this.midNameTxt.Size = new System.Drawing.Size(208, 20);
+            this.midNameTxt.Size = new System.Drawing.Size(223, 20);
             this.midNameTxt.TabIndex = 2;
             // 
             // label5
@@ -153,29 +152,20 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Middle Name";
             // 
-            // classesComboBox
-            // 
-            this.classesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.classesComboBox.FormattingEnabled = true;
-            this.classesComboBox.Location = new System.Drawing.Point(78, 128);
-            this.classesComboBox.Name = "classesComboBox";
-            this.classesComboBox.Size = new System.Drawing.Size(86, 21);
-            this.classesComboBox.TabIndex = 4;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 131);
+            this.label4.Location = new System.Drawing.Point(3, 140);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 9;
-            this.label4.Text = "Grade";
+            this.label4.Text = "Gender";
             // 
             // dobDatePicker
             // 
             this.dobDatePicker.Location = new System.Drawing.Point(78, 21);
             this.dobDatePicker.Name = "dobDatePicker";
-            this.dobDatePicker.Size = new System.Drawing.Size(208, 20);
+            this.dobDatePicker.Size = new System.Drawing.Size(223, 20);
             this.dobDatePicker.TabIndex = 0;
             // 
             // label3
@@ -192,7 +182,7 @@
             this.lastNameTxt.BackColor = System.Drawing.SystemColors.Info;
             this.lastNameTxt.Location = new System.Drawing.Point(78, 102);
             this.lastNameTxt.Name = "lastNameTxt";
-            this.lastNameTxt.Size = new System.Drawing.Size(208, 20);
+            this.lastNameTxt.Size = new System.Drawing.Size(223, 20);
             this.lastNameTxt.TabIndex = 3;
             // 
             // label2
@@ -209,7 +199,7 @@
             this.firstNameTxt.BackColor = System.Drawing.SystemColors.Info;
             this.firstNameTxt.Location = new System.Drawing.Point(78, 53);
             this.firstNameTxt.Name = "firstNameTxt";
-            this.firstNameTxt.Size = new System.Drawing.Size(208, 20);
+            this.firstNameTxt.Size = new System.Drawing.Size(223, 20);
             this.firstNameTxt.TabIndex = 1;
             // 
             // label1
@@ -223,38 +213,38 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(4, 33);
+            this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
-            this.panel1.Size = new System.Drawing.Size(305, 220);
+            this.panel1.Size = new System.Drawing.Size(317, 190);
             this.panel1.TabIndex = 4;
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.panel2.Controls.Add(this.maximizePictureBox);
             this.panel2.Controls.Add(this.minimizePictureBox);
             this.panel2.Controls.Add(this.closePictureBox);
             this.panel2.Controls.Add(this.titleLabel);
             this.panel2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(4, 4);
+            this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(305, 29);
+            this.panel2.Size = new System.Drawing.Size(317, 29);
             this.panel2.TabIndex = 5;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // maximizePictureBox
             // 
-            this.maximizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.maximizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.maximizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("maximizePictureBox.BackgroundImage")));
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(227, 0);
+            this.maximizePictureBox.Location = new System.Drawing.Point(239, 0);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -262,6 +252,7 @@
             this.maximizePictureBox.TabIndex = 10;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Visible = false;
             this.maximizePictureBox.Click += new System.EventHandler(this.maximizePictureBox_Click);
             this.maximizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maximizePictureBox_MouseDown);
             this.maximizePictureBox.MouseEnter += new System.EventHandler(this.maximizePictureBox_MouseEnter);
@@ -270,12 +261,12 @@
             // 
             // minimizePictureBox
             // 
-            this.minimizePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.minimizePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.minimizePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizePictureBox.BackgroundImage")));
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(253, 0);
+            this.minimizePictureBox.Location = new System.Drawing.Point(265, 0);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -283,6 +274,7 @@
             this.minimizePictureBox.TabIndex = 9;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Visible = false;
             this.minimizePictureBox.Click += new System.EventHandler(this.minimizePictureBox_Click);
             this.minimizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maximizePictureBox_MouseDown);
             this.minimizePictureBox.MouseEnter += new System.EventHandler(this.maximizePictureBox_MouseEnter);
@@ -291,12 +283,12 @@
             // 
             // closePictureBox
             // 
-            this.closePictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.closePictureBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
             this.closePictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closePictureBox.BackgroundImage")));
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(279, 0);
+            this.closePictureBox.Location = new System.Drawing.Point(291, 0);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -315,7 +307,7 @@
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.DimGray;
+            this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(8, 4);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(118, 17);
@@ -326,11 +318,13 @@
             // 
             // statusStrip1
             // 
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStrip});
-            this.statusStrip1.Location = new System.Drawing.Point(4, 253);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 221);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(305, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(317, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -349,17 +343,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(313, 279);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
+            this.ClientSize = new System.Drawing.Size(321, 245);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.statusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudentDetails";
-            this.Padding = new System.Windows.Forms.Padding(4);
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StudentDetails_Paint);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -387,7 +382,6 @@
         private System.Windows.Forms.RadioButton maleRadioButton;
         private System.Windows.Forms.TextBox midNameTxt;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox classesComboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dobDatePicker;
         private System.Windows.Forms.Label label3;

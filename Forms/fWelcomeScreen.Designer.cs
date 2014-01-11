@@ -28,7 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.versionLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.versionLabel.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.versionLabel.ForeColor = System.Drawing.Color.Black;
+            this.versionLabel.Location = new System.Drawing.Point(24, 225);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(0, 15);
+            this.versionLabel.TabIndex = 0;
             // 
             // fWelcomeScreen
             // 
@@ -37,8 +49,9 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.sgm;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(516, 462);
+            this.ClientSize = new System.Drawing.Size(513, 462);
             this.ControlBox = false;
+            this.Controls.Add(this.versionLabel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "fWelcomeScreen";
@@ -46,11 +59,16 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Shown += new System.EventHandler(this.fWelcomeScreen_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.fWelcomeScreen_Paint);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Label versionLabel;
 
 
     }

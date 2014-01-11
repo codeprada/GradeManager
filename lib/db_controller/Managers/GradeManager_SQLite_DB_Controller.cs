@@ -150,6 +150,7 @@ CREATE TABLE [SubjectClass] (
                             DBQ_GET_ALL_SEMESTERS_TREE = "SELECT [semester_id] ID, [Classes].[class_name] [Class], [starting_school_year] [Starting Year], [ending_school_year] [Ending Year], [current_term] [Term] FROM [Semester] INNER JOIN [Classes] ON [Semester].[class_id] = [Classes].[class_id] WHERE [Semester].[account_id] = @account_id ORDER BY [Classes].[class_id] ASC",
                             DBQ_GET_SEMESTER_ID = "SELECT * FROM [Semester] WHERE [semester_id] = @id",
                             DBQ_INSERT_SEMESTER = "pragma foreign_keys=on; INSERT INTO [Semester] (ending_school_year, starting_school_year, account_id, current_term, semester_description, class_id) VALUES (@endingschoolyear, @startingschoolyear, @account_id, @term, @descrip, @class)",
+                            DBQ_DELETE_SEMESTER = "pragma foreign_keys=on; DELETE FROM [Semester] WHERE semester_id = @semester_id AND account_id = @account_id",
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",
                             DBQ_INSERT_CLASS = "pragma foreign_keys=on; INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
                             DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
@@ -205,7 +206,7 @@ FROM
 WHERE account_id = @account_id
 GROUP BY Assessments.assess_type_id, Assessments.subject_id",
                             DBQ_INSERT_ASSESSMENT_TYPE = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] (assess_type) VALUES (@assess_type)",
-                            DBQ_INSERT_ASSESSMENT_TYPE_W_ID = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] VALUES (@assess_type_id, @assess_type)",
+                            DBQ_INSERT_ASSESSMENT_TYPE_W_ID = "INSERT INTO [Assessment_Type] VALUES (@assess_type_id, @assess_type)",
                             DBQ_UPDATE_ASSESSMENT_TYPE = "pragma foreign_keys=on; UPDATE [Assessment_Type] SET [assess_type] = @assess_type WHERE [assess_type_id] = @assess_type_id",
                             DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT C.class_id, [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
                             DBQ_SELECT_SUBJECT_GRADES = "SELECT DISTINCT S.subject_id, S.subject_name FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id WHERE semester_id = @semester_id",
@@ -320,6 +321,19 @@ VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @asses
 
                     command.Parameters.AddWithValue("@assess_type_id", -1);
                     command.Parameters.AddWithValue("@assess_type", "N/A");
+
+                    try
+                    {
+                        if (command.ExecuteNonQuery() <= 0)
+                        {
+                            //error occurred
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
                     /*
                     foreach (string a_type in assessment_types)
                     {
@@ -391,6 +405,11 @@ VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @asses
         public static implicit operator string(ComboItem i)
         {
             return (string)i.Text;
+        }
+
+        public override string ToString()
+        {
+            return Text.ToString();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Grade_Manager_DB_Controller
 {
-    partial class fAssessmentType
+    partial class fHelp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,106 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAssessmentType));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.assessmentDataGridView = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fHelp));
             this.menuPanel = new System.Windows.Forms.Panel();
             this.maximizePictureBox = new System.Windows.Forms.PictureBox();
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.mainContainer = new System.Windows.Forms.SplitContainer();
+            this.topicTreeView = new System.Windows.Forms.TreeView();
+            this.searchBtn = new System.Windows.Forms.Button();
+            this.searchBoxTxt = new System.Windows.Forms.TextBox();
+            this.articleRichTextBox = new System.Windows.Forms.RichTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
             this.menuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).BeginInit();
+            this.mainContainer.Panel1.SuspendLayout();
+            this.mainContainer.Panel2.SuspendLayout();
+            this.mainContainer.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.assessmentDataGridView);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 62);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(559, 421);
-            this.panel1.TabIndex = 0;
-            // 
-            // assessmentDataGridView
-            // 
-            this.assessmentDataGridView.AllowUserToAddRows = false;
-            this.assessmentDataGridView.AllowUserToDeleteRows = false;
-            this.assessmentDataGridView.AllowUserToResizeRows = false;
-            this.assessmentDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.assessmentDataGridView.BackgroundColor = System.Drawing.Color.White;
-            this.assessmentDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.assessmentDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.assessmentDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.assessmentDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.assessmentDataGridView.ColumnHeadersHeight = 25;
-            this.assessmentDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.assessmentDataGridView.ContextMenuStrip = this.contextMenuStrip1;
-            this.assessmentDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.assessmentDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.assessmentDataGridView.EnableHeadersVisualStyles = false;
-            this.assessmentDataGridView.GridColor = System.Drawing.Color.White;
-            this.assessmentDataGridView.Location = new System.Drawing.Point(0, 0);
-            this.assessmentDataGridView.MultiSelect = false;
-            this.assessmentDataGridView.Name = "assessmentDataGridView";
-            this.assessmentDataGridView.ReadOnly = true;
-            this.assessmentDataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.assessmentDataGridView.RowHeadersVisible = false;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            this.assessmentDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.assessmentDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.assessmentDataGridView.ShowCellErrors = false;
-            this.assessmentDataGridView.ShowCellToolTips = false;
-            this.assessmentDataGridView.ShowEditingIcon = false;
-            this.assessmentDataGridView.ShowRowErrors = false;
-            this.assessmentDataGridView.Size = new System.Drawing.Size(559, 421);
-            this.assessmentDataGridView.TabIndex = 0;
-            this.assessmentDataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.assessmentDataGridView_CellContextMenuStripNeeded);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editToolStripMenuItem,
-            this.deleteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(108, 48);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // menuPanel
             // 
@@ -141,9 +65,9 @@
             this.menuPanel.Location = new System.Drawing.Point(2, 2);
             this.menuPanel.Name = "menuPanel";
             this.menuPanel.Padding = new System.Windows.Forms.Padding(2);
-            this.menuPanel.Size = new System.Drawing.Size(559, 29);
-            this.menuPanel.TabIndex = 1;
-            this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown_1);
+            this.menuPanel.Size = new System.Drawing.Size(905, 29);
+            this.menuPanel.TabIndex = 3;
+            this.menuPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
             // 
             // maximizePictureBox
             // 
@@ -152,7 +76,7 @@
             this.maximizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.maximizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.maximizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.maximizePictureBox.Location = new System.Drawing.Point(479, 2);
+            this.maximizePictureBox.Location = new System.Drawing.Point(825, 2);
             this.maximizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.maximizePictureBox.Name = "maximizePictureBox";
             this.maximizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -160,6 +84,7 @@
             this.maximizePictureBox.TabIndex = 2;
             this.maximizePictureBox.TabStop = false;
             this.maximizePictureBox.Tag = "maximize";
+            this.maximizePictureBox.Visible = false;
             this.maximizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseDown);
             this.maximizePictureBox.MouseEnter += new System.EventHandler(this.closePictureBox_MouseEnter);
             this.maximizePictureBox.MouseLeave += new System.EventHandler(this.closePictureBox_MouseLeave);
@@ -172,7 +97,7 @@
             this.minimizePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.minimizePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimizePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.minimizePictureBox.Location = new System.Drawing.Point(505, 2);
+            this.minimizePictureBox.Location = new System.Drawing.Point(851, 2);
             this.minimizePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.minimizePictureBox.Name = "minimizePictureBox";
             this.minimizePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -180,6 +105,7 @@
             this.minimizePictureBox.TabIndex = 1;
             this.minimizePictureBox.TabStop = false;
             this.minimizePictureBox.Tag = "minimize";
+            this.minimizePictureBox.Visible = false;
             this.minimizePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.closePictureBox_MouseDown);
             this.minimizePictureBox.MouseEnter += new System.EventHandler(this.closePictureBox_MouseEnter);
             this.minimizePictureBox.MouseLeave += new System.EventHandler(this.closePictureBox_MouseLeave);
@@ -192,7 +118,7 @@
             this.closePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.closePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closePictureBox.Dock = System.Windows.Forms.DockStyle.Right;
-            this.closePictureBox.Location = new System.Drawing.Point(531, 2);
+            this.closePictureBox.Location = new System.Drawing.Point(877, 2);
             this.closePictureBox.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.closePictureBox.Name = "closePictureBox";
             this.closePictureBox.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
@@ -215,58 +141,114 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(2, 2);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(124, 16);
+            this.titleLabel.Size = new System.Drawing.Size(37, 16);
             this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Assessment Types";
+            this.titleLabel.Text = "Help";
             this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuPanel_MouseDown_1);
+            this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.mainContainer);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 31);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(905, 575);
+            this.panel1.TabIndex = 4;
+            // 
+            // mainContainer
+            // 
+            this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.mainContainer.IsSplitterFixed = true;
+            this.mainContainer.Location = new System.Drawing.Point(0, 0);
+            this.mainContainer.Name = "mainContainer";
+            // 
+            // mainContainer.Panel1
+            // 
+            this.mainContainer.Panel1.Controls.Add(this.topicTreeView);
+            this.mainContainer.Panel1.Controls.Add(this.panel2);
+            this.mainContainer.Panel1.Padding = new System.Windows.Forms.Padding(2);
+            // 
+            // mainContainer.Panel2
+            // 
+            this.mainContainer.Panel2.Controls.Add(this.articleRichTextBox);
+            this.mainContainer.Panel2.Padding = new System.Windows.Forms.Padding(3);
+            this.mainContainer.Size = new System.Drawing.Size(905, 575);
+            this.mainContainer.SplitterDistance = 200;
+            this.mainContainer.SplitterWidth = 1;
+            this.mainContainer.TabIndex = 0;
+            // 
+            // topicTreeView
+            // 
+            this.topicTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.topicTreeView.Location = new System.Drawing.Point(2, 32);
+            this.topicTreeView.Name = "topicTreeView";
+            this.topicTreeView.Size = new System.Drawing.Size(196, 541);
+            this.topicTreeView.TabIndex = 4;
+            this.topicTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.topicTreeView_NodeMouseClick);
+            // 
+            // searchBtn
+            // 
+            this.searchBtn.Location = new System.Drawing.Point(126, 3);
+            this.searchBtn.Name = "searchBtn";
+            this.searchBtn.Size = new System.Drawing.Size(64, 20);
+            this.searchBtn.TabIndex = 3;
+            this.searchBtn.Text = "Search";
+            this.searchBtn.UseVisualStyleBackColor = true;
+            // 
+            // searchBoxTxt
+            // 
+            this.searchBoxTxt.Location = new System.Drawing.Point(3, 4);
+            this.searchBoxTxt.Name = "searchBoxTxt";
+            this.searchBoxTxt.Size = new System.Drawing.Size(117, 20);
+            this.searchBoxTxt.TabIndex = 2;
+            // 
+            // articleRichTextBox
+            // 
+            this.articleRichTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.articleRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.articleRichTextBox.Location = new System.Drawing.Point(3, 3);
+            this.articleRichTextBox.Name = "articleRichTextBox";
+            this.articleRichTextBox.ReadOnly = true;
+            this.articleRichTextBox.Size = new System.Drawing.Size(698, 569);
+            this.articleRichTextBox.TabIndex = 0;
+            this.articleRichTextBox.Text = "";
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.linkLabel1);
+            this.panel2.Controls.Add(this.searchBoxTxt);
+            this.panel2.Controls.Add(this.searchBtn);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(2, 31);
+            this.panel2.Location = new System.Drawing.Point(2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(559, 31);
-            this.panel2.TabIndex = 2;
+            this.panel2.Size = new System.Drawing.Size(196, 30);
+            this.panel2.TabIndex = 5;
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(16, 7);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(63, 13);
-            this.linkLabel1.TabIndex = 0;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Create New";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // fAssessmentType
+            // fHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(563, 485);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(909, 608);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "fAssessmentType";
+            this.Name = "fHelp";
             this.Padding = new System.Windows.Forms.Padding(2);
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Text = "CreateAssessmentType";
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.fAssessmentType_Paint);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.assessmentDataGridView)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.Text = "fHelp";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.fHelp_Paint);
             this.menuPanel.ResumeLayout(false);
             this.menuPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maximizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimizePictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.closePictureBox)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.mainContainer.Panel1.ResumeLayout(false);
+            this.mainContainer.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mainContainer)).EndInit();
+            this.mainContainer.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -275,17 +257,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView assessmentDataGridView;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.PictureBox maximizePictureBox;
         private System.Windows.Forms.PictureBox minimizePictureBox;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.SplitContainer mainContainer;
+        private System.Windows.Forms.TreeView topicTreeView;
+        private System.Windows.Forms.Button searchBtn;
+        private System.Windows.Forms.TextBox searchBoxTxt;
+        private System.Windows.Forms.RichTextBox articleRichTextBox;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
     }
 }

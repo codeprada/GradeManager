@@ -31,6 +31,7 @@ namespace Grade_Manager
                 // a drop shadow around the form
                 CreateParams cp = base.CreateParams;
                 cp.ClassStyle |= CS_DROPSHADOW;
+                //cp.Style |= 0x40000;
                 return cp;
             }
         }
@@ -207,6 +208,41 @@ namespace Grade_Manager
         private void semesterGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             loadBtn_Click(sender, e);
+        }
+
+        private void Semester_Form_Paint(object sender, PaintEventArgs e)
+        {
+            Control s = sender as Form;
+
+            s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+
+        }
+
+        private void semesterGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            semesterGridView.CurrentCell = semesterGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (semesterGridView.SelectedRows.Count > 0)
+            {
+                int id;
+                if (Int32.TryParse(semesterGridView.SelectedRows[0].Cells["ID"].Value.ToString(), out id))
+                {
+                    
+
+                    if (MessageBox.Show("WARNING!\n\nNote that deleting a semester will also delete all the grades associated with it. Do you want to proceed with deletion?", "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2)
+                        == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        SemesterManager semester_manager = new SemesterManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
+                        if (semester_manager.DeleteSemester(id, UserManager.CurrentUser.Id))
+                            LoadList();
+                    }
+                }
+            }
+
+            
         }
 
     }

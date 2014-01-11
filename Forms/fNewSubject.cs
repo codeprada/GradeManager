@@ -27,8 +27,16 @@ namespace Grade_Manager_DB_Controller
         private void createBtn_Click(object sender, EventArgs e)
         {
             //subjectStatusLabel.Text = String.Empty;
-            MessageBox.Show(CreateSubject(subjectTxt.Text));
-            subjectTxt.Clear();
+            if (subjectTxt.Text != String.Empty)
+            {
+                statusToolStrip.Text = (CreateSubject(subjectTxt.Text));
+                subjectTxt.Clear();
+                subjectTxt.Focus();
+            }
+            else
+            {
+                statusToolStrip.Text = "Fill in the required information";
+            }
         }
 
         protected override CreateParams CreateParams
@@ -74,6 +82,26 @@ namespace Grade_Manager_DB_Controller
             Control s = sender as Form;
 
             s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
+        }
+
+        private void maximizePictureBox_MouseEnter(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseEnter(sender, e);
+        }
+
+        private void maximizePictureBox_MouseLeave(object sender, EventArgs e)
+        {
+            Styles.PictureBox_MouseLeave(sender, e);
+        }
+
+        private void maximizePictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseDown(sender, e);
+        }
+
+        private void maximizePictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            Styles.PictureBox_MouseUp(sender, e);
         }
     }
 }

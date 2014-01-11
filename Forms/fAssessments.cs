@@ -120,8 +120,15 @@ namespace Grade_Manager_DB_Controller
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            SaveAssessment();
-            LoadAssessments();
+            if (assessTypeComboBox.SelectedItem != null && subjectComboBox.SelectedItem != null)
+            {
+                SaveAssessment();
+                LoadAssessments();
+            }
+            else
+            {
+                MessageBox.Show("Fill in the required information before saving.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void SaveAssessment()
@@ -161,28 +168,6 @@ namespace Grade_Manager_DB_Controller
         private void filterSubject_CheckedChanged(object sender, EventArgs e)
         {
             filterSubjectCombo.Enabled = filterSubject.Checked;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Panel p = ((Panel)Parent);
-            fAssessmentType cat = new fAssessmentType();
-            cat.TopLevel = false;
-            p.Controls.Add(cat);
-            cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
-            cat.Show();
-            cat.BringToFront();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Panel p = ((Panel)Parent);
-            fAssessmentType cat = new fAssessmentType();
-            cat.TopLevel = false;
-            p.Controls.Add(cat);
-            cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
-            cat.Show();
-            cat.BringToFront();
         }
 
         private void closePictureBox_Click(object sender, EventArgs e)
@@ -241,6 +226,17 @@ namespace Grade_Manager_DB_Controller
 
             s.Region = Region.FromHrgn(Styles.CreateRoundRectRgn(0, 0, s.Width + 1, s.Height + 1, 4, 4));
 
+        }
+
+        private void assessTypeLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Panel p = ((Panel)Parent);
+            fAssessmentType cat = new fAssessmentType();
+            cat.TopLevel = false;
+            p.Controls.Add(cat);
+            cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
+            cat.Show();
+            cat.BringToFront();
         }
     }
 }
