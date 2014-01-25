@@ -25,7 +25,7 @@ namespace Grade_Manager_DB_Controller
             InitializeComponent();
 
             subject_manager = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
-            subject_manager.LoadToComboBox(subjectComboBox);
+            subject_manager.LoadToComboBox(subjectComboBox, SemesterManager.CurrentSemester);
 
             subjectComboBox.Items.Insert(0, new ComboItem() { Id = -1, Text = "Overall" });
 

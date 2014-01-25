@@ -50,17 +50,7 @@
             this.minimizePictureBox = new System.Windows.Forms.PictureBox();
             this.closePictureBox = new System.Windows.Forms.PictureBox();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.ribbonSeparator1 = new System.Windows.Forms.RibbonSeparator();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ribbonOrbSubjects = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbGrades = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbMenuItem2 = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbSemesterNew = new System.Windows.Forms.RibbonOrbRecentItem();
-            this.ribbonOrbReports = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbStatistics = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbRanking = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonOrbHelp = new System.Windows.Forms.RibbonOrbMenuItem();
-            this.ribbonTopLoginButton = new System.Windows.Forms.RibbonButton();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -514,60 +504,6 @@
             this.toolTip1.ForeColor = System.Drawing.Color.White;
             this.toolTip1.IsBalloon = true;
             // 
-            // ribbonOrbSubjects
-            // 
-            this.ribbonOrbSubjects.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbSubjects.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbSubjects.Image")));
-            this.ribbonOrbSubjects.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbSubjects.SmallImage")));
-            // 
-            // ribbonOrbGrades
-            // 
-            this.ribbonOrbGrades.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbGrades.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbGrades.Image")));
-            this.ribbonOrbGrades.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbGrades.SmallImage")));
-            // 
-            // ribbonOrbMenuItem2
-            // 
-            this.ribbonOrbMenuItem2.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbMenuItem2.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem2.Image")));
-            this.ribbonOrbMenuItem2.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbMenuItem2.SmallImage")));
-            // 
-            // ribbonOrbSemesterNew
-            // 
-            this.ribbonOrbSemesterNew.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbSemesterNew.Image")));
-            this.ribbonOrbSemesterNew.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbSemesterNew.SmallImage")));
-            // 
-            // ribbonOrbReports
-            // 
-            this.ribbonOrbReports.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbReports.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbReports.Image")));
-            this.ribbonOrbReports.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbReports.SmallImage")));
-            // 
-            // ribbonOrbStatistics
-            // 
-            this.ribbonOrbStatistics.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbStatistics.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbStatistics.Image")));
-            this.ribbonOrbStatistics.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbStatistics.SmallImage")));
-            // 
-            // ribbonOrbRanking
-            // 
-            this.ribbonOrbRanking.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbRanking.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbRanking.Image")));
-            this.ribbonOrbRanking.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbRanking.SmallImage")));
-            // 
-            // ribbonOrbHelp
-            // 
-            this.ribbonOrbHelp.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.ribbonOrbHelp.Image = ((System.Drawing.Image)(resources.GetObject("ribbonOrbHelp.Image")));
-            this.ribbonOrbHelp.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonOrbHelp.SmallImage")));
-            // 
-            // ribbonTopLoginButton
-            // 
-            this.ribbonTopLoginButton.Image = ((System.Drawing.Image)(resources.GetObject("ribbonTopLoginButton.Image")));
-            this.ribbonTopLoginButton.MinimumSize = new System.Drawing.Size(30, 30);
-            this.ribbonTopLoginButton.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonTopLoginButton.SmallImage")));
-            this.ribbonTopLoginButton.Text = "";
-            // 
             // fMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -606,20 +542,7 @@
 
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel mainStatusLabel;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbSemesterButton;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbStudents;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbAssignments;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbSubjects;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbGrades;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbReports;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbStatistics;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbRanking;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbHelp;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RibbonOrbMenuItem ribbonOrbMenuItem2;
-        private System.Windows.Forms.RibbonOrbRecentItem ribbonOrbSemesterNew;
-        private System.Windows.Forms.RibbonSeparator ribbonSeparator1;
-        private System.Windows.Forms.RibbonButton ribbonTopLoginButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Panel menuPanel;
         private System.Windows.Forms.Label titleLabel;

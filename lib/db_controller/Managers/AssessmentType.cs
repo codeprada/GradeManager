@@ -71,7 +71,7 @@ namespace Grade_Manager_DB_Controller
         /// Save an assessmentType and its weighting
         /// </summary>
         /// <param name="assessTypeObject"></param>
-        public bool Save(AssessmentType assessTypeObject)
+        public bool Save(AssessmentType assessTypeObject, Semester semester)
         {
             bool saved = false;
 
@@ -80,6 +80,7 @@ namespace Grade_Manager_DB_Controller
                 using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_ASSESSMENT_TYPE, connection))
                 {
                     command.Parameters.AddWithValue("@assess_type", assessTypeObject.Name);
+                    command.Parameters.AddWithValue("@semester_id", semester.Id);
 
                     command.Connection.Open();
 
@@ -113,7 +114,7 @@ namespace Grade_Manager_DB_Controller
         /// </summary>
         /// <param name="assessTypeObject"></param>
         /// <returns></returns>
-        public bool Update(AssessmentType assessTypeObject)
+        public bool Update(AssessmentType assessTypeObject, Semester semester)
         {
             bool updated = false;
 
@@ -123,6 +124,8 @@ namespace Grade_Manager_DB_Controller
                 {
                     command.Parameters.AddWithValue("@assess_type", assessTypeObject.Name);
                     command.Parameters.AddWithValue("@assess_type_id", assessTypeObject.ID);
+                    command.Parameters.AddWithValue("@semester_id", semester.Id);
+
                     command.Connection.Open();
 
                     if (command.ExecuteNonQuery() > 0)

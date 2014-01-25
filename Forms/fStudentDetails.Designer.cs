@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDetails));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.savePictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.femaleRadioButton = new System.Windows.Forms.RadioButton();
             this.maleRadioButton = new System.Windows.Forms.RadioButton();
@@ -53,8 +52,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusStrip = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.saveBtn = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.savePictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,7 +66,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
-            this.groupBox2.Controls.Add(this.savePictureBox);
+            this.groupBox2.Controls.Add(this.saveBtn);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.midNameTxt);
             this.groupBox2.Controls.Add(this.label5);
@@ -85,24 +84,6 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
-            // 
-            // savePictureBox
-            // 
-            this.savePictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.savePictureBox.BackgroundImage = global::Grade_Manager_DB_Controller.Properties.Resources.save;
-            this.savePictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.savePictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.savePictureBox.Location = new System.Drawing.Point(265, 132);
-            this.savePictureBox.Name = "savePictureBox";
-            this.savePictureBox.Size = new System.Drawing.Size(36, 31);
-            this.savePictureBox.TabIndex = 13;
-            this.savePictureBox.TabStop = false;
-            this.savePictureBox.Tag = "save";
-            this.savePictureBox.Click += new System.EventHandler(this.savePictureBox_Click);
-            this.savePictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseDown);
-            this.savePictureBox.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
-            this.savePictureBox.MouseLeave += new System.EventHandler(this.savePictureBox_MouseLeave);
-            this.savePictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.savePictureBox_MouseUp);
             // 
             // groupBox1
             // 
@@ -339,8 +320,19 @@
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // saveBtn
+            // 
+            this.saveBtn.Location = new System.Drawing.Point(226, 138);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(75, 23);
+            this.saveBtn.TabIndex = 13;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.saveButton_Click);
+            // 
             // StudentDetails
             // 
+            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
@@ -358,7 +350,6 @@
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.StudentDetails_Paint);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.savePictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -395,9 +386,9 @@
         private System.Windows.Forms.PictureBox minimizePictureBox;
         private System.Windows.Forms.PictureBox closePictureBox;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.PictureBox savePictureBox;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusStrip;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button saveBtn;
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -36,6 +37,8 @@ namespace Grade_Manager_DB_Controller
 
         private void LoadAssessmentTypes()
         {
+            linkToComboBox.Items.Clear();
+
             AssessmentManager assessment_manager = new AssessmentManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
             assessment_manager.LoadToComboBox(linkToComboBox, DB_Object.TYPE);
@@ -58,7 +61,7 @@ namespace Grade_Manager_DB_Controller
             
             AssessmentType at = new AssessmentType();
             at.IsLinked = yesRadioButton.Checked;
-            at.Name = assessTypeNameTxt.Text;
+            at.Name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(assessTypeNameTxt.Text);
             at.Weight = new AssessmentWeight();
             at.Weight.Weight = (double)weightNumericUpDown.Value;
             at.Weight.Type_Relational = linkToComboBox.SelectedItem == null || !at.IsLinked ? -1 : (int)((ComboItem)linkToComboBox.SelectedItem).Id;
@@ -73,17 +76,24 @@ namespace Grade_Manager_DB_Controller
                 at.Weight.Type = assess_type_id;
                 at.Weight.ID = new WeightManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING, UserManager.CurrentUser.Id)
                     .GetWeight(UserManager.CurrentUser.Id, assess_type_id).ID;
-                status = assess_man.Update(at);
+                status = assess_man.Update(at, SemesterManager.CurrentSemester);
             }
             else
             {
-                status = assess_man.Save(at);
+                status = assess_man.Save(at, SemesterManager.CurrentSemester);
             }
 
             if (status)
-                MessageBox.Show("Operation Successful");
+            {
+                statusLabel.Text = "Operation Successful";
+                assessTypeNameTxt.Clear();
+                linkToComboBox.Text = "";
+                yesRadioButton.Checked = noRadioButton.Checked = false;
+                weightingGroupBox.Visible = false;
+                LoadAssessmentTypes();
+            }
             else
-                MessageBox.Show("Operation Unsuccessful");
+                statusLabel.Text = "Operation Unsuccessful";
             
         }
 
@@ -112,6 +122,7 @@ namespace Grade_Manager_DB_Controller
             {
                 linkedToGroupBox.Visible = false;
                 weightingGroupBox.Visible = true;
+
             }
         }
 

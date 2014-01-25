@@ -32,11 +32,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.saveBtn = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.weightingGroupBox = new System.Windows.Forms.GroupBox();
             this.weightNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
+            this.weightingLabel = new System.Windows.Forms.Label();
             this.linkedToGroupBox = new System.Windows.Forms.GroupBox();
             this.linkToComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,6 +55,7 @@
             this.titleLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.weightingGroupBox.SuspendLayout();
@@ -69,18 +72,19 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.groupBox4);
+            this.panel1.Controls.Add(this.statusStrip1);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(310, 256);
+            this.panel1.Size = new System.Drawing.Size(310, 279);
             this.panel1.TabIndex = 0;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.saveBtn);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox4.Location = new System.Drawing.Point(0, 220);
+            this.groupBox4.Location = new System.Drawing.Point(0, 221);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(310, 36);
             this.groupBox4.TabIndex = 1;
@@ -88,13 +92,30 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.Location = new System.Drawing.Point(232, 10);
+            this.saveBtn.Location = new System.Drawing.Point(120, 7);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(75, 23);
             this.saveBtn.TabIndex = 0;
             this.saveBtn.Text = "Save";
             this.saveBtn.UseVisualStyleBackColor = true;
             this.saveBtn.Click += new System.EventHandler(this.saveBtn_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.BackColor = System.Drawing.Color.White;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 257);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(310, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // groupBox1
             // 
@@ -124,7 +145,7 @@
             // weightingGroupBox
             // 
             this.weightingGroupBox.Controls.Add(this.weightNumericUpDown);
-            this.weightingGroupBox.Controls.Add(this.label4);
+            this.weightingGroupBox.Controls.Add(this.weightingLabel);
             this.weightingGroupBox.Dock = System.Windows.Forms.DockStyle.Top;
             this.weightingGroupBox.Location = new System.Drawing.Point(3, 88);
             this.weightingGroupBox.Name = "weightingGroupBox";
@@ -157,14 +178,14 @@
             0,
             0});
             // 
-            // label4
+            // weightingLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Weighting";
+            this.weightingLabel.AutoSize = true;
+            this.weightingLabel.Location = new System.Drawing.Point(6, 16);
+            this.weightingLabel.Name = "weightingLabel";
+            this.weightingLabel.Size = new System.Drawing.Size(55, 13);
+            this.weightingLabel.TabIndex = 6;
+            this.weightingLabel.Text = "Weighting";
             // 
             // linkedToGroupBox
             // 
@@ -352,10 +373,11 @@
             // 
             // fCreateAssessmentType
             // 
+            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(152)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(314, 289);
+            this.ClientSize = new System.Drawing.Size(314, 312);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuPanel);
@@ -372,6 +394,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -414,6 +438,8 @@
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.GroupBox weightingGroupBox;
         private System.Windows.Forms.NumericUpDown weightNumericUpDown;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label weightingLabel;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
     }
 }

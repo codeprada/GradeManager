@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace Grade_Manager_DB_Controller
                 ClassManager cm = new ClassManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
 
 
-                statusToolStrip.Text = ("Class Creation: " + ((cm.CreateClass(classTxt.Text) > -1) ? "Successful" : "Unsuccessful"));
+                statusToolStrip.Text = ("Class Creation: " + ((cm.CreateClass(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(classTxt.Text)) > -1) ? "Successful" : "Unsuccessful"));
 
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
 

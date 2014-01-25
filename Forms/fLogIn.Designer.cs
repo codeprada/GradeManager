@@ -66,10 +66,10 @@
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLabel1.Location = new System.Drawing.Point(7, 85);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(54, 13);
+            this.linkLabel1.Size = new System.Drawing.Size(199, 13);
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "New User";
+            this.linkLabel1.Text = "Need an Account? Click here to register!";
             this.linkLabel1.Click += new System.EventHandler(this.createUsrBtn_Click);
             // 
             // label2

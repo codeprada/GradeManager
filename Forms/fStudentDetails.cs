@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Grade_Manager_DB_Controller
 {
@@ -155,7 +156,7 @@ namespace Grade_Manager_DB_Controller
             timer1.Enabled = false;
         }
 
-        private void savePictureBox_Click(object sender, EventArgs e)
+        private void saveButton_Click(object sender, EventArgs e)
         {
             if (firstNameTxt.Text != String.Empty && lastNameTxt.Text != String.Empty && (maleRadioButton.Checked || femaleRadioButton.Checked))
             {
@@ -166,9 +167,9 @@ namespace Grade_Manager_DB_Controller
                     CurrentStudent = new Student();
 
 
-                CurrentStudent.FirstName = firstNameTxt.Text;
-                CurrentStudent.LastName = lastNameTxt.Text;
-                CurrentStudent.MiddleName = midNameTxt.Text;
+                CurrentStudent.FirstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(firstNameTxt.Text);
+                CurrentStudent.LastName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(lastNameTxt.Text);
+                CurrentStudent.MiddleName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(midNameTxt.Text);
                 CurrentStudent.Gender = maleRadioButton.Checked ? "M" : "F";
                 CurrentStudent.DateOfBirth = dobDatePicker.Value;
 

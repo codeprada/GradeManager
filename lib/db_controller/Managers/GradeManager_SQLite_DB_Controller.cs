@@ -76,13 +76,17 @@ CREATE TABLE Semester (
 CREATE TABLE [Subjects] (
 	[subject_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
 	[subject_name] CHAR(50) UNIQUE COLLATE NOCASE,
-	UNIQUE (subject_name)
+    [semester_id] INTEGER NOT NULL,
+	UNIQUE (subject_name),
+    FOREIGN KEY ([semester_id]) REFERENCES [Semester](semester_id) ON UPDATE CASCADE ON DELETE CASCADE
 	);
 
 CREATE TABLE [Assessment_Type] (
     [assess_type_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
     [assess_type] CHAR(12) NOT NULL,
-    UNIQUE (assess_type)
+    [semester_id] INTEGER,
+    UNIQUE (assess_type),
+    FOREIGN KEY ([semester_id]) REFERENCES [Semester]([semester_id]) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE [Assessment_Type_Weights]
@@ -153,7 +157,7 @@ CREATE TABLE [SubjectClass] (
                             DBQ_DELETE_SEMESTER = "pragma foreign_keys=on; DELETE FROM [Semester] WHERE semester_id = @semester_id AND account_id = @account_id",
                             DBQ_GET_ALL_CLASSES = "SELECT [class_id], [class_name] FROM [Classes] WHERE [account_id] = @account_id ORDER BY [class_name] ASC",
                             DBQ_INSERT_CLASS = "pragma foreign_keys=on; INSERT INTO [Classes] ([class_name], [account_id]) VALUES (@class_name, @account_id)",
-                            DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] ORDER BY [subject_name] ASC",
+                            DBQ_GET_ALL_SUBJECTS = "SELECT * FROM [Subjects] WHERE semester_id = @semester_id ORDER BY [subject_name] ASC",
                             DBQ_GET_ALL_SUBJECTS_FOR_SEMESTER = "SELECT * FROM [Subjects] S INNER JOIN [SubjectClass] SC ON S.subject_id = SC.subject_id WHERE semester_id = @semester_id ORDER BY [subject_name] ASC",
 
                             /* General Purpose */
@@ -172,8 +176,8 @@ CREATE TABLE [SubjectClass] (
                             DBQ_STUDENT_ASSIGN_GRADE = "pragma foreign_keys=on; INSERT OR REPLACE INTO [StudentClass] ([class_id], [student_id]) VALUES (@class_id, @student_id)",
                             DBQ_STUDENT_DELETE = "pragma foreign_keys=on; DELETE FROM [Students] WHERE [student_id] = @student_id",
 
-                            DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name]) VALUES (@subject_name)",
-                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT  DISTINCT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [semester_id] = @semester_id AND [SubjectClass].class_id = @class_id ORDER BY [subject_name] ASC",
+                            DBQ_INSERT_SUBJECT = "INSERT INTO [Subjects] ([subject_name], semester_id) VALUES (@subject_name, @semester_id)",
+                            DBQ_GET_SUBJECT_CURRENT_SEMESTER = "SELECT DISTINCT [subject_name], [Subjects].[subject_id] FROM [SubjectClass] JOIN [Subjects] ON [SubjectClass].[subject_id] = [Subjects].[subject_id] WHERE [Subjects].[semester_id] = @semester_id AND [SubjectClass].class_id = @class_id ORDER BY [subject_name] ASC",
                             DBQ_CLEAR_SUBJECT_ON_CLASS = "pragma foreign_keys=on; DELETE FROM [SubjectClass] WHERE [semester_id] = @semester_id AND [class_id] = @class_id AND [subject_id] = @subject_id",
                             DBQ_INSERT_SUBJECT_ON_CLASS = "pragma foreign_keys=on; INSERT OR REPLACE INTO [SubjectClass] ([subject_id], [class_id], [semester_id]) VALUES (@subject_id, @class_id, @semester_id)",
 
@@ -191,7 +195,7 @@ VALUES
 	@semester_id
 )",
                             DBQ_SELECT_ASSESSMENT_FROM_SUBJECT = "SELECT assess_id, assess_name FROM [Assessments] A WHERE [semester_id] = @semester_id AND [subject_id] = @subject_id ORDER BY assess_name ASC",
-                            DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] ORDER BY assess_type ASC",
+                            DBQ_SELECT_ASSESSMENT_TYPE = "SELECT * FROM [Assessment_Type] WHERE semester_id = @semester_id ORDER BY assess_type ASC",
                             DBQ_GET_ASSESSMENT_COUNT = @"SELECT
 	[Assessments].assess_type_id,
 	Subjects.subject_name,
@@ -205,8 +209,8 @@ FROM
 	INNER JOIN Semester ON Semester.semester_id = Assessments.semester_id
 WHERE account_id = @account_id
 GROUP BY Assessments.assess_type_id, Assessments.subject_id",
-                            DBQ_INSERT_ASSESSMENT_TYPE = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] (assess_type) VALUES (@assess_type)",
-                            DBQ_INSERT_ASSESSMENT_TYPE_W_ID = "INSERT INTO [Assessment_Type] VALUES (@assess_type_id, @assess_type)",
+                            DBQ_INSERT_ASSESSMENT_TYPE = "pragma foreign_keys=on; INSERT INTO [Assessment_Type] (assess_type, semester_id) VALUES (@assess_type, @semester_id)",
+                            DBQ_INSERT_ASSESSMENT_TYPE_W_ID = "INSERT INTO [Assessment_Type] VALUES (@assess_type_id, @assess_type, @semester_id)",
                             DBQ_UPDATE_ASSESSMENT_TYPE = "pragma foreign_keys=on; UPDATE [Assessment_Type] SET [assess_type] = @assess_type WHERE [assess_type_id] = @assess_type_id",
                             DBQ_SELECT_DEFAULT_VALUES_GRADES = "SELECT DISTINCT C.class_id, [class_name], [starting_school_year], [ending_school_year], [current_term] FROM [Assessments] A LEFT JOIN [Grades] G ON A.assess_id = G.assess_id INNER JOIN [Semester] S ON A.semester_id = S.semester_id INNER JOIN [Students] ST ON G.student_id = ST.student_id INNER JOIN Classes C ON C.class_id = S.class_id WHERE S.semester_id = @semester_id",
                             DBQ_SELECT_SUBJECT_GRADES = "SELECT DISTINCT S.subject_id, S.subject_name FROM [Assessments] A INNER JOIN [Subjects] S ON A.subject_id = S.subject_id WHERE semester_id = @semester_id",
@@ -321,6 +325,7 @@ VALUES (@assess_type_id, @assess_type_weight, @assess_type_relational_id, @asses
 
                     command.Parameters.AddWithValue("@assess_type_id", -1);
                     command.Parameters.AddWithValue("@assess_type", "N/A");
+                    command.Parameters.AddWithValue("@semester_id", DBNull.Value);
 
                     try
                     {

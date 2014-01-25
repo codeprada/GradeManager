@@ -119,10 +119,10 @@ namespace Grade_Manager_DB_Controller
         {
             NewSubject new_subject_form = new NewSubject();
             new_subject_form.StartPosition = FormStartPosition.CenterParent;
-            Opacity = .10;
+            //Opacity = .10;
             new_subject_form.ShowDialog();
             LoadList();
-            Opacity = 100;
+            //Opacity = 100;
             LoadSubjectsToList();
         }
 

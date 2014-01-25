@@ -38,41 +38,6 @@ namespace Grade_Manager
 
         private void LoadList()
         {
-            /*//profileComboList.Items.Clear();
-            //treeView1.Nodes.Clear();
-            semesterListView.Items.Clear();
-
-            //SELECT [semester_id], [Classes].[class_name], [starting_school_year], 
-            //[ending_school_year], [current_term] FROM [Profiles] INNER JOIN [Classes] 
-            //ON [Profiles].[class_id] = [Classes].[class_id] WHERE [Profiles].[account_id] = 
-            //@account_id ORDER BY [Classes].[class_id] ASC
-
-            using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
-            {
-                using (var command = new SQLiteCommand(connection))
-                {
-                    command.CommandText = GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_SEMESTERS_TREE;
-                    command.CommandType = CommandType.Text;
-                    command.Parameters.AddWithValue("@account_id", UserManager.CurrentUser.Id);
-
-                    connection.Open();
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        //treeView1.Nodes.Add(GenerateTree(reader));
-                        ListViewItem item;
-                        while (reader.Read())
-                        {
-                            item = GenerateItem(reader);
-                            if (item != null)
-                                semesterListView.Items.Add(item);
-                        }
-                    }
-                        
-
-                }
-            }*/
-
             using (var connection = new SQLiteConnection(GradeManager_SQLite_DB_Controller.CONNECTION_STRING))
             {
                 using (var adapter = new SQLiteDataAdapter(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_SEMESTERS_TREE, connection))
@@ -92,6 +57,11 @@ namespace Grade_Manager
                     }
                 }
             }
+
+            if (semesterGridView.Rows.Count == 0)
+                newSemesterLabel.Visible = true;
+            else
+                newSemesterLabel.Visible = false;
         }
 
         private TreeNode GenerateTree(IDataReader reader)

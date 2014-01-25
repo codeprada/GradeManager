@@ -35,21 +35,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Semester_Form));
             this.panel1 = new System.Windows.Forms.Panel();
             this.semesterGridView = new System.Windows.Forms.DataGridView();
+            this.semesterContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.loadBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.newBtn = new System.Windows.Forms.Button();
-            this.semesterContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newSemesterLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.semesterGridView)).BeginInit();
-            this.panel2.SuspendLayout();
             this.semesterContextMenu.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.newSemesterLabel);
             this.panel1.Controls.Add(this.semesterGridView);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(2, 2);
@@ -107,6 +109,20 @@
             this.semesterGridView.TabIndex = 0;
             this.semesterGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.semesterGridView_CellContextMenuStripNeeded);
             this.semesterGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.semesterGridView_CellDoubleClick);
+            // 
+            // semesterContextMenu
+            // 
+            this.semesterContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteToolStripMenuItem});
+            this.semesterContextMenu.Name = "semesterContextMenu";
+            this.semesterContextMenu.Size = new System.Drawing.Size(108, 26);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -190,19 +206,15 @@
             this.newBtn.MouseEnter += new System.EventHandler(this.loadBtn_MouseEnter);
             this.newBtn.MouseLeave += new System.EventHandler(this.loadBtn_MouseLeave);
             // 
-            // semesterContextMenu
+            // newSemesterLabel
             // 
-            this.semesterContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deleteToolStripMenuItem});
-            this.semesterContextMenu.Name = "semesterContextMenu";
-            this.semesterContextMenu.Size = new System.Drawing.Size(108, 26);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.newSemesterLabel.AutoSize = true;
+            this.newSemesterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newSemesterLabel.Location = new System.Drawing.Point(148, 97);
+            this.newSemesterLabel.Name = "newSemesterLabel";
+            this.newSemesterLabel.Size = new System.Drawing.Size(192, 62);
+            this.newSemesterLabel.TabIndex = 1;
+            this.newSemesterLabel.Text = "      Create \r\nNew Semester";
             // 
             // Semester_Form
             // 
@@ -222,9 +234,10 @@
             this.Text = "Semesters";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Semester_Form_Paint);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.semesterGridView)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.semesterContextMenu.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -239,5 +252,6 @@
         private System.Windows.Forms.DataGridView semesterGridView;
         private System.Windows.Forms.ContextMenuStrip semesterContextMenu;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.Label newSemesterLabel;
     }
 }

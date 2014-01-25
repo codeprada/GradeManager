@@ -238,7 +238,7 @@ namespace Grade_Manager_DB_Controller
             return assessment;
         }
 
-        public List<AssessmentType> GetTypes()
+        public List<AssessmentType> GetTypes(Semester semester)
         {
             List<AssessmentType> types = new List<AssessmentType>();
 
@@ -246,6 +246,8 @@ namespace Grade_Manager_DB_Controller
             {
                 using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_SELECT_ASSESSMENT_TYPE, connection))
                 {
+                    command.Parameters.AddWithValue("@semester_id", semester.Id);
+
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
@@ -272,7 +274,7 @@ namespace Grade_Manager_DB_Controller
 
             if (db_obj == DB_Object.TYPE)
             {
-                foreach (AssessmentType type in GetTypes())
+                foreach (AssessmentType type in GetTypes(SemesterManager.CurrentSemester))
                 {
                     if(type.ID >= 0)
                         comboBox.Items.Add(new ComboItem() { Id = type.ID, Text = type.Name });

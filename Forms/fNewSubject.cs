@@ -29,7 +29,7 @@ namespace Grade_Manager_DB_Controller
             //subjectStatusLabel.Text = String.Empty;
             if (subjectTxt.Text != String.Empty)
             {
-                statusToolStrip.Text = (CreateSubject(subjectTxt.Text));
+                statusToolStrip.Text = (CreateSubject(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(subjectTxt.Text)));
                 subjectTxt.Clear();
                 subjectTxt.Focus();
             }
@@ -59,7 +59,8 @@ namespace Grade_Manager_DB_Controller
             SubjectManager sm = new SubjectManager(GradeManager_SQLite_DB_Controller.CONNECTION_STRING);
             try
             {
-                sm.CreateSubject(subject);
+                if (sm.CreateSubject(subject) > 0)
+                    status = subject + " was created successfully.";
             }
             catch (Exception e)
             {

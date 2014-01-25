@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,12 +30,17 @@ namespace Grade_Manager_DB_Controller
                     {
                         Name = usernameTxt.Text,
                         Password = pass1Txt.Text,
-                        FirstName = firstTxt.Text,
-                        LastName = lastTxt.Text
+                        FirstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(firstTxt.Text),
+                        LastName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(lastTxt.Text)
                     }) == 1)
                     {
                         newUserStatusLabel.Text = "Account successfully created!";
-                        Close();
+                        usernameTxt.Clear();
+                        pass1Txt.Clear();
+                        pass2Txt.Clear();
+                        lastTxt.Clear();
+                        firstTxt.Clear();
+                        //Close();
                     }
                     else
                         newUserStatusLabel.Text = "Oops! There was an error while creating your account.";

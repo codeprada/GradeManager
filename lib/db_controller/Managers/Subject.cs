@@ -59,7 +59,7 @@ namespace Grade_Manager_DB_Controller
             {
                 using (SQLiteCommand command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_GET_ALL_SUBJECTS, connection))
                 {
-                    //command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
+                    command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
                     command.CommandType = CommandType.Text;
 
                     connection.Open();
@@ -188,6 +188,7 @@ namespace Grade_Manager_DB_Controller
                     using (var command = new SQLiteCommand(GradeManager_SQLite_DB_Controller.DBQ_INSERT_SUBJECT, connection))
                     {
                         command.Parameters.AddWithValue("@subject_name", subject);
+                        command.Parameters.AddWithValue("@semester_id", SemesterManager.CurrentSemester.Id);
 
                         connection.Open();
                         

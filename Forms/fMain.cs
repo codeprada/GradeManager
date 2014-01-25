@@ -190,7 +190,7 @@ namespace Grade_Manager
             ////Verify if the user selected a semester
             if (semester_fm.ShowDialog(this) == System.Windows.Forms.DialogResult.OK && SemesterManager.CurrentSemester != null)
             {
-                mainStatusLabel.Text += String.Format(" - Semester Year: {0}/{1}",
+                mainStatusLabel.Text = "Hello " + UserManager.CurrentUser.FirstName + " " + UserManager.CurrentUser.LastName + String.Format(" - Semester Year: {0}/{1}",
                     SemesterManager.CurrentSemester.StartingSchoolYear,
                     SemesterManager.CurrentSemester.EndingSchoolYear
                 );
@@ -199,16 +199,6 @@ namespace Grade_Manager
                 ShowControls(true);
 
             }
-        }
-
-        private void ShowWelcomeScreen()
-        {
-            fWelcomeScreen welcome_screen = new fWelcomeScreen();
-            welcome_screen.TopLevel = false;
-            splitContainer1.Panel2.Controls.Add(welcome_screen);
-            welcome_screen.Location = new Point((splitContainer1.Panel2.Width - welcome_screen.Width) / 2, (splitContainer1.Panel2.Height - welcome_screen.Height) / 2);
-            welcome_screen.Show();
-            welcome_screen.BringToFront();
         }
 
         private void pictureBox12_Click(object sender, EventArgs e)
@@ -364,8 +354,8 @@ namespace Grade_Manager
 
         private void helpBtn_Click(object sender, EventArgs e)
         {
-            fHelp help = new fHelp();
-            help.Show();
+            //fHelp help = new fHelp();
+            //help.Show();
         }
 
         /*private void ManageHiddenButtons(Button current_button)

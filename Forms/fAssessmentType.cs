@@ -77,10 +77,10 @@ namespace Grade_Manager_DB_Controller
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             fCreateAssessmentType fcat = new fCreateAssessmentType();
-            fcat.StartPosition = FormStartPosition.CenterScreen;
-            this.Visible = false;
+            fcat.StartPosition = FormStartPosition.CenterParent;
+            //this.Visible = false;
             fcat.ShowDialog(this.Parent);
-            this.Visible = true;
+            //this.Visible = true;
 
             LoadAssessmentTypes();
         }
@@ -102,10 +102,10 @@ namespace Grade_Manager_DB_Controller
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fCreateAssessmentType fcat = new fCreateAssessmentType(Int32.Parse(assessmentDataGridView.SelectedRows[0].Cells[0].Value.ToString()));
-            fcat.StartPosition = FormStartPosition.CenterScreen;
-            this.Visible = false;
+            fcat.StartPosition = FormStartPosition.CenterParent;
+            //this.Visible = false;
             fcat.ShowDialog(this.Parent);
-            this.Visible = true;
+            //this.Visible = true;
 
             LoadAssessmentTypes();
         }

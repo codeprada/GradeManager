@@ -232,11 +232,26 @@ namespace Grade_Manager_DB_Controller
         {
             Panel p = ((Panel)Parent);
             fAssessmentType cat = new fAssessmentType();
-            cat.TopLevel = false;
-            p.Controls.Add(cat);
-            cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
-            cat.Show();
-            cat.BringToFront();
+            //cat.TopLevel = false;
+            //p.Controls.Add(cat);
+            //cat.Location = new Point((p.Width - cat.Width) / 2, (p.Height - cat.Height) / 2);
+            cat.StartPosition = FormStartPosition.CenterParent;
+            cat.ShowDialog();
+            //cat.BringToFront();
+            LoadAssessment_Types();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Panel p = ((Panel)Parent);
+            fSubjects s_form = new fSubjects();
+            //s_form.TopLevel = false;
+            //p.Controls.Add(s_form);
+            //s_form.Location = new Point((p.Width - s_form.Width) / 2, (p.Height - s_form.Height) / 2);
+            s_form.StartPosition = FormStartPosition.CenterParent;
+            s_form.ShowDialog();
+            //s_form.BringToFront();
+            LoadSubjects();
         }
     }
 }
